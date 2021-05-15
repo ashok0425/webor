@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="Responsive Admin &amp; Dashboard Template based on Bootstrap 5">
+	<meta name="author" content="AdminKit">
+	<meta name="csrf-token" content="{{ csrf_token() }}">
+
+	<meta name="keywords" content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
+
+	<link rel="shortcut icon" href="img/icons/icon-48x48.png" />
+
+	<title>soengsouy.com</title>
+
+
+
+{{-- fontawsome  --}}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+{{-- custom css --}}
+	<link href="{{asset('admin/css/app.css')}}" rel="stylesheet">
+	{{-- datatables  --}}
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
+    {{-- toastr  --}}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+</head>
+<style>
+
+
+.file-upload-wrapper {
+	position: relative;
+	width: 100%;
+	height: 40px;
+    border: 1px solid #17e67e;
+
+}
+
+.file-upload-wrapper:after {
+	content: attr(data-text);
+	font-size: 18px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: #fff;
+	padding: 0px 15px;
+	display: block;
+	width: calc(100% - 40px);
+	pointer-events: none;
+	z-index: 20;
+	height: 10px;
+	line-height: 40px;
+	color: #999;
+	border-radius: 5px 10px 10px 5px;
+	font-weight: 300;
+}
+
+.file-upload-wrapper:before {
+	content: 'Choose file';
+	position: absolute;
+	top: 0;
+	right: 0;
+	display: inline-block;
+	height: 40px;
+	background: #4daf7c;
+	color: #fff;
+	font-weight: 700;
+	z-index: 25;
+	font-size: 16px;
+	line-height: 40px;
+	padding: 0 15px;
+	text-transform: uppercase;
+	pointer-events: none;
+	border-radius: 0 5px 5px 0;
+}
+
+.file-upload-wrapper:hover:before {
+	background: #17e67e;
+}
+
+.file-upload-wrapper input {
+	opacity: 0;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 99;
+	height: 20px;
+	margin: 0;
+	padding: 0;
+	display: block;
+	cursor: pointer;
+	width: 100%;
+}
+</style>
+<body>
+	<div class="wrapper">
+        {{-- include sidebar --}}
+@include('admin.layout.sidebar')
+
+		<div class="main">
+        {{-- include header --}}
+
+@include('admin.layout.header')
+
+			<main class="content">
+                 {{-- include breadcrum --}}
+       {{--Dyanmic content --}}
+@include('admin.layout.breadcrum')
+    @yield('main-content')
+			
+			</main>
+
+		
+		</div>
+	</div>
+{{-- bootstrap  --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+{{-- custom js --}}
+<script src="{{asset('admin/js/app.js')}}"></script>
+
+{{-- toastr  --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+{{-- datatables  --}}
+<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+{{-- sweet alert  --}}
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	{{-- fetching data category,subcategory --}}
+<script>
+$(document).ready(function(){
+$(document).on('click','.data',function(){
+		
+		let datas=$(this).attr('data-text');
+		let id=$(this).val();
+if(datas=='subcategory'){
+let option=	$('.category').val();
+	loadData(datas,id,option)	
+
+}else{
+	loadData(datas,id)	
+
+}
+	})
+})
+	
+	function loadData(table,id,option){
+$.ajax({
+	
+	url:'{{url('admin/loaddata')}}/'+table+'/'+id+'/'+option,
+	DataType:'json',
+	type:'GET',
+	success:function($data){
+		console.log($data)
+		if(table=='category'){
+				$('.subcategory').html();
+				$('.model').html();
+
+			$('.subcategory').html($data);
+		}
+		if(table=='subcategory'){
+				$('.model').html();
+			$('.model').html($data);
+		}
+	}
+})
+	}
+
+</script>
+
+{{-- toastr  --}}
+<script>
+
+    @if(Session::has('messege'))//toatser
+      var type="{{Session::get('alert-type','info')}}"
+      switch(type){
+          case 'info':
+               toastr.info("{{ Session::get('messege') }}");
+               break;
+          case 'success':
+              toastr.success("{{ Session::get('messege') }}");
+              break;
+          case 'warning':
+             toastr.warning("{{ Session::get('messege') }}");
+              break;
+          case 'error':
+              toastr.error("{{ Session::get('messege') }}");
+              break;
+      }
+    @endif
+ </script>
+	
+
+    {{-- file upload  --}}
+    <script>
+        $("form").on("change", ".file-upload-field", function(){ 
+    $(this).parent(".file-upload-wrapper").attr("data-text",         $(this).val().replace(/.*(\/|\\)/, '') );
+});
+    </script>
+
+	{{-- datatables iniziing --}}
+	<script >
+		$(document).ready( function () {
+    $('#myTable').DataTable();
+} );
+
+	</script>
+
+<script>
+ $(document).on("click", "#delete", function(e){
+        e.preventDefault();
+        var link = $(this).attr("href");
+           swal({
+             title: "Are you Want to delete?",
+             text: "Once Delete, This will be Permanently Delete!",
+             icon: "warning",
+             buttons: true,
+             dangerMode: true,
+           })
+           .then((willDelete) => {
+             if (willDelete) {
+                  window.location.href = link;
+             } else {
+               swal("Safe Data!");
+             }
+           });
+       });
+</script>
+</body>
+
+</html>
