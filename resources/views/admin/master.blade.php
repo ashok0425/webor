@@ -21,6 +21,9 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
 {{-- custom css --}}
 	<link href="{{asset('admin/css/app.css')}}" rel="stylesheet">
+	{{-- summernote css  --}}
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+
 	{{-- datatables  --}}
 	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
     {{-- toastr  --}}
@@ -128,6 +131,9 @@
 <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
 {{-- sweet alert  --}}
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+!-- include summernote js -->
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 	{{-- fetching data category,subcategory --}}
 <script>
 $(document).ready(function(){
@@ -170,8 +176,12 @@ $.ajax({
 
 </script>
 
-{{-- toastr  --}}
 <script>
+{{-- inializing summernote  --}}
+$(document).ready(function() {
+	$('#summernote').summernote();
+  });
+  {{-- toastr  --}}
 
     @if(Session::has('messege'))//toatser
       var type="{{Session::get('alert-type','info')}}"
@@ -196,7 +206,7 @@ $.ajax({
     {{-- file upload  --}}
     <script>
         $("form").on("change", ".file-upload-field", function(){ 
-    $(this).parent(".file-upload-wrapper").attr("data-text",         $(this).val().replace(/.*(\/|\\)/, '') );
+    $(this).parent(".file-upload-wrapper").attr("data-text", $(this).val().replace(/.*(\/|\\)/, '') );
 });
     </script>
 

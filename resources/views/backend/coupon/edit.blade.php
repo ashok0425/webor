@@ -3,7 +3,7 @@
 
 <div class="card">
     <div class="card-header">
-        <h5 class="card-title">Edit Brand</h5>
+        <h5 class="card-title">Edit Coupon</h5>
    
     </div>
     <div class="card-body">

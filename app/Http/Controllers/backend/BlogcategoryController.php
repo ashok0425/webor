@@ -140,7 +140,7 @@ class BlogcategoryController extends Controller
                     'messege'=>'Category  updated',
                    
                  );
-                 return redirect()->route('admin.blogcategory')->with($notification);
+                 return redirect()->route('admin.blog')->with($notification);
             }else{
                 $notification=array(
                     'alert-type'=>'info',

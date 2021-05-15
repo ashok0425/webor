@@ -145,6 +145,27 @@ Route::get('/blog/active/{id}/{table}','backend\BlogController@active')->name('b
 Route::get('/blog/deactive/{id}/{table}','backend\BlogController@deactive')->name('blog.deactive');
 Route::get('/blog/delete/{id}/{table}','backend\BlogController@destroy')->name('blog.delete');
 
+
+
+// Subscriber 
+Route::get('/subscriber','backend\SubscriberController@index')->name('subscriber');
+Route::get('/subscriber/sendemail/create','backend\SubscriberController@create')->name('sendmail');
+Route::post('/subscriber/sendemail','backend\SubscriberController@sendBulkMail')->name('sendmail.store');
+Route::get('/subscriber/delete/{id}/{table}','backend\SubscriberController@destroy')->name('subscriber.delete');
+
+
+
+// Blog 
+Route::get('/blog','backend\BlogController@index')->name('blog');
+Route::get('/blog/create','backend\BlogController@create')->name('blog.create');
+Route::post('/blog/store','backend\BlogController@store')->name('blog.store');
+Route::get('/blog/edit/{id}','backend\BlogController@edit')->name('blog.edit');
+Route::post('/blog/update','backend\BlogController@update')->name('blog.update');
+Route::get('/blog/show/{id}','backend\BlogController@show')->name('blog.show');
+Route::get('/blog/active/{id}/{table}','backend\BlogController@active')->name('blog.active');
+Route::get('/blog/deactive/{id}/{table}','backend\BlogController@deactive')->name('blog.deactive');
+Route::get('/blog/delete/{id}/{table}','backend\BlogController@destroy')->name('blog.delete');
+
 });
 
 // getting subcategory,modal,part using ajax 

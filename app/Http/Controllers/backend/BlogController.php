@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Blog;
 use Illuminate\Http\Request;
 use App\Http\Traits\status;
+use App\Models\Blogcategory;
 use File;
 class BlogController extends Controller
 {
@@ -31,7 +32,8 @@ class BlogController extends Controller
      */
     public function create()
     {
-       return view('backend.blog.create');
+        $category=Blogcategory::all();
+       return view('backend.blog.create',compact('category'));
         
     }
 
@@ -109,8 +111,10 @@ class BlogController extends Controller
      */
     public function edit(Blog $blog,$id)
     {
+        $category=Blogcategory::all();
+
         $blog=Blog::find($id);
-        return view('backend.blog.edit',compact('blog'));
+        return view('backend.blog.edit',compact('blog','category'));
     }
 
     /**

@@ -20,10 +20,15 @@
       <i class="align-middle" data-feather="user"></i> <span class="align-middle">Profile</span>
     </a>
             </li>
-
+            
             <li class="sidebar-item">
                 <a class="sidebar-link" href="{{route('admin.coupon')}}">
       <i class="fas fa-copy" ></i> <span class="align-middle">Coupon</span>
+    </a>
+            </li>
+            <li class="sidebar-item">
+                <a class="sidebar-link" href="{{route('admin.subscriber')}}">
+      <i class="align-middle" data-feather="user"></i> <span class="align-middle">Subscribe</span>
     </a>
             </li>
             <li class="sidebar-header">
@@ -74,6 +79,23 @@
                     <li class="sidebar-item"><a class="sidebar-link" href="{{route('admin.blog')}}">Blog</a></li>
                  
                  
+                   
+                </ul>
+            </li>
+
+            <li class="sidebar-header">
+                Settings
+            </li>
+
+            <li class="sidebar-item">
+                <a data-target="#setting" data-toggle="collapse" class="sidebar-link" aria-expanded="false">
+  <i class="fas fa-envelope"></i> <span class="align-middle">Setting</span>
+    </a>
+                <ul id="setting" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar" style="">
+               
+                    <li class="sidebar-item"><a class="sidebar-link" href="{{route('admin.product.create')}}">Banner Setting</a></li>
+                    <li class="sidebar-item"><a class="sidebar-link" href="{{route('admin.product')}}">Frontend Setting</a></li>
+                    <li class="sidebar-item"><a class="sidebar-link" href="{{route('admin.deactiveproduct')}}">Page Setting</a></li>
                    
                 </ul>
             </li>
