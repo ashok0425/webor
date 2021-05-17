@@ -2,7 +2,9 @@
 @extends('admin.master')
 @section('main-content')
 
-
+@php
+    define('PAGE','blog')
+@endphp
 
 <div class="card">
     <div class="card-header">

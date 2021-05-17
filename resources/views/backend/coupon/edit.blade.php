@@ -1,5 +1,8 @@
 @extends('admin.master')
 @section('main-content')
+@php
+    define('PAGE','coupon')
+@endphp
 
 <div class="card">
     <div class="card-header">

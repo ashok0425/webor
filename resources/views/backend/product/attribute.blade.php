@@ -1,5 +1,9 @@
 @extends('admin.master')
 @section('main-content')
+@php
+    define('PAGE','product')
+@endphp
+
 <div class="container">
     <h2>Product Attributes</h2>
 

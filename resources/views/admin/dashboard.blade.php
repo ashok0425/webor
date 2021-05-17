@@ -1,5 +1,8 @@
 @extends('admin.master')
 @section('main-content')
+@php
+    define('PAGE','dashboard')
+@endphp
 <div class="container-fluid p-0">
 
 				

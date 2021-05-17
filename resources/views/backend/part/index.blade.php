@@ -1,5 +1,9 @@
 @extends('admin.master')
 @section('main-content')
+@php
+    define('PAGE','device')
+@endphp
+
 <div class="container">
     <div class="card py-3 px-4">
         <div class="d-flex justify-content-between">

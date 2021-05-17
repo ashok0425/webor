@@ -22,6 +22,8 @@ Route::middleware('auth:admin')->name('admin.')->group(function () {
     Route::post('/update-profile','Admin\AuthController@update')->name('profile.update');
     Route::post('/change-password','Admin\AuthController@changePassword')->name('password');
     Route::post('/logout','Admin\AuthController@destory')->name('logout');
+    Route::get('/logout/admin','Admin\AuthController@destory')->name('admin.logout');
+
 
 
 // category 
@@ -155,16 +157,33 @@ Route::get('/subscriber/delete/{id}/{table}','backend\SubscriberController@destr
 
 
 
-// Blog 
-Route::get('/blog','backend\BlogController@index')->name('blog');
-Route::get('/blog/create','backend\BlogController@create')->name('blog.create');
-Route::post('/blog/store','backend\BlogController@store')->name('blog.store');
-Route::get('/blog/edit/{id}','backend\BlogController@edit')->name('blog.edit');
-Route::post('/blog/update','backend\BlogController@update')->name('blog.update');
-Route::get('/blog/show/{id}','backend\BlogController@show')->name('blog.show');
-Route::get('/blog/active/{id}/{table}','backend\BlogController@active')->name('blog.active');
-Route::get('/blog/deactive/{id}/{table}','backend\BlogController@deactive')->name('blog.deactive');
-Route::get('/blog/delete/{id}/{table}','backend\BlogController@destroy')->name('blog.delete');
+// setting 
+       // banner 
+Route::get('/banner','backend\SettingController@index')->name('banner');
+Route::get('/banner/create','backend\SettingController@create')->name('banner.create');
+Route::post('/banner/store','backend\SettingController@store')->name('banner.store');
+Route::get('/banner/show/{id}','backend\SettingController@show')->name('banner.show');
+Route::get('/banner/edit/{id}','backend\SettingController@edit')->name('banner.edit');
+Route::post('/banner/update','backend\SettingController@update')->name('banner.update');
+Route::get('/banner/active/{id}/{table}','backend\SettingController@active')->name('banner.active');
+Route::get('/banner/deactive/{id}/{table}','backend\SettingController@deactive')->name('banner.deactive');
+Route::get('/banner/delete/{id}/{table}','backend\SettingController@destroy')->name('banner.delete');
+  
+        //    page seeting
+Route::get('/page','backend\SettingController@page')->name('page');
+Route::post ('/page/update','backend\SettingController@frontendUpdate')->name('page.update');
+
+     //    Frontend seeting
+     Route::get('/website-setting','backend\SettingController@website')->name('website');
+     Route::post ('/website/update','backend\SettingController@websiteUpdate')->name('website.update');
+
+
+
+// Subscriber 
+Route::get('/contact','backend\ContactController@index')->name('contact');
+Route::get('/contact/create/{id}','backend\ContactController@create')->name('contact.create');
+Route::post('/contact/sendmail','backend\ContactController@sendmail')->name('contact.sendmail');
+
 
 });
 

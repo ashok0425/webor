@@ -1,9 +1,9 @@
 
 @extends('admin.master')
 @section('main-content')
-
-
-
+@php
+    define('PAGE','device')
+@endphp
 <div class="card">
     <div class="card-header">
         <h5 class="card-title">Add Modal</h5>

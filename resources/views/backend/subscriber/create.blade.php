@@ -1,7 +1,10 @@
 
 @extends('admin.master')
 @section('main-content')
-
+@php
+    define('PAGE','subscriber')
+    
+@endphp
 
 
 <div class="card">

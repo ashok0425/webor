@@ -3,6 +3,9 @@
 @section('main-content')
 
 
+@php
+    define('PAGE','device')
+@endphp
 
 <div class="card">
     <div class="card-header">

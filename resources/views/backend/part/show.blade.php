@@ -1,4 +1,8 @@
 @extends('admin.master')
+@php
+    define('PAGE','device')
+@endphp
+
 @section('main-content')
 <style>
     @media print {

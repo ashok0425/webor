@@ -1,7 +1,8 @@
 @extends('admin.master')
 @section('main-content')
-
-
+@php
+    define('PAGE','product')
+@endphp
 
 <div class="card">
     <div class="card-header">

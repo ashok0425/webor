@@ -1,5 +1,9 @@
 @extends('admin.master')
 @section('main-content')
+@php
+    define('PAGE','coupon')
+@endphp
+
 <style>
     @media print {
     #printbtn {

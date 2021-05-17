@@ -1,5 +1,8 @@
 @extends('admin.master')
 @section('main-content')
+@php
+    define('PAGE','profile')
+@endphp
 <div class="container-fluid p-0">
 
     <h1 class="h3 mb-3">Profile</h1>

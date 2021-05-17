@@ -112,6 +112,7 @@
                  {{-- include breadcrum --}}
        {{--Dyanmic content --}}
 @include('admin.layout.breadcrum')
+<x-errormsg />
     @yield('main-content')
 			
 			</main>
@@ -132,7 +133,7 @@
 {{-- sweet alert  --}}
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
-!-- include summernote js -->
+{{-- !-- include summernote js --> --}}
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 	{{-- fetching data category,subcategory --}}
 <script>
@@ -177,11 +178,18 @@ $.ajax({
 </script>
 
 <script>
-{{-- inializing summernote  --}}
+// {{-- inializing summernote  --}}
 $(document).ready(function() {
 	$('#summernote').summernote();
+	$('#summernote1').summernote();
+	$('#summernote2').summernote();
+	$('#summernote3').summernote();
+	$('#summernote4').summernote();
+
+
+
   });
-  {{-- toastr  --}}
+//   {{-- toastr  --}}
 
     @if(Session::has('messege'))//toatser
       var type="{{Session::get('alert-type','info')}}"

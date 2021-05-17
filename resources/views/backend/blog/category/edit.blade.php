@@ -1,6 +1,8 @@
 @extends('admin.master')
 @section('main-content')
-
+@php
+    define('PAGE','blog')
+@endphp
 <div class="card">
     <div class="card-header">
         <h5 class="card-title">Edit Brand</h5>
