@@ -66,7 +66,7 @@
             </li>
 
             <li class="sidebar-header">
-               Appointment
+              Manage Appointment
             </li>
 
             <li class="sidebar-item <?php  echo PAGE=='appointment'?'active':'' ?>">
@@ -82,6 +82,24 @@
                 </ul>
             </li>
 
+
+            <li class="sidebar-header">
+                Manage Order
+             </li>
+ 
+             <li class="sidebar-item <?php  echo PAGE=='order'?'active':'' ?>">
+                 <a data-target="#order" data-toggle="collapse" class="sidebar-link" aria-expanded="false">
+   <i class="fas fa-male"></i> <span class="align-middle">Order Trackingg</span>
+     </a>
+                 <ul id="order" class="sidebar-dropdown list-unstyled collapse <?php  echo PAGE=='order'?'show':'' ?>" data-parent="#sidebar" style="">
+                     <li class="sidebar-item"><a class="sidebar-link" href="{{route('admin.order.new')}}">New Order</a></li>
+                     <li class="sidebar-item"><a class="sidebar-link" href="{{route('admin.order.processing')}}">Processing Order</a></li>
+                     <li class="sidebar-item"><a class="sidebar-link" href="{{route('admin.order.shipping')}}"> ShippingOrder</a></li>
+                     <li class="sidebar-item"><a class="sidebar-link" href="{{route('admin.order.deliver')}}">Deliver order</a></li>
+                     <li class="sidebar-item"><a class="sidebar-link" href="{{route('admin.order.cancel')}}"> Cancel Order</a></li>
+                    
+                 </ul>
+             </li>
 
             <li class="sidebar-header">
                 Settings

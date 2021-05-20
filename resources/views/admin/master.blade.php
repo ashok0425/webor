@@ -267,6 +267,23 @@ $(document).ready(function() {
            });
        });
 </script>
+
+<script >
+	$('#status').change(function(){
+		let $val=$(this).val();
+		let $hid=$(this).data('id');
+
+		
+		$.ajax({
+			url:'{{ url('admin/order/status') }}/'+$val+'/'+$hid,
+			type:'GET',
+			DataType:'json',
+			success:function($data){
+				console.log($data);
+			}
+		})
+	})
+</script>
 </body>
 
 </html>

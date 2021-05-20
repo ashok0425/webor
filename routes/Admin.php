@@ -191,6 +191,19 @@ Route::get('/appointment/edit/{id}','backend\AppointmentController@edit')->name(
 Route::post('/appointment/update','backend\AppointmentController@update')->name('appointment.update');
 Route::post('/appointment/paidstatus','backend\AppointmentController@paidStatus')->name('appointment.paidstatus');
 Route::get('/appointment/complete','backend\AppointmentController@complete')->name('appointment.complete');
+   
+
+    //  order 
+    Route::get('/order/new','backend\OrderController@newOrder')->name('order.new');
+    Route::get('/order/processing','backend\OrderController@processOrder')->name('order.processing');
+    Route::get('/order/shipping','backend\OrderController@shippingOrder')->name('order.shipping');
+    Route::get('/order/deliver','backend\OrderController@deliverOrder')->name('order.deliver');
+    Route::get('/order/cancel','backend\OrderController@cancelOrder')->name('order.cancel');
+    Route::get('/order/status/{id}/{hid}','backend\OrderController@changeOrderStatus');
+    Route::get('/order/show/{id}','backend\OrderController@show')->name('order.show');
+
+
+   
 
 });
 

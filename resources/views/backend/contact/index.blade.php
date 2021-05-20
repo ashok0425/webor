@@ -6,10 +6,8 @@
 @endphp
 <div class="container">
     <div class="card py-3 px-4">
-        <div class="d-flex justify-content-between">
             <h3>List of People Who want to contact</h3>
             
-        </div>
         <br>
 
         <table id="myTable" class="table table-responsive-sm" >
