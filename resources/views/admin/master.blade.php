@@ -97,6 +97,27 @@
 	cursor: pointer;
 	width: 100%;
 }
+table,td,tr,th{
+	border:  .5px solid rgb(209, 208, 208)!important;
+	border-collapse: collapse;
+}
+.card{
+	border-top: 5px solid rgb(5, 24, 199);
+}
+#myTable_length{
+	margin-bottom: 1rem!important;
+}
+.dataTables_wrapper select{
+	border: 1px solid #aaa;
+    border-radius: 3px;
+    padding: .4rem 3rem!important;
+}
+h3{
+	background: #000;
+	padding: .3rem 1rem;
+	font-weight: bold;
+	color: #ffffff;
+}
 </style>
 <body>
 	<div class="wrapper">

@@ -179,11 +179,18 @@ Route::post ('/page/update','backend\SettingController@frontendUpdate')->name('p
 
 
 
-// Subscriber 
+// Contact 
 Route::get('/contact','backend\ContactController@index')->name('contact');
 Route::get('/contact/create/{id}','backend\ContactController@create')->name('contact.create');
 Route::post('/contact/sendmail','backend\ContactController@sendmail')->name('contact.sendmail');
 
+
+// Appointment 
+Route::get('/appointment','backend\AppointmentController@index')->name('appointment');
+Route::get('/appointment/edit/{id}','backend\AppointmentController@edit')->name('appointment.edit');
+Route::post('/appointment/update','backend\AppointmentController@update')->name('appointment.update');
+Route::post('/appointment/paidstatus','backend\AppointmentController@paidStatus')->name('appointment.paidstatus');
+Route::get('/appointment/complete','backend\AppointmentController@complete')->name('appointment.complete');
 
 });
 

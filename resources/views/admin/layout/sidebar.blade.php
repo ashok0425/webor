@@ -1,7 +1,10 @@
 <nav id="sidebar" class="sidebar" style="overflow-y: visible!important">
     <div class="sidebar-content js-simplebar">
-        <a class="sidebar-brand" href="index.html">
-  <span class="align-middle">Soeng Souy</span>
+        @php
+            $logo=DB::table('websites')->value('image');
+        @endphp
+        <a class="sidebar-brand" href="{{ route('admin.dashboard') }}">
+  <span class="align-middle"><img src="{{ asset($logo) }}" alt="" width="80"></span>
 </a>
 
         <ul class="sidebar-nav">
@@ -62,6 +65,22 @@
                 </ul>
             </li>
 
+            <li class="sidebar-header">
+               Appointment
+            </li>
+
+            <li class="sidebar-item <?php  echo PAGE=='appointment'?'active':'' ?>">
+                <a data-target="#appointment" data-toggle="collapse" class="sidebar-link" aria-expanded="false">
+  <i class="fas fa-male"></i> <span class="align-middle">Appointment List</span>
+    </a>
+                <ul id="appointment" class="sidebar-dropdown list-unstyled collapse <?php  echo PAGE=='appointment'?'show':'' ?>" data-parent="#sidebar" style="">
+               
+                    <li class="sidebar-item"><a class="sidebar-link" href="{{route('admin.appointment')}}">New Appointment</a></li>
+                    <li class="sidebar-item"><a class="sidebar-link" href="{{route('admin.appointment.complete')}}">Completed Appointment</a></li>
+                
+                   
+                </ul>
+            </li>
 
 
             <li class="sidebar-header">
