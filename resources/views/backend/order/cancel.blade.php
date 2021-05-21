@@ -49,32 +49,14 @@
 <form action="">
     
     <select name="status" id="status" class="form-control" data-id="{{ $item->id }}">
-<option value="0" @if ($item->status==0)
-    slected
-@endif>
-Pending
-</option>
+<option value=""></option>
 
 <option value="1" @if ($item->status==1)
     selected
 @endif>
 Processing
 </option>
-<option value="2" @if ($item->status==2)
-    selected
-@endif>
-Shipping
-</option>
-<option value="3" @if ($item->status==3)
-    selected
-@endif>
-Deliver
-</option>
-<option value="4" @if ($item->status==4)
-    selected
-@endif>
-Cancel
-</option>
+
     </select>
 </form>
                         </td>

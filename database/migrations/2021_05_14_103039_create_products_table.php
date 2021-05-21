@@ -20,7 +20,12 @@ class CreateProductsTable extends Migration
             $table->integer('category_id');
             $table->integer('subcategory_id')->nullable();
             $table->integer('price');
-            $table->integer('vendor');
+            $table->integer('vendor_id')->nullable();
+            $table->integer('featured')->nullable();
+            $table->integer('top_rated')->nullable();
+            $table->integer('bestseller')->nullable();
+            $table->integer('quantity')->nullable();
+            $table->integer('sku')->nullable();
             $table->integer('status')->default(1);
             $table->timestamps();
         });

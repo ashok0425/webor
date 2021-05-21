@@ -18,10 +18,8 @@
 }
 </style>
 <div class="card">
-    <div class="card-header d-flex justify-content-between">
-        <h5 class="card-title">Show Brand</h5>
-   <button onclick="print()" class="btn btn-lg btn-danger" id="printbtn"><i class="fas fa-print"></i> Print</button>
-    </div>
+        <h3 class="card-title">Device Details</h3>
+   
     <div class="card-body">
         <h4 style="text-align: center;border-bottom:1px solid gray;padding-bottom:1rem;">Brand Details</h4>
       <div class="container">

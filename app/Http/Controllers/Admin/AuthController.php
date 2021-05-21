@@ -4,9 +4,12 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Admin;
+use App\Models\User;
+
 use File;
 use Hash;
 use session;
+
 class AuthController extends Controller
 {
     public function index(){
@@ -158,6 +161,11 @@ $admin->save();
             return redirect()->back()->with($notification);;
         }
     
+    }
+
+    public function userList(){
+        $user=User::all();
+        return view('backend.user.list',compact('user'));
     }
 
 }

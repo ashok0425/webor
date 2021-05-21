@@ -4,20 +4,10 @@
     define('PAGE','product')
 @endphp
 <div class="card">
-    <div class="card-header">
-        <h5 class="card-title">Edit Product</h5>
+        <h3>Edit Product</h3>
    
-    </div>
     <div class="card-body">
-    @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
+
         <form action="{{route('admin.product.update')}}" method="POST" enctype="multipart/form-data">
             @csrf
        <input name="id" value="{{$product->id}}" type="hidden"/>
@@ -59,7 +49,24 @@
                   <br>
                   <img src="{{asset($product->image)}}" width='100'/>
             </div>
-           
+            <h3>Extra Option</h3>
+            <div class="row my-3">
+                <div class="col-md-4 col-6">
+                    <label><input type="checkbox" name="featured" @if ($product->featured==1)
+                        checked
+                    @endif> Featured Product</label>
+                </div>
+                <div class="col-md-4 col-6">
+                 <label><input type="checkbox" name="top_rated" @if($product->top_rated==1)
+                    checked
+                @endif > Top Rated Product</label>
+             </div>  
+             <div class="col-md-4 col-6">
+                 <label><input type="checkbox" name="bestseller" @if($product->bestseller==1)
+                    checked
+                @endif > Best Seller Product</label>
+             </div>
+            </div>
             <button type="submit" class="btn btn-primary">Update</button>
         </form>
     </div>

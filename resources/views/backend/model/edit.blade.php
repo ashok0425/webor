@@ -5,20 +5,10 @@
 @endphp
 
 <div class="card">
-    <div class="card-header">
-        <h5 class="card-title">Edit Modal</h5>
+        <h3>Edit Modal</h3>
    
-    </div>
     <div class="card-body">
-    @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
+
         <form action="{{route('admin.model.update')}}" method="POST" enctype="multipart/form-data">
             @csrf
             <input type="hidden" name="id" value="{{$modal->id}}" />

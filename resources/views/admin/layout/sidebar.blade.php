@@ -40,8 +40,8 @@
     </a>
                 <ul id="ui" class="sidebar-dropdown list-unstyled collapse <?php  echo PAGE=='device'?'show':'' ?>" data-parent="#sidebar" style="">
                
-                    <li class="sidebar-item"><a class="sidebar-link" href="{{route('admin.category')}}">Brand</a></li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="{{route('admin.subcategory')}}">Device</a></li>
+                    <li class="sidebar-item"><a class="sidebar-link" href="{{route('admin.category')}}">Device</a></li>
+                    <li class="sidebar-item"><a class="sidebar-link" href="{{route('admin.subcategory')}}">Brand</a></li>
                     <li class="sidebar-item"><a class="sidebar-link" href="{{route('admin.model')}}">Model</a></li>
                     <li class="sidebar-item"><a class="sidebar-link" href="{{route('admin.part')}}">Accesories</a></li>
                 </ul>
@@ -56,7 +56,7 @@
                 <a data-target="#product" data-toggle="collapse" class="sidebar-link" aria-expanded="false">
   <i class="fas fa-envelope"></i> <span class="align-middle">Product</span>
     </a>
-                <ul id="product" class="sidebar-dropdown list-unstyled collapse <?php  echo PAGE=='product'?'product':'' ?>" data-parent="#sidebar" style="">
+                <ul id="product" class="sidebar-dropdown list-unstyled collapse <?php  echo PAGE=='product'?'show':'' ?>" data-parent="#sidebar" style="">
                
                     <li class="sidebar-item"><a class="sidebar-link" href="{{route('admin.product.create')}}">Add Product</a></li>
                     <li class="sidebar-item"><a class="sidebar-link" href="{{route('admin.product')}}">All Product</a></li>
@@ -89,7 +89,7 @@
  
              <li class="sidebar-item <?php  echo PAGE=='order'?'active':'' ?>">
                  <a data-target="#order" data-toggle="collapse" class="sidebar-link" aria-expanded="false">
-   <i class="fas fa-male"></i> <span class="align-middle">Order Trackingg</span>
+   <i class="fas fa-plane-departure"></i> <span class="align-middle">Order Trackingg</span>
      </a>
                  <ul id="order" class="sidebar-dropdown list-unstyled collapse <?php  echo PAGE=='order'?'show':'' ?>" data-parent="#sidebar" style="">
                      <li class="sidebar-item"><a class="sidebar-link" href="{{route('admin.order.new')}}">New Order</a></li>
@@ -134,18 +134,25 @@
                    
                 </ul>
             </li>
+            <li class="sidebar-header">
+         General
+            </li>
 
-
+            <li class="sidebar-item <?php  echo PAGE=='user'?'active':'' ?>">
+                <a class="sidebar-link" href="{{ route('admin.user.list') }}">
+      <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">User List</span>
+    </a>
+            </li>
             
             <li class="sidebar-item <?php  echo PAGE=='subscriber'?'active':'' ?>">
                 <a class="sidebar-link" href="{{route('admin.subscriber')}}">
-      <i class="align-middle" data-feather="user"></i> <span class="align-middle">Subscriber</span>
+      <i class="align-middle" data-feather="user"></i> <span class="align-middle">Subscriber List</span>
     </a>
             </li>
             
             <li class="sidebar-item <?php  echo PAGE=='contact'?'active':'' ?>">
                 <a class="sidebar-link" href="{{route('admin.contact')}}">
-      <i class="fas fa-male"></i> <span class="align-middle">Contact Request</span>
+      <i class="fas fa-male"></i> <span class="align-middle">Contact List</span>
     </a>
             </li>
         </ul>

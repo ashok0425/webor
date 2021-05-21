@@ -5,20 +5,9 @@
     define('PAGE','product')
 @endphp
 <div class="card">
-    <div class="card-header">
-        <h5 class="card-title">Add Product</h5>
+        <h3>Add Product</h3>
    
-    </div>
-    <div class="card-body">
-    @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
+
         <form action="{{route('admin.product.store')}}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">
@@ -54,7 +43,18 @@
                     <input name="file" type="file" class="file-upload-field" value="">
                   </div>
             </div>
-           
+            <h3>Extra Option</h3>
+           <div class="row my-3">
+               <div class="col-md-4 col-6">
+                   <label><input type="checkbox" name="featured" > Featured Product</label>
+               </div>
+               <div class="col-md-4 col-6">
+                <label><input type="checkbox" name="top_rated" > Top Rated Product</label>
+            </div>  
+            <div class="col-md-4 col-6">
+                <label><input type="checkbox" name="bestseller" > Best Seller Product</label>
+            </div>
+           </div>
             <button type="submit" class="btn btn-primary">Add</button>
         </form>
     </div>

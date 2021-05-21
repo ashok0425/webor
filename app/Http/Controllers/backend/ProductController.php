@@ -77,6 +77,10 @@ class ProductController extends Controller
             $category->subcategory_id=$request->subcategory;
             $category->price=$request->price;
             $category->name=$request->name;
+            $category->featured=$request->featured;
+            $category->top_rated=$request->top_rated;
+            $category->bestseller=$request->bestseller;
+
        
 
             if($category->save()){
@@ -164,7 +168,9 @@ class ProductController extends Controller
             $category->subcategory_id=$request->subcategory;
             $category->name=$request->name;
             $category->price=$request->price;
-
+            $category->featured=$request->featured;
+            $category->top_rated=$request->top_rated;
+            $category->bestseller=$request->bestseller;
 
 
 

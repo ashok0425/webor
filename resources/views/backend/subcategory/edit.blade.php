@@ -5,20 +5,10 @@
 @endphp
 
 <div class="card">
-    <div class="card-header">
-        <h5 class="card-title">Edit Device</h5>
+        <h3>Edit Brand</h3>
    
-    </div>
     <div class="card-body">
-    @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
+   
         <form action="{{route('admin.subcategory.update')}}" method="POST" enctype="multipart/form-data">
             @csrf
             <input type="hidden" name="id" value="{{$subcategory->id}}" />
@@ -27,7 +17,7 @@
                 <input type="text" name="subcategory" class="form-control" placeholder="Category" value="{{$subcategory->subcategory}}">
             </div>
             <div class="mb-3">
-                <label class="form-label">Select Brand</label>
+                <label class="form-label">Select Device</label>
                 <select name="category" id="" class="form-control">
                     @foreach ($category as $item)
                     <option value="{{$item->id}}" @if ($item->id==$subcategory->category_id)

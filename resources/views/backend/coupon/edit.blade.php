@@ -5,20 +5,10 @@
 @endphp
 
 <div class="card">
-    <div class="card-header">
-        <h5 class="card-title">Edit Coupon</h5>
+        <h3 >Edit Coupon</h3>
    
-    </div>
     <div class="card-body">
-    @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
+  
         <form action="{{route('admin.coupon.update')}}" method="POST" enctype="multipart/form-data">
             @csrf
             <input type="hidden" name="id" value="{{$category->id}}" />

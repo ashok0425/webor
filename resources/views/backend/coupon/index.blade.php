@@ -22,6 +22,8 @@
 
                     <th>Expire At</th>
                     <th>Image</th>
+                    <th>Status</th>
+
 
                     <th>Action</th>
             
@@ -36,16 +38,16 @@
                         <td>{{$item->card_value}}</td>
                         <td>{{$item->expire_at}}
                         @if ($item->expire_at<today())
-                <span class="btn btn-danger btn-sm">Expired</span>
+                <span class="badge bg-danger ">Expired</span>
                            
                         @endif
                         </td>
 
                         <td> <img src="{{asset($item->image)}}" width="80" alt=""></td>
                         <td>@if ($item->status==1)
-                            <a  class="btn btn-success">Active</a>
+                            <a  class="badge bg-success">Active</a>
                             @else
-                            <a class="btn btn-danger">Deactive</a>
+                            <a class="badge bg-danger">Deactive</a>
 
                         @endif</td>
                         <td>

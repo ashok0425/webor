@@ -26,10 +26,8 @@
 }
 </style>
 <div class="card">
-    <div class="card-header d-flex justify-content-between">
-        <h5 class="card-title">Show Accessory</h5>
-   <button onclick="print()" class="btn btn-lg btn-danger" id="printbtn"><i class="fas fa-print"></i> Print</button>
-    </div>
+        <h3>Show Accessory</h3>
+
     <div class="card-body">
         <h4 style="text-align: center;border-bottom:1px solid gray;padding-bottom:1rem;">Accesories Details</h4>
       <div class="container">

@@ -8,28 +8,18 @@
 
 
 <div class="card">
-    <div class="card-header">
-        <h5 class="card-title">Add Device</h5>
+        <h3>Add Brand</h3>
    
-    </div>
     <div class="card-body">
-    @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
+
         <form action="{{route('admin.subcategory.store')}}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">
-                <label class="form-label">Device</label>
+                <label class="form-label">Brand</label>
                 <input type="text" name="subcategory" class="form-control" placeholder="Device" value="{{old('subcategory')}}" required>
             </div>
             <div class="mb-3">
-                <label class="form-label">Select Brand</label>
+                <label class="form-label">Select Device</label>
                 <select name="category" id="" class="form-control " required>
                     <option value="">--select barnd---</option>
                     @foreach ($category as $item)

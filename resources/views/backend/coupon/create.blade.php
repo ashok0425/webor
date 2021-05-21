@@ -8,20 +8,10 @@
 
 
 <div class="card">
-    <div class="card-header">
-        <h5 class="card-title">Add Coupon</h5>
+        <h3 >Add Coupon</h3>
    
-    </div>
     <div class="card-body">
-    @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
+   
         <form action="{{route('admin.coupon.store')}}" method="POST" enctype="multipart/form-data">
             @csrf
             

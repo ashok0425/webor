@@ -7,10 +7,8 @@
 
 
 <div class="card">
-    <div class="card-header">
-        <h5 class="card-title">Add Banner</h5>
+        <h3>Add Banner</h3>
    
-    </div>
     <div class="card-body">
   
         <form action="{{route('admin.banner.store')}}" method="POST" enctype="multipart/form-data">

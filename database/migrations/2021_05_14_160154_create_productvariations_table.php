@@ -19,8 +19,9 @@ class CreateProductvariationsTable extends Migration
 
             $table->string('variation')->nullable();
             $table->string('image')->nullable();
-
             $table->string('price')->nullable();
+            $table->integer('quantity')->nullable();
+            $table->integer('sku')->nullable();
             $table->timestamps();
         });
     }

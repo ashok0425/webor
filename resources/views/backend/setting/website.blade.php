@@ -1,14 +1,12 @@
 @extends('admin.master')
 @section('main-content')
 @php
-    define('PAGE','coupon')
+    define('PAGE','setting')
 @endphp
-
-
 <div class="card">
+    <h3>Update Website Information</h3>
     
     <div class="card-body">
-        <h4 style="text-align: center;border-bottom:1px solid gray;padding-bottom:1rem;">Update Website Information</h4>
       <div class="container">
         <form action="{{ route('admin.website.update') }}" method="POST" enctype="multipart/form-data">
 @csrf

@@ -2,29 +2,26 @@
 @extends('admin.master')
 @section('main-content')
 @php
-    define('PAGE','subscriber')
-    
+    define('PAGE','subscriber');
 @endphp
 
 
 <div class="card">
-    <div class="card-header">
-        <h5 class="card-title">Send Email </h5>
+        <h3>Send Email </h3>
    
-    </div>
     <div class="card-body">
-    @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
-        <form action="{{route('admin.sendmail.store')}}" method="POST" enctype="multipart/form-data">
+
+        <form action="
+        @if (isset($emails))
+        {{route('admin.sendmail.selected')}}
+        @else
+        {{route('admin.sendmail.bulk')}}
+ 
+    @endif" method="POST" enctype="multipart/form-data">
             @csrf
-        
+            @foreach ($emails as $item)
+        <input type="hidden" value="{{ $item}}" name="email[]">
+            @endforeach
             <div class="mb-3">
                 <label class="form-label">Mail Subject</label>
                 <input type="text" name="title" class="form-control" placeholder="Mail title"value="{{old('title')}}" required>

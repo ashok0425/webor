@@ -20,12 +20,9 @@
 }
 </style>
 <div class="card">
-    <div class="card-header d-flex justify-content-between">
-        <h5 class="card-title">Show Model</h5>
-   <button onclick="print()" class="btn btn-lg btn-danger" id="printbtn"><i class="fas fa-print"></i> Print</button>
-    </div>
+        <h3>Show Model Details</h3>
+ 
     <div class="card-body">
-        <h4 style="text-align: center;border-bottom:1px solid gray;padding-bottom:1rem;">Model Details</h4>
       <div class="container">
           
                <div style="width: 200px;" >

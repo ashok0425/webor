@@ -5,10 +5,8 @@
 @endphp
 
 <div class="card">
-    <div class="card-header">
-        <h5 class="card-title">Update Page Seeting</h5>
+        <h3>Update Page Seeting</h3>
    
-    </div>
     <div class="card-body">
 
         <form action="{{route('admin.page.update')}}" method="POST" enctype="multipart/form-data">

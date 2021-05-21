@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-
+@php
+	$setting=DB::table('websites')->first();
+@endphp
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta name="description" content="Responsive Admin &amp; Dashboard Template based on Bootstrap 5">
-	<meta name="author" content="AdminKit">
+	<meta name="description" content="{{ $setting->descr }}">
+	<meta name="author" content="{{ $setting->url }}">
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 
-	<meta name="keywords" content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
+	<meta name="keywords" content="{{ $setting->keyword }}">
 
-	<link rel="shortcut icon" href="img/icons/icon-48x48.png" />
+	<link rel="shortcut icon" href="{{ asset($setting->image) }}" />
 
-	<title>soengsouy.com</title>
+	<title>{{ $setting->title }}</title>
 
 
 
@@ -117,6 +119,9 @@ h3{
 	padding: .3rem 1rem;
 	font-weight: bold;
 	color: #ffffff;
+}
+.card{
+	padding: 0 1rem;
 }
 </style>
 <body>
@@ -279,6 +284,7 @@ $(document).ready(function() {
 			type:'GET',
 			DataType:'json',
 			success:function($data){
+				location.reload(true)
 				console.log($data);
 			}
 		})

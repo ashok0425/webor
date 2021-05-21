@@ -152,7 +152,12 @@ Route::get('/blog/delete/{id}/{table}','backend\BlogController@destroy')->name('
 // Subscriber 
 Route::get('/subscriber','backend\SubscriberController@index')->name('subscriber');
 Route::get('/subscriber/sendemail/create','backend\SubscriberController@create')->name('sendmail');
-Route::post('/subscriber/sendemail','backend\SubscriberController@sendBulkMail')->name('sendmail.store');
+Route::post('/subscriber/selectedemail/create','backend\SubscriberController@selectedEmail')->name('subscriber.selectedmail');
+Route::post('/subscriber/bulk/email','backend\SubscriberController@sendBulkMail')->name('sendmail.bulk');
+Route::post('/subscriber/selected/email','backend\SubscriberController@sendSelected')->name('sendmail.selected');
+
+
+
 Route::get('/subscriber/delete/{id}/{table}','backend\SubscriberController@destroy')->name('subscriber.delete');
 
 
@@ -202,6 +207,11 @@ Route::get('/appointment/complete','backend\AppointmentController@complete')->na
     Route::get('/order/status/{id}/{hid}','backend\OrderController@changeOrderStatus');
     Route::get('/order/show/{id}','backend\OrderController@show')->name('order.show');
 
+// user List 
+    Route::get('/user/list','Admin\AuthController@UserList')->name('user.list');
+    Route::get('/chart',function(){
+        return view('backend.chart.chart');
+    });
 
    
 

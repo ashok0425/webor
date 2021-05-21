@@ -124,4 +124,20 @@ class SubscriberController extends Controller
 
          }
      }
+
+    public function selectedEmail(Request $request){
+        
+        $emails=$request->subscriber;
+        
+        return view('backend.subscriber.create',compact('emails'));
+
+    }
+
+
+
+    public function sendSelected(Request $request){
+
+        return view('backend.subscriber.create',compact('emails'));
+
+    }
 }

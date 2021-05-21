@@ -9,10 +9,8 @@
 
 <div class="card p-4">
 
-    <div class="text-center border-bottom">
             <h3>Send Email </h3>
        
-        </div>
         <form action="{{route('admin.contact.sendmail')}}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">
