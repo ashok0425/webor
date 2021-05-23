@@ -18,3 +18,8 @@ use App\Http\Controllers\backend\ModalController;
 Route::middleware(['auth:', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+
+Route::get('/', function () {
+    return view('frontend.index');
+});

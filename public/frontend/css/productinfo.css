@@ -1,0 +1,246 @@
+/* overlapping bootstrap classes */
+.nav-pills .nav-link.active {
+  background: transparent;
+}
+
+#v-pills-tab .active {
+  border: 2px solid #2874f0;
+}
+
+.sv-mini-navbar {
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* prodcut info seciton */
+.sv-product-info {
+  margin: 30px 0;
+}
+
+.sv-product-info-title h2 {
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+/* bottom section */
+.sv-product-info-left {
+  flex: 1;
+}
+
+.product-info-tab {
+  cursor: pointer;
+  height: 100px;
+  width: 100px;
+  padding: 10px 0;
+  margin: 10px 0;
+}
+
+.product-info-tab img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+
+.tab-content {
+  width: 100%;
+}
+
+.tab-pane {
+  height: 400px;
+  width: 100%;
+  padding: 50px 0;
+  border: 1px solid #f0f0f0;
+}
+
+.tab-pane img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  text-align: center;
+}
+
+/* img section */
+
+/* right section */
+.sv-product-info-right {
+  flex: 1;
+  padding: 0 25px;
+}
+
+.sv-product-info-right > div {
+  padding: 10px 0;
+}
+
+.sv-product-info-price h3,
+.sv-product-info-offers h3 {
+  color: var(--brand-one);
+}
+
+.sv-product-info-stock p {
+  color: var(--brand-green);
+}
+
+.sv-product-info-colors-wrapper {
+  margin-top: 10px;
+  display: flex;
+  margin: 0 -10px;
+}
+
+.sv-product-info-colors-wrapper span {
+  display: block;
+  height: 30px;
+  width: 30px;
+  border: 1px solid #000;
+  border-radius: 50%;
+  margin: 0 10px;
+}
+
+/* radio box */
+
+.radio-container {
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.radio-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.radio-container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.radio-container input:checked ~ .checkmark {
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.radio-container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.radio-container .checkmark:after {
+  top: 9px;
+  left: 9px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: white;
+}
+
+.checkmark-blue {
+  background: var(--brand-black);
+}
+
+.checkmark-red {
+  background: var(--brand-one);
+}
+
+.checkmark-green {
+  background: var(--brand-white);
+}
+
+/* storage section */
+.sv-product-info-storage-wrapper {
+  display: flex;
+  margin: 0 -10px;
+  margin-top: 10px;
+}
+
+.sv-product-info-storage-wrapper p {
+  border: 1px solid #000;
+  margin: 0 10px;
+  padding: 5px;
+  border-radius: 3px;
+}
+
+/* button section */
+.sv-product-info-checkout {
+  margin: 0 -10px;
+}
+.sv-product-info-checkout button {
+  border-radius: 25px;
+  border: none;
+  padding: 8px 25px;
+  margin: 0 10px;
+  color: #fff;
+}
+
+.sv-product-info-checkout button:first-child {
+  background: var(--brand-purple);
+}
+
+.sv-product-info-checkout button:last-child {
+  background: var(--brand-two);
+}
+
+/* new section */
+/* product bottom section */
+.sv-product-info-bottom {
+  margin-top: 25px;
+}
+
+/* left section */
+
+.sv-product-info-bottom-left {
+  flex: 2;
+}
+
+/* right section */
+.sv-product-info-bottom-right {
+  padding: 10px;
+  margin-left: 15px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.25);
+  flex: 1;
+}
+
+.swiper-container {
+  padding: 20px 5px;
+}
+
+/* mobile screens */
+@media screen and (max-width: 768px) {
+  /* product top section */
+  .sv-product-info-wrapper {
+    display: block !important;
+  }
+
+  /* product bottom section */
+  .sv-product-info-bottom {
+    display: block !important;
+  }
+
+  .sv-product-info-bottom-right {
+    margin: 15px 0 0 0;
+  }
+}

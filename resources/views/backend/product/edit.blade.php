@@ -54,17 +54,17 @@
                 <div class="col-md-4 col-6">
                     <label><input type="checkbox" name="featured" @if ($product->featured==1)
                         checked
-                    @endif> Featured Product</label>
+                    @endif value="1"> Featured Product</label>
                 </div>
                 <div class="col-md-4 col-6">
                  <label><input type="checkbox" name="top_rated" @if($product->top_rated==1)
                     checked
-                @endif > Top Rated Product</label>
+                @endif  value="1"> Top Rated Product</label>
              </div>  
              <div class="col-md-4 col-6">
                  <label><input type="checkbox" name="bestseller" @if($product->bestseller==1)
                     checked
-                @endif > Best Seller Product</label>
+                @endif  value="1"> Best Seller Product</label>
              </div>
             </div>
             <button type="submit" class="btn btn-primary">Update</button>

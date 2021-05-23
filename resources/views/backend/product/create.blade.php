@@ -46,13 +46,13 @@
             <h3>Extra Option</h3>
            <div class="row my-3">
                <div class="col-md-4 col-6">
-                   <label><input type="checkbox" name="featured" > Featured Product</label>
+                   <label><input type="checkbox" name="featured" value="1"> Featured Product</label>
                </div>
                <div class="col-md-4 col-6">
-                <label><input type="checkbox" name="top_rated" > Top Rated Product</label>
+                <label><input type="checkbox" name="top_rated" value="1"> Top Rated Product</label>
             </div>  
             <div class="col-md-4 col-6">
-                <label><input type="checkbox" name="bestseller" > Best Seller Product</label>
+                <label><input type="checkbox" name="bestseller" value="1"> Best Seller Product</label>
             </div>
            </div>
             <button type="submit" class="btn btn-primary">Add</button>
