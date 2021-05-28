@@ -42,7 +42,7 @@
                         <td>{{$item->time}}</td>
                         <td>{{$item->total}}</td>
 
-                        <td>@if ($item->ipaid==0)
+                        <td>@if ($item->ispaid==0)
                             <div class="badge bg-warning">unpaid</div>
                            
                             @else 

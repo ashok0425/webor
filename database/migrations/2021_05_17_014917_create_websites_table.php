@@ -36,6 +36,9 @@ class CreateWebsitesTable extends Migration
             $table->string('twitter2')->nullable();
             $table->string('instagram2')->nullable();
             $table->string('other2')->nullable();
+            $table->string('vat')->nullable();
+            $table->string('shipping_charge')->nullable();
+
 
 
             $table->timestamps();

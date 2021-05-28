@@ -66,6 +66,8 @@ class BlogController extends Controller
             $category->category_id=$request->category;
             $category->title=$request->title;
             $category->detail=$request->detail;
+            $category->short_desc=$request->short_desc;
+
     
             if($category->save()){
                 $notification=array(
@@ -147,6 +149,8 @@ class BlogController extends Controller
             $category->category_id=$request->category;
             $category->title=$request->title;
             $category->detail=$request->detail;
+            $category->short_desc=$request->short_desc;
+
             if($category->save()){
                 $notification=array(
                     'alert-type'=>'success',

@@ -7,18 +7,22 @@
           <i class="fas fa-bars"></i>
         </div>
         <ul class="sv-mini-navbar-menu-left">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="index.html">Shop</a></li>
-          <li><a href="index.html">Repair</a></li>
-          <li><a href="index.html">Blog</a></li>
-          <li><a href="index.html">Contact Us</a></li>
+          <li><a href="{{ route('/') }}">Home</a></li>
+          <li><a href="{{ route('store') }}">Shop</a></li>
+          <li><a href="{{ route('appointment') }}">Repair</a></li>
+          <li><a href="{{ route('blog') }}">Blog</a></li>
+          <li><a href="{{ 'contact' }}">Contact Us</a></li>
         </ul>
       </div>
+      {{-- fetching cart value  --}}
+      @php
+          $cart=DB::table('carts')->where('uid',1)->count();
+      @endphp
       <!-- right section -->
       <ul class="d-flex sv-mini-navbar-menu-right">
         <li class="nav-search-btn"><i class="fas fa-search"></i></li>
-        <li><a href=""> <i class="fas fa-shopping-bag"></i></a></li>
-        <li><a href=""><i class="fas fa-user"></i></a></li>
+        <li><a href="{{ route('cart') }}" class="shopping"><span>{{ $cart }}</span> <i class="fas fa-shopping-bag"></i></a></li>
+        <li><a href="@guest{{ route('login') }}@else {{ route('profile')}}@endguest"><i class="fas fa-user"></i></a></li>
 
       </ul>
     </div>

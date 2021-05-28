@@ -83,10 +83,14 @@
                   <ul>
                     <li><a href="#">Receive coupnes and other offers</a></li>
                     <li class="sv-footer-subscribe">
-                      <div class="sv-footer-subscribe-email">
-                        <input type="text" placeholder="Your Email" />
-                      </div>
-                      <input type="submit" value="Submit" />
+                      <form action="{{ route('subscriber.store') }}" method="POST">
+                        @csrf
+                        <div class="sv-footer-subscribe-email">
+                          <input type="email" placeholder="Your Email" name="email"/>
+                        </div>
+                        <input type="submit" value="Submit" />
+                      </form>
+                     
                     </li>
                   </ul>
                 </div>
@@ -102,22 +106,22 @@
             </div>
             <div class="sv-footer-social-link-right">
               <ul>
-                <li><i class="fab fa-facebook"></i></li>
-                <li><i class="fab fa-twitter"></i></li>
-                <li><i class="fab fa-instagram"></i></li>
+                <li><a href="{{ $footer->facebook1 }}" target="_blank"><i class="fab fa-facebook"></i></a></li>
+                <li>  <a href="{{ $footer->twitter1 }}" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                <li><a href="{{ $footer->instagram1 }}" target="_blank"><i class="fab fa-instagram"></i></a></li>
               </ul>
             </div>
           </div>
         </div>
-
+<hr>
         <!-- footer bottom section -->
         <div class="sv-footer-bottom">
           <div class="sv-footer-copyright">
             <div class="sv-footer-copyright-left">
-              <span>&cpy 2020 Something pvt ltd</span>
+              <span>&copy 2020 Something pvt ltd</span>
             </div>
             <div class="sv-footer-copyright-right">
-              <span>Desigend and Devlop by XDezo</span>
+              <span>Desigend and Develop by <a href="https://falcontechnepal.com">Falcontechnepal Pvt Ltd</a></span>
             </div>
           </div>
         </div>

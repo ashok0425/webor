@@ -10,7 +10,9 @@
           <div class="col-md-3">
             <div class="sv-navbar-left">
               <div class="sv-navbar-logo">
-                <img src="{{ asset($logo->image) }}" alt="" />
+               <a href="{{ route('/') }}">
+                <img src="{{ asset($logo->image) }}" alt="sommerville logo" />
+               </a>
               </div>
             </div>
           </div>
@@ -24,7 +26,7 @@
                   <i class="far fa-envelope"></i>
                 </div>
                 <div class="sv-navbar-box-desc sv-navbar-email-desc">
-                  <h3>Email</h3>
+                
                   <p>{{ $logo->email1 }}</p>
                 </div>
               </div>
@@ -35,7 +37,7 @@
                   <i class="fas fa-phone-alt"></i>
                 </div>
                 <div class="sv-navbar-box-desc sv-navbar-email-desc">
-                  <h3>Phone</h3>
+                  
                   <p>{{ $logo->phone1 }}</p>
                 </div>
               </div>
@@ -46,7 +48,7 @@
                   <i class="far fa-clock"></i>
                 </div>
                 <div class="sv-navbar-box-desc sv-navbar-email-desc">
-                  <h3>Book Appointment</h3>
+                 <a href="{{ route('appointment') }}"> <h3>Book Appointment</h3></a>
                 
                 </div>
               </div>

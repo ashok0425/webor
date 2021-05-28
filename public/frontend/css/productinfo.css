@@ -7,9 +7,6 @@
   border: 2px solid #2874f0;
 }
 
-.sv-mini-navbar {
-  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
-}
 
 /* prodcut info seciton */
 .sv-product-info {
@@ -156,20 +153,42 @@
   border-radius: 50%;
   background: white;
 }
-
-.checkmark-blue {
-  background: var(--brand-black);
+.radio-container .variation:after {
+  top: 9px;
+  left: 9px;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: white;
 }
 
-.checkmark-red {
-  background: var(--brand-one);
-}
 
-.checkmark-green {
-  background: var(--brand-white);
-}
 
 /* storage section */
+.buttongroup label {
+	border: 3px solid #000;
+	padding: 6px 12px;
+	cursor: pointer;
+	transition: all 0.2s;
+}
+
+.buttongroup label {
+margin-right: 3rem;
+}
+
+
+
+/* Hide the radio button */
+input[name='storage'] {
+	display: none;
+}
+/* The checked buttons label style */
+input[name='storage']:checked + label {
+  border: 3px solid rgb(255, 6, 110);
+
+}
+/* Background and shizz */
+
 .sv-product-info-storage-wrapper {
   display: flex;
   margin: 0 -10px;
@@ -187,19 +206,20 @@
 .sv-product-info-checkout {
   margin: 0 -10px;
 }
-.sv-product-info-checkout button {
+.sv-product-info-checkout input {
   border-radius: 25px;
   border: none;
   padding: 8px 25px;
   margin: 0 10px;
   color: #fff;
+  cursor: pointer;
 }
 
-.sv-product-info-checkout button:first-child {
+.sv-product-info-checkout input:first-child {
   background: var(--brand-purple);
 }
 
-.sv-product-info-checkout button:last-child {
+.sv-product-info-checkout input:last-child {
   background: var(--brand-two);
 }
 

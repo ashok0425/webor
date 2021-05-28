@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Productcolor extends Model
 {
     use HasFactory;
+
+    
 }

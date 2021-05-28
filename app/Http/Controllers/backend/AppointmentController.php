@@ -23,7 +23,7 @@ class AppointmentController extends Controller
      */
     public function index()
     {
-        $appointment=Apponitment::where('status','!=',0)->get();
+        $appointment=Apponitment::where('status',0)->get();
 
        return view('backend.appointment.index',compact('appointment'));
     }
@@ -137,7 +137,7 @@ class AppointmentController extends Controller
 
     public function complete(Apponitment $appointment)
     {
-        $appointment=Apponitment::where('status',2)->get();
+        $appointment=Apponitment::where('status','!=',0)->get();
         return view('backend.appointment.complete',compact('appointment'));
     }
     /**

@@ -21,7 +21,6 @@ class CreateOrderDetailsTable extends Migration
             $table->string('image')->nullable();
             $table->string('category')->nullable();
             $table->string('subcategory')->nullable();
-      
             $table->string('color')->nullable();
             $table->string('size')->nullable();
             $table->string('qty')->nullable();

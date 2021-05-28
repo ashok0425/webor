@@ -21,8 +21,10 @@
                     <th>Device</th>
                     <th>Modal</th>
                     <th>Accessories</th>
+                    <th>Price</th>
 
                     <th>Image</th>
+
                     <th>Status</th>
                     <th>Action</th>
             

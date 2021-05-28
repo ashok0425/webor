@@ -30,8 +30,8 @@
                     <td>{{ $order->payment_id }}</td>
                 </tr>
                 <tr>
-                    <th>Total</th>
-                    <td>{{__getPriceunit()}}{{  $order->total }}</td>
+                    <th>Cart Value</th>
+                    <td>{{__getPriceunit()}}{{  $order->cart_value }}</td>
                 </tr>
                 <tr>
                     <th>Shipping</th>
@@ -42,11 +42,13 @@
                     <td>{{ $order->tax }}%</td>
                 </tr>
                 <tr>
+                    <th>Coupon({{ $order->coupon }})</th>
+                    <td>{{ $order->coupon_value }}%</td>
+                </tr>
+                <tr>
                     <th>Grand Total</th>
-                    @php
-                        $taxamount= ($order->total*$order->tax)/100
-                    @endphp
-                    <td>{{__getPriceunit()}}{{ $taxamount+$order->shipping_charge+$order->total }}</td>
+                   
+                    <td>{{__getPriceunit()}}{{ $order->total }}</td>
                 </tr>
                </table>
 
@@ -77,7 +79,7 @@
              
                 <tr>
                     <th>Address</th>
-                    <td>{{ $shipping->district }}</td>
+                    <td>{{ $shipping->city }}</td>
                 </tr>
               
                 <tr>

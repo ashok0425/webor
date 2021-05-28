@@ -274,10 +274,10 @@ $(document).ready(function() {
 </script>
 
 <script >
-	$('#status').change(function(){
+	$('.status').change(function(){
 		let $val=$(this).val();
 		let $hid=$(this).data('id');
-
+alert($val);
 		
 		$.ajax({
 			url:'{{ url('admin/order/status') }}/'+$val+'/'+$hid,

@@ -13,7 +13,7 @@
    
         <form action="{{route('admin.blog.store')}}" method="POST" enctype="multipart/form-data">
             @csrf
-            <input type="hidden" value="{{ $blog->id }}" name="id">
+            {{-- <input type="hidden" value="{{ $blog->id }}" name="id"> --}}
            
             <div class="mb-3">
                 <label class="form-label">Select Category</label>

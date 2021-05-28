@@ -43,9 +43,12 @@ trait status
 
     protected function destroy($id,$table){
       $image=DB::table($table)->where('id',$id)->value('image');
-      if($image){
-          File::delete($image);
+      if($table!='products'){
+        if($image){
+            File::delete($image);
+        }
       }
+     
       DB::table($table)->where('id',$id)->delete();
 
         $notification=array(

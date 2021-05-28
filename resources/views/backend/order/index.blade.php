@@ -45,10 +45,9 @@
                       
                             
                             <td>
-                  
-<form action="">
+
     
-    <select name="status" id="status" class="form-control" data-id="{{ $item->id }}">
+    <select name="status" class="status" class="form-control" data-id="{{ $item->id }}">
 <option value="0" @if ($item->status==0)
     slected
 @endif>
@@ -76,7 +75,7 @@ Deliver
 Cancel
 </option>
     </select>
-</form>
+
                         </td>
                         <td>
                             <a href="{{route('admin.order.show',['id'=>$item->id])}}" class="btn btn-info"><i class="far fa-eye"></i></a></td>

@@ -25,8 +25,16 @@
     <!-- new sectin -->
     <!-- feature products -->
     @include('frontend.template.featuredproduct')
+
+
+{{-- review  --}}
+    @include('frontend.template.review')
+
     
 
 
     <div class="white-bg"></div>
 @endsection
+@push('scripts')
+
+@endpush

@@ -1,6 +1,4 @@
-.sv-mini-navbar {
-  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
-}
+
 
 /* contact section */
 .sv-contact {
@@ -68,6 +66,7 @@
 
 .sv-contact-social-link-wrapper .fab {
   margin: 0 10px;
+  color: var(--white);
 }
 
 /* new seciton */
