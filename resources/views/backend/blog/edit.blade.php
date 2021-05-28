@@ -32,22 +32,28 @@
                 <label class="form-label">Blog Title</label>
                 <input type="text" name="title" class="form-control" placeholder="Blog title"value="{{$blog->title}}" required>
             </div>
+           
+            <div class="mb-3">
+                <label class="form-label">Blog Short Description</label>
+                <textarea type="text" name="short_desc"  class="form-control" placeholder="Blog Detail" required>
+                    {{$blog->short_desc}}
+                </textarea>
+            </div>
             <div class="mb-3">
                 <label class="form-label">Blog Detail</label>
                 <textarea type="text" name="detail" id="summernote" class="form-control" placeholder="Blog Detail" required>
-                    {{$blog->detail}}
+                    {!! $blog->detail!!}
                 </textarea>
             </div>
-           
             <div class="mb-3">
                 <label class="form-label">Thumbnail</label>
                 <div class="file-upload-wrapper" data-text="Select your file!">
                     <input name="file" type="file" class="file-upload-field" value="">
                   </div>
                   <br>
-                  <img src="{{asset($blog->image)}}" alt="">
+                  <img src="{{asset($blog->image)}}" alt="" class="img-fluid" width="100">
             </div>
-           
+            1KJ@0,k0%8ST
             <button type="submit" class="btn btn-primary">Update</button>
         </form>
     </div>

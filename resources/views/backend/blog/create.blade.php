@@ -29,6 +29,13 @@
                 <input type="text" name="title" class="form-control" placeholder="Blog title"value="{{old('title')}}" required>
             </div>
             <div class="mb-3">
+                <label class="form-label">Blog Short Description</label>
+                <textarea type="text" name="short_desc"  class="form-control" placeholder="Blog Detail" required>
+                    {{old('short_desc')}}
+                </textarea>
+            </div>
+           
+            <div class="mb-3">
                 <label class="form-label">Blog Detail</label>
                 <textarea type="text" name="detail" id="summernote" class="form-control" placeholder="Blog Detail" required>
                     {{old('detail')}}

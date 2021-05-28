@@ -8,6 +8,7 @@
     }
     .blog h3{
         font-size: 1.2rem;
+        margin-bottom: .5rem;
         
     }
     .blog_wrapper{

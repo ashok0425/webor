@@ -1,0 +1,5 @@
+---
+deployment:
+ tasks:
+ - export DEPLOYPATH=/home/falcontr/public_html/demo
+ - /bin/cp * $DEPLOYPATH
