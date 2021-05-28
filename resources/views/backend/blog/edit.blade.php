@@ -53,7 +53,7 @@
                   <br>
                   <img src="{{asset($blog->image)}}" alt="" class="img-fluid" width="100">
             </div>
-            1KJ@0,k0%8ST
+
             <button type="submit" class="btn btn-primary">Update</button>
         </form>
     </div>
