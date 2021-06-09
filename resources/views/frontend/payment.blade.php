@@ -47,6 +47,7 @@
         
   <div class="row">
       <div class="col-md-8">
+        <x-errormsg/>
 
       <!-- right section -->
             <div class="sv-contact-right">
@@ -75,7 +76,7 @@
                       <div class="sv-contact-group-title" for="fname">
                         Full Name <span class="req">*</span>
                       </div>
-                      <input type="text" name="fname" placeholder="Full Name" required/>
+                      <input type="text" name="name" placeholder="Full Name" required/>
                     </div>
                   </div>
                

@@ -50,7 +50,7 @@ class BlogController extends Controller
             'detail'=>'required',
 
         ]);
-        try {
+        // try {
  
             $category=new Blog;
             
@@ -66,7 +66,7 @@ class BlogController extends Controller
             $category->category_id=$request->category;
             $category->title=$request->title;
             $category->detail=$request->detail;
-            $category->short_desc=$request->short_desc;
+            // $category->short_desc=$request->short_desc;
 
     
             if($category->save()){
@@ -86,7 +86,7 @@ class BlogController extends Controller
             }
             
            
-        } catch (\Throwable $th) {
+        // } catch (\Throwable $th) {
             $notification=array(
                 'alert-type'=>'error',
                 'messege'=>'Something went wrong.Please try again later',
@@ -94,7 +94,7 @@ class BlogController extends Controller
              );
              return redirect()->back()->with($notification);
         
-        }
+        // }
     
     }
   /**

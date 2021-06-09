@@ -11,7 +11,7 @@
         <div class="swiper-wrapper">
           <!-- each box -->
           @foreach ($product as $item)
-          <a href="#" class="swiper-slide sv-feature-product-box">
+          <a href="{{ route('product.detail',['id'=>$item->id,'name'=>$item->name]) }}" class="swiper-slide sv-feature-product-box">
             <div class="sv-feature-product-img">
               <img src="{{ asset($item->image)}}" alt="" />
             </div>
@@ -30,7 +30,9 @@
 
       <!-- extra links -->
       <div class="text-center sv-feature-product-more">
+      <a href="{{ route('store') }}">
         <p>View more Products <i class="fas fa-chevron-right"></i></p>
+      </a>
       </div>
     </div>
   </div>

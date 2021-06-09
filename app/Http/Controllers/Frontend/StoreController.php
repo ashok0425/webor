@@ -25,7 +25,7 @@ class StoreController extends Controller
 
     
   public function filterProductAjax(Request $request){
-    $category_all="SELECT products.name,products.price as pPrice,productvariations.variation,productvariations.price as vprice FROM products,productvariations WHERE products.status=1";
+    $category_all="SELECT DISTINCT products.*,productvariations.variation,productvariations.price as vprice FROM products,productvariations WHERE products.status=1 ";
  if(isset($request->min) || isset($request->max)  && !empty($request->min) && !empty( $request->max)){
 
    $category_all .= " AND products.price BETWEEN $request->min AND $request->max";
@@ -38,6 +38,18 @@ class StoreController extends Controller
   $category_all .= " AND  products.category_id IN ('".$ex."')";
 
  }
+ if(isset($request->subcategory )){
+  $ex=implode("','",$request->subcategory);
+$category_all .= " AND  products.subcategory_id IN ('".$ex."')";
+
+}
+ if(isset($request->space )){
+  $ex=implode("','",$request->space);
+ 
+$category_all .= " AND  productvariations.variation IN ('".$ex."')";
+
+}
+
 
 if(isset($request->order)&&$request->order==5){
  $category_all .= "   AND hotdeal=1 ";
@@ -69,13 +81,13 @@ $cat=DB::select($category_all);
     $data='';
     foreach($cat as $item){
 
-$data.=	"<div class='col-md-3 col-sm-4 col-6'><a href='#' class='swiper-slide sv-feature-product-box m-2'><div class='sv-feature-product-img'><img src='".asset($item->image)."'  class='img-fluid' /></div><div class='sv-feature-product-desc'>
-  <p class='sv-feature-product-name'> $item->name </p>  <p class='sv-feature-product-price'>$item->pPrice </p>
+$data.=	"<div class='col-md-3 col-sm-4 col-6'><a href='".route('product.detail',['id'=>$item->id,'name'=>$item->name])."' class='swiper-slide sv-feature-product-box m-2'><div class='sv-feature-product-img'><img src='".asset($item->image)."'  class='img-fluid' /></div><div class='sv-feature-product-desc'>
+  <p class='sv-feature-product-name'> $item->name </p>  <p class='sv-feature-product-price'>$item->price </p>
 </div>
 </a>
 </div>";
         }   
-return response()->json($data);
+return response()->json($category_all);
 
 
   }

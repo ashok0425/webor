@@ -26,7 +26,7 @@ class CreateOrdersTable extends Migration
             $table->float('tax');
             $table->float('shipping_charge');
             $table->string('status')->default(0);
-            $table->integer('coupon')->nullable();
+            $table->string('coupon')->nullable();
             $table->integer('coupon_value')->nullable();
             $table->integer('cart_value')->nullable();
 

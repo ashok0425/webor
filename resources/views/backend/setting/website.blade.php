@@ -61,12 +61,28 @@
                     <input type="email" name="email1" class="form-control"  value="{{$website->email1}}" >
                 </div>
             </div>
+
+
             <div class="col-md-6">
                 <div class="mb-3">
                     <label class="form-label">Email Address 2</label>
                     <input type="email" name="email2" class="form-control"  value="{{$website->email2}}" >
                 </div>
             </div>
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label class="form-label"> Phone 1</label>
+                    <input type="text" name="phone1" class="form-control"  value="{{$website->phone1}}" >
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label class="form-label">Phone 2</label>
+                    <input type="text" name="phone2" class="form-control"  value="{{$website->phone2}}" >
+                </div>
+            </div>
+
+
             <div class="col-md-6">
                 <div class="mb-3">
                     <label class="form-label">facebook 1</label>

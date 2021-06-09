@@ -37,7 +37,6 @@
                   <i class="fas fa-phone-alt"></i>
                 </div>
                 <div class="sv-navbar-box-desc sv-navbar-email-desc">
-                  
                   <p>{{ $logo->phone1 }}</p>
                 </div>
               </div>
@@ -48,7 +47,7 @@
                   <i class="far fa-clock"></i>
                 </div>
                 <div class="sv-navbar-box-desc sv-navbar-email-desc">
-                 <a href="{{ route('appointment') }}"> <h3>Book Appointment</h3></a>
+                 <a href="{{ route('appointment') }}"> Book Appointment</a>
                 
                 </div>
               </div>

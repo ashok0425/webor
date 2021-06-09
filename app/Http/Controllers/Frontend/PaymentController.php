@@ -12,12 +12,25 @@ use Illuminate\Support\Facades\Mail;
 use App\Models\Cart;
 use GuzzleHttp\Middleware;
 use App\Models\Order;
+
 class PaymentController extends Controller
 {
 
   
     public function store(Request $request)
+   
     {
+      $request->validate([
+        'name'=>'required',
+        'email'=>'required|email',
+        'address'=>'required',
+        'state'=>'required',
+        'zip'=>'required',
+        'phone'=>'required',
+  
+  
+  
+      ]);
         if(Auth::check()){
             $cart = DB::table('carts')->where('uid',Auth::user()->id)->get();
             if(count($cart)<=0){
@@ -27,37 +40,38 @@ class PaymentController extends Controller
         if ($request->storage == 'paypal') {//proceed to payment if payment method is paypal
           try {
           
-           $data=new Order;
+            $data=new Order;
             $data->user_id = Auth::user()->id;
             $data->total = $request->total;          
             $data->shipping_charge = $request->charge;
             $data->tax = $request->vat;
+            $data->payment_id = rand();
             $data->payment_type = $request->storage;
             $data->tracking_code = mt_rand(100000,999999);
             $data->cart_value = $request->cart;
             $data->coupon = $request->coupon;
             $data->coupon_value = $request->coupon_value;
-
+      
             
             $data->status = 0;    
           $data->save();
+      
           $order_id=$data->id;
             /// Insert Shipping Table 
             $shipping = array();
             $shipping['order_id'] = $order_id;
             // $shipping['vendor_id'] = $request->Auth::user()->id;
-            $shipping['name'] = $request->fname;
+            $shipping['name'] = $request->name;
             $shipping['email'] = $request->email;
             $shipping['phone'] = $request->phone;
             $shipping['state'] = $request->state;
             $shipping['city'] = $request->address;
             $shipping['zip'] = $request->zip;
-
+      
         
             DB::table('shippings')->insert($shipping);
-        
             $content =  DB::table('products')->join('categories','categories.id','products.category_id')->join('subcategories','subcategories.id','products.category_id')->join('carts','carts.pid','products.id')->select('products.name','products.image','categories.category','subcategories.subcategory','carts.*')->where('carts.uid',Auth::user()->id)->get();
-// inserting all cart item 
+      // inserting all cart item 
             $details = array();
             foreach ($content as $row) {
             $details['order_id'] = $order_id;
@@ -85,9 +99,8 @@ class PaymentController extends Controller
   }
     else{
 
-try {
+// try {
   
-
       $data=new Order;
       $data->user_id = Auth::user()->id;
       $data->total = $request->total;          
@@ -103,12 +116,13 @@ try {
       
       $data->status = 0;    
     $data->save();
+
     $order_id=$data->id;
       /// Insert Shipping Table 
       $shipping = array();
       $shipping['order_id'] = $order_id;
       // $shipping['vendor_id'] = $request->Auth::user()->id;
-      $shipping['name'] = $request->fname;
+      $shipping['name'] = $request->name;
       $shipping['email'] = $request->email;
       $shipping['phone'] = $request->phone;
       $shipping['state'] = $request->state;
@@ -117,7 +131,6 @@ try {
 
   
       DB::table('shippings')->insert($shipping);
-  
       $content =  DB::table('products')->join('categories','categories.id','products.category_id')->join('subcategories','subcategories.id','products.category_id')->join('carts','carts.pid','products.id')->select('products.name','products.image','categories.category','subcategories.subcategory','carts.*')->where('carts.uid',Auth::user()->id)->get();
 // inserting all cart item 
       $details = array();
@@ -140,13 +153,19 @@ try {
   $order=DB::table('orders')->where('user_id',Auth::user()->id)->where('id',$order_id )->first();
   $ship=DB::table('shippings')->where('order_id',$order_id)->first();
   $cart = DB::table('products')->join('carts','carts.pid','products.id')->select('products.name','products.image','carts.*')->where('uid',Auth::user()->id)->get();
+
   $set=[
       'image'=>$data->image,
       'cart'=>$cart,
       'address'=>$data->address1,
       'phone'=>$data->phone1,
       'email'=>$data->email1,
-
+      'order_id'=>$order_id,
+      'coupon'=>$request->coupon,
+      'coupon_value'=>$request->coupon_value,
+      'tax'=>$request->vat,
+      'total'=>$request->total,
+      'order_id'=>$order_id,
       'ship_email'=>$ship->email,
       'ship_name'=>$ship->name,
       'ship_phone'=>$ship->phone,
@@ -154,10 +173,6 @@ try {
       'ship_city'=>$ship->city,
       'ship_zip'=>$ship->zip,
       'order_number'=>$order->tracking_code,
-      'coupon'=>$order->coupon,
-      'coupon_value'=>$order->coupon_value,
-      'cart_value'=>$order->cart_value,
-      'tax'=>$order->tax,
       'shipping'=>$order->shipping_charge,
       'payment_type'=>$order->payment_type,
       'order_date'=>$order->created_at,
@@ -166,12 +181,12 @@ try {
 
   ];
 
-  // $pdf = PDF::loadView('ordermail', $set);
-  // Mail::send('email.checkoutmail', $set, function($message)use($set, $pdf) {
-  //     $message->to($data->email1,$ship->email)
-  //             ->subject('Order Invoice Mail')
-  //             ->attachData($pdf->output(), "orderinvoice.pdf");
-  // });
+  $pdf = PDF::loadView('mail.checkout', $set);
+  Mail::send('mail.checkout', $set, function($message)use($set, $pdf) {
+      $message->to('abc@gmail.com','def@gmail.com')
+              ->subject('Order Invoice Mail')
+              ->attachData($pdf->output(), "orderinvoice.pdf");
+  });
 
   DB::table('carts')->where('uid',Auth::user()->id)->delete();
   if (Session::has('coupon')) {
@@ -181,9 +196,9 @@ try {
 
   return redirect()->route('payment.success',['code'=>$order->tracking_code]);
 
-    }
+    // }
   
-   catch (\Throwable $th) {
+  //  catch (\Throwable $th) {
     $notification=array(
       'messege'=>'Something went wrong.Please try again later.',
       'alert-type'=>'error'
@@ -191,7 +206,7 @@ try {
   return redirect()->route('payment.error')->with($notification);
   }
   
-  }
+  // }
 
 
 }else{

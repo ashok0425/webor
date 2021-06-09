@@ -17,8 +17,13 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('image')->nullable();
+            $table->string('short_desc')->nullable();
+            $table->text('long_desc')->nullable();
+
+
             $table->integer('category_id');
             $table->integer('subcategory_id')->nullable();
+            
             $table->integer('price');
             $table->integer('vendor_id')->nullable();
             $table->integer('featured')->nullable();

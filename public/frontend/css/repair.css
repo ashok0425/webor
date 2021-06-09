@@ -29,7 +29,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #fff;
   padding: 20px;
   margin: 0 10px;
 }
@@ -111,9 +110,6 @@
   .sv-repair-title {
     width: 100%;
   }
-  .sv-repair-device-model-desc {
-    display: block;
-  }
 
   .sv-repair-device-model-phone {
     margin-bottom: 15px;
@@ -130,4 +126,23 @@
     width: 50%;
     padding: 20px 0;
   }
+  .sv-repair-device-option,
+.sv-repair-appointement-wrapper{
+  width: 100%;
+}
+.sv-repair .container{
+  padding: 0;
+  margin: 0;
+}
+.sv-repair-device-model-tablet,.sv-repair-device-model-mobile img {
+  max-width: 200px;
+}
+.sv-repair-device-model-tablet img,.sv-repair-device-model-mobile img{
+  max-width: 100px;
+  min-height: 100px;
+}
+.buttongroup label{
+  margin: 0;
+  padding: 0;
+}
 }

@@ -124,10 +124,12 @@
           <!-- right section -->
           <div class="sv-product-info-right">
             <div class="sv-product-info-price">
+              {{-- <p>{{ $product->short_desc }}</p> --}}
+              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Esse, ipsum quo provident voluptate beatae sequi aperiam labore fuga, vitae quam, cumque in </p>
               @php
                   $price=DB::table('productvariations')->where('product_id',$product->id)->first();
               @endphp
-              <p>Price</p>
+              <p class="mt-2">Price</p>
               <h3>{{ __getPriceunit()}}<span class="Vprice">
                 @if($price)
                   {{$price->price}}
@@ -141,11 +143,12 @@
               <h3>10% Dis</h3>
             </div> --}}
             <div class="sv-product-info-stock">
-              <p> <span class="text-dark">Device</span> : {{ $product->category }}</p>
-              <p> <span class="text-dark">Brand</span> : {{ $product->subcategory }}</p>
+              <p class="mb-2"> <span class="text-dark">Device : {{ $product->category }}</span></p>
+              <p> <span class="text-dark">Brand : {{ $product->subcategory }}</span></p>
 
-              <h6>Varient Available</h6>
             </div>
+            @if (count($color)>0)
+                
             <div class="sv-product-info-colors">
               <p>Color</p>
               <div class="sv-product-info-colors-wrapper">
@@ -160,13 +163,16 @@
                   
               </div>
             </div>
+            @endif
+            @if (count($variation)>0)
+
             <div class="sv-product-info-storage">
               <p>Storage</p>
               <div class="sv-product-info-storage-wrapper buttongroup">
               @foreach ($variation as $item)
           <span>
 
-            <input id="{{ $item->variation }}" type="radio" value="{{ $item->id }}" name="storage" class="variation" required @if ($item->id==1)
+            <input id="{{ $item->variation }}" type="radio" value="{{ $item->id }}" name="storage" class="variation" required @if ($loop->first)
             checked
             @endif /> 
             <label for="{{ $item->variation }}" class="storage">    
@@ -178,9 +184,10 @@
             </div>
               
             </div>
+            @endif
             <div class="sv-product-info-checkout">
               <input type="submit" value="Add to Cart" name="submit">
-              <input type="submit" name="submit" value="Checkout">
+              {{-- <input type="submit" name="submit" value="Checkout"> --}}
             </div>
           </div>
         </div>
@@ -199,6 +206,31 @@
               Guarantee.
             </h6>
             <p>
+              This pre-owned product is not Apple certified, but has been
+              professionally inspected, tested and cleaned by Amazon-qualified
+              suppliers. -There will be no visible cosmetic imperfections when
+              held at an arm’s length. -This product will have a battery which
+              exceeds 80% capacity relative to new. Accessories will not be
+              original, but will be compatible and fully functional. Product
+              may come in generic Box.
+            </p>
+            <p>
+              This pre-owned product is not Apple certified, but has been
+              professionally inspected, tested and cleaned by Amazon-qualified
+              suppliers. -There will be no visible cosmetic imperfections when
+              held at an arm’s length. -This product will have a battery which
+              exceeds 80% capacity relative to new. Accessories will not be
+              original, but will be compatible and fully functional. Product
+              may come in generic Box.
+            </p>   <p>
+              This pre-owned product is not Apple certified, but has been
+              professionally inspected, tested and cleaned by Amazon-qualified
+              suppliers. -There will be no visible cosmetic imperfections when
+              held at an arm’s length. -This product will have a battery which
+              exceeds 80% capacity relative to new. Accessories will not be
+              original, but will be compatible and fully functional. Product
+              may come in generic Box.
+            </p>   <p>
               This pre-owned product is not Apple certified, but has been
               professionally inspected, tested and cleaned by Amazon-qualified
               suppliers. -There will be no visible cosmetic imperfections when

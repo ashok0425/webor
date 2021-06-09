@@ -26,11 +26,10 @@
     />
     <!-- swiper custom css -->
     <link rel="stylesheet" href="{{ asset('frontend/css/swiper.css')}}" />
-
-   
+    
     <!-- custom css -->
     <link rel="stylesheet" href="{{ asset('frontend/css/index.css')}}" />
-
+@stack('style')
     <style>
      .loading{
        background: rgba(0,0,0,.4);
@@ -64,6 +63,14 @@ z-index: 9999;
 }
 
     </style>
+    <style>
+      input[type=number]::-webkit-inner-spin-button, 
+  input[type=number]::-webkit-outer-spin-button {  
+  
+     opacity: 1;
+  
+  }
+  </style>
   </head>
   <body>
     <div class="loading">
@@ -108,7 +115,7 @@ z-index: 9999;
   <script src="{{ asset('frontend/js/swiper.js')}}"></script>
   <script src="{{ asset('frontend/js/index.js')}}"></script>
 
-
+@stack('scripts')
 <script>
   $(document).ready(function() {
     $('#sort').on('change',function(){//onchange
@@ -123,7 +130,7 @@ product_filter();
     values: [ 0, 25000 ],
     step:100,
     stop: function( event, ui ) {
-$( "#price" ).val( "Rs. " + ui.values[ 0 ] + " - Rs. " + ui.values[ 1 ] );
+$( "#price" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
 $( "#hidden_max" ).val(ui.values[ 1 ]);
 $( "#hidden_min" ).val(ui.values[ 0 ]);
 product_filter();
@@ -132,13 +139,14 @@ product_filter();
 
 });
 
-$( "#price" ).val( "Rs. " + $( "#mySlider" ).slider( "values", 0 ) +
-         " - Rs. " + $( "#mySlider" ).slider( "values", 1 ) );
+$( "#price" ).val( "$ " + $( "#mySlider" ).slider( "values", 0 ) +
+         " - $" + $( "#mySlider" ).slider( "values", 1 ) );
     //function filter data
     function product_filter(){
 let order=$('#sort').val();
 let category=get_category('category');
 let space=get_category('space');
+let subcategory=get_category('subcategory');
 let min=$( "#hidden_min" ).val();
 let max=$( "#hidden_max" ).val();
 let _token   = $('meta[name="csrf-token"]').attr('content');
@@ -146,7 +154,7 @@ let _token   = $('meta[name="csrf-token"]').attr('content');
       $.ajax({//aax call
       url:'filterproduct/ajax/',
       type:"GET",
-    data:{min:min,max:max,category:category,space:space,order:order,_token:_token},
+    data:{min:min,max:max,category:category,space:space,subcategory:subcategory,order:order,_token:_token},
 beforeSend:function(){
 
     $(".loading").css("display",'block');
@@ -174,101 +182,12 @@ product.push($(this).val());
 }
 
   $('.selector').on("click",function(){
+    // alert($(this).val())
     product_filter();
   })
 })
 </script>
 
-
-<script>
-
-    $(document).ready(function(){
-    $(document).on('click','.data',function(){
-            let datas=$(this).attr('data-text');
-            let id=$(this).val();
-              if(datas=='subcategory'){
-                
-              let option1=	$('.category').val();
-                  loadData(datas,id,option1)	
-              
-              }else if(datas=='model'){
-                
-                $('.part').html();
-                let option1=	$('.category').val();
-                let option2=	$('.subcategory').val();
-                loadData(datas,id,option1,option2)	
-
-
-              }
-              
-              else{
-                
-
-                  loadData(datas,id)	
-              
-              }
-        })
-    })
-        
-        function loadData(table,id,option1,option2){
-    $.ajax({
-        
-        url:'{{url('loaddata')}}/'+table+'/'+id+'/'+option1+'/'+option2,
-        DataType:'json',
-        type:'GET',
-        beforeSend:function(){
-          $('.loading').css('display','block')
-        },
-        success:function($data){
-        
-            if(table=='category'){
-              $('.model').html('');
-                $('.subcategory').html('');
-                $('.part').html('');
-                $('.price').html('');
-
-    
-                $('.subcategory').html($data);
-            }
-            if(table=='subcategory'){
-              $('.model').html('');
-                $('.part').html('');
-                $('.price').html('');
-
-                $('.model').html($data);
-            }
-            if(table=='model'){
-                    $('.part').html('');
-                   $('.price').val('')
-
-                   $('.part').html($data);
-                  $id= $('.part').val();;
-loadprice($id);
-            }
-        },
-        complete:function(){
-          $('.loading').css('display','none')
-        }
-    })
-        }
-    function loadprice(id){
-      $.ajax({
-        url:'{{url('loadprice')}}/'+id,
-        DataType:'json',
-        type:'GET',
-        beforeSend:function(){
-          $('.loading').css('display','bloclock')
-          
-        },
-        success:function(data){
-         $('.price').val(data)
-        },
-        complete:function(){
-          $('.loading').css('display','none')
-        }
-      })
-    }
-    </script>
 
   {{-- toastr  --}}
 <script>
@@ -321,27 +240,7 @@ $('.storage').click(function(){
 })
 </script>
 
-{{-- load price using ajax according to variation --}}
-<script>
-  $('.storage').click(function(){
-    let val=$(this).siblings('.variation').val();
-    $.ajax({
-          url:'{{ url('loadprice') }}/'+val,
-          type:'GET',
-          DataType:'Json',
-          beforeSend:function(){
-            $('.loading').css('display','block')
-          },
-          success:function(data){
-            $('.Vprice').html(data);
-            
-          },
-          complete:function(){
-            $('.loading').css('display','none')
-          }
-    })
-  })
-  </script>
+
 {{-- load image using ajax according to color --}}
 <script>
   $('.photo').click(function(){
@@ -436,5 +335,11 @@ $('.change-image').on('click', function() {
 	$control.css('display', 'none');
 	$('.image-button').css('display', 'block');
 });
+
+
+
+
+</script>
+
 </body>
 </html>

@@ -16,7 +16,7 @@
         </p>
         <div class="sv-caresoul-btn">
           <button><a href="">Repair</a></button>
-          <button><a href="">Buy</a></button>
+          {{-- <button><a href="">Buy</a></button> --}}
         </div>
       </div>
     </div>

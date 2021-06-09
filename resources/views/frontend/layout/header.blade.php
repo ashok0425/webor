@@ -15,34 +15,28 @@
         </ul>
       </div>
       {{-- fetching cart value  --}}
-      @php
-          $cart=DB::table('carts')->where('uid',1)->count();
-      @endphp
+    
+     
       <!-- right section -->
-      <ul class="d-flex sv-mini-navbar-menu-right">
-        <li class="nav-search-btn"><i class="fas fa-search"></i></li>
-        <li><a href="{{ route('cart') }}" class="shopping"><span>{{ $cart }}</span> <i class="fas fa-shopping-bag"></i></a></li>
+      <ul class="d-flex sv-mini-navbar-menu-right ">
+        <li> <form id="demo-2" class="p-0 m-0">
+          <input type="search" placeholder="Search">
+        </form></li>
+        <li><a href="{{ route('cart') }}" class="shopping">
+          
+          @guest
+          @else 
+          @php
+          $cart=DB::table('carts')->where('uid',Auth::user()->id)->count();
+          
+      @endphp
+      <span>{{ $cart }}</span>
+      @endguest
+           <i class="fas fa-shopping-bag"></i></a></li>
         <li><a href="@guest{{ route('login') }}@else {{ route('profile')}}@endguest"><i class="fas fa-user"></i></a></li>
 
       </ul>
     </div>
   </div>
   
-    <!-- global background overlay -->
-    <div class="sv-mini-navbar-global-overlay"></div>
 
-    <!-- navbar global search -->
-    <!-- navbar search box -->
-    <div class="sv-mini-navbar-search">
-      <div class="sv-mini-navbar-close">
-        <i class="fas fa-times"></i>
-      </div>
-      <div class="sv-mini-navbar-search-wrapper">
-        <form class="sv-mini-navbar-search-box" action="">
-          <div class="sv-mini-navbar-search-tab">
-            <input type="text" placeholder="Search" />
-          </div>
-          <button><i class="fas fa-search"></i></button>
-        </form>
-      </div>
-    </div>

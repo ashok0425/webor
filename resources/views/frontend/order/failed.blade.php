@@ -1,5 +1,6 @@
-@extends('frontend.frontend_master')
-@section('main-content')
+@extends('frontend.layout.master')
+
+@section('content')
   
 
 	<div class="container my-5">

@@ -12,7 +12,7 @@ class ProductreviewController  extends Controller
 {
     public function store(Request $request)
     {
-        // if(Auth::check()){
+        if(Auth::check()){
           $review=new Productreview;
           $review->uid=1;
           $review->pid=$request->pid;
@@ -32,7 +32,7 @@ $notification=array(
                 'alert-type'=>'info'
                  );
             return redirect()->route('login')->with($notification);
-        // }
+        }
     }
 
     public function edit(Productreview $review,$id)
@@ -45,9 +45,8 @@ $notification=array(
 
 
 
-    public function update(Productreview $request)
+    public function update(Request $request)
     {
-        dd($request->review);
         $id=$request->vid;
         $re=Productreview::find($id);
         $re->feedback=$request->review;

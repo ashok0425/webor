@@ -38,6 +38,9 @@ Route::get('/profile/logout','Frontend\AuthController@destory')->name('profile.l
 
 // book appointment 
 Route::get('/appointment','Frontend\AppointmentController@index')->name('appointment');
+Route::get('/repair/{device}','Frontend\AppointmentController@repair')->name('repair.device');
+Route::get('repair/{device}','Frontend\AppointmentController@repair')->name('repair.device');
+
 Route::get('loaddata/{table}/{id}/{option1?}/{option2?}','Frontend\AppointmentController@loadData');
 Route::get('loadprice/{id}','Frontend\AppointmentController@loadPrice');
 Route::post('appointment/store','Frontend\AppointmentController@store')->name('appointment.store');
@@ -69,6 +72,14 @@ Route::post('/subscriber/store','Frontend\NewsletterController@store')->name('su
 
 
 
+Route::middleware('auth')->group(function(){
+
+
+
+
+Route::get('paypal/checkout/{order}', 'Frontend\PayPalController@getExpressCheckout')->name('paypal.checkout');
+Route::get('paypal/checkout-success/{order}', 'Frontend\PayPalController@getExpressCheckoutSuccess')->name('paypal.success');
+Route::get('paypal/checkout-cancel', 'Frontend\PayPalController@cancelPage')->name('paypal.cancel');
 // Add to cart
 Route::post('/cart/store','Frontend\CartController@store')->name('addtocart');
 Route::get('/cart','Frontend\CartController@index')->name('cart');
@@ -79,11 +90,13 @@ Route::post('/coupon','Frontend\CartController@coupon')->name('coupon');
 Route::get('remove-coupon','Frontend\CartController@CouponRemove')->name('remove-coupon');
 
 
+
+
 // Payment
 Route::get('payment','Frontend\CartController@PaymentPage')->name('payment');
 Route::post('payment/store','Frontend\PaymentController@store')->name('payment.store');
 Route::get('payment/success/{code}','Frontend\PaymentController@success')->name('payment.success');
-Route::get('payment/failed/','Frontend\PaymentController@failed')->name('payment.failed');
+Route::get('payment/failed/','Frontend\PaymentController@failed')->name('payment.error');
 
 // order 
 Route::get('orders/list/','Frontend\OrderController@index')->name('order');
@@ -91,10 +104,13 @@ Route::get('orders/show/{id}','Frontend\OrderController@show')->name('order.show
 
 
 
+});
 
 
 
 
 // Blog
 Route::get('/blog','Frontend\BlogController@index')->name('blog');
+Route::get('/blog/single/{id}','Frontend\BlogController@single')->name('blog.single');
+
 // Route::post('/loadprice/{id}','Frontend\BlogController@loadPrice');

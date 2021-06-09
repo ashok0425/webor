@@ -8,7 +8,7 @@
         <div class="sv-footer-top">
           <div class="row">
             <!-- each box -->
-            <div class="col-md-3">
+            <div class="col-md-2">
               <div class="footer-box">
                 <div class="sv-footer-top-left">
                   <img src="{{ asset($footer->image) }}" alt="" />
@@ -33,7 +33,7 @@
               </div>
             </div>
 
-            <div class="col-md-3">
+            <div class="col-md-4">
               <div class="sv-footer-bottom-box">
                 <div class="sv-footer-bottom-title">
                   <h3>Contact Us</h3>

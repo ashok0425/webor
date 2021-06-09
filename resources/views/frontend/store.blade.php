@@ -45,15 +45,25 @@
         @endforeach
      </div>
      <div class="filter_data">
-        <p>Ram/Space</p>
+        <p>Ram</p>
         @foreach ($space as $item)
         <div>
-            <label ><input type="checkbox" value="{{ $item->id }}" class="selector space"> &nbsp; &nbsp;{{ $item->variation }}</label>
+            <label ><input type="checkbox" value="{{ $item->variation}}" class="selector space"> &nbsp; &nbsp;{{ $item->variation }}</label>
 
         </div>
             
         @endforeach
      </div>
+     {{-- <div class="filter_data">
+        <p>Space</p>
+        @foreach ($space as $item)
+        <div>
+            <label ><input type="checkbox" value="{{ explode( '/',$item->variation)[1] }}" class="selector space"> &nbsp; &nbsp;{{  explode( '/',$item->variation)[1] }} </label>
+
+        </div>
+            
+        @endforeach
+     </div> --}}
   
  
 </div>
@@ -64,7 +74,7 @@
         @foreach ($product as $item)
         <div class="col-md-3 col-12">
 
-        <a href="#" class="swiper-slide sv-feature-product-box m-2">
+        <a href="{{ route('product.detail',['id'=>$item->id,'name'=>$item->name]) }}" class="swiper-slide sv-feature-product-box m-2">
             <div class="sv-feature-product-img">
               <img src="{{ asset($item->image)}}" alt="{{ $item->name }}" class="img-fluid" />
             </div>

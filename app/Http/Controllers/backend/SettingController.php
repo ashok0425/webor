@@ -53,14 +53,11 @@ $notification=array(
 $web->title=$request->title;
 $web->keyword=$request->keyword;
 $web->descr=$request->descr;
-
 $web->email1=$request->email1;
-
 $web->phone1=$request->phone1;
 $web->address1=$request->address1;
 $web->address2=$request->address2;
 $web->url=$request->url;
-
 $web->facebook1=$request->facebook1;
 $web->twitter1=$request->twitter1;
 $web->instagram1=$request->instagram1;

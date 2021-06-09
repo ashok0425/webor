@@ -13,7 +13,7 @@
             @csrf
             <input type="hidden" name="id" value="{{$category->id}}" />
             <div class="mb-3">
-                <label class="form-label">Brand</label>
+                <label class="form-label">Device</label>
                 <input type="text" name="category" class="form-control" placeholder="Category" value="{{$category->category}}">
             </div>
             <div class="mb-3">

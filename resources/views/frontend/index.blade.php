@@ -35,6 +35,3 @@
 
     <div class="white-bg"></div>
 @endsection
-@push('scripts')
-
-@endpush

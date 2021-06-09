@@ -91,3 +91,29 @@
           </div>
         </div>
       </div>
+
+
+
+      
+  <div class="buy-sell mt-5">
+    <div class="features_img" style="width: 100%;
+     background-color: #ffffff;
+background: linear-gradient( 90deg , #ce1160 0%, #b63f81 100%), url('{{ asset('frontend/contact.jpg') }}');
+background-position: center center;
+background-repeat: no-repeat;
+        padding: 4% 18% 4% 8%;
+        background-attachment: fixed;
+        background-blend-mode: multiply;
+        height: 40vh;
+        background-size: cover;
+        color:#fff;
+
+      ">
+      <h2>Buy and Sell</h2>
+<p>
+  Check out our store to sell or buy used devices at a reasonable price. Are you looking to
+upgrade to a new phone at an affordable price? We’ve got you covered. You can buy used
+devices of the best quality at the best price available in the whole of Boston right here at
+Somerville Communications.</p>    
+    </div>
+  </div>

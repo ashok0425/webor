@@ -71,21 +71,54 @@ class PayPalController extends Controller
             $order->ispaid = 1;
             $order->save();
 
-            
+        
+  // sending email 
+  $data=DB::table('websites')->first();
+  $order=DB::table('orders')->where('user_id',Auth::user()->id)->where('id',$order_id )->first();
+  $ship=DB::table('shippings')->where('order_id',$order_id)->first();
+  $cart = DB::table('products')->join('carts','carts.pid','products.id')->select('products.name','products.image','carts.*')->where('uid',Auth::user()->id)->get();
+
+  $set=[
+      'image'=>$data->image,
+      'cart'=>$cart,
+      'address'=>$data->address1,
+      'phone'=>$data->phone1,
+      'email'=>$data->email1,
+      'order_id'=>$order_id,
+      'coupon'=>$request->coupon,
+      'coupon_value'=>$request->coupon_value,
+      'tax'=>$request->vat,
+      'total'=>$request->total,
+      'order_id'=>$order_id,
+      'ship_email'=>$ship->email,
+      'ship_name'=>$ship->name,
+      'ship_phone'=>$ship->phone,
+      'ship_address'=>$ship->state,
+      'ship_city'=>$ship->city,
+      'ship_zip'=>$ship->zip,
+      'order_number'=>$order->tracking_code,
+      'shipping'=>$order->shipping_charge,
+      'payment_type'=>$order->payment_type,
+      'order_date'=>$order->created_at,
+ 
 
 
+  ];
 
+  $pdf = PDF::loadView('mail.checkout', $set);
+  Mail::send('mail.checkout', $set, function($message)use($set, $pdf) {
+      $message->to('abc@gmail.com','def@gmail.com')
+              ->subject('Order Invoice Mail')
+              ->attachData($pdf->output(), "orderinvoice.pdf");
+  });
 
-            
-          DB::table('carts')->where('user_id',Auth::user()->id)->delete();
-          if (Session::has('coupon')) {
-              Session::forget('coupon');
-          }
-           Session::forget('sess');
+  DB::table('carts')->where('uid',Auth::user()->id)->delete();
+  if (Session::has('coupon')) {
+      Session::forget('coupon');
 
-       
-            return redirect('errors.Thankyou')->route('payment.success')->with('code',$order->tracking_code);
+  }
 
+  return redirect()->route('payment.success',['code'=>$order->tracking_code]);
         
     
           }else{

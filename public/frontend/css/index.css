@@ -44,7 +44,7 @@ ul {
 
 .sv-navbar-logo img {
   height: 100%;
-  width: 100%;
+  width: 60%;
   object-fit: contain;
 }
 
@@ -61,14 +61,13 @@ ul {
   color: var(--brand-three);
 }
 
-.sv-navbar-box-desc h3 {
-  font-size: 18px;
-  color: var(--brand-one);
+.sv-navbar-box-desc a {
+  color: #000;
 }
 
 .sv-navbar-box-desc p {
   font-size: 14px;
-  color: var(--brand-two);
+  color: #000;
 }
 
 /* new section */
@@ -83,7 +82,9 @@ ul {
   padding: 0 75px;
   transition: all 500ms ease-out;
 }
-
+a:hover{
+  text-decoration: none!important;
+}
 .sv-mini-navbar-wrapper {
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
   display: flex;
@@ -99,7 +100,7 @@ ul {
 
 .mini-nav-hamburger {
   position: absolute;
-  top: 0;
+  top: 18px;
   left: 0;
   margin-left: 15px;
   display: none;
@@ -159,64 +160,8 @@ color: var(--white);
   display: none;
 }
 
-/* new section */
-/* navbar global search */
 
-.sv-mini-navbar-search {
-  position: fixed;
-  top: 0;
-  height: 100vh;
-  z-index: 1000;
-  overflow-x: hidden;
-  width: 100%;
-  display: none;
-}
 
-.sv-mini-navbar-search-wrapper {
-  position: absolute;
-  width: 70%;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.sv-mini-navbar-close {
-  position: absolute;
-  right: 5%;
-  top: 5%;
-  cursor: pointer;
-}
-
-.sv-mini-navbar-close .fas {
-  color: var(--brand-two);
-  font-size: 60px;
-}
-
-.sv-mini-navbar-search-box {
-  display: flex;
-}
-
-.sv-mini-navbar-search-tab {
-  width: 100%;
-}
-
-.sv-mini-navbar-search-tab input {
-  width: 100%;
-  border: 1px solid #202020;
-  outline: none;
-  padding: 15px 20px;
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
-}
-
-.sv-mini-navbar-search-box button {
-  border: none;
-  background-color: var(--brand-two);
-  color: #fff;
-  padding: 8px 35px;
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
-}
 
 /* required star color  */
 span.req{
@@ -228,7 +173,7 @@ span.req{
 .sv-caresoul-wrapper {
   height: calc(100vh - 184px);
   position: relative;
-  color: #fff;
+  color: #000;
 }
 
 /* caresoul img */
@@ -249,7 +194,7 @@ span.req{
   width: 100%;
   height: 100%;
   opacity: 0.3;
-  background-image: linear-gradient(to right, #ce1160, #e05d29);
+  /* background-image: linear-gradient(to right, #ce1160, #e05d29); */
 }
 
 /* caresoul text section */
@@ -273,21 +218,64 @@ span.req{
 .sv-caresoul-btn button {
   border: none;
   padding: 15px 60px;
-  border-radius: 25px;
+  border-radius: 50px;
+  background: var(--brand-three);
 
 }
 .sv-caresoul-btn button a{
-color: var(--white);
+  color: #fff;
+
 }
+/* 
 .sv-caresoul-btn button:first-child {
   background: var(--brand-three);
   margin-right: 15px;
 }
 
 .sv-caresoul-btn button:last-child {
-  background: var(--brand-two);
+  background: transparent;
+  border: 2px solid  var(--brand-two);
+transition: all .5s ease-in-out;
+}
+.sv-caresoul-btn button:last-child a{
+  color: var(--brand-two);
+  transition: all .5s ease-in-out;
 }
 
+
+.sv-caresoul-btn button:last-child:hover {
+  background:var(--brand-two);
+  border: 2px solid  var(--brand-two);
+  
+}
+
+.sv-caresoul-btn button:last-child:hover a{
+  color: var(--white);
+} */
+
+
+
+
+/* .sv-caresoul-btn button:first-child {
+  background:  var(--brand-one);
+  border: 2px solid  var(--brand-one);
+transition: all .5s ease-in-out;
+}
+.sv-caresoul-btn button:first-child a{
+  color: var(--white);
+  transition: all .5s ease-in-out;
+}
+
+
+.sv-caresoul-btn button:first-child:hover {
+  background:transparent;
+  /* border: 2px solid  var(--brand-two); */
+  
+/* }
+
+.sv-caresoul-btn button:first-child:hover a{
+  color: var(--brand-one);
+/* } */ 
 /* new section */
 /* top feature section */
 .sv-top-feature {
@@ -337,7 +325,7 @@ color: var(--white);
 }
 .sv-what-we-do-title {
   text-align: center;
-  color: var(--brand-one);
+  color: #000;
 }
 
 .sv-what-we-do-box {
@@ -368,7 +356,7 @@ color: var(--white);
 }
 
 .sv-start-repair-title h2 {
-  color: var(--brand-one);
+  color:#000;
 }
 
 .sv-start-repair-box {
@@ -380,7 +368,9 @@ color: var(--white);
   margin-bottom: .5rem;
 
 }
-
+.sv-start-repair-box a{
+  color: #000;
+}
 .sv-start-repair-img img {
   width: 100%;
   height: 100%;
@@ -393,7 +383,7 @@ color: var(--white);
   margin-top: 6rem!important;
 }
 .sv-why-work-title h2 {
-  color: var(--brand-one);
+  color: #000;
   text-align: center;
 }
 
@@ -425,7 +415,7 @@ color: var(--white);
 
 .swiper-container {
   width: 90%;
-  padding: 0 10px;
+  padding: 0 32px;
 }
 
 .swiper-slide {
@@ -441,14 +431,26 @@ color: var(--white);
 
 .sv-feature-product-img {
   height: 200px;
+  overflow: hidden;
+
 }
 
 .sv-feature-product-img img {
   height: 100%;
   width: 100%;
   object-fit: contain;
-}
+  overflow: hidden;
+  transition: all .3s ease-in-out;
 
+}
+.sv-feature-product-box:hover img{
+  overflow: hidden;
+
+transform: scale(1.069);
+}
+.sv-feature-product-box:hover p{
+  color: var(--brand-two)!important;
+}
 /* feature desc box */
 .sv-feature-product-desc {
   display: flex;
@@ -464,9 +466,11 @@ color: var(--white);
 .swiper-button-prev {
   left: 0px;
 }
-
+.swiper-button-next {
+  right: 0px!important;
+}
 /* view more section */
-.sv-feature-product-more {
+.sv-feature-product-more a{
   color: var(--brand-one);
 }
 
@@ -480,7 +484,7 @@ color: var(--white);
 
 /* user reive title */
 .sv-user-review-title h2 {
-  color: var(--brand-one);
+  color: #000;
   text-align: center;
   margin-bottom: 35px;
 }
@@ -599,7 +603,7 @@ color: var(--white);
 
 .sv-footer-top-right p {
   padding-left: 8px;
-  color: var(--brand-two);
+  color:#000;
 }
 
 /* footer bottom  */
@@ -614,7 +618,7 @@ color: var(--white);
 }
 
 .sv-footer-bottom-title h3 {
-  color: var(--brand-three);
+  color: #000;
   font-size: 18px;
   margin-bottom: 15px;
 }
@@ -623,11 +627,11 @@ color: var(--white);
   display: flex;
   align-items: center;
   padding: 5px 0;
-  color: var(--brand-two);
+  color: #000;
 }
 
 .sv-footer-bottom-desc ul li{
-  margin: .7rem 0;
+  margin: 1rem 0;
 
 }
 .sv-footer-bottom-desc ul li span {
@@ -636,7 +640,7 @@ color: var(--white);
 }
 
 .sv-footer-bottom-desc ul li a {
-  color: var(--brand-two);
+  color: #000;
 }
 
 .sv-footer-subscribe {
@@ -671,8 +675,54 @@ color: var(--white);
   outline: none;
 }
 
-/* footer mid section */
+/* search box  */
 
+
+input[type=search] {
+	background:url(https://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 9px center;
+	width: 90px;
+	-webkit-border-radius: 10em;
+	-moz-border-radius: 10em;
+	border-radius: 10em;
+	-webkit-transition: all .5s;
+	-moz-transition: all .5s;
+	transition: all .5s;
+  border: none;
+  filter: brightness(0) invert(1);
+  color: transparent;
+  -webkit-appearance: textfield;
+	-webkit-box-sizing: content-box;
+	font-family: inherit;
+	font-size: 100%;
+border-radius: 0!important;
+outline: none;
+
+
+}
+
+
+
+
+
+/* Demo 2 */
+#demo-2 input[type=search] {
+	width: 15px;
+	padding-left: 10px;
+	color: transparent;
+	cursor: pointer;
+}
+#demo-2 input[type=search] {
+	color: #000;
+}
+#demo-2 input[type=search]:focus {
+	width: 200px;
+	padding-left: 32px;
+	cursor: auto;
+border-bottom: 2px solid #fff;
+
+}
+
+/* footer mid section */
 
 
 .sv-footer-social-link {
@@ -783,10 +833,7 @@ color: rgb(75, 74, 74);
 }
 @media screen and (max-width: 576px) {
   /* caresoul */
-  .sv-caresoul-btn button {
-    display: block;
-    margin-bottom: 10px;
-  }
+ 
   /* what we do */
   .sv-what-we-do-box {
     width: 100%;
@@ -795,6 +842,46 @@ color: rgb(75, 74, 74);
   /* start repair */
   .sv-start-repair-box {
     width: 100%;
+  }
+  .sv-mini-navbar{
+    padding: 0!important;
+  }
+  .sv-what-we-do-desc{
+    display: block!important;
+  }
+  .sv-navbar-left{
+    text-align: center;
+  }
+  .sv-top-feature{
+    display: none;
+  }
+  #demo-2 input[type=search]:focus {
+    width: 140px;
+    padding-left: 32px;
+    cursor: auto;
+  border-bottom: 2px solid #fff;
+  
+  }
+  .sv-caresoul-btn button{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    
+
+  }
+  .sv-caresoul-btn button:first-child{
+    margin-right: 3px;
+  }
+  .sv-what-we-do-img img{
+    height: 135%;
+  }
+  .sv-start-repair-box{
+    margin: 10px;
+  }
+  .sv-why-work-box-img{
+    height: 200px;
+  }
+  .sv-why-work-box-img img{
+    height: 135%;
   }
 }
 

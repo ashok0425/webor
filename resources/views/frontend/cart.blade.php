@@ -3,7 +3,11 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('frontend/cart_styles.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('frontend/cart_responsive.css') }}">
 	<!-- Cart -->
-
+<style>
+	.empty{
+	background: orangered;
+	}
+</style>
 	<div style="margin-top:1rem;">
 		@if(isset($cart) && count($cart)>=1)
 		<div class="container">
@@ -28,26 +32,26 @@
 							 @endphp
 
 		<li class="cart_item clearfix">
-			<div class="cart_item_image text-center"><br><img src="{{asset($row->image)}} " style="width: 70px; width: 70px;" alt=""></div>
+			<div class="cart_item_image text-center"><br><br><img src="{{asset($row->image)}} " style="width: 70px; width: 70px;" alt=""></div>
 			<div class="cart_item_info d-flex flex-md-row flex-column justify-content-between">
-				<div class="cart_item_name cart_info_col">
+				<div class="cart_item_name cart_info_col text-center">
 					<div class="cart_item_title">Name</div>
 					<div class="cart_item_text">{{ $row->name  }}</div>
 				</div>
-				<div class="cart_item_total cart_info_col">
+				<div class="cart_item_total cart_info_col ext-center">
 					<div class="cart_item_title">Size</div>
 					<div class="cart_item_text">{{  $row->size }}</div>
 				</div>
 
-				<div class="cart_item_total cart_info_col">
+				<div class="cart_item_total cart_info_col ext-center">
 					<div class="cart_item_title">Color</div>
 					<div class="cart_item_text" style="background: {{ $row->color}};width:40px;height:20px;"></div>
 					
 				</div>
 
-				<div class="cart_item_quantity cart_info_col">
-					<div class="cart_item_title">Quantity</div><br> 
-
+				<div class="cart_item_quantity cart_info_col ext-center">
+					<div class="cart_item_title">Quantity</div>
+<div class="cart_item_text">
            <form method="post" action="{{ route('cart.update') }}">
            	@csrf
 			   <input type="hidden" name="cartid" value="{{ $row->id }}">
@@ -58,7 +62,7 @@
  
            </form>  
 				</div>
-
+			</div>
 				
              <div class="cart_item_total cart_info_col">
 					<div class="cart_item_title">Price</div>
@@ -124,7 +128,7 @@
 </div>
 
 		@else 
-<div class="container p-0 mt-5 py-3 bg-primary d-block  ">
+<div class="container p-0 mt-5 py-3 d-block  empty">
 			<p class="px-5 text-light">Your cart is empty</p>
 	
 </div>

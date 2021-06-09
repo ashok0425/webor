@@ -18,6 +18,10 @@ class AppointmentController extends Controller
         return view('frontend.appointment.appointment');
     }
 
+    public function repair($device){
+        $device=$device;
+        return view('frontend.appointment.appointment',compact('device'));
+    }
 
 
     

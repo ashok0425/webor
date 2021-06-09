@@ -99,7 +99,7 @@ $vat = $setting->vat;
 					 <div class="col-lg-3">
 						<ul>
 							@if(Session::has('coupon'))
-				   
+				   <div class="text-success">Coupon ({{ Session::get('coupon')['name'] }}) Applied</div>
 							@else
 				   
 							 <h5> Have A promo code ? </h5>

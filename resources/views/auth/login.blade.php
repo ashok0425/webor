@@ -2,6 +2,7 @@
       @extends('frontend.layout.master')
       @section('content')
       <style>
+      
           .forms{
             background: linear-gradient(
     0deg
@@ -33,6 +34,7 @@
 
 margin-top: .6rem;
 margin-bottom: .4rem;
+margin-top: 2rem;
 
  }
  .tabcontent {
@@ -43,9 +45,21 @@ margin-bottom: .4rem;
   border: none;
   font-size: 1.5rem;
   font-weight: 700;
+  padding: .3rem 1.5rem;
+  
+
 }
 .forms button:nth-child(1){
- border-right: 2px solid gray;
+ 
+}
+
+.forms button:nth-child(2){
+
+ 
+}
+.line{
+    font-size: 50px;
+    margin-top: -20px;
 }
 .tab{
     text-align: center;
@@ -61,6 +75,13 @@ letter-spacing: 2px;
 .login p{
     color: #fff;
 }
+.tab button.active{
+    background:var(--brand-one);
+    color: #fff;
+        }
+        .forget{
+            color: var(--brand-one)
+        }
       </style>
 
       <div class="bg_img " style="width: 100%;
@@ -70,7 +91,7 @@ letter-spacing: 2px;
               background-blend-mode: multiply;
               height: 100vh;
               background-size:cover;
-              padding:10% 0 12% 0;
+              padding:5% 0 12% 0;
             ">
 
  <div class="container mt-5">
@@ -82,30 +103,41 @@ letter-spacing: 2px;
 @endif
 <div class="row">
     <div class="col-md-4 forms">
-        <div class="tab">
-          <button class="tablinks" onclick="openCity(event, 'login')">SignIn</button>
-          <button class="tablinks" onclick="openCity(event, 'register')">SignUp</button>
-        </div>
         @if ($errors->any())
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                                @endif
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+                @endif
+        <div class="tab">
+            <div class="row">
+                <div class="col-md-5">
+                    <button class="tablinks mr-md-5" onclick="openCity(event, 'login')" id="defaultOpen">LogIn</button>
+                </div>
+           <div class="col-md-2 line">|</div>
+                <div class="col-md-5">
+                    <button class="tablinks" onclick="openCity(event, 'register')">SignUp</button>
+
+                </div>
+
+            </div>
+          
+        </div>
+       
         <div id="login" class="tabcontent">
             <form action="{{ route('login') }}" method="POST">
             @csrf
-                <div class="form-group">
+                <div class="form-group mb-2">
                 <label>  Email <span class="req">*</span></label>
                 <input type="email"  placeholder="Email" name="email" value="{{ old('email')}}" required autofocus class="form-control"/>
 
                 </div>
          
             
-                <div class="form-group">
+                <div class="form-group mb-2">
                   <label>  Password <span class="req">*</span></label>
                   <input type="password" name="password" required autocomplete="current-password" class="form-control" placeholder="Password" />
 
@@ -120,7 +152,7 @@ letter-spacing: 2px;
                 <input type="submit" value="SignIn">
                 <div class="form-group">
 
-                  <a href="{{ route('password.request') }}">Forget Password</a>
+                  <a href="{{ route('password.request') }}" class="forget">Forget Password</a>
                  </div>
         </form>
         </div>
@@ -129,26 +161,26 @@ letter-spacing: 2px;
      
             <form action="{{ route('register') }}" method="POST">
             @csrf
-                <div class="form-group">
+                <div class="form-group mb-2">
                     <label> Full  Name <span class="req">*</span></label>
                     <input type="text"  placeholder="Full name" name="name" value="{{ old('name')}}" required autofocus class="form-control"/>
     
                     </div>
              
-                <div class="form-group">
+                <div class="form-group mb-2">
                 <label>  Email <span class="req">*</span></label>
                 <input type="email"  placeholder="Email" name="email" value="{{ old('email')}}" required autofocus class="form-control"/>
 
                 </div>
          
             
-                <div class="form-group">
+                <div class="form-group mb-2">
                   <label>  Password <span class="req">*</span></label>
                   <input type="password" name="password" required autocomplete="current-password" class="form-control" placeholder="Password" />
 
                 </div>
 
-                <div class="form-group">
+                <div class="form-group mb-2">
                     <label>Confirm  Password <span class="req">*</span></label>
                     <input type="password" name="password_confirmation" required autocomplete="current-password" class="form-control" placeholder="Re-type Password" />
   
@@ -239,15 +271,25 @@ function openCity(evt, cityName) {
 
   // Get all elements with class="tablinks" and remove the class "active"
   tablinks = document.getElementsByClassName("tablinks");
+
   for (i = 0; i < tablinks.length; i++) {
     tablinks[i].className = tablinks[i].className.replace(" active", "");
+
+
   }
 
   // Show the current tab, and add an "active" class to the button that opened the tab
   document.getElementById(cityName).style.display = "block";
-  evt.currentTarget.className += " active";
+//   document.getElementById(cityName).style.border = "1px solid red";
+
+event.currentTarget.className += " active";
+
 }
 </script>
+<script>
+    // Get the element with id="defaultOpen" and click on it
+    document.getElementById("defaultOpen").click();
+    </script
       @endsection
 
 
