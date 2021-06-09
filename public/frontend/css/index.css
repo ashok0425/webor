@@ -346,9 +346,14 @@ transition: all .5s ease-in-out;
   width: 80%;
   text-align: center;
   margin: 0 auto;
-  font-weight: 600;
+  font-weight: 400;
+  font-size: 1.4rem;
 }
-
+.expertise .sv-what-we-do-text h3{
+text-align: left!important;
+margin: 0 !important;
+margin-bottom: .6rem!important;
+}
 /* new section */
 /* start repair */
 .sv-start-repair {

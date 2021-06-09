@@ -130,11 +130,11 @@
                   $price=DB::table('productvariations')->where('product_id',$product->id)->first();
               @endphp
               <p class="mt-2">Price</p>
-              <h3>{{ __getPriceunit()}}<span class="Vprice">
+              <h3><span class="Vprice">
                 @if($price)
-                  {{$price->price}}
+                  {{ __getPriceunit().number_format((float)$price->price,2) }}
                     @else 
-                  {{$product->price}}
+                    {{ __getPriceunit().number_format((float)$product->price,2) }}
                 @endif
                 </span></h3>
             </div>
@@ -327,7 +327,7 @@
             </div>
             <div class="sv-feature-product-desc">
               <p class="sv-feature-product-name">{{ $item->name }}</p>
-              <p class="sv-feature-product-price">{{ $item->price }}</p>
+              <p class="sv-feature-product-price">{{ __getPriceunit().number_format((float)$item->price,2) }}</p>
             </div>
           </a>
           @endforeach

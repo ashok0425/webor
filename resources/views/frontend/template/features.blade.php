@@ -8,7 +8,7 @@
           </div>
           <div class="sv-top-feature-box-right">
             <h3>Low Price Gurantee</h3>
-            <p>Repair Low Price</p>
+            <p>Repair low price</p>
           </div>
         </div>
 
@@ -19,8 +19,8 @@
 
           </div>
           <div class="sv-top-feature-box-right">
-            <h3>Low Price Gurantee</h3>
-            <p>Repair Low Price</p>
+            <h3>Quick Fix</h3>
+            <p>Fast and reliable reapir</p>
           </div>
         </div>
 
@@ -31,8 +31,8 @@
 
           </div>
           <div class="sv-top-feature-box-right">
-            <h3>Low Price Gurantee</h3>
-            <p>Repair Low Price</p>
+            <h3>Experinced Team</h3>
+            <p>Years of experience</p>
           </div>
         </div>
       </div>

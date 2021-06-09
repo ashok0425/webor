@@ -26,15 +26,15 @@ margin-right: 3rem;
 }
 
 .has-error{
-  border: 1px solid red;
+  position: relative;
 }
-.has-error::after
+.has-error::before
 {
   content: 'This field is required';
   position: absolute;
   color: red;
-  bottom: 0;
-  
+  bottom: -15px;
+  left: 20px;
 }
 /* Hide the radio button */
 input[name='device'] {
@@ -112,26 +112,21 @@ border: 3px solid #e05d29;
   outline:none;
   border:none;
 border-radius:50px;
+margin-top: 1rem;
 }
 .nextBtn:hover{
   background: var(--brand-two);
   color:#fff;
 
 }
+.error{
+  
+}
 </style>
 <link rel="stylesheet" href="{{ asset('frontend/css/repair.css') }}" />
 
 @endpush
-
 <!------ Include the above in your HEAD tag ---------->
-
-
-
-
-
-
-
-
 @section('content')
 
 <div class="sv-repair">
@@ -210,7 +205,6 @@ border-radius:50px;
                       
                       </label>
                       <p class="text-center">{{ $item->category }}</p>
-          
                       </div>
                       <!-- tablet section -->
                      
@@ -235,7 +229,7 @@ border-radius:50px;
               </div>
               <div class="form-group">
 
-              <select name="brand" id="repair-deivce-brand" class="form-group subcategory data" data-text="subcategory" required="required">
+              <select name="brand" id="repair-deivce-brand" class=" subcategory data abc" data-text="subcategory" required="required">
                 
               </select>
             </div>
@@ -248,7 +242,7 @@ border-radius:50px;
                 </div>
               <div class="form-group">
 
-                <select name="model" id="repair-deivce-model"  class="model data form-group" data-text="model"  required="required">
+                <select name="model" id="repair-deivce-model"  class="model data abc" data-text="model"  required="required">
                
                 </select>
               </div>
@@ -256,13 +250,13 @@ border-radius:50px;
 
   
               <!-- each group -->
-              <div class="sv-repair-device-option-group">
+              <div class="sv-repair-device-option-group form-group">
                 <div class="sv-repair-device-option-title">
                   Choose your part
                 </div>
-              <div class="form-group">
+              <div class="">
 
-                  <select name="part" id="repair-deivce-model" class="part form-group" required="required">
+                  <select name="part" id="repair-deivce-model" class="part abc" required="required">
                   
                   </select>
               </div>
@@ -409,7 +403,7 @@ allNextBtn.click(function(){
 var curStep = $(this).closest(".setup-content"),
     curStepBtn = curStep.attr("id"),
     nextStepWizard = $('div.setup-panel div a[href="#' + curStepBtn + '"]').parent().next().children("a"),
-    curInputs = curStep.find("input[type='text'],input[type='time'],input[type='radio'],input[type='email'],input[type='number'],input[type='url']"),
+    curInputs = curStep.find("input[type='text'],input[type='time'],input[type='radio'],input[type='email'],input[type='number'],input[type='url'],.abc"),
     isValid = true;
 
 $(".form-group").removeClass("has-error");

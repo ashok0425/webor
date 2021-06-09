@@ -17,7 +17,7 @@
             </div>
             <div class="sv-feature-product-desc">
               <p class="sv-feature-product-name">{{ $item->name }}</p>
-              <p class="sv-feature-product-price">{{ $item->price }}</p>
+              <p class="sv-feature-product-price">{{ __getPriceunit().number_format((float)$item->price,2) }}</p>
             </div>
           </a>
           @endforeach

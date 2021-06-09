@@ -26,8 +26,10 @@
                   <i class="far fa-envelope"></i>
                 </div>
                 <div class="sv-navbar-box-desc sv-navbar-email-desc">
-                
+                <a href="mailto:{{ $logo->email1 }}">
                   <p>{{ $logo->email1 }}</p>
+                </a>
+                  
                 </div>
               </div>
 
@@ -37,7 +39,7 @@
                   <i class="fas fa-phone-alt"></i>
                 </div>
                 <div class="sv-navbar-box-desc sv-navbar-email-desc">
-                  <p>{{ $logo->phone1 }}</p>
+                  <a href="tel:{{ $logo->phone1 }}"><p>{{ $logo->phone1 }}</p></a>
                 </div>
               </div>
 

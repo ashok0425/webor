@@ -20,9 +20,9 @@
                 <input type="hidden" name="" id="hidden_min">
                 <input type="hidden" name="" id="hidden_max">
          
-               <input type="button" id="price" style="border:0; color:rgb(228, 15, 192); font-weight:bold;background: transparent;">
+               <input type="button" id="price" style="border:0; color:rgb(0, 0, 0); font-weight:bold;background: transparent;">
          
-             <div id="mySlider" style="height: 5px;background-color:rgb(228, 15, 61);width:90%;margin:auto;"></div>
+             <div id="mySlider" style="height: 5px;background-color:rgb(255, 145, 2);width:90%;margin:auto;"></div>
        
     </div>
     <div class="filter_data">
@@ -80,7 +80,7 @@
             </div>
             <div class="sv-feature-product-desc">
               <p class="sv-feature-product-name">{{ $item->name }}</p>
-              <p class="sv-feature-product-price">{{ $item->price }}</p>
+              <p class="sv-feature-product-price">{{ __getPriceunit().number_format((float)$item->price,2) }}</p>
             </div>
           </a>
         </div>

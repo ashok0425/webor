@@ -98,14 +98,14 @@
   <div class="buy-sell mt-5">
     <div class="features_img" style="width: 100%;
      background-color: #ffffff;
-background: linear-gradient( 90deg , #ce1160 0%, #b63f81 100%), url('{{ asset('frontend/contact.jpg') }}');
-background-position: center center;
+background: linear-gradient( 90deg , #ce1160 0%, #b63f81 100%), url('{{ asset('frontend/Phonepng.png') }}');
+background-position: center right;
 background-repeat: no-repeat;
         padding: 4% 18% 4% 8%;
         background-attachment: fixed;
         background-blend-mode: multiply;
         height: 40vh;
-        background-size: cover;
+        background-size: contain;
         color:#fff;
 
       ">
