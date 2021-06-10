@@ -2,39 +2,37 @@
       @extends('frontend.layout.master')
       @section('content')
       <style>
-      
           .forms{
-            background: linear-gradient(
-    0deg
-    , #e2e3e4 0%, #ffffff 100%);
-    padding: 2rem 1rem;
-          }
-          .forms .form-control{
+    background: #fff;
+    box-shadow: 0 4px 22px 0 rgb(115 49 165 / 47%);
+    border-radius: 8px;
+    padding:1rem;
+}
+  .forms .form-control{
             border: none;
             outline: none;
             box-shadow:none;
             background: transparent;
-            border-bottom: 1px solid gray;
             border-radius: 0;
           }
-       
-          .forms label{
-              margin-top: 1rem;
-          }
-          .forms input[type=submit]{
-              background: linear-gradient( 
-90deg
- , #ce1160 0%, #c70871 100%);;
+
+          .forms .form-group{
+        border-bottom: 1px solid #e8e8e8;
+    }
+   .forms input[type=submit]{
+            background: linear-gradient(
+    90deg
+    , #ce1160 0%, #b63f81 100%);
  padding: .4rem 3rem;
  border: none;
  outline: none;
  font-weight: 600;
  color: #fff;
  border-radius: 100px;
-
 margin-top: .6rem;
 margin-bottom: .4rem;
 margin-top: 2rem;
+
 
  }
  .tabcontent {
@@ -43,55 +41,48 @@ margin-top: 2rem;
  .forms button{
  background: transparent;
   border: none;
-  font-size: 1.5rem;
-  font-weight: 700;
+  font-size: 1.2rem;
+  font-weight: 500;
   padding: .3rem 1.5rem;
-  
+  margin-bottom: 0;
 
 }
-.forms button:nth-child(1){
- 
-}
 
-.forms button:nth-child(2){
 
- 
-}
-.line{
-    font-size: 50px;
-    margin-top: -20px;
-}
 .tab{
     text-align: center;
+    border-bottom: 1px solid gray;
 }
 .login h2{
-color: #fff;
-font-weight: bold;
+color: rgb(14, 13, 13);
 font-size: 2.2rem;
 font-weight: 700;
 letter-spacing: 2px;
-
+margin-bottom: 0;
+padding: 0;
 }
 .login p{
-    color: #fff;
+    color: rgb(34, 34, 34);
 }
 .tab button.active{
-    background:var(--brand-one);
-    color: #fff;
+  border-bottom: 2px solid var(--brand-two);
+  color: var(--brand-two);
+}
+ .forget{
+            color: var(--brand-two)
         }
-        .forget{
-            color: var(--brand-one)
-        }
+
+
       </style>
 
       <div class="bg_img " style="width: 100%;
-      background: linear-gradient(100deg, #69adf1 0%, rgba(168, 109, 236, 0.39) 100%), url({{asset('frontend/contact.jpg')}});
+      background:  url({{asset('frontend/img/login.jpg')}});
       background-position: center center;
       background-repeat: no-repeat;
-              background-blend-mode: multiply;
               height: 100vh;
               background-size:cover;
               padding:5% 0 12% 0;
+          
             ">
 
  <div class="container mt-5">
@@ -102,7 +93,7 @@ letter-spacing: 2px;
     </div>
 @endif
 <div class="row">
-    <div class="col-md-4 forms">
+    <div class="col-md-4 forms order-md-1 order-2">
         @if ($errors->any())
         <div class="alert alert-danger">
             <ul>
@@ -114,11 +105,11 @@ letter-spacing: 2px;
                 @endif
         <div class="tab">
             <div class="row">
-                <div class="col-md-5">
+                <div class="col-md-4 col-6">
                     <button class="tablinks mr-md-5" onclick="openCity(event, 'login')" id="defaultOpen">LogIn</button>
                 </div>
-           <div class="col-md-2 line">|</div>
-                <div class="col-md-5">
+           
+                <div class="col-md-5 offset-md-2 col-6">
                     <button class="tablinks" onclick="openCity(event, 'register')">SignUp</button>
 
                 </div>
@@ -130,30 +121,28 @@ letter-spacing: 2px;
         <div id="login" class="tabcontent">
             <form action="{{ route('login') }}" method="POST">
             @csrf
-                <div class="form-group mb-2">
-                <label>  Email <span class="req">*</span></label>
+                <div class="form-group my-4">
+                {{-- <label>  Email <span class="req">*</span></label> --}}
                 <input type="email"  placeholder="Email" name="email" value="{{ old('email')}}" required autofocus class="form-control"/>
 
                 </div>
          
             
-                <div class="form-group mb-2">
-                  <label>  Password <span class="req">*</span></label>
+                <div class="form-group my-4">
+                  {{-- <label>  Password <span class="req">*</span></label> --}}
                   <input type="password" name="password" required autocomplete="current-password" class="form-control" placeholder="Password" />
 
                 </div>
 
-                <div class="form-group" >
-                  <input type="checkbox" name="remember" id="checkbox"/>
-                 <label for="checkbox">  Remember me</label>  
+                <div class="d-flex justify-content-between" >
+                
+                 <label> <input type="checkbox" name="remember" id="checkbox"/> &nbsp;Remember me</label>  
+                 <a href="{{ route('password.request') }}" class="forget">Forget Password</a>
               
               </div>
 
-                <input type="submit" value="SignIn">
-                <div class="form-group">
-
-                  <a href="{{ route('password.request') }}" class="forget">Forget Password</a>
-                 </div>
+                <input type="submit" value="Login" class="form-control btn-block">
+            
         </form>
         </div>
         
@@ -161,33 +150,29 @@ letter-spacing: 2px;
      
             <form action="{{ route('register') }}" method="POST">
             @csrf
-                <div class="form-group mb-2">
-                    <label> Full  Name <span class="req">*</span></label>
+                <div class="form-group my-4">
                     <input type="text"  placeholder="Full name" name="name" value="{{ old('name')}}" required autofocus class="form-control"/>
     
                     </div>
              
-                <div class="form-group mb-2">
-                <label>  Email <span class="req">*</span></label>
+                <div class="form-group my-4">
                 <input type="email"  placeholder="Email" name="email" value="{{ old('email')}}" required autofocus class="form-control"/>
 
                 </div>
          
             
-                <div class="form-group mb-2">
-                  <label>  Password <span class="req">*</span></label>
+                <div class="form-group my-4">
                   <input type="password" name="password" required autocomplete="current-password" class="form-control" placeholder="Password" />
 
                 </div>
 
-                <div class="form-group mb-2">
-                    <label>Confirm  Password <span class="req">*</span></label>
-                    <input type="password" name="password_confirmation" required autocomplete="current-password" class="form-control" placeholder="Re-type Password" />
+                <div class="form-group my-4">
+                    <input type="password" name="password_confirmation" required autocomplete="current-password" class="form-control" placeholder="Confirm  Password" />
   
                   </div>
-              
+                  <label> <input type="checkbox" name="remember" id="checkbox"/> &nbsp; I aggree with all the <a href="">term & conditions</a></label> 
+                  <input type="submit" value="Singup" class="form-control btn-block">
 
-                <input type="submit" value="SignUp">
                
         </form>
         </div>
@@ -197,7 +182,7 @@ letter-spacing: 2px;
 
 
         </div>
-        <div class="col-md-6 offset-md-1 text-center login">
+        <div class="col-md-7 offset-md-1 text-center login order-md-2 order-1 mb-5  mb-md-0">
             <h2>Welcome To Sommerville
                 <br>
                 Communication
@@ -208,44 +193,6 @@ letter-spacing: 2px;
     </div>
 </div>
 
-
-
-
-{{-- 
-
-<form method="POST" action="{{ route('login') }}">
-    @csrf
-
-    <div>
-  <label>Email<span class="text-danger">*</span></label>
-        <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
-        <input type="text" class="">
-    </div>
-
-    <div class="mt-4">
-        <x-jet-label for="password" value="{{ __('Password') }}" />
-        <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="current-password" />
-    </div>
-
-    <div class="block mt-4">
-        <label for="remember_me" class="flex items-center">
-            <x-jet-checkbox id="remember_me" name="remember" />
-            <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-        </label>
-    </div>
-
-    <div class="flex items-center justify-end mt-4">
-        @if (Route::has('password.request'))
-            <a class="underline text-sm text-gray-600 hover:text-gray-900" href="">
-                {{ __('Forgot your password?') }}
-            </a>
-        @endif
-
-        <x-jet-button class="ml-4">
-            {{ __('Log in') }}
-        </x-jet-button>
-    </div>
-</form> --}}
 
 
 
@@ -289,7 +236,7 @@ event.currentTarget.className += " active";
 <script>
     // Get the element with id="defaultOpen" and click on it
     document.getElementById("defaultOpen").click();
-    </script
+    </script>
       @endsection
 
 

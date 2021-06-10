@@ -47,6 +47,11 @@
             </div>
           </div>
         </div>
+        <div class="text-center sv-feature-product-more mt-5">
+          <a href="{{ route('appointment') }}">
+            <p>Start your repair <i class="fas fa-chevron-right"></i></p>
+          </a>
+          </div>
       </div>
       
       <div class="container mt-5 ">

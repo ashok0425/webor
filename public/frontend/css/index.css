@@ -96,6 +96,7 @@ a:hover{
     , #ce1160 0%, #b63f81 100%);
     color:var(--white);
     padding:1rem 0;
+    transition: all .3s ease-in-out;
 }
 
 .mini-nav-hamburger {
@@ -332,18 +333,15 @@ transition: all .5s ease-in-out;
   padding: 0 20px;
 }
 
-.sv-what-we-do-img {
-  height: 200px;
+.sv-what-we-do-img{
+  text-align: center;
 }
-
 .sv-what-we-do-img img {
-  height: 100%;
-  width: 100%;
-  object-fit: contain;
+  width: 50%;
+  margin: auto;
 }
 
 .sv-what-we-do-text h3 {
-  width: 80%;
   text-align: center;
   margin: 0 auto;
   font-weight: 400;
@@ -594,16 +592,12 @@ transform: scale(1.069);
 }
 
 
-.sv-footer-top-left {
-  flex: 0 0 auto;
-  height: 150px;
-  width: 150px;
-}
+
 
 .sv-footer-top-left img {
   height: 100%;
   width: 100%;
-  object-fit: contain;
+  padding-top: 2rem;
 }
 
 .sv-footer-top-right p {
@@ -648,16 +642,13 @@ transform: scale(1.069);
   color: #000;
 }
 
-.sv-footer-subscribe {
+.sv-footer-subscribe form{
   display: flex;
-  position: relative;
 }
 
 .sv-footer-subscribe input[type="submit"] {
-  position: absolute;
+margin-left: -20px;
   border: none;
-  top: 0;
-  right: 0px;
   background: var(--brand-two);
   color: #fff;
   padding: 7px 14px;
@@ -666,9 +657,6 @@ transform: scale(1.069);
   outline: none;
 }
 
-.sv-footer-subscribe-email {
-  width: 100%;
-}
 
 .sv-footer-subscribe-email input {
   width: 100%;
@@ -679,7 +667,9 @@ transform: scale(1.069);
   border-radius: 25px;
   outline: none;
 }
-
+.sv-footer-copyright-right a{
+  color: var(--brand-two);
+}
 /* search box  */
 
 
@@ -757,6 +747,22 @@ color: rgb(75, 74, 74);
 }
 
 @media screen and (max-width: 768px) {
+  .expertise .sv-what-we-do-text{
+    text-align: center;
+  }
+  .sv-what-we-do-title{
+    text-align:center;
+  }
+  .sv-what-we-do-title h2{
+    font-size: 2.3rem;
+    font-weight: 600;
+    text-align:center;
+  }
+  .sv-caresoul-wrapper {
+    height: calc(100vh - 274px);
+    position: relative;
+    color: #000;
+  }
   .sv-navbar-right {
     display: none !important;
   }
@@ -775,7 +781,10 @@ color: rgb(75, 74, 74);
   .sv-caresoul-text h2 {
     font-size: 50px;
   }
-
+  .sv-caresoul-text{
+    top: 40%;
+    left: 15%;
+  }
   /* top feature */
 
   .sv-why-work-desc {
@@ -837,6 +846,26 @@ color: rgb(75, 74, 74);
     max-width: 15px!important;
 }
 @media screen and (max-width: 576px) {
+.buy-sell .features_img{
+  padding: 11% 2% 5% 5%!important;
+
+}
+  .expertise .sv-what-we-do-text h3{
+    text-align: center!important;
+    margin: 0 !important;
+    margin-bottom: .6rem!important;
+    }
+    .expertise  .col-md-2{
+max-width: 50%;
+margin: auto;
+text-align: center;
+    }
+  .sv-caresoul-wrapper {
+    height: 40vh;
+    margin-top: 5rem;
+    position: relative;
+    color: #000;
+  }
   /* caresoul */
  
   /* what we do */

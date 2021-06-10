@@ -4,13 +4,7 @@
     @push('style')
         <style>
 
-.single .sv-footer-subscribe input[type="submit"] {
-  
-  right: 120px;
 
-  padding: 8px 14px;
-
-}
 .single li{
     list-style-type: disc;
 }

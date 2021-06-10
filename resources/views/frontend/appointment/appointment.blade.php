@@ -6,13 +6,7 @@
     padding-right: 20px;
 
 }
-.sv-footer-subscribe input[type="submit"] {
-  
-    right: 10px;
 
-    padding: 9px 14px;
- 
-}
   /* storage section */
 .buttongroup label {
 padding: 6px 12px;
@@ -281,6 +275,21 @@ margin-top: 1rem;
                 <div class="sv-repair-appointment-title">
                   <h3>Your Appointment Shedule</h3>
                 </div>
+
+                <div class="sv-repair-device-option-group">
+                  <div class="sv-repair-device-option-title">
+                    Select Store
+                  </div>
+                  <div class="form-group">
+    
+                  <select name="store" id="repair-deivce-brand" class="   abc" data-text="store" required="required">
+                    <option value="1"></option>
+                    <option value="2"></option>
+
+                  </select>
+                </div>
+    
+                </div>
                <!-- each group -->
     <div class="sv-repair-appointment-group">
       <div class="sv-repair-appointment-group-title">
@@ -297,7 +306,7 @@ margin-top: 1rem;
      Time
           </div>
           <div class="sv-repair-appointment-group-input form-group" >
-              <input id="txtdate" type="time" name="time" required="required">
+              <input id="txtdate" type="time" name="time" required="required" min="{{ time() }}" >
       
           </div>
         </div>

@@ -118,10 +118,10 @@
         <div class="sv-footer-bottom">
           <div class="sv-footer-copyright">
             <div class="sv-footer-copyright-left">
-              <span>&copy 2020 Something pvt ltd</span>
+              <span>&copy {{ date('Y') }} Somervillecommunication Pvt Ltd</span>
             </div>
             <div class="sv-footer-copyright-right">
-              <span>Desigend and Develop by <a href="https://falcontechnepal.com">Falcontechnepal Pvt Ltd</a></span>
+              <span>Created by <a href="https://falcontechnepal.com">Falcontechnepal Pvt Ltd</a></span>
             </div>
           </div>
         </div>

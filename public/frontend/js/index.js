@@ -3,8 +3,9 @@ const list = document.querySelector(".sv-mini-navbar-menu-left");
 
 menu.addEventListener("click", function () {
   if (list.style.display == "none") {
-    console.log("Asmita");
+  
     list.style.display = "inline-block";
+    
   } else {
     list.style.display = "none";
   }
