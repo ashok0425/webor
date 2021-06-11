@@ -45,7 +45,7 @@
 </div>
 
             </div>
-            <div class="col-md-4 offset-md-2">
+            <div class="col-md-4 offset-md-2 mt-md-0 mt-3">
               <p><span><i class="fas fa-map-marker-alt"></i></span> &nbsp; &nbsp; {{ $contact->address2 }}</p>
               <p><span><i class="fas fa-envelope"></i></span> &nbsp; &nbsp; {{ $contact->email2 }}</p>
               <p><span><i class="fas fa-phone-alt"></i></span> &nbsp; &nbsp; {{ $contact->phone2 }}</p>

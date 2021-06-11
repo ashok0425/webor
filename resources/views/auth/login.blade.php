@@ -72,7 +72,9 @@ padding: 0;
             color: var(--brand-two)
         }
 
-
+.term{
+  color:var(--brand-two);
+}
       </style>
 
       <div class="bg_img " style="width: 100%;
@@ -170,7 +172,7 @@ padding: 0;
                     <input type="password" name="password_confirmation" required autocomplete="current-password" class="form-control" placeholder="Confirm  Password" />
   
                   </div>
-                  <label> <input type="checkbox" name="remember" id="checkbox"/> &nbsp; I aggree with all the <a href="">term & conditions</a></label> 
+                  <label> <input type="checkbox" name="remember" id="checkbox" required /> &nbsp; I aggree with all the <a href="{{ route('term') }}" class="term">Term & conditions</a></label> 
                   <input type="submit" value="Singup" class="form-control btn-block">
 
                
@@ -187,7 +189,7 @@ padding: 0;
                 <br>
                 Communication
             </h2>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nulla autem beatae velit accusantium. Voluptas alias porro perferendis a in quia!</p>
+            <p>Feel Free to login try our service</p>
         </div>
         
     </div>

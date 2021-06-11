@@ -220,7 +220,7 @@ span.req{
   border: none;
   padding: 15px 60px;
   border-radius: 50px;
-  background: var(--brand-three);
+  background: var(--brand-two);
 
 }
 .sv-caresoul-btn button a{
@@ -367,7 +367,7 @@ margin-bottom: .6rem!important;
 }
 
 .sv-start-repair-img {
-  height: 300px;
+  height: 200px;
   margin-bottom: .5rem;
 
 }
@@ -747,8 +747,9 @@ color: rgb(75, 74, 74);
 }
 
 @media screen and (max-width: 768px) {
-  .expertise .sv-what-we-do-text{
+  .sv-what-we-do-text{
     text-align: center;
+    margin-top: -1.8rem!important;
   }
   .sv-what-we-do-title{
     text-align:center;
@@ -846,6 +847,9 @@ color: rgb(75, 74, 74);
     max-width: 15px!important;
 }
 @media screen and (max-width: 576px) {
+  #demo-2 input[type=search]::placeholder{
+    font-size: .7rem;
+  }
 .buy-sell .features_img{
   padding: 11% 2% 5% 5%!important;
 

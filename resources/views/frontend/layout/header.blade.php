@@ -19,8 +19,8 @@
      
       <!-- right section -->
       <ul class="d-flex sv-mini-navbar-menu-right ">
-        <li> <form id="demo-2" class="p-0 m-0">
-          <input type="search" placeholder="Search">
+        <li> <form id="demo-2" class="p-0 m-0" action="{{ route('search') }}">
+          <input type="search" placeholder="Type and hit enter" name="product" autocomplete="off">
         </form></li>
         <li><a href="{{ route('cart') }}" class="shopping">
           

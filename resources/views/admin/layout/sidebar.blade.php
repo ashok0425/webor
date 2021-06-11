@@ -30,6 +30,11 @@
       <i class="fas fa-copy" ></i> <span class="align-middle">Coupon</span>
     </a>
             </li>
+            <li class="sidebar-item <?php  echo PAGE=='time'?'active':'' ?>">
+                <a class="sidebar-link" href="{{route('admin.time')}}">
+      <i class="fas fa-clock" ></i> <span class="align-middle">Time</span>
+    </a>
+            </li>
             <li class="sidebar-header">
                 Manage Device
             </li>

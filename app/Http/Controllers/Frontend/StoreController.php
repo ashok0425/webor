@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\DB;
 class StoreController extends Controller
 {
     public function allProduct(){
-        $product=Product::orderBy('id','desc')->get();
+        $product=Product::where('status',1)->orderBy('id','desc')->get();
         $device=Category::orderBy('id','desc')->get();
         $brand=Subcategory::orderBy('id','desc')->get();
         $space=Productvariation::orderBy('id','desc')->select('variation')->groupBy('variation')->get();
@@ -81,7 +81,7 @@ $cat=DB::select($category_all);
     $data='';
     foreach($cat as $item){
 
-$data.=	"<div class='col-md-3 col-sm-4 col-6'><a href='".route('product.detail',['id'=>$item->id,'name'=>$item->name])."' class='swiper-slide sv-feature-product-box m-2'><div class='sv-feature-product-img'><img src='".asset($item->image)."'  class='img-fluid' /></div><div class='sv-feature-product-desc'>
+$data.=	"<div class='col-md-4 col-sm-4 col-6'><a href='".route('product.detail',['id'=>$item->id,'name'=>$item->name])."' class='swiper-slide sv-feature-product-box m-2'><div class='sv-feature-product-img'><img src='".asset($item->image)."'  class='img-fluid' /></div><div class='sv-feature-product-desc'>
   <p class='sv-feature-product-name'> $item->name </p>  <p class='sv-feature-product-price'>";
   if(isset($request->space )){
   
@@ -99,5 +99,16 @@ return response()->json($data);
 
 
   }
+
+
+public function search(Request $request){
+  $product=Product::where('name','like','%'.$request->product.'%')->where('status',1)->get();
+  $device=Category::orderBy('id','desc')->get();
+  $brand=Subcategory::orderBy('id','desc')->get();
+  $space=Productvariation::orderBy('id','desc')->select('variation')->groupBy('variation')->get();
+
+  return view('frontend.store',compact('product','device','brand','space'));
+}
+
 
 }

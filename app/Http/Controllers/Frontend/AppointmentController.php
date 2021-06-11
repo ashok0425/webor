@@ -9,9 +9,13 @@ use App\Models\Category;
 use App\Models\Subcategory;
 use App\Models\Modal;
 use App\Models\Part;
+use App\Models\Time;
+
 use App\Models\ApponitmentDetail;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Carbon;
+use Carbon\Carbon as CarbonCarbon;
+use Illuminate\Support\Facades\DB;
 class AppointmentController extends Controller
 {
     public function index(){
@@ -83,7 +87,7 @@ class AppointmentController extends Controller
 
 
         ]);
-        try {
+        // try {
             $appo=new Apponitment;           
      
             $appo->name=$request->name;
@@ -93,16 +97,19 @@ class AppointmentController extends Controller
             $appo->date=$request->date;
             $appo->total=$request->price;
             $appo->time=$request->time;
+            $appo->store=$request->store;
+
 
             if($appo->save()){
             $appoD=new ApponitmentDetail;           
-                    $appoD->device=$request->device;
-                    $appoD->brand=$request->brand;
-                    $appoD->modal=$request->modal;
-                    $appoD->part=$request->part;
+                    $appoD->device=DB::table('categories')->where('id',$request->device)->value('category');;
+                    $appoD->brand=DB::table('subcategories')->where('id',$request->brand)->value('subcategory');
+                    $appoD->appointment_id=$appo->id;
+                    $appoD->modal=DB::table('modals')->where('id',$request->model)->value('modal');
+                    $appoD->part=DB::table('parts')->where('id',$request->part)->value('part');
                     $appoD->price=$request->price;
                     $appoD->msg=$request->msg;
-
+                    $appoD->save();
 
 
                 $notification=array(
@@ -121,7 +128,7 @@ class AppointmentController extends Controller
             }
             
            
-        } catch (\Throwable $th) {
+        // } catch (\Throwable $th) {
             $notification=array(
                 'alert-type'=>'error',
                 'messege'=>'Something went wrong.Please try again later',
@@ -129,7 +136,7 @@ class AppointmentController extends Controller
              );
              return redirect()->back()->with($notification);
         
-        }
+        // }
     }
 
 
@@ -200,5 +207,23 @@ class AppointmentController extends Controller
       
     }
 
+public function time(Request $request){
+    // return Carbon::parse(today());
+    if(Carbon::parse($request->date)==today()){
+       $time=Time::where('times','>=',date('H:i:s'))->get();
+       
+
+    }else{
+        $time=Time::all();
+
+    }
+    $data='';
+    
+    foreach ($time as  $value) {
+$data.="<option value='".$value->times."'>$value->times $value->unit</option>";
+        
+    }
+    return response()->json($data );
+}
 
 }

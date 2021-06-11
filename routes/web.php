@@ -17,7 +17,7 @@ use App\Models\Subscriber;
 
 
 
-Route::middleware(['auth:', 'verified'])->get('/', function () {
+Route::middleware(['auth:sanctum', 'verified'])->get('/', function () {
     return view('frontend.index');
 })->name('dashboard');
 
@@ -38,18 +38,20 @@ Route::get('/profile/logout','Frontend\AuthController@destory')->name('profile.l
 
 // book appointment 
 Route::get('/appointment','Frontend\AppointmentController@index')->name('appointment');
+
 Route::get('/repair/{device}','Frontend\AppointmentController@repair')->name('repair.device');
 Route::get('repair/{device}','Frontend\AppointmentController@repair')->name('repair.device');
 
 Route::get('loaddata/{table}/{id}/{option1?}/{option2?}','Frontend\AppointmentController@loadData');
 Route::get('loadprice/{id}','Frontend\AppointmentController@loadPrice');
 Route::post('appointment/store','Frontend\AppointmentController@store')->name('appointment.store');
-Route::get('/appointment/list','Frontend\AppointmentController@history')->name('appointment.history');
+// Route::get('/appointment/list','Frontend\AppointmentController@history')->name('appointment.history');
 Route::get('/appointment/list/show/{id}','Frontend\AppointmentController@show')->name('appointment.show');
-
+Route::get('/loadtime/','Frontend\AppointmentController@time');
 // product store
 Route::get('/store','Frontend\StoreController@allProduct')->name('store');
 Route::get('/filterproduct/ajax','Frontend\StoreController@filterProductAjax');
+Route::get('/search/product/list','Frontend\StoreController@search')->name('search');
 
 
 //  contact page
@@ -72,7 +74,7 @@ Route::post('/subscriber/store','Frontend\NewsletterController@store')->name('su
 
 
 
-Route::middleware('auth')->group(function(){
+Route::middleware('auth:sanctum')->group(function(){
 
 
 
@@ -112,5 +114,19 @@ Route::get('orders/show/{id}','Frontend\OrderController@show')->name('order.show
 // Blog
 Route::get('/blog','Frontend\BlogController@index')->name('blog');
 Route::get('/blog/single/{id}','Frontend\BlogController@single')->name('blog.single');
+// pages
+Route::get('/about-us',function(){
+return view('frontend.about');
+})->name('about');
 
-// Route::post('/loadprice/{id}','Frontend\BlogController@loadPrice');
+Route::get('/privacy-policy',function(){
+    return view('frontend.policy');
+    })->name('policy');
+
+ Route::get('/term-conditions',function(){
+        return view('frontend.term');
+        })->name('term');
+
+Route::get('/price-payment',function(){
+            return view('frontend.about');
+            })->name('price');

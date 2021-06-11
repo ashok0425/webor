@@ -124,6 +124,21 @@ Route::get('/coupon/deactive/{id}/{table}','backend\CouponController@deactive')-
 Route::get('/coupon/delete/{id}/{table}','backend\CouponController@destroy')->name('coupon.delete');
 
 
+
+// coupon
+Route::get('/time','backend\TimeController@index')->name('time');
+Route::get('/time/create','backend\TimeController@create')->name('time.create');
+Route::post('/time/store','backend\TimeController@store')->name('time.store');
+Route::get('/time/edit/{id}','backend\TimeController@edit')->name('time.edit');
+Route::post('/time/update','backend\TimeController@update')->name('time.update');
+Route::get('/time/show/{id}','backend\TimeController@show')->name('time.show');
+Route::get('/time/active/{id}/{table}','backend\TimeController@active')->name('time.active');
+Route::get('/time/deactive/{id}/{table}','backend\TimeController@deactive')->name('time.deactive');
+Route::get('/time/delete/{id}/{table}','backend\TimeController@destroy')->name('time.delete');
+
+
+
+
 // Blog Catgory
 Route::get('/blogcategory','backend\BlogcategoryController@index')->name('blogcategory');
 Route::get('/blogcategory/create','backend\BlogcategoryController@create')->name('blogcategory.create');

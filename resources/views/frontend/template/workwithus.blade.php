@@ -17,8 +17,8 @@
             </div>
             <div class="sv-why-work-box-desc">
               <p>
-                No worries, we’ll guide you along the way. We repair all model
-                of different companies
+                 We are a team of professionals with staff trained and knowledgeable on the finding best solutions for your problem.
+                We are one of the most trustworthy repair shops in Massachusetts.
               </p>
             </div>
           </div>
@@ -33,8 +33,7 @@
             </div>
             <div class="sv-why-work-box-desc">
               <p>
-                No worries, we’ll guide you along the way. We repair all model
-                of different companies
+                We are not limited by any brands or companies and provide repair service to any phone model. Additionally, we provide an extensive range of repairs for different issues as well.
               </p>
             </div>
           </div>
@@ -49,8 +48,7 @@
             </div>
             <div class="sv-why-work-box-desc">
               <p>
-                No worries, we’ll guide you along the way. We repair all model
-                of different companies
+                We provide an accurate estimation of repairs and don’t charge unusual fees for simple solutions. We are devoted to providing the best solutions to everyone in need and not break their bank.
               </p>
             </div>
           </div>
@@ -65,8 +63,7 @@
             </div>
             <div class="sv-why-work-box-desc">
               <p>
-                No worries, we’ll guide you along the way. We repair all model
-                of different companies
+                Our in-house experts and repair veterans believe in saving time for both customers and ourselves. Therefore we work to ensure fast and convenient repair service to our customers. 
               </p>
             </div>
           </div>

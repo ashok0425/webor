@@ -17,7 +17,7 @@
           <div class="sv-start-repair-box">
             <a href="{{ route('repair.device',['device'=>'mobile']) }}">
             <div class="sv-start-repair-img">
-              <img src="{{ asset('frontend/img/index/startrepair/iphone.png')}}" alt="spmerville repair" />
+              <img src="{{ asset('tablet.png')}}" alt="spmerville repair" />
             </div>
             <div class="text-center sv-start-repair-text">
               <h3>Mobile</h3>
@@ -30,7 +30,7 @@
             <a href="{{ route('repair.device',['device'=>'tablet']) }}">
 
             <div class="sv-start-repair-img">
-              <img src="{{ asset('frontend/img/index/startrepair/ipad.png')}}" alt="spmerville repair" />
+              <img src="{{ asset('mobile.png')}}" alt="spmerville repair" />
             </div>
             <div class="text-center sv-start-repair-text">
               <h3>Tablet</h3>

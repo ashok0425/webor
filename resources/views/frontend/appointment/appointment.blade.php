@@ -296,7 +296,7 @@ margin-top: 1rem;
        Date
       </div>
       <div class="sv-repair-appointment-group-input form-group">
-          <input id="txtdate" type="text" name="date" required="required">
+          <input id="txtdate" type="text" name="date" required="required" autocomplete="off">
   
       </div>
     </div>
@@ -306,7 +306,9 @@ margin-top: 1rem;
      Time
           </div>
           <div class="sv-repair-appointment-group-input form-group" >
-              <input id="txtdate" type="time" name="time" required="required" min="{{ time() }}" >
+          <select name="time" id="" class="form-control times" >
+            
+          </select>
       
           </div>
         </div>
@@ -377,7 +379,6 @@ margin-top: 1rem;
             </div>
           </div>
         </div>
-
 
 
 @endsection
@@ -526,5 +527,26 @@ loadprice($id);
       }
     })
   }
+
+
+  $('#txtdate').on('change',function(){
+    let date=$(this).val();
+      $.ajax({
+      url:'{{url('loadtime')}}/',
+      DataType:'json',
+      type:'GET',
+      data:{date:date},
+      beforeSend:function(){
+        $('.loading').css('display','block')
+        
+      },
+      success:function(data){
+       $('.times').html(data)
+      },
+      complete:function(){
+        $('.loading').css('display','none')
+      }
+    })
+  })
   </script>
 @endpush

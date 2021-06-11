@@ -23,11 +23,13 @@
                 </div>
                 <div class="sv-footer-bottom-desc">
                   <ul>
-                    <li><a href="#">About us</a></li>
-                    <li><a href="#">Contact us</a></li>
-                    <li><a href="#">My Account</a></li>
-                    <li><a href="#">Cart</a></li>
-                    <li><a href="#">Terms & Condition</a></li>
+                    <li><a href="{{ route('about') }}">About us</a></li>
+                    <li><a href="{{ route('contact') }}">Contact us</a></li>
+                    <li><a href="{{ route('profile') }}">My Account</a></li>
+                    <li><a href="{{ route('cart') }}">Cart</a></li>
+                    <li><a href="{{ route('term') }}">Terms & Condition</a></li>
+                    <li><a href="{{ route('policy') }}">Privacy Policy</a></li>
+
                   </ul>
                 </div>
               </div>
@@ -81,7 +83,7 @@
                 </div>
                 <div class="sv-footer-bottom-desc">
                   <ul>
-                    <li><a href="#">Receive coupnes and other offers</a></li>
+                    <li><a href="#">Receive coupon and other offers</a></li>
                     <li class="sv-footer-subscribe">
                       <form action="{{ route('subscriber.store') }}" method="POST">
                         @csrf

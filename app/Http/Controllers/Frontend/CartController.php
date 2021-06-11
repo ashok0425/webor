@@ -14,7 +14,9 @@ class CartController  extends Controller
     
 
     public function store(Request $request){
- 
+      if(Session::has('coupon')){
+        session()->forget('coupon');
+       }
        $request->validate([
            'pid'=>'required'
        ]);
@@ -35,7 +37,7 @@ class CartController  extends Controller
 
     $color=ProductColor::find($request->color);
     $size=Productvariation::find($request->storage);
-    $product=Productvariation::find($request->pid);
+    $product=Product::find($request->pid);
 
         if(isset($request->color)){
           $cart->color=$color->color;

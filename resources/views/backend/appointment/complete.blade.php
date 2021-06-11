@@ -15,7 +15,6 @@
                 <tr>
                     <th>#</th>
                     <th>Full name</th>
-                    <th>Email</th>
                     <th>Phone</th>
                     <th>Date</th>
                     <th>Time</th>
@@ -36,7 +35,6 @@
                         <td>{{$loop->iteration}}</td>
                         <td>{{$item->name}}</td>
 
-                        <td>{{$item->email}}</td>
                         <td>{{$item->phone}}</td>
                         <td>{{$item->date}}</td>
                         <td>{{$item->time}}</td>

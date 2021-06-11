@@ -51,7 +51,7 @@
             <label ><input type="checkbox" value="{{ $item->variation}}" class="selector space"> &nbsp; &nbsp;{{ $item->variation }}</label>
 
         </div>
-            
+          
         @endforeach
      </div>
      {{-- <div class="filter_data">
@@ -69,6 +69,10 @@
 </div>
     </div>
     <div class="col-md-8 col-7">
+      @if (count($product)<=0)
+          <center><div class="text-center font-weight-bold text-danger">No item found</div></center>
+      @else 
+     
         <div class="row product_grid">
 
         @foreach ($product as $item)
@@ -87,7 +91,7 @@
 
         @endforeach
     </div>
-     
+    @endif
     </div>
 </div>
 </div>

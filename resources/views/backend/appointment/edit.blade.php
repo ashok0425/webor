@@ -80,7 +80,7 @@
                        Model
                     </th>
             <th>
-                price
+                price ({{ __getPriceunit() }})
             </th>
                 </tr>
             </thead>

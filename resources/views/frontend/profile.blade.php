@@ -136,7 +136,7 @@
         </div>
      
          <button class="tablinks " onclick="openprofile(event, 'Profile')" id="defaultOpen" >Profile</button>
-         <button class="tablinks" onclick="openprofile(event, 'appointment')" id="defaultOpen" >Appointment History</button>
+         {{-- <button class="tablinks" onclick="openprofile(event, 'appointment')" id="defaultOpen" >Appointment History</button> --}}
         <button class="tablinks" onclick="openprofile(event, 'Password')">Change Password</button>
         <button class="tablinks" onclick="openprofile(event, 'Order')">Order History</button>
         
@@ -222,7 +222,7 @@
         </div>
   
             </div>
-{{-- apointment section tab --}}
+{{-- apointment section tab
 
 <div id="appointment" class="tabcontent " >  @php
   if(Auth::check()){
@@ -289,7 +289,7 @@
 
              </div>
               
-            </div>
+            </div> --}}
 
 
 
