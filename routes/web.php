@@ -85,11 +85,12 @@ Route::get('paypal/checkout-cancel', 'Frontend\PayPalController@cancelPage')->na
 // Add to cart
 Route::post('/cart/store','Frontend\CartController@store')->name('addtocart');
 Route::get('/cart','Frontend\CartController@index')->name('cart');
-Route::get('/cart/delete/{id}','Frontend\CartController@destroy')->name('cart.remove');
-Route::post('/cart/update','Frontend\CartController@update')->name('cart.update');
+Route::get('/cart/delete/{id}','Frontend\CartController@destroy')->name('cartremove');
 Route::get('/checkout','Frontend\CartController@checkout')->name('checkout');
 Route::post('/coupon','Frontend\CartController@coupon')->name('coupon');
-Route::get('remove-coupon','Frontend\CartController@CouponRemove')->name('remove-coupon');
+Route::get('cartqty/{val}/{id}/{price}','Frontend\CartController@update');
+
+Route::get('remove-coupon','Frontend\CartController@CouponRemove')->name('couponremove');
 
 
 

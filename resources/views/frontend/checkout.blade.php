@@ -1,162 +1,180 @@
 @extends('frontend.layout.master')
-@section('content')
+<style>
+    /* storage section */
+.buttongroup label {
+	padding: 6px 12px;
+	cursor: pointer;
+	transition: all 0.2s;
+}
 
+.buttongroup label {
+margin-right: 3rem;
+}
+
+
+
+/* Hide the radio button */
+input[name='payment'] {
+	display: none;
+}
+/* The checked buttons label style */
+input[name='payment']:checked + label {
+  border: 3px solid var(--brand-two);
+
+}
+.form-control{
+	box-shadow: none!important;
+	outline: none!important;
+	border-radius: 0!important;
+}
+.form-control:focus{
+	box-shadow: none!important;
+	outline: none!important;
+}
+.sub{
+	background:var(--brand-two);
+	color: #fff;
+	border:0;
+	padding-top: .7rem;
+	padding-bottom: .7rem;
+
+	border-radius: 100px;
+}
+.pay{
+	font-family: 'Poppins';
+	font-weight: 600;
+	margin: 1rem;
+	font-size: 1.2rem;
+}
+</style>
+@section('header')
+<section class="section-pagetop bg-gray ">
+    <div class="container">
+        <h2 class="title-page">Checkout</h2>
+    </div> <!-- container //  -->
+    </section>
+@endsection
+@section('content')
 @php
+$cart=DB::table('carts')->where('uid',Auth::user()->id)->get();
 $setting = DB::table('websites')->first();
 $charge = $setting->shipping_charge; 
 $vat = $setting->vat; 
 @endphp
+@php
+$grandtotal=0
+@endphp
+            @foreach($cart as $row)
+@php
+    $grandtotal+=$row->qty*$row->price;
 
-<link rel="stylesheet" type="text/css" href="{{ asset('frontend/cart_styles.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ asset('frontend/responsive.css') }}">
-	<!-- Cart -->
+@endphp
+@endforeach
 
-	<div class="pb-5">
-	
-		<div class="container mt-5">
-	
+
+
+<section class="section-content padding-y mt-5">
+    <div class="container" style="max-width: 720px;">
+    <form action="{{ route('payment.store') }}" method="POST">
+        @csrf
+                <input type="hidden" name="total" value="@if(Session::has('coupon')) 
+                {{ ___getPriceafterVat(Session::get('coupon')['balance'],$vat,$charge)  }} 
+                @else  
+                {{ ___getPriceafterVat($grandtotal,$vat,$charge)  }} 
+                @endif">
+
+                @if(Session::has('coupon'))
+                <input type="hidden" name="coupon" value="{{ Session::get('coupon')['name'] }}">
+                <input type="hidden" name="coupon_value" value="{{ Session::get('coupon')['discount'] }}">
+
+                @else 
+
+                @endif
+                <input type="hidden" name="vat" value="{{ $vat }}">
+                <input type="hidden" name="charge" value="{{ $charge }}">
+                <input type="hidden" name="cart_value" value="{{ $grandtotal }}">
+
+
+    <div class="card mb-4 shadow">
+      @if ($errors->any())
+      <div class="alert alert-danger">
+          <ul>
+              @foreach ($errors->all() as $error)
+                  <li>{{ $error }}</li>
+              @endforeach
+          </ul>
+      </div>
+              @endif
+          <div class="card-body">
+          <h4 class="card-title mb-3">Delivery info</h4>
+    
+        <div class="form-row">
+            <div class="col form-group">
+                <label>Full name</label>
+                  <input type="text" class="form-control" required name="name">
+            </div> <!-- form-group end.// -->
+           
+        </div> <!-- form-row end.// -->
+    
+        <div class="form-row">
+            <div class="col form-group">
+                <label>Email</label>
+                  <input type="email" class="form-control" required name="email">
+            </div> <!-- form-group end.// -->
+            <div class="col form-group">
+                <label>Phone</label>
+                  <input type="text" class="form-control" required name="phone">
+            </div> <!-- form-group end.// -->
+        </div> <!-- form-row end.// -->
+    
+        <div class="form-row mt-1">
 			<div class="row">
-
-				<div class="col-lg-9">
-				
-							<ul class="cart_list">
-                              @php
-								  $grandtotal=0
-							  @endphp
-                              @foreach($cart as $row)
-							  @php
-								      $grandtotal+=$row->qty*$row->price;
-
-							  @endphp
-							 
-
-<li class="cart_item clearfix" >
-    <div class="cart_item_image text-center"><br><img src="{{asset($row->image)}} " style="width: 70px; width: 70px;" alt=""></div>
-    <div class="cart_item_info d-flex flex-md-row flex-column justify-content-between">
-        <div class="cart_item_name cart_info_col">
-            <div class="cart_item_title">Name</div>
-            <div class="cart_item_text">{{ $row->name  }}</div>
-        </div>
-        <div class="cart_item_total cart_info_col">
-            <div class="cart_item_title">Size</div>
-            <div class="cart_item_text">{{  $row->size }}</div>
-        </div>
-
-        <div class="cart_item_total cart_info_col">
-            <div class="cart_item_title">Color</div>
-            <div class="cart_item_text" style="background: {{ $row->color}};width:40px;height:20px;"></div>
-            
-        </div>
-
-        <div class="cart_item_quantity cart_info_col">
-            <div class="cart_item_title">Quantity</div> 
-
-
-       
-            <div class="cart_item_text">{{ $row->qty }}</div>
-            
-
-        </div>
-
-        
-     <div class="cart_item_total cart_info_col">
-            <div class="cart_item_title">Price</div>
-            <div class="cart_item_text">{{__getPriceunit(). $row->price }}</div>
-        </div>
-        <div class="cart_item_total cart_info_col">
-            <div class="cart_item_title">Subtotal</div>
-            <div class="cart_item_text">{{__getPriceunit(). $row->qty * $row->price}}</div>
-        </div>
-      
-    </div>
-
-
-                    
-								@endforeach
-								@php
-								$vat_amount= ($vat*$grandtotal)/100
-									
-  
-								@endphp
-                        </li>
-							</ul>
-					
-								<div class="card shadow py-3 mt-3">
-										<div class="row">
-												<div class="col-md-5 offset-md-6">
-									<h5>
-										Cart Total: {{__getPriceunit(). $grandtotal }}
-												
-									</h5>
-											</div>
-										</div>
-										
-									</div>
-									
-								</div>
-
-						<!-- Order Total -->
-					 <div class="col-lg-3">
-						<ul>
-							@if(Session::has('coupon'))
-				   <div class="text-success">Coupon ({{ Session::get('coupon')['name'] }}) Applied</div>
-							@else
-				   
-							 <h5> Have A promo code ? </h5>
-								 <form method="post" action="{{route('coupon')}}">
-									 @csrf
-									 <div class="d-flex coupon_btn">
-										 <input type="text" name="coupon" class="form-control" required="" placeholder="Enter Your Code"><input type="submit"  value="Apply" > 
-										      	
-										
-									 </div>
-								
-								 </form>
-								 @endif
-								 
-								</ul>
-				   <br>
-							 <ul class="list-group shadow">
-								 @if(Session::has('coupon'))
-								 <li class="list-group-item">Subtotal : <span style="float: right;">
-								 ${{ Session::get('coupon')['balance'] }} </span> </li>
-								  <li class="list-group-item">Coupon : ({{ Session::get('coupon')['name'] }} )
-								 <a href="{{route('remove-coupon')}}" class="btn btn-danger btn-sm"><i class="fa fa-trash text-light"></i></a>
-							  <span style="float: right;">{{ Session::get('coupon')['discount'] }}% </span> </li>
-								 @else
-								 <li class="list-group-item">Subtotal : <span style="float: right;">
-								 {{__getPriceunit().$grandtotal }} </span> </li>
-								 @endif
-								 
-								 <li class="list-group-item">Vat : <span style="float: right;">{{$vat}}% </span> </li></span> </li>
-				   
-								 <li class="list-group-item">Shiping Charge : <span style="float: right;">{{__getPriceunit().$charge}} </span> </li></span> </li>
-								 @if(Session::has('coupon'))
-								 <li class="list-group-item">Total : <span style="float: right;">{{__getPriceunit()}}{{Session::get('coupon')['balance'] + $charge+$vat_amount }} </span> </li>
-								 @else
-						 <li class="list-group-item">Total : <span style="float: right;">{{ __getPriceunit() }} {{ $grandtotal + $charge+$vat_amount  }} </span> </li>
-								 @endif
-							 
-								 
-							 </ul>
-					<br>		 
-	<div >
-		&nbsp;
-		&nbsp;
-		&nbsp;
-		<div class="checkout_btn2">
-			<a href="{{route('payment')}}"  >Procced to pay</a> 
-
+            <div class="form-group col-md-6">
+                <label>State</label>
+                <input type="text" class="form-control" name="state" required>
+              </div> <!-- form-group end.// -->
+            <div class="form-group col-md-6">
+              <label>Zip Code</label>
+              <input type="text" class="form-control" name="zip" required>
+            </div> <!-- form-group end.// -->
 		</div>
-	</div>
-					 </div> 
-     
+        </div> <!-- form-row.// -->
+        <div class="form-group">
+            <label>Adress</label>
+           <textarea class="form-control" rows="2" name="address"></textarea>
+        </div> <!-- form-group// -->  
+    
+          </div> <!-- card-body.// -->
+
+          <h3 class="px-3 pay">Payment Method</h3>
+          
+        <div class="row px-3 pb-4">
+            <div class="col-md-6">
+              <div class=" buttongroup payment">
+                <input id="paypal" type="radio" value="paypal" name="payment"    /> 
+                <label for="paypal" >    
+              <img src="{{ asset('paypal.png') }}" alt=" payment method" class="img-fluid" style="max-height: 60px;min-width:200px" >
+              </label>
+
+              </div>
             </div>
-             </div>
+            <div class="col-md-6">
+              <div class=" buttongroup payment">
+                <input id="cod" type="radio" value="cod" name="payment"  required checked /> 
+                <label for="cod" >    
+                  <img src="{{ asset('cod.png') }}" alt=" payment method" class="img-fluid" style="max-height: 60px;min-width:200px">
+              </label>
 
-					</div>
-			
+              </div>
+            </div>
+          <button class="  sub mt-4" type="submit">Checkout Now</button>
 
-
-<script src="{{ asset('public/frontend/js/cart_custom.js') }}"></script>
-@endsection
+          </div>
+        </form>
+        </div>  <!-- card .// -->
+    
+    
+    
+    </div> <!-- container .//  -->
+    </section>
+    @endsection

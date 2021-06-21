@@ -69,12 +69,12 @@
 </div>
     </div>
     <div class="col-md-8 col-7">
-      @if (count($product)<=0)
-          <center><div class="text-center font-weight-bold text-danger">No item found</div></center>
-      @else 
+   
      
         <div class="row product_grid">
-
+          @if (count($product)<=0)
+          <center><div class="text-center font-weight-bold text-danger">No item found</div></center>
+      @else 
         @foreach ($product as $item)
         <div class="col-md-4 col-12 mb-2">
 
@@ -90,8 +90,9 @@
         </div>
 
         @endforeach
-    </div>
     @endif
+
+    </div>
     </div>
 </div>
 </div>
@@ -108,9 +109,9 @@ product_filter();
     $( "#mySlider" ).slider({//price range slider
     range: true,
     min: 0,
-    max: 25000,
-    values: [ 0, 25000 ],
-    step:100,
+    max: 2500,
+    values: [ 0, 2500 ],
+    step:50,
     stop: function( event, ui ) {
 $( "#price" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
 $( "#hidden_max" ).val(ui.values[ 1 ]);
@@ -134,7 +135,7 @@ let max=$( "#hidden_max" ).val();
 let _token   = $('meta[name="csrf-token"]').attr('content');
 
       $.ajax({//aax call
-      url:'filterproduct/ajax/',
+      url:'{{url('filterproduct/ajax')}}/',
       type:"GET",
     data:{min:min,max:max,category:category,space:space,subcategory:subcategory,order:order,_token:_token},
 beforeSend:function(){

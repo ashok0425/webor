@@ -1,7 +1,7 @@
 <div class="sv-start-repair">
     <div class="container-fluid">
       <div class="sv-start-repair-wrapper">
-        <div class="py-5 text-center sv-start-repair-title">
+        <div class="sv-what-we-do-title mb-2 text-center">
           <h2>Start Your Repair</h2>
           <p>
             Somerville Communication is your local full-service iPhone, iPad, and iPod repair shop, located

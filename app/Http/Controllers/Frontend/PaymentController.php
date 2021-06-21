@@ -18,7 +18,6 @@ class PaymentController extends Controller
 
   
     public function store(Request $request)
-   
     {
       $request->validate([
         'name'=>'required',
@@ -51,10 +50,8 @@ class PaymentController extends Controller
             $data->cart_value = $request->cart;
             $data->coupon = $request->coupon;
             $data->coupon_value = $request->coupon_value;
-      
-            
             $data->status = 0;    
-          $data->save();
+            $data->save();
       
           $order_id=$data->id;
             /// Insert Shipping Table 
@@ -97,7 +94,7 @@ class PaymentController extends Controller
     }
   
   }
-    else{
+    else if($request->storage='cod'){
 
 // try {
   
@@ -152,6 +149,8 @@ class PaymentController extends Controller
   $data=DB::table('websites')->first();
   $order=DB::table('orders')->where('user_id',Auth::user()->id)->where('id',$order_id )->first();
   $ship=DB::table('shippings')->where('order_id',$order_id)->first();
+  return redirect()->route('payment.success',['code'=>$order->tracking_code]);
+
   $cart = DB::table('products')->join('carts','carts.pid','products.id')->select('products.name','products.image','carts.*')->where('uid',Auth::user()->id)->get();
 
   $set=[
@@ -176,10 +175,7 @@ class PaymentController extends Controller
       'shipping'=>$order->shipping_charge,
       'payment_type'=>$order->payment_type,
       'order_date'=>$order->created_at,
- 
-
-
-  ];
+   ];
 
   $pdf = PDF::loadView('mail.checkout', $set);
   Mail::send('mail.checkout', $set, function($message)use($set, $pdf) {
@@ -194,7 +190,6 @@ class PaymentController extends Controller
 
   }
 
-  return redirect()->route('payment.success',['code'=>$order->tracking_code]);
 
     // }
   

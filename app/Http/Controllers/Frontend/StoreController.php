@@ -81,7 +81,7 @@ $cat=DB::select($category_all);
     $data='';
     foreach($cat as $item){
 
-$data.=	"<div class='col-md-4 col-sm-4 col-6'><a href='".route('product.detail',['id'=>$item->id,'name'=>$item->name])."' class='swiper-slide sv-feature-product-box m-2'><div class='sv-feature-product-img'><img src='".asset($item->image)."'  class='img-fluid' /></div><div class='sv-feature-product-desc'>
+$data.=	"<div class='col-md-4 col-sm-12 col-12 mb-2'><a href='".route('product.detail',['id'=>$item->id,'name'=>$item->name])."' class='swiper-slide sv-feature-product-box m-2'><div class='sv-feature-product-img'><img src='".asset($item->image)."'  class='img-fluid' /></div><div class='sv-feature-product-desc'>
   <p class='sv-feature-product-name'> $item->name </p>  <p class='sv-feature-product-price'>";
   if(isset($request->space )){
   

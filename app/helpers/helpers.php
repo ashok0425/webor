@@ -26,3 +26,9 @@ function __getDifference($total1,$total2){
         return  0;
     }
     }
+
+    function ___getPriceafterVat($total,$vat,$shipping){
+        $vat_amount=($vat*$total)/100;
+        $totalsum=$vat_amount+$total+$shipping;
+        return $totalsum;
+        }

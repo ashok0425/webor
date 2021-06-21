@@ -123,6 +123,7 @@ a:hover{
 .sv-mini-navbar-menu-left li a {
   color: var(--white);
   text-transform: uppercase;
+  font-weight: 600;
 }
 
 /* right section */
@@ -135,18 +136,21 @@ a:hover{
 .shopping{
   position: relative;
 }
-.shopping span{
+.shopping span {
   position: absolute;
   width: 16px;
   height: 16px;
   border-radius: 50%;
-  background:rgb(6, 186, 241);
-  top:-11px;
-right: -10px;
-font-size: .8rem;
-text-align: center;
-z-index: 1;
-color: var(--white);
+  background: var(--brand-one);
+  top: -7px;
+  right: -9px;
+  font-size: .8rem;
+  text-align: center;
+  z-index: 1;
+  color: var(--brand-white);
+  line-height: 1.6;
+  font-weight: bold;
+  font-size: .6rem;
 }
 /* global overlay */
 .sv-mini-navbar-global-overlay {
@@ -307,16 +311,22 @@ transition: all .5s ease-in-out;
   width: 100%;
   object-fit: contain;
 }
-
+p{
+  font-weight: 300;
+font-size: 1rem!important;
+font-family: 'Poppins'!important;
+}
 /* right section */
 .sv-top-feature-box-right h3 {
   font-size: 20px;
-  color: var(--brand-one);
+  color: #000;
+font-weight: 500;
 }
 
 .sv-top-feature-box-right p {
   font-size: 15px;
-  color: var(--brand-two);
+  color: #000;
+  font-weight: 300;
 }
 
 /* new section */
@@ -324,9 +334,10 @@ transition: all .5s ease-in-out;
  .sv-what-we-do-title{
   margin-top: 3rem!important;
 }
-.sv-what-we-do-title {
+.sv-what-we-do-title h2{
   text-align: center;
   color: #000;
+  font-weight: 700;
 }
 
 .sv-what-we-do-box {
@@ -595,8 +606,8 @@ transform: scale(1.069);
 
 
 .sv-footer-top-left img {
-  height: 100%;
-  width: 100%;
+  max-height: 100%;
+  max-width: 100%;
   padding-top: 2rem;
 }
 
@@ -615,33 +626,54 @@ transform: scale(1.069);
   margin-top: 35px;
   flex: 1;
 }
+.links{
+  padding-left: 3rem;
+}
 
 .sv-footer-bottom-title h3 {
-  color: #000;
-  font-size: 18px;
-  margin-bottom: 15px;
+  font-family: "Quicksand";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 28px;
+  color: rgba(0, 0, 0, 0.87);
+  margin-bottom: 20px;
 }
 
 .footer-contact ul li {
-  display: flex;
-  align-items: center;
-  padding: 5px 0;
-  color: #000;
+  font-family: "Quicksand";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 26px;
+  color: rgba(0, 0, 0, 0.87);
+  margin-bottom: 1rem ;
+
 }
 
 .sv-footer-bottom-desc ul li{
-  margin: 1rem 0;
+  margin-bottom: 1rem ;
+
 
 }
 .sv-footer-bottom-desc ul li span {
   padding-left: 10px;
   word-break: break-all;
+
 }
 
 .sv-footer-bottom-desc ul li a {
-  color: #000;
+  font-family: "Quicksand";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 26px;
+    color: rgba(0, 0, 0, 0.87);
+    transition: all .3s ease-in-out;
 }
-
+.sv-footer-bottom-desc ul li a:hover{
+  color:var(--brand-two);
+}
 .sv-footer-subscribe form{
   display: flex;
 }
@@ -655,6 +687,7 @@ margin-left: -20px;
   border-top-right-radius: 25px;
   border-bottom-right-radius: 25px;
   outline: none;
+  z-index: 99;
 }
 
 
@@ -666,6 +699,7 @@ margin-left: -20px;
   padding: 8px 0 8px 15px;
   border-radius: 25px;
   outline: none;
+  z-index: -1;
 }
 .sv-footer-copyright-right a{
   color: var(--brand-two);
@@ -736,8 +770,21 @@ border-bottom: 2px solid #fff;
 color: rgb(75, 74, 74);
 }
 .sv-footer-social-link-right ul li .fab {
+  background: #fff;
+  padding: .5rem;
+  border-radius: 50%;
+transition: all .3s ease-in-out;
+}
+.sv-footer-social-link-right ul li .fa-twitter{
+  color: #1DA1F2;
+}
+.sv-footer-social-link-right ul li .fa-facebook{
+  color: #4267B2;
 }
 
+.sv-footer-social-link-right ul li .fa-instagram{
+  color: #C13584;
+}
 /* footer bootom */
 .sv-footer-copyright {
   padding: 20px 0;
@@ -747,6 +794,12 @@ color: rgb(75, 74, 74);
 }
 
 @media screen and (max-width: 768px) {
+  .abouts img:nth-child(1){
+    width: 100%!important;
+  }
+   .links{
+padding-left: 0;
+  }
   .sv-what-we-do-text{
     text-align: center;
     margin-top: -1.8rem!important;

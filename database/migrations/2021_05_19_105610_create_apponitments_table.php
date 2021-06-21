@@ -16,6 +16,8 @@ class CreateApponitmentsTable extends Migration
         Schema::create('apponitments', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id')->nullable();
+            $table->string('store');
+
             $table->string('name');
             $table->string('email');
             $table->string('phone');

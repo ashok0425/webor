@@ -1,7 +1,7 @@
 
     <div class="sv-user-review">
         <div class="container">
-          <div class="sv-user-review-title">
+          <div class="sv-what-we-do-title mb-2">
             <h2>Reviews</h2>
           </div>
           <div class="d-flex sv-user-review-wrapper">

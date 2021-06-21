@@ -73,12 +73,13 @@
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Accessories</th>
                     <th>Device</th>
                     <th>Brand</th>
                     <th>
                        Model
                     </th>
+                    <th>Accessories</th>
+
             <th>
                 price ({{ __getPriceunit() }})
             </th>

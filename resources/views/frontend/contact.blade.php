@@ -14,7 +14,7 @@
   }
   .contact p{
     margin-bottom: .3rem;
-    font-weight: 500;
+    font-weight: 300;
   }
 </style>
 
@@ -25,20 +25,15 @@
         <div class="container">
           <div class="text-center mt-5">
             <h4>Contact Information</h4>
-            <h6>If you require your phones to get checked and need them repaired,   then you can give us a quick <br>
-              visit or contact us in our two outlets</h6>
+            <p>If you require your phones to get checked and need them repaired,   then you can give us a quick <br>
+              visit or contact us in our two outlets</p>
           </div>
           <div class="row contact">
             <div class="col-md-4 offset-md-1">
 <p><span><i class="fas fa-map-marker-alt"></i></span> &nbsp; &nbsp; {{ $contact->address1 }}</p>
 <p><span><i class="fas fa-envelope"></i></span> &nbsp; &nbsp; {{ $contact->email1 }}</p>
 <p><span><i class="fas fa-phone-alt"></i></span> &nbsp; &nbsp; {{ $contact->phone1 }}</p>
-{{-- <p class="d-flex justify-content-evenly ">
-  <a href="{{ $contact->facebook1 }}"><i class="fab fa-facebook"></i></a>
-  <a href="{{ $contact->twitter1 }}"><i class="fab fa-twitter"></i></a>
-  <a href="{{ $contact->instagram1 }}"><i class="fab fa-instagram"></i></a>
 
-</p> --}}
 <div class="sv-contact-left-desc-text sv-contact-opening-hour">
   <p>Mon-Sat: 10:00 AM - 8:00 PM</p> 
   <p>Sun: 10:00 AM - 7:00 PM</p>
@@ -67,10 +62,10 @@
           </div>
           <div class="row">
             <div class="col-md-6">
-              <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d3593958.0912229526!2d84.13014975!3d28.39738195!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2snp!4v1623063953374!5m2!1sen!2snp" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2947.278953190651!2d-71.03040028503871!3d42.37920364188593!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e37049bd52d25f%3A0x5c465d70d9a22cff!2s376%20Chelsea%20St%2C%20Boston%2C%20MA%2002128%2C%20USA!5e0!3m2!1sen!2snp!4v1623462286865!5m2!1sen!2snp" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
             </div>
             <div class="col-md-6">
-              <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d3593958.0912229526!2d84.13014975!3d28.39738195!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2snp!4v1623063953374!5m2!1sen!2snp" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+           <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2946.947717388511!2d-71.0824679850385!3d42.38626024144011!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e370db6fdd0f97%3A0x3adb3896d415fcfd!2s52%20Broadway%2C%20Somerville%2C%20MA%2002145%2C%20USA!5e0!3m2!1sen!2snp!4v1623462357122!5m2!1sen!2snp" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
             </div>
           </div>
           <x-errormsg/>

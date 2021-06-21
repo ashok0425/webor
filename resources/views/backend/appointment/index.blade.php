@@ -19,6 +19,8 @@
                     <th>Date</th>
                     <th>Time</th>
                     <th>Total</th>
+                    <th>Store</th>
+
                     <th>IsPaid</th>
 
 
@@ -39,6 +41,8 @@
                         <td>{{$item->date}}</td>
                         <td>{{$item->time}}</td>
                         <td>{{$item->total}}</td>
+                        <td>{{$item->store}}</td>
+
 
                         <td>@if ($item->ispaid==0)
                             <div class="badge bg-warning">unpaid</div>

@@ -87,7 +87,7 @@ class AppointmentController extends Controller
 
 
         ]);
-        // try {
+        try {
             $appo=new Apponitment;           
      
             $appo->name=$request->name;
@@ -109,15 +109,17 @@ class AppointmentController extends Controller
                     $appoD->part=DB::table('parts')->where('id',$request->part)->value('part');
                     $appoD->price=$request->price;
                     $appoD->msg=$request->msg;
-                    $appoD->save();
+                  if(  $appoD->save()){
+                    $notification=array(
+                        'alert-type'=>'success',
+                        'messege'=>'Thank you for choosing us.We are happy to see you at our store',
+                       
+                     );
+                     return redirect()->back()->with($notification);
+                  }
 
 
-                $notification=array(
-                    'alert-type'=>'success',
-                    'messege'=>'Thank you for choosing us.We are happy to see you at our store',
-                   
-                 );
-                 return redirect()->back()->with($notification);
+           
             }else{
                 $notification=array(
                     'alert-type'=>'info',
@@ -128,7 +130,7 @@ class AppointmentController extends Controller
             }
             
            
-        // } catch (\Throwable $th) {
+        } catch (\Throwable $th) {
             $notification=array(
                 'alert-type'=>'error',
                 'messege'=>'Something went wrong.Please try again later',
@@ -136,7 +138,7 @@ class AppointmentController extends Controller
              );
              return redirect()->back()->with($notification);
         
-        // }
+        }
     }
 
 
@@ -220,7 +222,7 @@ public function time(Request $request){
     $data='';
     
     foreach ($time as  $value) {
-$data.="<option value='".$value->times."'>$value->times $value->unit</option>";
+$data.="<label class=' ajax_time  mx-2'><input value='".$value->times."' type='radio' class='d-none' name='time' required='required'/><span>$value->times $value->unit</span></label>";
         
     }
     return response()->json($data );

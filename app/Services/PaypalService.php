@@ -52,7 +52,7 @@ class PaypalService
                 "reference_id" => 'webmall_'. uniqid(),
                 "amount" => [
                     "value" => $order->total,
-                    "currency_code" => "US"
+                    "currency_code" => ""
                 ]
             ]],
             "application_context" => [

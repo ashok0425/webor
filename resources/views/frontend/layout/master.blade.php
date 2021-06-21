@@ -7,7 +7,9 @@
     <title>Document</title>
 
 
- 
+ {{-- google font  --}}
+ <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500&display=swap" rel="stylesheet">
    <!-- Bootstrap CSS -->
    <link
    href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
@@ -29,7 +31,7 @@
     
     <!-- custom css -->
     <link rel="stylesheet" href="{{ asset('frontend/css/index.css')}}" />
-@stack('style')
+
     <style>
      .loading{
        background: rgba(0,0,0,.4);
@@ -62,15 +64,11 @@ z-index: 9999;
   100% { transform: rotate(360deg); }
 }
 
-    </style>
-    <style>
-      input[type=number]::-webkit-inner-spin-button, 
-  input[type=number]::-webkit-outer-spin-button {  
-  
-     opacity: 1;
   
   }
   </style>
+    @stack('style')
+
   </head>
   <body>
     <div class="loading">
@@ -139,15 +137,6 @@ z-index: 9999;
   }
 @endif
 </script>
-{{-- date picker  --}}
-<script language="javascript">
-    $(document).ready(function () {
-        $("#txtdate").datepicker({
-            minDate: 0
-        });
-    });
-</script>
-
 {{-- load price using ajax according to variation --}}
 <script>
 $('.storage').click(function(){
@@ -197,12 +186,7 @@ $('.storage').click(function(){
     
     {{-- elvator zoom  --}}
     <script>
-  //     $('#zoom_01').elevateZoom({
-  //       zoomType				: "lens",
-  // lensShape : "round",
-  // lensSize    : 200
-
-  //    }); 
+ 
 
      //initiate the plugin and pass the id of the div containing gallery images
 $("#zoom_01").elevateZoom({

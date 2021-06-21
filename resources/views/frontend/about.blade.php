@@ -47,6 +47,11 @@ width: 90%;
     .row{
         margin-bottom: 1rem;
     }
+    .abouts li,.abouts p{
+        font-family: 'Poppins'!important;
+        font-weight: 300!important;
+    }
+
 </style>
  
 {{-- <div class="container"> --}}
@@ -54,7 +59,7 @@ width: 90%;
         <div class="container mt-4 abouts">
 
 <div class="row">
-    <div class="col-md-5">
+    <div class="col-md-5 p-0 m-0">
 <img src="{{asset('about1.jpg')}}" alt="" class="img-fluid"  >
     </div>
     <div class="col-md-7 ">
@@ -126,38 +131,42 @@ width: 90%;
     <div class="col-md-7 abouts">
        
         <h2>Why Work With Us? </h2>
-        <p>
+      
             <h3>
             Trustworthy, Professional, and Knowledgeable Staff
 
             </h3>
+            <p>
             We offer you the best repair service and products and guarantee an excellent customer experience on our premises. We are a team of professionals with staff trained and knowledgeable on the finding best solutions for your problem.
             We are one of the most trustworthy repair shops in Massachusetts.
         </p>
        
-        <p>
             <h3> Wide Experience</h3>
+        <p>
+
             We have been in the repair field for many years and accumulated wide experience in providing phone repair service. With our skilled repair technicians who have eye for detail and precision, we guarantee to meet your expectation and repair your device in no time.
         </p>
        
-        <p>
             <h3>
                 Extensive Range Of Repairs
             </h3>
+        <p>
+
             We are not limited by any brands or companies and provide repair service to any phone model. Additionally, we provide an extensive range of repairs for different issues as well.
         </p>
        
         
-       <p>
            <h3>Fast Service</h3>
+       <p>
+
            Our in-house experts and repair veterans believe in saving time for both customers and ourselves. Therefore we work to ensure fast and convenient repair service to our customers. 
        </p>
        
         
-        <p>
             <h3>
                 Discounted Price
             </h3>
+            <p>
 
                 We provide an accurate estimation of repairs and don’t charge unusual fees for simple solutions. We are devoted to providing the best solutions to everyone in need and not break their bank.
         </p>

@@ -1,5 +1,5 @@
 <div class="sv-footer">
-    <div class="container">
+    <div class="container-fluid">
       @php
           $footer=DB::table('websites')->first();
       @endphp
@@ -8,7 +8,7 @@
         <div class="sv-footer-top">
           <div class="row">
             <!-- each box -->
-            <div class="col-md-2">
+            <div class="col-md-2 ">
               <div class="footer-box">
                 <div class="sv-footer-top-left">
                   <img src="{{ asset($footer->image) }}" alt="" />
@@ -16,9 +16,9 @@
               </div>
             </div>
 
-            <div class="col-md-3">
-              <div class="sv-footer-bottom-box">
-                <div class="sv-footer-bottom-title">
+            <div class="col-md-2  ">
+              <div class="sv-footer-bottom-box links">
+                <div class="sv-footer-bottom-title pl-5">
                   <h3>Useful Links</h3>
                 </div>
                 <div class="sv-footer-bottom-desc">
@@ -35,7 +35,7 @@
               </div>
             </div>
 
-            <div class="col-md-4">
+            <div class="col-md-3 offset-md-1">
               <div class="sv-footer-bottom-box">
                 <div class="sv-footer-bottom-title">
                   <h3>Contact Us</h3>
@@ -76,7 +76,7 @@
               </div>
             </div>
 
-            <div class="col-md-3">
+            <div class="col-md-3 offset-md-1">
               <div class="sv-footer-bottom-box">
                 <div class="sv-footer-bottom-title">
                   <h3>Customer Service</h3>

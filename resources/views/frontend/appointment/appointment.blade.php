@@ -6,7 +6,9 @@
     padding-right: 20px;
 
 }
-
+.sv-navbar-box-desc p{
+  font-size: 1.5rem!important;
+}
   /* storage section */
 .buttongroup label {
 padding: 6px 12px;
@@ -18,7 +20,18 @@ overflow: hidden;
 .buttongroup label {
 margin-right: 3rem;
 }
-
+.ajax_time span{
+  background: var(--brand-two);
+  color:#fff;
+  padding: 4px 8px;
+  border-radius: 10px
+}
+.ajax_time input:checked + span{
+background: #e05d29;
+}
+.ajax_time span:hover{
+  color:white;
+}
 .has-error{
   position: relative;
 }
@@ -116,6 +129,18 @@ margin-top: 1rem;
 .error{
   
 }
+.shopping span {
+ 
+  line-height: 1.8;
+  font-weight: bold;
+  font-size: 1rem;
+}
+.sv-repair p{
+  font-size: 1.5rem!important;
+}
+.sv-footer-social-link-left p{
+  font-size: 1.5rem!important;
+}
 </style>
 <link rel="stylesheet" href="{{ asset('frontend/css/repair.css') }}" />
 
@@ -133,6 +158,7 @@ margin-top: 1rem;
           option than ever before, repair is close than you think
         </p>
       </div>
+     
       <div class="sv-repair-wrapper">
         
         <div class="sv-repair-device-model">
@@ -283,8 +309,8 @@ margin-top: 1rem;
                   <div class="form-group">
     
                   <select name="store" id="repair-deivce-brand" class="   abc" data-text="store" required="required">
-                    <option value="1"></option>
-                    <option value="2"></option>
+                    <option value="East Boston store">East Boston store</option>
+                    <option value="Somerville store">Somerville store</option>
 
                   </select>
                 </div>
@@ -296,7 +322,7 @@ margin-top: 1rem;
        Date
       </div>
       <div class="sv-repair-appointment-group-input form-group">
-          <input id="txtdate" type="text" name="date" required="required" autocomplete="off">
+          <input id="txtdate" type="text" name="date" required="required" autocomplete="off" value="{{today()->format('m/d/Y')}}">
   
       </div>
     </div>
@@ -305,10 +331,9 @@ margin-top: 1rem;
           <div class="sv-repair-appointment-group-title">
      Time
           </div>
-          <div class="sv-repair-appointment-group-input form-group" >
-          <select name="time" id="" class="form-control times" >
+          <div class="sv-repair-appointment-group-input form-group times" >
             
-          </select>
+        
       
           </div>
         </div>
@@ -333,7 +358,7 @@ margin-top: 1rem;
                   Full Name
                 </div>
                 <div class="sv-repair-appointment-group-input">
-                  <input type="text" placeholder="full name" name="name"  required/>
+                  <input type="text" placeholder="Full name" name="name"  required/>
                 </div>
               </div>
 
@@ -433,6 +458,14 @@ $('div.setup-panel div a.btn-primary').trigger('click');
 </script>
 
 
+{{-- date picker  --}}
+<script language="javascript">
+    $(document).ready(function () {
+        $("#txtdate").datepicker({
+            minDate: 0
+        });
+    });
+</script>
 
 
 
@@ -531,7 +564,14 @@ loadprice($id);
 
   $('#txtdate').on('change',function(){
     let date=$(this).val();
-      $.ajax({
+    time(date);
+  })
+  $(window).on('load',function(){
+    let date=$('#txtdate').val();
+    time(date);
+  })
+function time(date){
+  $.ajax({
       url:'{{url('loadtime')}}/',
       DataType:'json',
       type:'GET',
@@ -547,6 +587,6 @@ loadprice($id);
         $('.loading').css('display','none')
       }
     })
-  })
+}
   </script>
 @endpush

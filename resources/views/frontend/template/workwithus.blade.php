@@ -2,7 +2,7 @@
     <div class="container-fluid">
       <div class="sv-why-work-wrapper">
         <!-- why work title -->
-        <div class="sv-why-work-title">
+        <div class="sv-what-we-do-title mb-2">
           <h2>Why work with us ?</h2>
         </div>
         <!-- why work desc -->

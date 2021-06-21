@@ -1,4 +1,12 @@
+
 @extends('frontend.layout.master')
+@push('style')
+    <style>
+        .loading{
+            display: block;
+        }
+    </style>
+@endpush
 @section('content')
     <!-- new section -->
     <!-- caresoul section -->
@@ -35,3 +43,12 @@
 
     <div class="white-bg"></div>
 @endsection
+@push('scripts')
+<script>
+  $(window).on('load',function(){
+$('.loading').css('display','none')
+})
+
+</script>
+  
+@endpush

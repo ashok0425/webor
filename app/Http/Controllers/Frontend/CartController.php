@@ -5,6 +5,8 @@ use App\Models\Cart;
 use Illuminate\Http\Request;
 use App\Models\Productvariation;
 use App\Models\Product;
+use App\Models\Website;
+
 use App\Models\Productcolor;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -117,27 +119,34 @@ catch (\Throwable $th) {
   
       }
   
-  
-      public function update(Request $request){
-         
-          $cid= $request->cartid;
-           DB::table('carts')->where('uid',Auth::user()->id)->where('id',$cid)->update([
-               'qty'=>$request->qty
-               
+      public function update(Request $request,$val,$id,$price){
+        if(session()->has('coupon')){
+         Session::forget('coupon');
 
-           ]);
-        $notification=array(
-          'messege'=>'Product Quantity Updated',
-          'alert-type'=>'success'
-           );
-         return redirect()->back()->with($notification);
-  
-      }
-  
-  
-  
-  
-  
+        }
+          DB::table('carts')->where('uid',Auth::user()->id)->where('id',$id)->update([
+              'qty'=>$val
+          ]);
+          $total=$price*$val;
+          $cart_total=0;
+          $cart=DB::table('carts')->where('uid',Auth::user()->id)->get();
+          foreach($cart as $item){
+           $cart_total=$item->qty*$item->price;
+
+          }
+          $vat=Website::find(1);
+          $grandtotal=___getPriceafterVat($cart_total,$vat->vat,$vat->shipping_charge);
+          $data=[
+            'total'=>$total,
+            'carttotal'=>$cart_total,
+            'grandtotal'=>$grandtotal
+          ];
+       return response()->json($data);
+
+   
+     }
+ 
+ 
   
   
      public function Checkout(){
