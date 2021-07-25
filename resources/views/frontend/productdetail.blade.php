@@ -1,6 +1,11 @@
+@php
+define('PAGE','shop')
+@endphp
+
+
+
 @extends('frontend.layout.master')
 @section('content')
-<link rel="stylesheet" href="{{ asset('frontend/css/productinfo.css')}}" />
 <style>
 #gallery_01 img{border:2px solid white;}
  
@@ -76,281 +81,203 @@
   .at-share-btn-elements{
 	  margin-top:35px!important;
   }
+  .size{
+    margin: 0 10px ;
+    
+
+  }
+  .size input{
+      display: none;
+  }
+  .size input:checked + span{
+      border: 2px solid #d2a758;
+      padding: 2px 10px ;
+
+  }
 </style>
 
-<div class="sv-product-info mt-5">
-    <div class="container">
-      <form action="{{ route('addtocart') }}" method="POST">
-        @csrf
-        <input type="hidden" value="{{ $product->id }}" name="pid">
-      <div class="product-info-top">
-        <div class="sv-product-info-title">
-          <h2>{{ $product->name }} </h2>
-        </div>
-        <div class="d-flex sv-product-info-wrapper">
-          <!-- left secton -->
-          <div class="sv-product-info-left">
-            <div class="container">
-
-         <div class="row">
-           <div class="col-md-2">
-            <div id="gal1" >
- 
-          
-            
-            @foreach ($color as $item)
-            
-              <a href="#" data-image="{{asset($item->image) }}" data-zoom-image="{{asset($item->image) }}" >
-                <img id="img_01" src="{{asset($item->image) }}" class="img-fluid mb-3"/>
-              </a>
-
+<section>
+  <!-- Images banner -->
+  <div class="container py-4">
+      <div style="background-color: #D1C7CF;">
+          <div class="custom-chooseoption-grid">
+            @if ($color1)
+              <img class="custom-lookbook-resize" src="{{asset($color1)}}" alt="choose options image banner" />
                 
-            @endforeach
-            </div>
-
-           </div>
-           
-           <div class="col-md-10 border box-shadow offset-md-1" style="max-width: 300px">
-          
-              
-              <img id="zoom_01" src='{{asset($product->image) }}' data-zoom-image="{{asset($product->image) }}" width="270" class="mx-auto main_image" height="330" style="max-width: 270px"/>
-           </div>
-         </div>
-        </div>
-      </div>
-
-
-
-          <!-- right section -->
-          <div class="sv-product-info-right">
-            <div class="sv-product-info-price">
-              {{-- <p>{{ $product->short_desc }}</p> --}}
-              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Esse, ipsum quo provident voluptate beatae sequi aperiam labore fuga, vitae quam, cumque in </p>
-              @php
-                  $price=DB::table('productvariations')->where('product_id',$product->id)->first();
-              @endphp
-              <p class="mt-2">Price</p>
-              <h3><span class="Vprice">
-                @if($price)
-                  {{ __getPriceunit().number_format((float)$price->price,2) }}
-                    @else 
-                    {{ __getPriceunit().number_format((float)$product->price,2) }}
-                @endif
-                </span></h3>
-            </div>
-            {{-- <div class="sv-product-info-offers">
-              <p>Offers</p>
-              <h3>10% Dis</h3>
-            </div> --}}
-            <div class="sv-product-info-stock">
-              <p class="mb-2"> <span class="text-dark">Device : {{ $product->category }}</span></p>
-              <p> <span class="text-dark">Brand : {{ $product->subcategory }}</span></p>
-
-            </div>
-            @if (count($color)>0)
-                
-            <div class="sv-product-info-colors">
-              <p>Color</p>
-              <div class="sv-product-info-colors-wrapper">
-                    @foreach ($color as $item)
-                    <label class="radio-container">
-                        <input type="radio" checked="checked" name="color" class="img" value="{{ $item->id }}" required/>
-                        <span class="checkmark checkmark-red photo" style="background: {{ $item->color }}"></span>
-                      </label>
-                    @endforeach
-                
-               
-                  
-              </div>
-            </div>
             @endif
-            @if (count($variation)>0)
+              <img class="custom-lookbook-resize" src="{{asset($product->image)}}" alt="choose options image banner" />
+            @if ($color2)
 
-            <div class="sv-product-info-storage">
-              <p>Storage</p>
-              <div class="sv-product-info-storage-wrapper buttongroup">
-              @foreach ($variation as $item)
-          <span>
-
-            <input id="{{ $item->variation }}" type="radio" value="{{ $item->id }}" name="storage" class="variation" required @if ($loop->first)
-            checked
-            @endif /> 
-            <label for="{{ $item->variation }}" class="storage">    
-                {{ $item->variation }}
-            </label>
-          </span>
-                
-              @endforeach
-            </div>
-              
-            </div>
-            @endif
-            <div class="sv-product-info-checkout">
-              <input type="submit" value="Add to Cart" name="submit">
-              {{-- <input type="submit" name="submit" value="Checkout"> --}}
-            </div>
+              <img class="custom-lookbook-resize" src="{{asset($color2)}}" alt="choose options image banner" />
+              @endif
+         
           </div>
-        </div>
+      </div>
+  </div>
+  
+  <!-- Product title -->
+  <div class="container">
+    <form action="{{route('addtocart')}}" method="POST">
+@csrf
+<input type="hidden" value="{{$product->id}}" name='pid'>
+      <div class="row align-items-center border border-0 border-2 border-bottom pb-4 custom-bc-secondary">
+          <div class="col-lg-4 col-md-6 col-sm-12 py-1"><h3 class="custom-fs-40 custom-fw-500 custom-text-secondary">{{$product->name}}</h3></div>
+          <div class="col-lg-2 col-md-6 col-sm-12 py-1"><p class="m-0 custom-fs-30 custom-fw-400 custom-text-secondary">{{__getPriceunit()}} {{$product->price}}/-</p></div>
+          <div class="col-lg-3 col-md-6 col-sm-12 py-1">
+              @foreach ($variation as $item)
+
+              
+              <label class="size custom-fs-30 custom-fw-400 ">
+                <input  type="radio" name="size" @if ($loop->first)
+                    checked
+                @endif value="{{$item->variation}}" />
+                  <span>{{$item->variation}} </span>
+              </label>
+              @endforeach
+             
+          
+          </div>
+          <div class="col-lg-3 col-md-6 col-sm-12 py-1">
+              <button class="btn border border-2 custom-bc-secondary custom-text-secondary custom-fs-25 custom-fw-400 px-5">Add to Bag</button>
+          </div>
+          <div class="col-md-2 offset-md-6 text-center">
+            <p class="ml-5 mt-2"> 
+              <a href="" data-bs-toggle="modal" data-bs-target="#size" class="review_model ">Size Detail</a> </p>
+          </div>
       </div>
     </form>
-      <!-- product info bottom -->
-      <div class="d-flex sv-product-info-bottom">
-        <!-- left section -->
-        <div class="sv-product-info-bottom-left">
-          <div class="mb-3 sv-product-info-bottom-left-title">
-            <h4>Product Description</h4>
-          </div>
-          <div class="sv-product-info-desc">
-            <h6>
-              Product works and looks like new. Backed by the 90-day
-              Guarantee.
-            </h6>
-            <p>
-              This pre-owned product is not Apple certified, but has been
-              professionally inspected, tested and cleaned by Amazon-qualified
-              suppliers. -There will be no visible cosmetic imperfections when
-              held at an arm’s length. -This product will have a battery which
-              exceeds 80% capacity relative to new. Accessories will not be
-              original, but will be compatible and fully functional. Product
-              may come in generic Box.
-            </p>
-            <p>
-              This pre-owned product is not Apple certified, but has been
-              professionally inspected, tested and cleaned by Amazon-qualified
-              suppliers. -There will be no visible cosmetic imperfections when
-              held at an arm’s length. -This product will have a battery which
-              exceeds 80% capacity relative to new. Accessories will not be
-              original, but will be compatible and fully functional. Product
-              may come in generic Box.
-            </p>   <p>
-              This pre-owned product is not Apple certified, but has been
-              professionally inspected, tested and cleaned by Amazon-qualified
-              suppliers. -There will be no visible cosmetic imperfections when
-              held at an arm’s length. -This product will have a battery which
-              exceeds 80% capacity relative to new. Accessories will not be
-              original, but will be compatible and fully functional. Product
-              may come in generic Box.
-            </p>   <p>
-              This pre-owned product is not Apple certified, but has been
-              professionally inspected, tested and cleaned by Amazon-qualified
-              suppliers. -There will be no visible cosmetic imperfections when
-              held at an arm’s length. -This product will have a battery which
-              exceeds 80% capacity relative to new. Accessories will not be
-              original, but will be compatible and fully functional. Product
-              may come in generic Box.
-            </p>
-          </div>
-        </div>
-        <!-- right section -->
-        <div class="sv-product-info-bottom-right">
-          <div class="sv-product-info-bottom-right-title">
-            <h4>Product Review</h4>
-          <!-- Button trigger modal -->
 
-
-
-            <?php
-            $rev=DB::table('productreviews')->join('users','users.id','productreviews.uid')->where('productreviews.pid',$product->id)->select('productreviews.*','users.name','users.profile_photo_path')->get();
-                                ?>
-                                <div class="row">
-                                 
-                            <div class="col-md-12">
-                       
-          
-                              <a href="#" data-toggle="modal" data-target="#reviewmodel" class="review_model badge bg-info text-white mb-1">Give  feedback</a> 
-                            </div>
-                                @foreach ($rev as $row)
-                                <div class="col-md-12">
-                                <p>
-                                <h4 class="text-dark d-flex align-items-center">
-                                  @if ($row->profile_photo_path)
-                                  <img src="{{asset($row->profile_photo_path)}}" alt="{{$row->profile_photo_path}}" width="40" class="rounded-circle">
-                                  @else
-                                  <img src="{{asset('frontend/download.webp')}}" alt="{{$row->profile_photo_path}}" width="40" class="rounded-circle">
-                                    
-                                  @endif
-                                  
-                                  
-                                  
-                                  &nbsp;&nbsp;{{ $row->name }}
-                                {{-- @if (Auth::check() && Auth::user()->id==$row->uid) --}}
-                                <p style="margin-left: auto"><a href="" data-toggle="modal" data-target="#editreviewmodel" data-id="{{$row->id}}" class="editreview" style="font-size: 1rem;color:rgb(0, 68, 255);">
-                            Edit
-                                </a> | <a href="{{route('rating.delete',['id'=>$row->id])}}" style="font-size: 1rem;color:rgb(0, 68, 255);">Delete</a></p>
-                                {{-- @endif --}}
-                                </h4>
-                            
-                                <?php for($i=1;$i<=$row->rating;$i++){ ?>
-                                <span class="fa fa-star checked"></span>
-                                <?php  }?>
-                            
-                                <?php for($j=1;$j<=5-$row->rating;$j++) {?>
-                                 <span class="fa fa-star text-gray"></span>
-                                <?php  } ?>
-                                <p>
-                                  {{$row->feedback}}
-                                </p>
-                                <small>{{carbon\carbon::parse($row->updated_at)->diffForHumans()}}</small>
-                                </p>
-                                <hr style="margin-bottom: 0px">
-                                 </div>
-                                @endforeach
-
-
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 
-  <!-- new section -->
-  <!-- related products -->
-  <!-- new sectin -->
-  <!-- feature products -->
-  <div class="sv-feature-product">
-    <div class="container-fluid">
-      <div class="sv-why-work-title">
-        <h2>Related Product</h2>
+  <div class="container">
+      <div class="row">
+          <!-- Product Description -->
+          <div class="col-md-6 col-lg-6 mt-5">
+            {!!$product->long_desc!!}
+          </div>
+          <!-- Review -->
+          @php
+          $rev=DB::table('productreviews')->where('pid',$product->id)->avg('rating');
+          $total=DB::table('productreviews')->where('pid',$product->id)->get();
+      @endphp
+          <div class="col-md-6 col-lg-6 mt-5">
+              <div class="d-flex align-items-center ">
+                  <h3 class="m-0 custom-text-secondary custom-fw-600 custom-fs-40 me-5">Reviews</h3>
+                  <div class="d-flex align-items-center">
+                      
+                    <?php for($i=1;$i<=ceil($rev);$i++){ ?>
+                        <span class="fa fa-star custom-text-primary" ></span>
+                        <?php  }?>
+              
+                        <?php for($j=1;$j<=5-ceil($rev);$j++) {?>
+                       <span class="fas fa-star custom-text-secondary"></span>
+                        <?php  } ?>
+                  </div>
+                 
+              </div>
+              <div>
+                  @if(Auth::check()&&DB::table('productreviews')->where('uid',Auth::user()->id)->where('pid',$product->id)->first())
+                  @else 
+                  
+                   <a href="" data-bs-toggle="modal" data-bs-target="#reviewmodel" class="review_model badge custom-bg-primary text-white mb-1 px-5 py-2">Write  Review</a> 
+                  @endif
+              </div>
+              <?php
+              $revs=DB::table('productreviews')->join('users','users.id','productreviews.uid')->where('productreviews.pid',$product->id)->select('productreviews.*','users.name','users.profile_photo_path')->orderBy('id','desc')->get();
+                                  ?>
+                                  @foreach ($revs as $item)
+                                      
+              <div class="border border-2 custom-bc-secondary px-4 py-1 mt-3">
+                  {{-- <h4 class="custom-text-secondary custom-fw-700 custom-fs-22 m-0">Comfortable to Wear</h4> --}}
+                  <p class="custom-text-secondary custom-fw-400 custom-fs-16 m-0 ">
+                     {{$item->feedback}}
+                  </p>
+                  <div class="d-flex align-items-center justify-content-between mt-3">
+                      <div class="d-flex align-items-center">
+                    <p class="custom-fs-28 custom-fw-600">    {{ $item->name }}&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                        @if (Auth::check() && Auth::user()->id==$item->uid)
+                        <p style="margin-left: auto"><a href="" data-bs-toggle="modal" data-bs-target="#editreviewmodel" data-id="{{$item->id}}" class="editreview" style="font-size: 1rem;color:rgb(0, 68, 255);">
+                    Edit
+                        </a> | <a href="{{ route('rating.delete',['id'=>$item->id]) }}" style="font-size: 1rem;color:rgb(0, 68, 255);">Delete</a></p>
+                        @endif
+                      </div>
+                      <div class="d-flex align-items-center">
+                        <?php for($i=1;$i<=ceil($item->rating);$i++){ ?>
+                            <span class="fa fa-star custom-text-primary" ></span>
+                            <?php  }?>
+                  
+                            <?php for($j=1;$j<=5-ceil($item->rating);$j++) {?>
+                           <span class="fas fa-star custom-text-secondary"></span>
+                            <?php  } ?>
+                      </div>
+                  </div>
+              </div>
+              @endforeach
+             
+          </div>
       </div>
-@php
-    $pro=DB::table('products')->where('status',1)->where('category_id',$product->category_id)->get();
-@endphp
-      <!-- Swiper -->
-      <div class="swiper-container feature-swiper">
-        <div class="swiper-wrapper">
-          <!-- each box -->
- 
- @foreach ($pro as $item)
-          <a href="#" class="swiper-slide sv-feature-product-box">
-            <div class="sv-feature-product-img">
-              <img src="{{ asset($item->image)}}" alt="" />
-            </div>
-            <div class="sv-feature-product-desc">
-              <p class="sv-feature-product-name">{{ $item->name }}</p>
-              <p class="sv-feature-product-price">{{ __getPriceunit().number_format((float)$item->price,2) }}</p>
-            </div>
-          </a>
-          @endforeach
-         
-        </div>
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
-      </div>
-    </div>
   </div>
- 
-
-
-
-
-
-
-
-
-
-
-
+  @php
+  $banner=DB::table('products')->where('status',1)->inRandomOrder()->limit(2)->get();
+  @endphp
+  <!-- You will love these -->
+  <div class="container pt-5 mt-5">
+      <h3 class="custom-fs-30 custom-fw-500 custom-text-secondary text-center mb-4">You will love these</h3>
+      <div class="custom-product-grid">
+        @foreach ($banner as $item)
+        <div>
+            <a href="{{route('product.detail',['id'=>$item->id,'name'=>$item->name])}}">
+  
+            <div class="card border-0">
+  
+              <img src="{{asset($item->image)}}" alt="product thumbnail" />
+              <div class="card-body p-0 d-flex justify-content-between align-items-center">
+                  <div>
+                      <span class="custom-fs-28 custom-fw-500 custom-text-secondary">{{$item->name}}</span>
+                      <p class="custom-text-secondary custom-text-secondary custom-fs-18">{{__getPriceunit()}}{{$item->price}}/-</p>
+                  </div>
+                  <div>
+                  <span><i class="fas fa-shopping-cart custom-text-secondary custom-fs-28"></i></span>                                   
+                  </div>
+              </div>
+          </div>
+        </a>
+  
+        </div>
+        @endforeach
+      </div>
+  </div>
+</section>
    
+
+ {{-- Size model  --}}
+ <div class="modal fade" id="size" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content py-3 px-5">
+    <img src="{{asset('size.jpg')}}" alt="size detail" class="img-fluid">
+     
+     
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+      
+  
+    </div>
+  </div>
+  </div>
+  
+
+
+
+
+{{-- review model  --}}
+
+
+
+
+
+
+
+
     {{-- review model  --}}
   <div class="modal fade" id="reviewmodel" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -380,9 +307,9 @@
         
         
         <div class="modal-footer">
-        <input type="submit" name="savert" value="Feedback" class="btn btn-primary">
+        <input type="submit" name="savert" value="Feedback" class="btn custom-bg-primary">
         
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         </div>
         </form>
     
@@ -395,6 +322,9 @@
   
   
   {{-- review model  --}}
+
+
+
   <div class="modal fade" id="editreviewmodel" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content py-3 px-5">
@@ -413,8 +343,8 @@
           
             
           <div class="modal-footer">
-            <input type="submit" name="savert" value="Feedback" class="btn btn-info btn-sm">
-            <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+            <input type="submit" name="savert" value="Feedback" class="btn custom-bg-primary btn-sm">
+            <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
             </div>
           </form>
   

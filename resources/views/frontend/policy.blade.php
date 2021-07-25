@@ -1,3 +1,6 @@
+@php
+define('PAGE','about')
+@endphp
 @extends('frontend.layout.master')
 @section('content')
 <style>

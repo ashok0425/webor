@@ -1,4 +1,6 @@
-
+@php
+define('PAGE','shop')
+@endphp
 @push('style')
 <style>
 	.btn_group{
@@ -6,7 +8,7 @@
 		justify-content: space-between;
 	}
 		.checkout{
-		background: var(--brand-two);
+		background: var(--custom-primary);
 		color:#fff;
 	}
 	.checkout:hover{
@@ -14,11 +16,11 @@
 		
 	}
 	.shop{
-		background: var(--brand-one);
+		background: var(--custom-primary);
 		color:#fff;
 	}
 	.shop:hover{
-		background: var(--brand-one);
+		background: var(--custom-primary);
 		color:#fff;
 	}
 	
@@ -27,7 +29,6 @@
 		margin-left: auto;
 		font-size: 1.1rem!important;
 		font-weight: 600;
-		font-family: "Poppins";
 	}
 	.dlist-align{
 		display: flex;
@@ -52,7 +53,8 @@
 
 <section class="cart mt-5">
     <div class="container">
-    
+    @if (count($cart)>0)
+		
     <div class="row">
         <main class="col-md-9">
     <div class="card shadow px-2 py-3">
@@ -91,7 +93,7 @@
 				
 			@endif 
 			@if ($item->size !='')
-			Brand: {{ $item->size }}
+			Size: {{ $item->size }}
 			<br>
 			
 		@endif
@@ -103,12 +105,12 @@
          
 		<div class="qty mt-3 d-flex ">
 
-			<button  class="incrementbtn px-4 py-1 text-white" style="background: var(--brand-two);border-color:var(--brand-two)" type="button" data-input="demoInput{{ $item->id }}" data-id="{{ $item->id }}" data-price="{{ $item->price }}" @if (Session::has('coupon')) disabled title="You can't increase item quantity once coupon is applied"
+			<button  class="incrementbtn px-4 py-1 text-white" style="background: var(--custom-primary);border-color:var(--custom-primary)" type="button" data-input="demoInput{{ $item->id }}" data-id="{{ $item->id }}" data-price="{{ $item->price }}" @if (Session::has('coupon')) disabled title="You can't increase item quantity once coupon is applied"
 				
 			@endif>+</button> 
 			<input id="demoInput{{ $item->id }}" type="number" readonly value="{{ $item->qty }}" class="value text-center  py-1" name="qty" style="max-width: 80px" min="1">
 	  
-			<button  class="decrementbtn px-4 py-1  text-white" style="background: var(--brand-two);border-color:var(--brand-two);" type="button" data-input="demoInput{{ $item->id }}" data-id="{{ $item->id }}" data-price="{{ $item->price }}" @if (Session::has('coupon'))disabled
+			<button  class="decrementbtn px-4 py-1  text-white" style="background: var(--custom-primary);border-color:var(--custom-primary);" type="button" data-input="demoInput{{ $item->id }}" data-id="{{ $item->id }}" data-price="{{ $item->price }}" @if (Session::has('coupon'))disabled
 				title="You can't descrease item quantity once coupon is applied"
 			@endif>-</button>
 		  </div>
@@ -224,6 +226,12 @@
                 </div> <!-- card-body.// -->
         </aside> <!-- col.// -->
     </div>
+	@else 
+	<div class="px-5 py-3" style="background: var(--custom-primary)">Yor Cart Is Empty</div>
+	<div class="pt-5 my-5"></div>
+	<div class="pt-5 my-5"></div>
+
+	@endif
     
     </div> <!-- container .//  -->
     </section>

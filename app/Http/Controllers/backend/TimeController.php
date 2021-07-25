@@ -45,15 +45,22 @@ class TimeController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'time'=>'required',
+            'file'=>'required|mimes:png,jpg,jpeg',
             'unit'=>'required',
 
         ]);
         try {
  
             $category=new Time;
+            $file=$request->file('file');
             
-          
+            if($file){
+                // File::delete(__getAdmin()->profile_photo_path);
+                $fname=rand().'outlook.'.$file->getClientOriginalExtension();
+                $category->image='upload/outlook/'.$fname;
+                // $path=Image::make($file)->resize(200,300);
+                $file->move(public_path().'/upload/outlook/',$fname);
+            }
             $category->times=$request->time;
             $category->unit=$request->unit;
         
@@ -61,14 +68,14 @@ class TimeController extends Controller
             if($category->save()){
                 $notification=array(
                     'alert-type'=>'success',
-                    'messege'=>'Time  Added',
+                    'messege'=>'outlook  Added',
                    
                  );
                  return redirect()->back()->with($notification);
             }else{
                 $notification=array(
                     'alert-type'=>'info',
-                    'messege'=>'Time  not added',
+                    'messege'=>'outlook  not added',
                    
                  );
                  return redirect()->back()->with($notification);
@@ -102,8 +109,8 @@ class TimeController extends Controller
      */
     public function edit(Time $time,$id)
     {
-        $category=Time::find($id);
-        return view('backend.time.edit',compact('category'));
+        $outlook=Time::find($id);
+        return view('backend.time.edit',compact('outlook'));
     }
 
     /**
@@ -116,42 +123,50 @@ class TimeController extends Controller
     public function update(Request $request, Time $time)
     {
         $request->validate([
-            'time'=>'required',
             'unit'=>'required',
 
         ]);
-        try {
+        // try {
 
             $category=Time::find($request->id);
+            $file=$request->file('file');
+
+            if($file){
+                // File::delete(__getAdmin()->profile_photo_path);
+                $fname=rand().'outlook.'.$file->getClientOriginalExtension();
+                $category->image='upload/outlook/'.$fname;
+                // $path=Image::make($file)->resize(200,300);
+                $file->move(public_path().'/upload/outlook/',$fname);
+            }
             $category->times=$request->time;
             $category->unit=$request->unit;
 
             if($category->save()){
                 $notification=array(
                     'alert-type'=>'success',
-                    'messege'=>'Time  updated',
+                    'messege'=>'outlook  updated',
                    
                  );
                  return redirect()->route('admin.time')->with($notification);
             }else{
                 $notification=array(
                     'alert-type'=>'info',
-                    'messege'=>'Time  not updated',
+                    'messege'=>'outlook  not updated',
                    
                  );
                  return redirect()->back()->with($notification);
             }
             
            
-        } catch (\Throwable $th) {
-            $notification=array(
-                'alert-type'=>'error',
-                'messege'=>'Something went wrong.Please try again later',
+        // } catch (\Throwable $th) {
+        //     $notification=array(
+        //         'alert-type'=>'error',
+        //         'messege'=>'Something went wrong.Please try again later',
                 
-             );
-             return redirect()->back()->with($notification);
+        //      );
+        //      return redirect()->back()->with($notification);
         
-        }
+        // }
     
     }
 

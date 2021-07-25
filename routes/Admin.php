@@ -126,15 +126,15 @@ Route::get('/coupon/delete/{id}/{table}','backend\CouponController@destroy')->na
 
 
 // coupon
-Route::get('/time','backend\TimeController@index')->name('time');
-Route::get('/time/create','backend\TimeController@create')->name('time.create');
-Route::post('/time/store','backend\TimeController@store')->name('time.store');
-Route::get('/time/edit/{id}','backend\TimeController@edit')->name('time.edit');
-Route::post('/time/update','backend\TimeController@update')->name('time.update');
-Route::get('/time/show/{id}','backend\TimeController@show')->name('time.show');
-Route::get('/time/active/{id}/{table}','backend\TimeController@active')->name('time.active');
-Route::get('/time/deactive/{id}/{table}','backend\TimeController@deactive')->name('time.deactive');
-Route::get('/time/delete/{id}/{table}','backend\TimeController@destroy')->name('time.delete');
+Route::get('/outlook','backend\TimeController@index')->name('time');
+Route::get('/outlook/create','backend\TimeController@create')->name('time.create');
+Route::post('/outlook/store','backend\TimeController@store')->name('time.store');
+Route::get('/outlook/edit/{id}','backend\TimeController@edit')->name('time.edit');
+Route::post('/outlook/update','backend\TimeController@update')->name('time.update');
+Route::get('/outlook/show/{id}','backend\TimeController@show')->name('time.show');
+Route::get('/outlook/active/{id}/{table}','backend\TimeController@active')->name('time.active');
+Route::get('/outlook/deactive/{id}/{table}','backend\TimeController@deactive')->name('time.deactive');
+Route::get('/outlook/delete/{id}/{table}','backend\TimeController@destroy')->name('time.delete');
 
 
 
@@ -205,13 +205,15 @@ Route::get('/contact/create/{id}','backend\ContactController@create')->name('con
 Route::post('/contact/sendmail','backend\ContactController@sendmail')->name('contact.sendmail');
 
 
-// Appointment 
-Route::get('/appointment','backend\AppointmentController@index')->name('appointment');
-Route::get('/appointment/edit/{id}','backend\AppointmentController@edit')->name('appointment.edit');
-Route::post('/appointment/update','backend\AppointmentController@update')->name('appointment.update');
-Route::post('/appointment/paidstatus','backend\AppointmentController@paidStatus')->name('appointment.paidstatus');
-Route::get('/appointment/complete','backend\AppointmentController@complete')->name('appointment.complete');
-   
+Route::get('/ambassador','backend\AppointmentController@index')->name('ambassador');
+Route::get('/ambassador/create','backend\AppointmentController@create')->name('ambassador.create');
+Route::post('/ambassador/store','backend\AppointmentController@store')->name('ambassador.store');
+Route::get('/ambassador/edit/{id}','backend\AppointmentController@edit')->name('ambassador.edit');
+Route::post('/ambassador/update','backend\AppointmentController@update')->name('ambassador.update');
+Route::get('/ambassador/show/{id}','backend\AppointmentController@show')->name('ambassador.show');
+Route::get('/ambassador/active/{id}/{table}','backend\AppointmentController@active')->name('time.active');
+Route::get('/ambassador/deactive/{id}/{table}','backend\AppointmentController@deactive')->name('time.deactive');
+Route::get('/outlook/delete/{id}/{table}','backend\AppointmentController@destroy')->name('time.delete');
 
     //  order 
     Route::get('/order/new','backend\OrderController@newOrder')->name('order.new');

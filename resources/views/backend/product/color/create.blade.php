@@ -12,10 +12,10 @@
         <form action="{{route('admin.color.store')}}" method="POST" enctype="multipart/form-data">
             @csrf
             <input type="hidden" value="{{ $pid }}" name="pid">
-            <div class="mb-3">
+            {{-- <div class="mb-3">
                 <label class="form-label">Color</label>
                 <input type="color" name="color" class="form-control" placeholder="Product name" value="{{old('color')}}" required>
-            </div>
+            </div> --}}
         
             <div class="mb-3">
                 <label class="form-label">Thumbnail</label>

@@ -1,23 +1,47 @@
-<div class="sv-caresoul">
-    @php
-        $banner=DB::table('banners')->first();
-    @endphp
-    <div class="sv-caresoul-wrapper">
-      <div class="sv-caresoul-imgbox">
-        <img src="{{asset($banner->image) }}" alt="sommerville banner" />
-      </div>
-      <!-- caresoul gradient -->
-      <div class="sv-caresoul-gradient"></div>
-      <div class="sv-caresoul-text">
-        <h3>Mobile</h3>
-        <h2>{!! $banner->title !!}</h2>
-        <p>
-          {!!$banner->text!!}
-        </p>
-        <div class="sv-caresoul-btn">
-          <button><a href="">Repair</a></button>
-          {{-- <button><a href="">Buy</a></button> --}}
-        </div>
-      </div>
-    </div>
-  </div>
+
+
+
+ @php
+ $banner=DB::table('banners')->where('status',1)->where('type',0)->orderBy('id','desc')->get();
+@endphp
+    <!-- Hero Carousel Wrapper -->
+    <section>
+      <div id="carousel1" class="owl-carousel owl-theme" >
+             @foreach ($banner as $item)
+             <div class=" custom-hero-resize">
+                <img src="{{asset($item->image)}}" class="d-block w-100 custom-hero-resize" alt="...">
+                <div class="carousel-caption forced-centered">
+                    <h2 class="custom-fs-140 custom-fw-400">{{$item->title}}</h2>
+                    <a class="custom-fs-40 custom-fw-600 mt-4 custom-text-white" href="./shop.html">New
+                        Collection</a>
+                </div>
+            </div>
+          
+             @endforeach
+           
+          </div>
+         
+  </section>
+  @push('scripts')
+      <script>
+          $('#carousel1').owlCarousel({
+    loop:true,
+    margin:10,
+    responsiveClass:true,
+    dots:false,
+    nav:true,
+    responsive:{
+        0:{
+            items:1,
+        },
+        600:{
+            items:1,
+        },
+        1000:{
+            items:1,
+           
+        }
+    }
+})
+      </script>
+  @endpush

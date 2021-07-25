@@ -20,11 +20,17 @@
          {!! $banner->title !!}
      </textarea>
     </div>
-
     <div class="mb-3">
-        <label class="form-label">Banner Detail</label>
-     <textarea name="text"  cols="30" rows="10" id="summernote2">
-        {!! $banner->text !!}
+        <label class="form-label">Type</label>
+    <select name="type" id="" class="form-control">
+        <option value="0" @if ($banner->type==0)
+            selected
+        @endif>Large banner</option>
+        <option value="1" @if ($banner->type==1)
+            selected
+        @endif>Shop banner</option>
+
+    </select>
      </textarea>
     </div>
    

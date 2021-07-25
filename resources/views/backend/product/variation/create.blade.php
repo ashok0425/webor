@@ -26,10 +26,10 @@
                 <input type="text" name="variation" class="form-control" placeholder="Product variation" value="{{old('variation')}}" required>
             </div>
         
-            <div class="mb-3">
+            {{-- <div class="mb-3">
                 <label class="form-label">Price</label>
                 <input type="text" name="price" class="form-control" placeholder="Product variation price" value="{{old('price')}}" required>
-            </div>
+            </div> --}}
            <div class="d-flex ">
             <button type="submit" class="btn btn-primary">Add</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <a href="{{ route('admin.product.attribute',['id'=>$pid]) }}" class="btn btn-info">Back</a>

@@ -5,7 +5,7 @@
 <div class="container mt-5">
     <h2 class="border-bottom mb-5 pb-2">My order List</h2>
     <div class="card py-3 px-4">
-        <table id="myTable" class="table table-responsive-sm" >
+        <table id="myTable" class="table table-responsive-sm" id="myTable" >
             <thead>
                 <tr>
                     <th>#</th>

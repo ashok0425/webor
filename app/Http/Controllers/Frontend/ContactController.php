@@ -15,22 +15,20 @@ class ContactController extends Controller
 
     public function store(Request $request){
         $request->validate([
-            'fname'=>'required',
-            'lname'=>'required',
+            'name'=>'required',
             'email'=>'required|email',
             'phone'=>'required',
-            'msg'=>'required',
+            'message'=>'required',
 
         ]);
         try {
            
        
         $cont=new Contact;
-        $cont->fname=$request->fname;
-        $cont->lname=$request->lname;
+        $cont->fname=$request->name;
         $cont->email=$request->email;
         $cont->phone=$request->phone;
-        $cont->msg=$request->msg;
+        $cont->msg=$request->message;
         $cont->save();
         $notification=array(
             'alert-type'=>'success',

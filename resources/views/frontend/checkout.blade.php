@@ -1,3 +1,6 @@
+@php
+define('PAGE','shop')
+@endphp
 @extends('frontend.layout.master')
 <style>
     /* storage section */
@@ -32,7 +35,7 @@ input[name='payment']:checked + label {
 	outline: none!important;
 }
 .sub{
-	background:var(--brand-two);
+	background:var(--custom-primary);
 	color: #fff;
 	border:0;
 	padding-top: .7rem;
@@ -146,10 +149,10 @@ $grandtotal=0
     
           </div> <!-- card-body.// -->
 
-          <h3 class="px-3 pay">Payment Method</h3>
+          {{-- <h3 class="px-3 pay">Payment Method</h3>--}}
           
         <div class="row px-3 pb-4">
-            <div class="col-md-6">
+            {{-- <div class="col-md-6">
               <div class=" buttongroup payment">
                 <input id="paypal" type="radio" value="paypal" name="payment"    /> 
                 <label for="paypal" >    
@@ -167,9 +170,10 @@ $grandtotal=0
 
               </div>
             </div>
+            --}}
           <button class="  sub mt-4" type="submit">Checkout Now</button>
 
-          </div>
+          </div> 
         </form>
         </div>  <!-- card .// -->
     

@@ -1,60 +1,51 @@
-<x-guest-layout>
-    <x-jet-authentication-card>
-        <x-slot name="logo">
-            <x-jet-authentication-card-logo />
-        </x-slot>
+@php
+define('PAGE','home')
+@endphp
+      @extends('frontend.layout.master')
+      @section('content')
+      
+      
 
-        <x-jet-validation-errors class="mb-4" />
-
-        <form method="POST" action="{{ route('register') }}">
-            @csrf
-
-            <div>
-                <x-jet-label for="name" value="{{ __('Name') }}" />
-                <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
-            </div>
-
-            <div class="mt-4">
-                <x-jet-label for="email" value="{{ __('Email') }}" />
-                <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
-            </div>
-
-            <div class="mt-4">
-                <x-jet-label for="password" value="{{ __('Password') }}" />
-                <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
-            </div>
-
-            <div class="mt-4">
-                <x-jet-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
-                <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
-            </div>
-
-            @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
-                <div class="mt-4">
-                    <x-jet-label for="terms">
-                        <div class="flex items-center">
-                            <x-jet-checkbox name="terms" id="terms"/>
-
-                            <div class="ml-2">
-                                {!! __('I agree to the :terms_of_service and :privacy_policy', [
-                                        'terms_of_service' => '<a target="_blank" href="'.route('terms.show').'" class="underline text-sm text-gray-600 hover:text-gray-900">'.__('Terms of Service').'</a>',
-                                        'privacy_policy' => '<a target="_blank" href="'.route('policy.show').'" class="underline text-sm text-gray-600 hover:text-gray-900">'.__('Privacy Policy').'</a>',
-                                ]) !!}
-                            </div>
-                        </div>
-                    </x-jet-label>
+            <section class="container">
+                <div class="text-center mt-5">
+                    <h2 class="custom-fs-50 custom-fw-700"><span class="custom-text-secondary">Welcome to </span><span class="custom-text-primary">Rumor Has It</span></h2>
                 </div>
-            @endif
+                <div class="mt-5" style="max-width: 485px; margin: auto">
+                    <x-errormsg />
+                    <form action="{{route('register')}}" method="POST">
+                        @csrf
+                            <div>
+                                <label for="form-name" class="form-label custom-fs-16 custom-fw-400">Name</label>
+                                <input type="text" id="form-name" class="custom-br-0 custom-fw-400 form-control p-2 border custom-fs-16 border-2 custom-bc-secondary" placeholder="Full Name" required>
+                            </div>
+                            <div class="my-3">
+                                <label for="form-email" class="form-label custom-fs-16 custom-fw-400">Email</label>
+                                <input type="email" id="form-email" class="custom-br-0 custom-fw-400 form-control p-2 border custom-fs-16 border-2 custom-bc-secondary" placeholder="Email Address" required>
+                            </div>
+                            <div class="my-3">
+                                <label for="form-password" class="form-label custom-fs-16 custom-fw-400">Password</label>
+                                <input type="password" id="form-password" class="custom-br-0 custom-fw-400 form-control p-2 border custom-fs-16 border-2 custom-bc-secondary" required>
+                            </div>
+                            <div class="my-3">
+                                <label for="form-password" class="form-label custom-fs-16 custom-fw-400">Confirm Password </label>
+                                <input type="password" id="form-password" class="custom-br-0 custom-fw-400 form-control p-2 border custom-fs-16 border-2 custom-bc-secondary" name="password_confirmation" required>
+                            </div>
+                           
+                            <div class="text-center my-5">
+                                <button type="submit" class="btn custom-fs-25 custom-fw-400 px-5 custom-bg-secondary custom-text-white">Sign up</button>
+                            </div>
+                    </form>
+                    <hr>
+                    <div class="d-flex mt-5">
+                        <a href="{{ url('auth/google') }}" class="btn custom-fs-16 custom-text-secondary custom-fw-400 px-4 custom-bg-white border-2 custom-bc-secondary" style="width:100%;">sign up with Google</a>
+                        <span class="mx-2"></span>
+                        <a href="" class="btn custom-fs-16 custom-text-secondary custom-fw-400 px-4 custom-bg-white border-2 custom-bc-secondary" style="width:100%;">sign up with Google</a>
+                    </div>
+                    <div class="text-center mt-4">
+                        <a href="{{route('login')}}" class="custom-text-secondary custom-fs-16 custom-fw-400">Already have an account?</a>
+                    </div>
+                </div>
+            </section>
 
-            <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
-                </a>
-
-                <x-jet-button class="ml-4">
-                    {{ __('Register') }}
-                </x-jet-button>
-            </div>
-        </form>
-    </x-jet-authentication-card>
-</x-guest-layout>
+        
+    @endsection

@@ -10,7 +10,7 @@
     <div class="navbar-collapse collapse">
         <ul class="navbar-nav navbar-align">
             <li class="nav-item dropdown">
-                <a class="nav-icon dropdown-toggle" href="" id="messagesDropdown" data-toggle="dropdown">
+                <a class="nav-icon dropdown-toggle" href="{{route('/')}}" id="messagesDropdown" data-toggle="dropdown">
                     <div class="position-relative">
                         <i class="fas fa-globe"></i>
                     </div>

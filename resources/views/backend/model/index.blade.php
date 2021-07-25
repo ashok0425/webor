@@ -1,7 +1,7 @@
 @extends('admin.master')
 @section('main-content')
 @php
-    define('PAGE','device')
+    define('PAGE','gallery')
 @endphp
 
 <div class="container">
@@ -17,9 +17,6 @@
                 <tr>
                     <th>#</th>
 
-                    <th>Brand</th>
-                    <th>Device</th>
-                    <th>Modal</th>
 
                     <th>Image</th>
                     <th>Status</th>
@@ -32,9 +29,6 @@
                 @foreach ($modal as $item)
                     <tr>
                         <td>{{$loop->iteration}}</td>
-                        <td>{{$item->cat->category}}</td>
-                        <td>{{$item->subcat->subcategory}}</td>
-                        <td>{{$item->modal}}</td>
 
 
                         <td> <img src="{{asset($item->image)}}" width="80" alt=""></td>

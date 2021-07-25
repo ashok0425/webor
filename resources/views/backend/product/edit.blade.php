@@ -49,6 +49,12 @@
                   <br>
                   <img src="{{asset($product->image)}}" width='100'/>
             </div>
+            <div class="mb-3">
+                <label class="form-label">Description</label>
+                    <textarea name="descr" id="summernote1" required >
+                        {{$product->long_desc}}
+                    </textarea>
+            </div>
             <h3>Extra Option</h3>
             <div class="row my-3">
                 <div class="col-md-4 col-6">

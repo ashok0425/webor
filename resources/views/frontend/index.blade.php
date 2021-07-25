@@ -1,54 +1,74 @@
-
+@php
+    define('PAGE','home')
+@endphp
 @extends('frontend.layout.master')
-@push('style')
-    <style>
-        .loading{
-            display: block;
-        }
-    </style>
-@endpush
 @section('content')
-    <!-- new section -->
-    <!-- caresoul section -->
-    @include('frontend.template.banner')
+
+
+    <!-- ======================================== -->
 
  
-    <!-- new section -->
-    <!-- top feature -->
-    @include('frontend.template.features')
-  
+    <!-- =====       ==================================== -->
 
-    @include('frontend.template.service')
+  @include('frontend.template.banner')
+    <!-- ============================= -->
 
-    <!-- new section -->
-    <!-- Start Repaair do  -->
-    @include('frontend.template.repair')
-
-
-    <!-- new section -->
-    <!-- why work with us -->
-    @include('frontend.template.workwithus')
+    <!-- Product Category Wrapper -->
+  @include('frontend.template.featuredproduct')
    
+    <!-- ======================== -->
 
-    <!-- new sectin -->
-    <!-- feature products -->
-    @include('frontend.template.featuredproduct')
+    <!-- Top Products Wrapper -->
+  @include('frontend.template.top')
+   
+    <!-- ==================== -->
 
-
-{{-- review  --}}
-    @include('frontend.template.review')
-
-    
-
-
-    <div class="white-bg"></div>
-@endsection
-@push('scripts')
-<script>
-  $(window).on('load',function(){
-$('.loading').css('display','none')
-})
-
-</script>
+    <!-- Shop Banner -->
+    @include('frontend.template.bannerinner')
   
-@endpush
+    <!-- =========== -->
+
+
+    <!-- Shop Banner -->
+    @include('frontend.template.shopbanner')
+
+    <!-- =========== -->
+
+    <!-- Text Wrapper -->
+    <section class="container text-center">
+        <h2 class="custom-fw-700 custom-fs-50 custom-text-secondary">Get a Mesh Dress for your Wardrobe</h2>
+        <p class="custom-text-secondary custom-fs-16 custom-fw-400 mt-4">
+        
+            Check out beautifully steel-boned corsets with premium build quality with a high-end finish.
+            
+         
+            Have control over the rumors with the fabulous PVC Outfits. Embrace yourself with our eye-catching collection of vinyl clothing.
+            
+            <br/>
+
+            The viral Mask Dress is in trend for a reason. Look captivating and be on trend with our astonishing collection of these Mask Dress.
+            
+          <br/>
+            Spice up your wardrobe and bring in the all eyes-on-you vibe to the stage. Make a glamorous statement with our collection of Mesh Dress.
+             
+        </p>
+      
+    </section>
+    <!-- ============ -->
+
+    <!-- Our Gallery Wrapper -->
+    @include('frontend.template.gallery')
+   
+    <!-- =================== -->
+
+    <!-- Shop Banner -->
+    <section class="container">
+        @php
+$banner=DB::table('banners')->where('status',1)->where('type',1)->orderBy('id','desc')->skip(2)->value('image');
+@endphp
+        <a href="./shop.html">
+            <img class="custom-shop-banner-resize" src="{{asset($banner)}}" alt="shop banner" />
+        </a>
+    </section>
+    <!-- =========== -->
+@endsection

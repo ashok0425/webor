@@ -37,20 +37,15 @@ class CartController  extends Controller
   $cart=new Cart;
           //checking whether the selected product have attribute or not
 
-    $color=ProductColor::find($request->color);
-    $size=Productvariation::find($request->storage);
+    // $color=ProductColor::find($request->color);
+    // $size=Productvariation::find($request->storage);
     $product=Product::find($request->pid);
 
-        if(isset($request->color)){
-          $cart->color=$color->color;
-        }
-        if(isset($request->storage)){
-          $cart->size=$size->variation;
-          $cart->price=$size->price;
-        }else{
+        // if(isset($request->color)){
+        //   $cart->color=$color->color;
+        // }
+          $cart->size=$request->size;
           $cart->price=$product->price;
-
-        }
             $cart->pid=$request->pid;
             $cart->uid=Auth::user()->id;
         

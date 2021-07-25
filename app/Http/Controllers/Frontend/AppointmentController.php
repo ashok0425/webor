@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\DB;
 class AppointmentController extends Controller
 {
     public function index(){
-        return view('frontend.appointment.appointment');
+        return view('frontend.outlook');
     }
 
     public function repair($device){

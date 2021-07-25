@@ -19,7 +19,7 @@
 
                     <th>Banner Image</th>
                     <th>Title</th>
-                    <th>Detail</th>
+                    {{-- <th>Detail</th> --}}
 
                     <th>Status</th>
                     <th>Action</th>
@@ -33,7 +33,7 @@
                         <td>{{$loop->iteration}}</td>
                         <td><img src="{{asset($item->image)}}" alt="" width="70"></td>
                         <td>{{$item->title}}</td>
-                        <td>{{$item->text}}</td>
+                        {{-- <td>{!!$item->text!!}</td> --}}
 
 
                         <td>@if ($item->status==1)

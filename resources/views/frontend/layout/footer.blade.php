@@ -1,132 +1,55 @@
-<div class="sv-footer">
-    <div class="container-fluid">
-      @php
-          $footer=DB::table('websites')->first();
-      @endphp
-      <div class="sv-footer-wrapper">
-        <!-- footer top section -->
-        <div class="sv-footer-top">
-          <div class="row">
-            <!-- each box -->
-            <div class="col-md-2 ">
-              <div class="footer-box">
-                <div class="sv-footer-top-left">
-                  <img src="{{ asset($footer->image) }}" alt="" />
-                </div>
+    <!-- Footer wrapper -->
+    @php
+        $social=DB::table('websites')->first()
+    @endphp
+    <footer class="py-5">
+      <div class="container">
+          <div class="row align-items-center">
+              <div class="col-sm-5 col-md-3 col-lg-3 col-6">
+                  <a href="./">
+                      <img style="width:100%; object-fit:fill;" src="{{asset('frontend/images/logo.png')}}" alt="website logo" />
+                  </a>
               </div>
-            </div>
+              <div class="col-md-9 col-lg-6">
+                  <div class="row align-items-center">
+                     @php
+                         $category=DB::table('categories')->orderBy('id','desc')->where('status',1)->limit(6)->get();
 
-            <div class="col-md-2  ">
-              <div class="sv-footer-bottom-box links">
-                <div class="sv-footer-bottom-title pl-5">
-                  <h3>Useful Links</h3>
-                </div>
-                <div class="sv-footer-bottom-desc">
-                  <ul>
-                    <li><a href="{{ route('about') }}">About us</a></li>
-                    <li><a href="{{ route('contact') }}">Contact us</a></li>
-                    <li><a href="{{ route('profile') }}">My Account</a></li>
-                    <li><a href="{{ route('cart') }}">Cart</a></li>
-                    <li><a href="{{ route('term') }}">Terms & Condition</a></li>
-                    <li><a href="{{ route('policy') }}">Privacy Policy</a></li>
+                     @endphp
+                   @foreach ($category as $item)
+                   <div class=" col-sm-4 col-md-3 col-lg-2 justify-content-start my-3 col-4"><a
+                    href="{{route('product.store',['id'=>$item->id,'name'=>$item->category])}}"
+                    class="custom-text-secondary custom-fs-24 custom-fw-400 border-none border-bottom custom-bc-secondary my-3">{{$item->category}}</a></div>
+                   @endforeach
+                      <div class=" col-sm-4 col-md-4 col-lg-2 justify-content-start align-items-center my-3 col-4"><a
+                              href="{{$social->instagram1}}">
+                           <i class="fab fa-instagram-square fa-2x text-dark"></i>
+                          </a></div>
+                      <div class=" col-sm-4 col-md-4 col-lg-2 justify-content-start align-items-center my-3 col-4"><a
+                              href="{{$social->other1}}">
+                              <i class="fab fa-tiktok fa-2x text-dark"></i>
 
-                  </ul>
-                </div>
+                          </a></div>
+                      <div class=" col-sm-4 col-md-4 col-lg-2 justify-content-start align-items-center my-3 col-4"><a
+                              href="{{$social->facebook1}}">
+                              <i class="fab fa-facebook fa-2x text-dark"></i>
+
+                          </a></div>
+                  </div>
               </div>
-            </div>
-
-            <div class="col-md-3 offset-md-1">
-              <div class="sv-footer-bottom-box">
-                <div class="sv-footer-bottom-title">
-                  <h3>Contact Us</h3>
-                </div>
-                <div class="sv-footer-bottom-desc footer-contact">
-                  <ul>
-                    <li>
-                      <i class="fas fa-address-book"></i>
-                      <span>{{ $footer->address1 }}</span>
-                      <p></p>
-                    </li>
-                    <li>
-                      <i class="fas fa-phone-alt"></i>
-                      <span>{{ $footer->phone1 }}</span>
-                    </li>
-                    <li>
-                      <i class="fas fa-envelope"></i>
-                      <span>{{ $footer->email1 }}</span>
-                    </li>
-                  </ul>
-                  OR
-                  <ul>
-                    <li>
-                      <i class="fas fa-address-book"></i>
-                      <span>{{ $footer->address2 }}</span>
-                      <p></p>
-                    </li>
-                    <li>
-                      <i class="fas fa-phone-alt"></i>
-                      <span>{{ $footer->phone2}}</span>
-                    </li>
-                    <li>
-                      <i class="fas fa-envelope"></i>
-                      <span>{{ $footer->email2 }}</span>
-                    </li>
-                  </ul>
-                </div>
+              <div class=" col-lg-3">
+                  <form action="{{route('subscriber.store')}}" method="POST">
+                    @csrf
+                    <label for="newsletter-email" class="form-label custom-fs-24 custom-text-secondary">Signup for
+                        Newsletter & Discounts</label>
+                    <input id="newsletter-email"
+                        class="form-control custom-br-0 border border-2 custom-bc-secondary custom-fs-24" type="email"
+                        placeholder="Email" name="email">
+                        <input id="newsletter-email"
+                        class="form-control custom-br-0 border border-2 mt-1 custom-bg-primary custom-fs-24 text-white" type="submit"
+                         value="submit">
+                  </form>
               </div>
-            </div>
-
-            <div class="col-md-3 offset-md-1">
-              <div class="sv-footer-bottom-box">
-                <div class="sv-footer-bottom-title">
-                  <h3>Customer Service</h3>
-                </div>
-                <div class="sv-footer-bottom-desc">
-                  <ul>
-                    <li><a href="#">Receive coupon and other offers</a></li>
-                    <li class="sv-footer-subscribe">
-                      <form action="{{ route('subscriber.store') }}" method="POST">
-                        @csrf
-                        <div class="sv-footer-subscribe-email">
-                          <input type="email" placeholder="Your Email" name="email"/>
-                        </div>
-                        <input type="submit" value="Submit" />
-                      </form>
-                     
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
           </div>
-        </div>
-        <!-- footer mid section -->
-        <div class="d-flex sv-footer-mid">
-          <div class="sv-footer-social-link">
-            <div class="sv-footer-social-link-left">
-              <p>Connect with us</p>
-            </div>
-            <div class="sv-footer-social-link-right">
-              <ul>
-                <li><a href="{{ $footer->facebook1 }}" target="_blank"><i class="fab fa-facebook"></i></a></li>
-                <li>  <a href="{{ $footer->twitter1 }}" target="_blank"><i class="fab fa-twitter"></i></a></li>
-                <li><a href="{{ $footer->instagram1 }}" target="_blank"><i class="fab fa-instagram"></i></a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-<hr>
-        <!-- footer bottom section -->
-        <div class="sv-footer-bottom">
-          <div class="sv-footer-copyright">
-            <div class="sv-footer-copyright-left">
-              <span>&copy {{ date('Y') }} Somervillecommunication Pvt Ltd</span>
-            </div>
-            <div class="sv-footer-copyright-right">
-              <span>Created by <a href="https://falcontechnepal.com">Falcontechnepal Pvt Ltd</a></span>
-            </div>
-          </div>
-        </div>
       </div>
-    </div>
-  </div>
+  </footer>

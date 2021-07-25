@@ -1,102 +1,132 @@
+@php
+    define('PAGE','shop')
+@endphp
 @extends('frontend.layout.master')
-
+<style> 
+.store select:focus{
+  outline: none;
+  border: 0;
+  box-shadow: none;
+}
+</style>
 @section('content')
-<div class="container my-5">
+
+<section class="container store">
+  <div class="d-flex justify-content-between flex-sm-column flex-md-row flex-column my-5">
+      <div class="">
+          <div class="d-flex align-items-center">
+              <p class="custom-fs-20 custom-fw-500 p-0 m-0">Filters:</p>
 
 
-<div class="row my-5">
-    <div class="col-md-3 col-5 col-sm-5 m-0 p-0">
-<div class="sv-feature-product-box filter ">
-    <div class="filter_data">
-        <h2>Filter</h2>
-        
-        
-    </div>
-    <div class="filter_data px-2">
 
-        <p>Price Range</p>
-   
-                      
-                <input type="hidden" name="" id="hidden_min">
-                <input type="hidden" name="" id="hidden_max">
-         
-               <input type="button" id="price" style="border:0; color:rgb(0, 0, 0); font-weight:bold;background: transparent;">
-         
-             <div id="mySlider" style="height: 5px;background-color:rgb(255, 145, 2);width:90%;margin:auto;"></div>
-       
-    </div>
-    <div class="filter_data">
-       <p>Type</p>
-       @foreach ($device as $item)
-<div>
-    <label ><input type="checkbox" value="{{ $item->id }}" class="selector category"> &nbsp; &nbsp;{{ $item->category }}</label>
+              
+              <div>
+                  <select class="custom-fs-20 custom-fw-400 form-select border-0 selector category" aria-label="category" >
+                      <option selected>Category</option>
+                      @foreach ($category as $item)
+                      <option  value="{{ $item->id }}">{{$item->category}}</option>
+                          
+                      @endforeach
+                     
+                  </select>
+              </div>
+              <div>
+                <select class="custom-fs-20 custom-fw-400 form-select border-0 selector subcategory" aria-label="category" >
+                    <option selected>Sub Category</option>
+                    @foreach ($subcategory as $item)
+                    <option  value="{{ $item->id }}">{{$item->subcategory}}</option>
+                        
+                    @endforeach
+                   
+                </select>
+            </div>
+              {{-- <div class="mx-2">
+                  <select class="custom-fs-20 custom-fw-400 form-select border-0" aria-label="category">
+                      <option selected>Color</option>
+                    @foreach ($color as $item)
+
+                      <option value="{{$item->id}}"><span style="background: {{$item->color}}!important">{{$item->color}}</span></option>
+                      @endforeach
+                   
+                  </select>
+              </div> --}}
+              <div>
+                  <select class="custom-fs-20 custom-fw-400 form-select border-0" aria-label="category">
+                      <option selected>Size</option>
+                    @foreach ($space as $item)
+
+                      <option value="{{$item->id}}">{{$item->variation}}</option>
+                      @endforeach
+
+                  </select>
+              </div>
+          </div>
+      </div>
+      <div class="">
+          <div class="d-flex align-items-center">
+              <p class="custom-fs-20 custom-fw-500 p-0 m-0">Sort By:</p>
+              <div>
+                  <select class="custom-fs-20 custom-fw-400 form-select border-0" aria-label="category" id="sort">
+                    <option selected>--sort by--</option>
+
+                    <option value="1">Price Low to High</option>
+                    <option value="2">Price High to Low</option>
+
+                      <option value="3">A to Z</option>
+                      <option value="4">Z to A</option>
+                      <option value="5">New First</option>
+
+                      <option value="6">Old First</option>
+
+                  </select>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <div>
+@if (count($product)>0)
+      <div class="custom-product-grid">
     
-</div>        
-       @endforeach
-    </div>
-    <div class=" filter_data">
-        <p>Brand</p>
-        @foreach ($brand as $item)
-        <div>
-            <label ><input type="checkbox" value="{{ $item->id }}" class="selector subcategory"> &nbsp; &nbsp;{{ $item->subcategory }}</label>
-
-        </div>
-            
-        @endforeach
-     </div>
-     <div class="filter_data">
-        <p>Storage</p>
-        @foreach ($space as $item)
-        <div>
-            <label ><input type="checkbox" value="{{ $item->variation}}" class="selector space"> &nbsp; &nbsp;{{ $item->variation }}</label>
-
-        </div>
-          
-        @endforeach
-     </div>
-     {{-- <div class="filter_data">
-        <p>Space</p>
-        @foreach ($space as $item)
-        <div>
-            <label ><input type="checkbox" value="{{ explode( '/',$item->variation)[1] }}" class="selector space"> &nbsp; &nbsp;{{  explode( '/',$item->variation)[1] }} </label>
-
-        </div>
-            
-        @endforeach
-     </div> --}}
-  
- 
-</div>
-    </div>
-    <div class="col-md-8 col-7">
-   
-     
-        <div class="row product_grid">
-          @if (count($product)<=0)
-          <center><div class="text-center font-weight-bold text-danger">No item found</div></center>
-      @else 
         @foreach ($product as $item)
-        <div class="col-md-4 col-12 mb-2">
+        <div>
+          <a href="{{route('product.detail',['id'=>$item->id,'name'=>$item->name])}}">
 
-        <a href="{{ route('product.detail',['id'=>$item->id,'name'=>$item->name]) }}" class="swiper-slide sv-feature-product-box m-2">
-            <div class="sv-feature-product-img">
-              <img src="{{ asset($item->image)}}" alt="{{ $item->name }}" class="img-fluid" />
+          <div class="card border-0">
+
+            <img src="{{asset($item->image)}}" alt="product thumbnail" />
+            <div class="card-body p-0 d-flex justify-content-between align-items-center">
+                <div>
+                    <span class="custom-fs-28 custom-fw-500 custom-text-secondary">{{$item->name}}</span>
+                    <p class="custom-text-secondary custom-text-secondary custom-fs-18">{{__getPriceunit()}}{{$item->price}}/-</p>
+                </div>
+                <div>
+                <span><i class="fas fa-shopping-cart custom-text-secondary custom-fs-28"></i></span>                                   
+                </div>
             </div>
-            <div class="sv-feature-product-desc">
-              <p class="sv-feature-product-name">{{ $item->name }}</p>
-              <p class="sv-feature-product-price">{{ __getPriceunit().number_format((float)$item->price,2) }}</p>
-            </div>
-          </a>
         </div>
+      </a>
 
+      </div>
         @endforeach
-    @endif
+         
 
-    </div>
-    </div>
+      <!-- Pagination -->
+  <div class="d-flex justify-content-center mt-5">
+    <nav aria-label="Page navigation example">
+     {{$product->links()}}
+    </nav>
 </div>
-</div>
+@else 
+<div class="custom-bg-primary text-white px-5 py-2">No item found</div>
+<div class="py-5 my-5"></div>
+@endif
 
+      </div>
+  </div>
+
+ 
+</section>
 @endsection
 @push('scripts')
  <script>
@@ -145,10 +175,10 @@ beforeSend:function(){
 },
 dataType:"json",
 success:function(data){
-$('.product_grid').empty();
+$('.custom-product-grid').empty();
 
 console.log(data);
-  $('.product_grid').append(data);
+  $('.custom-product-grid').append(data);
 },
 complete:function(){
             $(".loading").css('display','none');
@@ -164,7 +194,7 @@ product.push($(this).val());
   return product;
 }
 
-  $('.selector').on("click",function(){
+  $('.selector').on("change",function(){
     // alert($(this).val())
     product_filter();
   })

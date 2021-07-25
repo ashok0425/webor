@@ -15,8 +15,10 @@ use App\Models\Subscriber;
 |
 */
 
-
-
+Route::get('auth/google', 'GoogleController@redirectToGoogle');
+Route::get('auth/google/callback', 'GoogleController@handleGoogleCallback');
+Route::get('auth/facebook', 'FacebookController@redirectToFacebook');
+Route::get('auth/facebook/callback', 'FacebookController@handleFacebookCallback');
 Route::middleware(['auth:sanctum', 'verified'])->get('/', function () {
     return view('frontend.index');
 })->name('dashboard');
@@ -37,7 +39,7 @@ Route::get('/profile/logout','Frontend\AuthController@destory')->name('profile.l
 
 
 // book appointment 
-Route::get('/appointment','Frontend\AppointmentController@index')->name('appointment');
+Route::get('/look-book','Frontend\AppointmentController@index')->name('lookbook');
 
 Route::get('/repair/{device}','Frontend\AppointmentController@repair')->name('repair.device');
 Route::get('repair/{device}','Frontend\AppointmentController@repair')->name('repair.device');
@@ -50,6 +52,8 @@ Route::get('/appointment/list/show/{id}','Frontend\AppointmentController@show')-
 Route::get('/loadtime/','Frontend\AppointmentController@time');
 // product store
 Route::get('/store','Frontend\StoreController@allProduct')->name('store');
+Route::get('/product/store/{id}/{name}','Frontend\StoreController@store')->name('product.store');
+
 Route::get('/filterproduct/ajax','Frontend\StoreController@filterProductAjax');
 Route::get('/search/product/list','Frontend\StoreController@search')->name('search');
 

@@ -1,14 +1,14 @@
 @extends('admin.master')
 @section('main-content')
 @php
-    define('PAGE','time')
+    define('PAGE','gallery')
 @endphp
 
 <div class="container">
     <div class="card py-3 px-4">
         <div class="d-flex justify-content-between">
-            <h3>Time Data</h3>
-            <a href="{{route('admin.time.create')}}" class="btn btn-info btn-lg" >Add Time</a>
+            <h3>Look Book Data</h3>
+            <a href="{{route('admin.time.create')}}" class="btn btn-info btn-lg" >Add New</a>
         </div>
         <br>
 
@@ -16,8 +16,9 @@
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Time</th>
-                    
+                    <th>Image</th>
+                    <th>Place</th>
+
                     <th>Status</th>
 
                     <th>Action</th>
@@ -28,8 +29,12 @@
                 @foreach ($coupon as $item)
                     <tr>
                         <td>{{$loop->iteration}}</td>
-                        <td>{{$item->times.$item->unit}}</td>
-                        
+<td><img src="{{asset($item->image)}}" alt="" width="70"></td>   
+<td>@if ($item->unit==9)
+    style
+    @else 
+    {{$item->unit}}
+@endif</td>                     
 
                         <td>@if ($item->status==1)
                             <a  class="badge bg-success">Active</a>

@@ -106,6 +106,8 @@ $web->other2=$request->other2;
                 }
         $banner->title=$request->title;
         $banner->text=$request->text;
+        $banner->type=$request->type;
+
 $banner->save();
 $notification=array(
     'alert-type'=>'success',
@@ -138,6 +140,8 @@ return redirect()->back()->with($notification);
         $banner->title=$request->title;
         $banner->text=$request->text;
         $banner->title=$request->title;
+        $banner->type=$request->type;
+
 $banner->save();
 $notification=array(
     'alert-type'=>'success',

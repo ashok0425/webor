@@ -1,3 +1,6 @@
+@php
+define('PAGE','shop')
+@endphp
 @extends('frontend.layout.master')
 @section('content')
 <link rel="stylesheet" href="{{ asset('frontend/css/contact.css')}}" />

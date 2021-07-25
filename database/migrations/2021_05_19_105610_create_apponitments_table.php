@@ -15,19 +15,11 @@ class CreateApponitmentsTable extends Migration
     {
         Schema::create('apponitments', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id')->nullable();
-            $table->string('store');
 
             $table->string('name');
-            $table->string('email');
-            $table->string('phone');
-            $table->string('address')->nullable();
-
-            $table->string('date');
-            $table->string('time');
-            $table->integer('total');
-            $table->integer('ispaid')->default(0);
-            $table->string('status')->default(0);
+            $table->string('image');
+         
+            $table->string('status')->default(1);
             $table->timestamps();
         });
     }

@@ -30,25 +30,21 @@
       <i class="fas fa-copy" ></i> <span class="align-middle">Coupon</span>
     </a>
             </li>
-            <li class="sidebar-item <?php  echo PAGE=='time'?'active':'' ?>">
-                <a class="sidebar-link" href="{{route('admin.time')}}">
-      <i class="fas fa-clock" ></i> <span class="align-middle">Time</span>
-    </a>
-            </li>
+           
             <li class="sidebar-header">
-                Manage Device
+                Manage Category
             </li>
 
             <li class="sidebar-item <?php  echo PAGE=='device'?'active':'' ?>">
                 <a data-target="#ui" data-toggle="collapse" class="sidebar-link" aria-expanded="false"> <i class="fas fa-shopping-bag"></i> 
-       <span class="align-middle">Brand & Device</span>
+       <span class="align-middle">Category</span>
     </a>
                 <ul id="ui" class="sidebar-dropdown list-unstyled collapse <?php  echo PAGE=='device'?'show':'' ?>" data-parent="#sidebar" style="">
                
-                    <li class="sidebar-item"><a class="sidebar-link" href="{{route('admin.category')}}">Device</a></li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="{{route('admin.subcategory')}}">Brand</a></li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="{{route('admin.model')}}">Model</a></li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="{{route('admin.part')}}">Accesories</a></li>
+                    <li class="sidebar-item"><a class="sidebar-link" href="{{route('admin.category')}}">Category</a></li>
+                    <li class="sidebar-item"><a class="sidebar-link" href="{{route('admin.subcategory')}}">Subcategory</a></li>
+                   
+                  
                 </ul>
             </li>
 
@@ -70,22 +66,8 @@
                 </ul>
             </li>
 
-            <li class="sidebar-header">
-              Manage Appointment
-            </li>
-
-            <li class="sidebar-item <?php  echo PAGE=='appointment'?'active':'' ?>">
-                <a data-target="#appointment" data-toggle="collapse" class="sidebar-link" aria-expanded="false">
-  <i class="fas fa-male"></i> <span class="align-middle">Appointment List</span>
-    </a>
-                <ul id="appointment" class="sidebar-dropdown list-unstyled collapse <?php  echo PAGE=='appointment'?'show':'' ?>" data-parent="#sidebar" style="">
-               
-                    <li class="sidebar-item"><a class="sidebar-link" href="{{route('admin.appointment')}}">New Appointment</a></li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="{{route('admin.appointment.complete')}}">Completed Appointment</a></li>
-                
-                   
-                </ul>
-            </li>
+        
+        
 
 
             <li class="sidebar-header">
@@ -105,7 +87,20 @@
                     
                  </ul>
              </li>
-
+             <li class="sidebar-header">
+                Gallery
+            </li>
+            <li class="sidebar-item <?php  echo PAGE=='gallery'?'active':'' ?>">
+                <a data-target="#appointment" data-toggle="collapse" class="sidebar-link" aria-expanded="false">
+  <i class="fas fa-envelope"></i> <span class="align-middle">Gallery</span>
+    </a>
+                <ul id="appointment" class="sidebar-dropdown list-unstyled collapse <?php  echo PAGE=='gallery'?'show':'' ?>" data-parent="#sidebar" style="">
+                    <li class="sidebar-item"><a class="sidebar-link" href="{{route('admin.model')}}">Gallery</a></li>
+                    <li class="sidebar-item"><a class="sidebar-link" href="{{route('admin.time')}}">Outlook</a></li>
+                    <li class="sidebar-item"><a class="sidebar-link" href="{{route('admin.ambassador')}}">Ambassadors</a></li>
+                   
+                </ul>
+            </li>
             <li class="sidebar-header">
                 Settings
             </li>

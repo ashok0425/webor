@@ -27,10 +27,10 @@
                 <label class="form-label">Variation</label>
                 <input type="text" name="variation" class="form-control" placeholder="Product name" value="{{$color->variation}}" required>
             </div>
-            <div class="mb-3">
+            {{-- <div class="mb-3">
                 <label class="form-label">price</label>
                 <input type="text" name="price" class="form-control" placeholder="Product name" value="{{$color->price}}" required>
-            </div>
+            </div> --}}
           
            
             <button type="submit" class="btn btn-primary">update</button>

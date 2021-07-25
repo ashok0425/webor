@@ -21,9 +21,12 @@
             </div>
        
             <div class="mb-3">
-                <label class="form-label">Banner Detail</label>
-             <textarea name="text"  cols="30" rows="5" id="summernote2" class="form-control">
-                 {{ old('text') }}
+                <label class="form-label">Type</label>
+            <select name="type" id="" class="form-control">
+                <option value="0">Large banner</option>
+                <option value="1">Shop banner</option>
+
+            </select>
              </textarea>
             </div>
            

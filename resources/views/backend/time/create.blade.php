@@ -3,12 +3,12 @@
 @section('main-content')
 
 @php
-    define('PAGE','time')
+    define('PAGE','gallery')
 @endphp
 
 
 <div class="card">
-        <h3 >Add Time</h3>
+        <h3 >Add Outlook</h3>
    
     <div class="card-body">
    
@@ -16,14 +16,27 @@
             @csrf
             
             <div class="mb-3">
-                <label class="form-label">Time</label>
-                <input type="time" name="time" class="form-control" value="{{old('time')}}" required>
+                <label class="form-label">Image</label>
+                <div class="file-upload-wrapper" data-text="Select your file!">
+                    <input name="file" type="file" class="file-upload-field" value="">
+                  </div>
             </div>
             <div class="mb-3">
-                <label class="form-label">AM/PM</label>
+                <label class="form-label">Place</label>
          <select name="unit" id="" class="form-control">
-             <option value="AM">AM</option>
-             <option value="PM">PM</option>
+            <option value="9">Style</option>
+
+             <option value="1">1st</option>
+             <option value="2">2nd</option>
+             <option value="3">3rd</option>
+             <option value="4">4th</option>
+             <option value="5">5th</option>
+             <option value="6">6th</option>
+             <option value="7">7th</option>
+             <option value="8">8th</option>
+
+
+
 
          </select>
             </div>

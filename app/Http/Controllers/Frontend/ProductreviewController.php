@@ -13,8 +13,9 @@ class ProductreviewController  extends Controller
     public function store(Request $request)
     {
         if(Auth::check()){
+
           $review=new Productreview;
-          $review->uid=1;
+          $review->uid=Auth::user()->id;
           $review->pid=$request->pid;
 
           $review->rating=$request->rating;
@@ -26,7 +27,7 @@ $notification=array(
      );
    return Redirect()->back()->with($notification);
 
-        // }else{
+        }else{
             $notification=array(
                 'messege'=>'Please Login',
                 'alert-type'=>'info'

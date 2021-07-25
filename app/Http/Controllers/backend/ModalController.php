@@ -32,34 +32,7 @@ class ModalController extends Controller
      */
     public function create()
     {
-        $category=Category::all();
-       return view('backend.model.create',compact('category'));
-        
-    }
-
-
-    public function loadData($table,$id,$option){
-     
-        if($table=='category'){
-           
-            $sub=Subcategory::where('category_id',$id)->get();
-            $data='';
-
-        foreach ($sub as $value) {
-            $data.="<option value='".$value->id."'>".$value->subcategory."</option>";
-        }
-                    return response()->json($data);
-        }
-        if($table=='subcategory'){
-            $sub=Modal::where('category_id',$option)->where('subcategory_id',$id)->get();
-            $data='';
-
-        foreach ($sub as $value) {
-            $data.="<option value='".$value->id."'>".$value->modal."</option>";
-        }
-                    return response()->json($data);
-        }
-        
+       return view('backend.model.create');
     }
     /**
      * Store a newly created resource in storage.
@@ -70,9 +43,8 @@ class ModalController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'subcategory'=>'required',
-            'category'=>'required',
-            'modal'=>'required',
+            
+            'file'=>'required',
 
 
         ]);
@@ -89,15 +61,12 @@ class ModalController extends Controller
                 // $path=Image::make($file)->resize(200,300);
                 $file->move('upload/model/',$fname);
             }
-            $category->subcategory_id=$request->subcategory;
-            $category->category_id=$request->category;
-            $category->modal=$request->modal;
 
 
             if($category->save()){
                 $notification=array(
                     'alert-type'=>'success',
-                    'messege'=>'Modal  Added',
+                    'messege'=>'Gallery  Added',
                    
                  );
                  return redirect()->back()->with($notification);
@@ -156,11 +125,7 @@ class ModalController extends Controller
     public function update(Request $request, Category $category)
     {
         $request->validate([
-            'subcategory'=>'required',
-            'category'=>'required',
-            'modal'=>'required',
-
-
+            'file'=>'required'
         ]);
         try {
             $category=Modal::find($request->id);
@@ -174,15 +139,13 @@ class ModalController extends Controller
                 // $path=Image::make($file)->resize(200,300);
                 $file->move('upload/model/',$fname);
             }
-            $category->subcategory_id=$request->subcategory;
-            $category->category_id=$request->category;
-            $category->modal=$request->modal;
+      
 
 
             if($category->save()){
                 $notification=array(
                     'alert-type'=>'success',
-                    'messege'=>'Modal  updated',
+                    'messege'=>'Gallery  updated',
                    
                  );
                  return redirect()->route('admin.model')->with($notification);

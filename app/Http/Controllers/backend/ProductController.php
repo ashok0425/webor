@@ -58,6 +58,8 @@ class ProductController extends Controller
             'category'=>'required',
             'name'=>'required',
             'price'=>'required',
+            'descr'=>'required',
+
         ]);
         try {
  
@@ -77,6 +79,8 @@ class ProductController extends Controller
             $category->subcategory_id=$request->subcategory;
             $category->price=$request->price;
             $category->name=$request->name;
+            $category->long_desc=$request->descr;
+
             $category->featured=$request->featured;
             $category->top_rated=$request->top_rated;
             $category->bestseller=$request->bestseller;
@@ -169,6 +173,8 @@ class ProductController extends Controller
             $category->name=$request->name;
             $category->price=$request->price;
             $category->featured=$request->featured;
+            $category->long_desc=$request->description;
+
             $category->top_rated=$request->top_rated;
             $category->bestseller=$request->bestseller;
 

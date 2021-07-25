@@ -1,3 +1,6 @@
+@php
+define('PAGE','home')
+@endphp
 @extends('frontend.layout.master')
 @section('content')
 <link rel="stylesheet" href="{{ asset('frontend/css/productinfo.css')}}" />
@@ -6,7 +9,7 @@
      /* Style the tab */
 .tab {
   float: left;
-  background-color: var( --brand-two) ;
+  background-color: var( --custom-primary) ;
   color:white;
   width: 30%;
   /* height: 500px; */
@@ -34,14 +37,14 @@
 
 /* Change background color of buttons on hover */
 .tab .tablinks:hover {
-  background-color: var(--white);
-  color: var(--brand-two)!important;
+  background-color: #fff;
+  color: var(--custom-primary)!important;
 }
 
 /* Create an active/current "tab button" class */
 .tab .tablinks.active {
-  background-color: var(--white);
-  color: var(--brand-two)!important;
+  background-color: #fff;
+  color: var(--custom-primary)!important;
 }
 
 /* Style the tab content */
@@ -54,15 +57,7 @@
 .tabcontent label{
     color: rgb(88, 88, 88);
 }
-.tabcontent h2{
-  color: var(--bgblue);
-  font-family: var(--font_man);
-  font-size: 1.2rem;
-  box-shadow: 0 0 10px gray;
-  padding: 1rem 0;
-  text-align: center;
-  margin-bottom: 2rem;
-}
+
 .image-input {
 	text-aling: center;
 }
@@ -121,7 +116,9 @@
 		transform: rotate(0deg);
 	}
 }
-
+.sv-product-info-checkout{
+  background: var(--custom-primary);
+}
 
  </style>
 <div class="card w-75 mx-auto my-5 shadow">
@@ -198,16 +195,16 @@
             <form method="POST" action="{{ route('profile.password') }}">
               @csrf
           
-                  <div class="form-group">
+                  <div class="form-group my-2">
                   <label>Current Password</label>
                      <input id="oldpass" type="password" class="form-control{{ $errors->has('oldpass') ? ' is-invalid' : '' }}" name="currentpassword" value="{{ $oldpass ?? old('currentpassword') }}" required placeholder="old password">
                   </div> <!-- form-group// -->
-                  <div class="form-group">
+                  <div class="form-group my-2">
                   <label>New Password</label>
   
                       <input id="password" type="password" class="form-control{{ $errors->has('newpassword') ? ' is-invalid' : '' }}" name="newpassword" required placeholder="new password">
                   </div> <!-- form-group// -->
-                  <div class="form-group">
+                  <div class="form-group my-2">
                   <label>Confirm Password</label>
   
                       <input id="password-confirm" type="password" class="form-control" name="confirmpassword" required placeholder="Confirm password">

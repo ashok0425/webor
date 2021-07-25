@@ -1,205 +1,92 @@
+@php
+    define('PAGE','contact')
+@endphp
 @extends('frontend.layout.master')
 
+@php
+$social=DB::table('websites')->first()
+@endphp
 @section('content')
-@push('style')
-<link rel="stylesheet" href="{{ asset('frontend/css/contact.css')}}" />
-<style>
-  .contact{
-    margin-top: 6rem;
-    margin-bottom: 3rem;
+<section style="overflow-x: hidden;">
+  <div class="container my-5 pb-5">
+      <div class="row">
+          <div class="col-lg-6"><img class="custom-lookbook-resize" src="{{asset('frontend/images/gallery-img-4.jpg')}}" alt="look book image/thumbnail" /></div>
+          <div class="col-lg-6">
+              <h2 class="custom-fs-75 custom-text-primary custom-fw-600 mb-5" style="text-align: right;">Contact Us</h2>
+              <div class="d-flex justify-content-end" style="position: relative;">
+                  <div class="custom-bg-secondary d-flex align-items-end contact-part-resize">
+                      <div class="d-flex justify-content-around py-3" style="width: 100%;">
+                          <a href="{{$social->instagram1}}" target="_blank">
+                            <i class="fab fa-instagram text-white fa-2x"></i>
+                            
+                          </a>
+                          <a href="{{$social->other1}}" target="_blank">
+                            <i class="fab fab fa-tiktok text-white fa-2x"></i>
+                                
+                          </a>
+                          <a href="{{$social->facebook1}}" target="_blank">
+                            <i class="fab fab fa-facebook text-white fa-2x"></i>
+                                
+                          </a>
+                      </div>
+                  </div>
 
-  }
-  .contact a{
-    color: #000;
-  }
-  .contact p{
-    margin-bottom: .3rem;
-    font-weight: 300;
-  }
-</style>
+                
+                  <div style="width: 100%;" class="custom-shadow custom-bg-white p-5 contact-page-reposition">
+                      <h3 class="custom-fw-700 custom-fs-35 custom-text-secondary custom-font-work">info</h3>
+                      <div class="d-flex align-items-center">
+                          <p class="m-0 custom-font-work custom-fw-400 custom-fs-28 custom-text-secondary ">
+                           <span><i class="fas fa-envelope"></i></span>
+                              <span>{{$social->email1}}</span>
+                          </p>
+                      </div>
+                      <div class="d-flex align-items-center my-2">
+                          <p class="m-0 custom-font-work custom-fw-400 custom-fs-28 custom-text-secondary">
+                            <span><i class="fas fa-phone-alt"></i></span>
 
-@endpush
-  <!-- new section -->
-    <!-- contact section -->
-    <div class="sv-contact">
-        <div class="container">
-          <div class="text-center mt-5">
-            <h4>Contact Information</h4>
-            <p>If you require your phones to get checked and need them repaired,   then you can give us a quick <br>
-              visit or contact us in our two outlets</p>
-          </div>
-          <div class="row contact">
-            <div class="col-md-4 offset-md-1">
-<p><span><i class="fas fa-map-marker-alt"></i></span> &nbsp; &nbsp; {{ $contact->address1 }}</p>
-<p><span><i class="fas fa-envelope"></i></span> &nbsp; &nbsp; {{ $contact->email1 }}</p>
-<p><span><i class="fas fa-phone-alt"></i></span> &nbsp; &nbsp; {{ $contact->phone1 }}</p>
-
-<div class="sv-contact-left-desc-text sv-contact-opening-hour">
-  <p>Mon-Sat: 10:00 AM - 8:00 PM</p> 
-  <p>Sun: 10:00 AM - 7:00 PM</p>
-</div>
-
-            </div>
-            <div class="col-md-4 offset-md-2 mt-md-0 mt-3">
-              <p><span><i class="fas fa-map-marker-alt"></i></span> &nbsp; &nbsp; {{ $contact->address2 }}</p>
-              <p><span><i class="fas fa-envelope"></i></span> &nbsp; &nbsp; {{ $contact->email2 }}</p>
-              <p><span><i class="fas fa-phone-alt"></i></span> &nbsp; &nbsp; {{ $contact->phone2 }}</p>
-              <p class="d-flex justify-content-evenly ">
-                {{-- <a href="{{ $contact->facebook1 }}"><i class="fab fa-facebook"></i></a>
-                <a href="{{ $contact->twitter1 }}"><i class="fab fa-twitter"></i></a>
-                <a href="{{ $contact->instagram1 }}"><i class="fab fa-instagram"></i></a>
-              
-              </p> --}}
-              <div class="sv-contact-left-desc-text sv-contact-opening-hour">
-               <p>Mon-Sat: 10:00 AM - 7:00 PM</p> 
-               <p>Sun: 10:00 AM - 6:00 PM</p>
-
+                              <span>{{$social->phone1}}</span>
+                          </p>
+                      </div>
+                      <div class="d-flex align-items-center">
+                          <p class="m-0 custom-font-work custom-fw-400 custom-fs-28 custom-text-secondary" >
+                            <span><i class="fas fa-map-marker-alt"></i></span>
+                               
+                              <span>{{$social->address1}}</span>
+                          </p>
+                      </div>
+                  </div>
               </div>
-              
-              
-                          </div>
-            
           </div>
-          <div class="row">
-            <div class="col-md-6">
-         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2947.278953190651!2d-71.03040028503871!3d42.37920364188593!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e37049bd52d25f%3A0x5c465d70d9a22cff!2s376%20Chelsea%20St%2C%20Boston%2C%20MA%2002128%2C%20USA!5e0!3m2!1sen!2snp!4v1623462286865!5m2!1sen!2snp" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-            </div>
-            <div class="col-md-6">
-           <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2946.947717388511!2d-71.0824679850385!3d42.38626024144011!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e370db6fdd0f97%3A0x3adb3896d415fcfd!2s52%20Broadway%2C%20Somerville%2C%20MA%2002145%2C%20USA!5e0!3m2!1sen!2snp!4v1623462357122!5m2!1sen!2snp" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-            </div>
-          </div>
-          <x-errormsg/>
-          {{-- <div class="sv-contact-title">
-            <h3>Send us a Message</h3>
-            <p>Have any doubts or queries ? Just send Us a message.</p>
-          </div> --}}
-  
-          <!-- contact box form -->
-          <div class="my-5 d-flex sv-contact-wrapper">
-            <!-- left section -->
-            <div class="sv-contact-left">
-            
-              <div class="sv-contact-left-desc">
-                <div class="sv-contact-left-blue-circle"></div>
-                <!-- each box -->
-                <div class="d-flex sv-contact-left-desc-box">
-                  <div class="sv-contat-left-desc-icon">
-                    <i class="far fa-envelope"></i>
-                  </div>
-                  <div class="sv-contact-left-desc-text sv-contact-email">
-                    <h6>Email</h6>
-                    <p>{{ $contact->email1 }}</p>
-                  </div>
-                </div>
-  
-                <!-- each box -->
-                <div class="d-flex sv-contact-left-desc-box">
-                  <div class="sv-contat-left-desc-icon">
-                    <i class="fas fa-phone-alt"></i>
-                  </div>
-                  <div class="sv-contact-left-desc-text sv-contact-phone">
-                    <h6>Phone</h6>
-                    <p>{{ $contact->phone1 }}</p>
-                  </div>
-                </div>
-  
-                <!-- each box -->
-                <div class="d-flex sv-contact-left-desc-box">
-                  <div class="sv-contat-left-desc-icon">
-                    <i class="fas fa-map-marker-alt"></i>
-                  </div>
-                  <div class="sv-contact-left-desc-text sv-contact-location">
-                    <h6>Location</h6>
-                    <p>
-                      {{ $contact->address1 }}
-                    </p>
-                  </div>
-                </div>
-  
-                <!-- each box -->
-                <div class="d-flex sv-contact-left-desc-box">
-                  <div class="sv-contat-left-desc-icon">
-                    <i class="far fa-clock"></i>
-                  </div>
-                  
-                </div>
-  
-                <!-- each box -->
-                <div class="d-flex sv-contact-left-desc-box">
-                  <div class="sv-contact-left-desc-text sv-contact-social-link">
-                    <h6>Follow us on</h6>
-                    <div class="sv-contact-social-link-wrapper">
-                        <a href="{{ $contact->facebook1 }}">
-                            <i class="fab fa-facebook"></i>
-                        </a>
-                      <a href="{{ $contact->twitter1 }}">
-                        <i class="fab fa-twitter"></i>
-
-                      </a>
-                      <a href="{{ $contact->instgram1 }}">
-                        <i class="fab fa-instagram"></i>
-
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-  
-            <!-- right section -->
-            <div class="sv-contact-right">
-              <form action="{{ route('contact.store') }}" method="POST">
-                @csrf
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="sv-contact-group">
-                      <div class="sv-contact-group-title" for="fname">
-                        First Name
-                      </div>
-                      <input type="text" name="fname" placeholder="First Name" />
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="sv-contact-group">
-                      <div class="sv-contact-group-title" for="fname">
-                        Last Name
-                      </div>
-                      <input type="text" name="lname" placeholder="Last Name" />
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="sv-contact-group">
-                      <div class="sv-contact-group-title" for="fname">Email</div>
-                      <input type="email" name="email" placeholder="Last Name" />
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="sv-contact-group">
-                      <div class="sv-contact-group-title" for="fname">Phone</div>
-                      <input type="text" name="phone" placeholder="Last Name" />
-                    </div>
-                  </div>
-                  <div class="col-lg-12">
-                    <div class="sv-contact-group">
-                      <div class="sv-contact-group-title" for="fname">
-                        Message
-                      </div>
-                      <textarea placeholder="Your Message" name="msg"></textarea>
-                    </div>
-                  </div>
-  
-                  <div class="col-lg-12">
-                    <div class="text-center sv-contact-group">
-                      <button>Submit</button>
-                    </div>
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div>
-  
-          <!-- new section -->
-         
-        </div>
       </div>
+  </div>
+  <div class="container-fluid custom-bg-light py-5">
+      <div style="max-width: 450px; margin: auto;">
+      <x-errormsg />
+
+          <form action="{{route('contact.store')}}" method="POST">
+            @csrf
+              <h2 class="custom-font-work custom-fw-700 custom-fs-50 custom-text-secondary">Let's get in Touch.</h2>
+              <p class="custom-text-secondary custom-fw-400 custom-fs-28">Fell free to write to us.</p>
+              <div class="">
+                  <input type="text" class="custom-bg-light form-control custom-fs-30 custom-fw-400 custom-text-secondary custom-font-work border border-0 border-1 border-bottom custom-bc-secondary" id="form-name" placeholder="Name" name="name">
+              </div>
+              <div class="my-4">
+                  <input type="email" class="custom-bg-light form-control custom-fs-30 custom-fw-400 custom-text-secondary custom-font-work border border-0 border-1 border-bottom custom-bc-secondary" id="form-email" placeholder="E-mail" name="email">
+              </div>
+
+              <div class="my-4">
+                <input type="number" class="custom-bg-light form-control custom-fs-30 custom-fw-400 custom-text-secondary custom-font-work border border-0 border-1 border-bottom custom-bc-secondary" id="form-email" placeholder="Phone" name="phone">
+            </div>
+
+              <div class="">
+                  <input type="text" class="custom-bg-light form-control custom-fs-30 custom-fw-400 custom-text-secondary custom-font-work border border-0 border-1 border-bottom custom-bc-secondary" id="form-message" placeholder="Message" name="message">
+              </div>
+
+              <div class="text-center mt-4">
+                  <button class="btn border-1 custom-bc-secondary custom-fs-25 custom-fw-400 custom-text-secondary px-5" type="submit">Send</button>
+              </div>
+          </form>
+      </div>
+  </div>
+</section>
 @endsection
