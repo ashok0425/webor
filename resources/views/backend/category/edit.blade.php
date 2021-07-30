@@ -5,7 +5,7 @@
 @endphp
 
 <div class="card">
-        <h3>Edit Device</h3>
+        <h3>Edit Category</h3>
    
     <div class="card-body">
  
@@ -13,7 +13,7 @@
             @csrf
             <input type="hidden" name="id" value="{{$category->id}}" />
             <div class="mb-3">
-                <label class="form-label">Device</label>
+                <label class="form-label">Category</label>
                 <input type="text" name="category" class="form-control" placeholder="Category" value="{{$category->category}}">
             </div>
             <div class="mb-3">

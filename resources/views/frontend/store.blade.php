@@ -1,6 +1,9 @@
 @php
     define('PAGE','shop')
 @endphp
+@section('title')
+Store All Product
+@endsection
 @extends('frontend.layout.master')
 <style> 
 .store select:focus{
@@ -86,29 +89,39 @@
 
   <div>
 @if (count($product)>0)
-      <div class="custom-product-grid">
-    
+      <div class="container">
+    <div class="row custom_grid">
+
         @foreach ($product as $item)
-        <div>
-          <a href="{{route('product.detail',['id'=>$item->id,'name'=>$item->name])}}">
+   <div class="col-md-4 col-12">
+    <div class="card border-0">
+      <a href="{{route('product.detail',['id'=>$item->id,'name'=>$item->name])}}">
+      <img src="{{asset($item->image)}}" alt="product thumbnail" />
+  </a>
 
-          <div class="card border-0">
+      <div class="card-body p-0 d-flex justify-content-between align-items-center padx-4">
+          <div>
+      <a href="{{route('product.detail',['id'=>$item->id,'name'=>$item->name])}}">
 
-            <img src="{{asset($item->image)}}" alt="product thumbnail" />
-            <div class="card-body p-0 d-flex justify-content-between align-items-center">
-                <div>
-                    <span class="custom-fs-28 custom-fw-500 custom-text-secondary">{{$item->name}}</span>
-                    <p class="custom-text-secondary custom-text-secondary custom-fs-18">{{__getPriceunit()}}{{$item->price}}/-</p>
-                </div>
-                <div>
-                <span><i class="fas fa-shopping-cart custom-text-secondary custom-fs-28"></i></span>                                   
-                </div>
-            </div>
-        </div>
-      </a>
+           <span class="custom-fs-28 custom-fw-500 custom-text-secondary">{{$item->name}}</span>
+          </a>
 
-      </div>
+              <p class="custom-text-secondary custom-text-secondary custom-fs-18">{{__getPriceunit()}}{{$item->price}}/-</p>
+          </div>
+      
+          <form action="{{route('addtocart.cart')}}" method="GET">
+              @csrf
+              <input type="hidden" value="{{$item->id}}" name='pid'>
+              <button class="cartbtn">
+
+              <span><i class="fas fa-shopping-cart custom-text-secondary custom-fs-28"></i></span>       
+          </button>
+          </form>
+          </div>
+  </div>
+   </div>
         @endforeach
+    </div>
          
 
       <!-- Pagination -->
@@ -175,10 +188,10 @@ beforeSend:function(){
 },
 dataType:"json",
 success:function(data){
-$('.custom-product-grid').empty();
+$('.custom_grid').empty();
 
 console.log(data);
-  $('.custom-product-grid').append(data);
+  $('.custom_grid').append(data);
 },
 complete:function(){
             $(".loading").css('display','none');

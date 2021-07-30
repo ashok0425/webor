@@ -1,3 +1,6 @@
+@php
+    define('PAGE','home')
+@endphp
 @extends('frontend.layout.master')
 @section('content')
 
@@ -44,10 +47,12 @@
                     <th>Tax %</th>
                     <td>{{ $order->tax }}%</td>
                 </tr>
-                <tr>
-                    <th>Coupon({{ $order->coupon }})</th>
-                    <td>{{ $order->coupon_value }}%</td>
-                </tr>
+               @if (!empty($order->coupon))
+               <tr>
+                <th>Coupon({{ $order->coupon }})</th>
+                <td>{{ $order->coupon_value }}%</td>
+            </tr>
+               @endif
                 <tr>
                     <th>Grand Total</th>
                    

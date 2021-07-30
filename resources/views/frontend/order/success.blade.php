@@ -1,3 +1,6 @@
+@php
+    define('PAGE','home')
+@endphp
 @extends('frontend.layout.master')
 
 @section('content')
@@ -8,10 +11,10 @@
 <br>
 <br>
 @php
-    $order=DB::table('orders')->where('tracking_code',$code)->value('id');
+    $order=DB::table('orders')->where('tracking_code',$orderid)->value('id');
 @endphp
         <center>
-       <span class="text-success"> Thank you for Shopping with us.Your order ID is <span><strong class="text-info"><a href="{{ route('order.show',['id'=>$order]) }}" title="view order detail">{{$code}}</a></strong></span></span>
+       <span class="text-success"> Thank you for Shopping with us.Your order ID is <span><strong class="text-info"><a href="{{ route('order.show',['id'=>$order]) }}" title="view order detail">{{$orderid}}</a></strong></span></span>
 <br><br>
 <br>
            <a href="/" style="background: var(--custom-primary);padding:1rem 2rem;color:#fff;border-radius:100px" >&laquo; Back to home page</a>

@@ -99,9 +99,6 @@
 <thead>
     <th>Image</th>
     <th>Name</th>
-    <th>Device</th>
-    <th>Brand</th>
-    <th>Color</th>
     <th>Size</th>
     <th>Price({{ __getPriceunit() }})</th>
     <th>Qty</th>
@@ -112,21 +109,14 @@
     @foreach ($product as $item)
     <tr>
     <td>
-        {{ $item->image }}
+        <img src="{{ asset($item->image) }}" alt="{{ $item->image }}" width="70">
     </td>
     <td>
         {{ $item->name }}
     </td> 
-    <td>
-        {{ $item->category }}
-    </td>
-    <td>
-        {{ $item->subcategory }}
-    </td>
    
-    <td>
-        {{ $item->color }}
-    </td>
+   
+   
     <td>
         {{ $item->size }}
     </td>

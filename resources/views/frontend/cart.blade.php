@@ -1,6 +1,9 @@
 @php
 define('PAGE','shop')
 @endphp
+@section('title')
+Cart
+@endsection
 @push('style')
 <style>
 	.btn_group{

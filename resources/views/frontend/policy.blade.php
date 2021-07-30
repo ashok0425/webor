@@ -1,6 +1,9 @@
 @php
 define('PAGE','about')
 @endphp
+@section('title')
+Privacy & Policy
+@endsection
 @extends('frontend.layout.master')
 @section('content')
 <style>

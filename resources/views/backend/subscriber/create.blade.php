@@ -11,15 +11,9 @@
    
     <div class="card-body">
 
-        <form action="
-        @if (isset($emails))
-        {{route('admin.sendmail.selected')}}
-        @else
-        {{route('admin.sendmail.bulk')}}
- 
-    @endif" method="POST" enctype="multipart/form-data">
+        <form action=" {{route('admin.subscriber.store')}} " method="POST" enctype="multipart/form-data">
             @csrf
-            @foreach ($emails as $item)
+            @foreach ($email as $item)
         <input type="hidden" value="{{ $item}}" name="email[]">
             @endforeach
             <div class="mb-3">

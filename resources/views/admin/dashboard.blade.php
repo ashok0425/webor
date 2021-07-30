@@ -279,7 +279,7 @@
 
 
     <div class="row">
-        <div class="col-12 col-lg-8 col-xxl-9 d-flex">
+        <div class="col-12 col-lg-10 col-xxl-9 offset-md-1">
             <div class="card flex-fill">
                 <div class="card-header">
 
@@ -331,7 +331,7 @@
                 </table>
             </div>
         </div>
-        <div class="col-12 col-lg-4 col-xxl-3 d-flex">
+        {{-- <div class="col-12 col-lg-4 col-xxl-3 d-flex">
             <div class="card flex-fill w-100">
                
                 <div class="card-body d-flex w-100">
@@ -339,7 +339,7 @@
 
                 </div>
             </div>
-        </div>
+        </div> --}}
     </div>
 
 </div>

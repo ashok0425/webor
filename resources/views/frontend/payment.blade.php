@@ -1,6 +1,9 @@
 @php
 define('PAGE','shop')
 @endphp
+@section('title')
+Payment
+@endsection
 @extends('frontend.layout.master')
 @section('content')
 <link rel="stylesheet" href="{{ asset('frontend/css/contact.css')}}" />

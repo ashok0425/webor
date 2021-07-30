@@ -5,7 +5,7 @@
 @endphp
 
 <div class="card">
-        <h3>Edit Brand</h3>
+        <h3>Edit Sub Category</h3>
    
     <div class="card-body">
    
@@ -13,11 +13,11 @@
             @csrf
             <input type="hidden" name="id" value="{{$subcategory->id}}" />
             <div class="mb-3">
-                <label class="form-label">Brand</label>
+                <label class="form-label">Sub Category</label>
                 <input type="text" name="subcategory" class="form-control" placeholder="Category" value="{{$subcategory->subcategory}}">
             </div>
             <div class="mb-3">
-                <label class="form-label">Select Device</label>
+                <label class="form-label">Select Category</label>
                 <select name="category" id="" class="form-control">
                     @foreach ($category as $item)
                     <option value="{{$item->id}}" @if ($item->id==$subcategory->category_id)

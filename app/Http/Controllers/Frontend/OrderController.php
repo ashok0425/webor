@@ -48,7 +48,7 @@ if(!$order){
     return redirect()->route('/')->with($notification);
 }
                 $shipping=shipping::where('order_id',$id)->first();
-                $product=order_detail::where('order_id',$id)->get();
+                $product=DB::table('order_details')->join('products','products.id','order_details.product_id')->where('order_id',$id)->get();
                 
 
                 return view('frontend.order.show',compact('order','shipping','product'));

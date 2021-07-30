@@ -1,30 +1,13 @@
 @php
 define('PAGE','shop')
 @endphp
+@section('title')
+Checkout
+@endsection
 @extends('frontend.layout.master')
 <style>
-    /* storage section */
-.buttongroup label {
-	padding: 6px 12px;
-	cursor: pointer;
-	transition: all 0.2s;
-}
+ 
 
-.buttongroup label {
-margin-right: 3rem;
-}
-
-
-
-/* Hide the radio button */
-input[name='payment'] {
-	display: none;
-}
-/* The checked buttons label style */
-input[name='payment']:checked + label {
-  border: 3px solid var(--brand-two);
-
-}
 .form-control{
 	box-shadow: none!important;
 	outline: none!important;
@@ -48,6 +31,9 @@ input[name='payment']:checked + label {
 	font-weight: 600;
 	margin: 1rem;
 	font-size: 1.2rem;
+}
+.form-row{
+  margin-top: 1rem;
 }
 </style>
 @section('header')

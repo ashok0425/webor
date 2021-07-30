@@ -85,57 +85,23 @@ class ContactController extends Controller
         }
     
     }
-  /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Blog  $category
-     * @return \Illuminate\Http\Response
-     */
-
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Category  $category
-     * @return \Illuminate\Http\Response
-     */
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\blogcategory  $category
-     * @return \Illuminate\Http\Response
-     */
-
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Category  $category
-     * @return \Illuminate\Http\Response
-     */
-    
+  
 
      public function sendmail(Request $request){
 
-        $file=$request->file('file');
-           
-        if($file){
-            $fname=rand().'category.'.$file->getClientOriginalExtension();
-            $file->move('upload/email/contact/',$fname);
-           
-        }
-        $data['email']=$request->email;
-        $data['title']=$request->title;
-        $data['detail']=$request->detail;
+        // $file=$request->file('file');
+     $data=[];
+        $set['email']=$request->email;
+        $set['name']=$request->name;
+
+        $set['title']=$request->title;
+        $set['detail']=$request->detail;
         
-        $file=asset("upload/email/contact/$fname");
-        Mail::send('mail.contact', $data, function ($message) use ($data,$file) {
-            $message->to($data['email'])->subject($data['title'])->attach($file);
-       
-      
+        Mail::send('mail.sendmailtocontact', $set, function($message)use($set) {
+            $message->to($set['email'])
+                    ->subject($set['title']);
         });
+       
             $notification=array(
                 'alert-type'=>'success',
                 'messege'=>'Email sucessfully send to selected client',

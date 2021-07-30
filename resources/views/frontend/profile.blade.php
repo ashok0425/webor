@@ -1,6 +1,9 @@
 @php
 define('PAGE','home')
 @endphp
+@section('title')
+Profile
+@endsection
 @extends('frontend.layout.master')
 @section('content')
 <link rel="stylesheet" href="{{ asset('frontend/css/productinfo.css')}}" />
@@ -118,6 +121,9 @@ define('PAGE','home')
 }
 .sv-product-info-checkout{
   background: var(--custom-primary);
+  width: 300px;
+  margin: auto;
+  text-align: center;
 }
 
  </style>
@@ -173,7 +179,7 @@ define('PAGE','home')
 
             <div class="sv-product-info-checkout mt-2">
 
-                <input type="submit"  value="Add profile photo">
+                <input type="submit"  value="Add profile photo" >
 
                 <input type="hidden"  value="Add profile photo">
 

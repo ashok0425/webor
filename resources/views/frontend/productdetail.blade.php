@@ -142,7 +142,7 @@ define('PAGE','shop')
           </div>
           <div class="col-md-2 offset-md-6 text-center">
             <p class="ml-5 mt-2"> 
-              <a href="" data-bs-toggle="modal" data-bs-target="#size" class="review_model ">Size Detail</a> </p>
+              <a href="" data-bs-toggle="modal" data-bs-target="#size" class="custom-text-secondary review_model ">Size Detail</a> </p>
           </div>
       </div>
     </form>
@@ -231,7 +231,7 @@ define('PAGE','shop')
             <div class="card border-0">
   
               <img src="{{asset($item->image)}}" alt="product thumbnail" />
-              <div class="card-body p-0 d-flex justify-content-between align-items-center">
+              <div class="card-body p-0 d-flex justify-content-between align-items-center padx-4">
                   <div>
                       <span class="custom-fs-28 custom-fw-500 custom-text-secondary">{{$item->name}}</span>
                       <p class="custom-text-secondary custom-text-secondary custom-fs-18">{{__getPriceunit()}}{{$item->price}}/-</p>

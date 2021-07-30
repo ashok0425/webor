@@ -11,9 +11,13 @@
              <div class=" custom-hero-resize">
                 <img src="{{asset($item->image)}}" class="d-block w-100 custom-hero-resize" alt="...">
                 <div class="carousel-caption forced-centered">
-                    <h2 class="custom-fs-140 custom-fw-400">{{$item->title}}</h2>
-                    <a class="custom-fs-40 custom-fw-600 mt-4 custom-text-white" href="./shop.html">New
+                    <h2 class="custom-fs-140 custom-fw-700">{{$item->title}}</h2>
+                    <a class="custom-fs-40 custom-fw-600 mt-4 mb-4 custom-text-white">New
                         Collection</a>
+<div class=" mt-5">
+    <a class="custom-fs-25 custom-fw-200 mt-5 text-dark text-decoration-underline text-transform-uppercase" href="{{route('store')}}">SHOP NOW</a>
+
+</div>
                 </div>
             </div>
           

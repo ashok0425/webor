@@ -1,6 +1,9 @@
 @php
     define('PAGE','contact')
 @endphp
+@section('title')
+Contact
+@endsection
 @extends('frontend.layout.master')
 
 @php

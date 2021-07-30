@@ -18,15 +18,27 @@ $banner=DB::table('products')->where('status',1)->orderBy('id','desc')->limit(8)
                   <div class="card border-0">
                     <a href="{{route('product.detail',['id'=>$item->id,'name'=>$item->name])}}">
                     <img src="{{asset($item->image)}}" alt="product thumbnail" />
-                    <div class="card-body p-0 d-flex justify-content-between align-items-center">
+                </a>
+
+                    <div class="card-body p-0 d-flex justify-content-between align-items-center padx-4">
                         <div>
+                    <a href="{{route('product.detail',['id'=>$item->id,'name'=>$item->name])}}">
+
                          <span class="custom-fs-28 custom-fw-500 custom-text-secondary">{{$item->name}}</span>
+                        </a>
+
                             <p class="custom-text-secondary custom-text-secondary custom-fs-18">{{__getPriceunit()}}{{$item->price}}/-</p>
                         </div>
                     
-                        <span><i class="fas fa-shopping-cart custom-text-secondary custom-fs-28"></i></span>                                   
+                        <form action="{{route('addtocart')}}" method="POST">
+                            @csrf
+                            <input type="hidden" value="{{$item->id}}" name='pid'>
+                            <button class="cartbtn">
+
+                            <span><i class="fas fa-shopping-cart custom-text-secondary custom-fs-28"></i></span>       
+                        </button>
+                        </form>
                         </div>
-                        </a>
                 </div>
                
                   @endforeach
@@ -55,10 +67,10 @@ responsive:{
       items:1,
   },
   600:{
-      items:3,
+      items:2,
   },
   1000:{
-      items:4,
+      items:3,
      
   }
 }

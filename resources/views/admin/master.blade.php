@@ -13,7 +13,7 @@
 
 	<meta name="keywords" content="{{ $setting->keyword }}">
 
-	<link rel="shortcut icon" href="{{ asset($setting->image) }}" />
+	<link rel="shortcut icon" href="{{ asset($setting->fev) }}" />
 
 	<title>{{ $setting->title }}</title>
 
@@ -26,8 +26,10 @@
 	{{-- summernote css  --}}
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
 
-	{{-- datatables  --}}
-	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
+		{{-- datatables  --}}
+		<link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
+	
+		<link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.dataTables.min.css"/>
     {{-- toastr  --}}
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 </head>
@@ -154,14 +156,23 @@ h3{
 
 {{-- toastr  --}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-{{-- datatables  --}}
-<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+{{-- datatable  --}}
+<script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+	<script src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+	<script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.html5.min.js"></script>
+	<script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.print.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.colVis.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"></script>
 {{-- sweet alert  --}}
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 {{-- !-- include summernote js --> --}}
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 	{{-- fetching data category,subcategory --}}
+	@stack('scripts')
 <script>
 $(document).ready(function(){
 $(document).on('click','.data',function(){
@@ -245,11 +256,29 @@ $(document).ready(function() {
     </script>
 
 	{{-- datatables iniziing --}}
-	<script >
-		$(document).ready( function () {
-    $('#myTable').DataTable();
-} );
-
+	<script type="text/javascript">
+		$(document).ready(function () {
+			var table = $('#myTable').DataTable({
+				select: true,
+				dom: 'Blfrtip',
+				lengthMenu: [
+					[10, 25, 50, -1],
+					['10 row', '25 row', '50 row', 'All Rows']
+				],
+				dom: 'Bfrtip',
+				buttons: [
+					// { extend: 'copy', text: '<i class="fas fa-envelope" aria-hidden="true"> copy</i>' },
+					{ extend: 'pdf', text: '<i class="fas fa-file-pdf fa-1x" aria-hidden="true"> Export a PDF</i>' },
+					{ extend: 'csv', text: '<i class="fas fa-file-csv fa-1x"> Export a CSV</i>' },
+					{ extend: 'excel', text: '<i class="fas fa-file-excel" aria-hidden="true"> Export a EXCEL</i>' },
+					{ extend: 'colvis', text: '<i class="fas fa-bars" aria-hidden="true"> Show Column</i>' },
+					
+					'pageLength'
+				],
+			});
+			table.buttons().container()
+				.appendTo('#datatable_wrapper .col-md-6:eq(0)');
+		});
 	</script>
 
 <script>

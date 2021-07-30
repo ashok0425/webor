@@ -27,7 +27,7 @@ class StoreController extends Controller
 
     
   public function filterProductAjax(Request $request){
-    $category_all="SELECT DISTINCT products.name,products.*,productvariations.variation,productvariations.price as vprice FROM products  JOIN productvariations ON productvariations.product_id=products.id  WHERE products.status=1 ";
+    $category_all="SELECT products.name,products.price,products.image,products.id FROM products  INNER JOIN  ON productvariations.product_id=products.id  WHERE products.status=1 ";
 //  if(isset($request->min) || isset($request->max)  && !empty($request->min) && !empty( $request->max)){
 
 //    $category_all .= " AND products.price BETWEEN $request->min AND $request->max";
@@ -85,21 +85,35 @@ $cat=DB::select($category_all);
     $data='';
     foreach($cat as $item){
 
-$data.=	" <div>
-<a href='".route('product.detail',['id'=>$item->id,'name'=>$item->name])."' class='custom-fs-28 custom-fw-500 custom-text-secondary'>
+$data.=	"<div class='col-md-4 col-12'>
 <div class='card border-0'>
+  <a href='".route('product.detail',['id'=>$item->id,'name'=>$item->name])."'>
   <img src='".asset($item->image)."' alt='product thumbnail' />
-  <div class='card-body p-0 d-flex justify-content-between align-items-center'>
-      <div>
-          <span class='custom-fs-28 custom-fw-500 custom-text-secondary'>$item->name</span>
-          <p class='custom-text-secondary custom-text-secondary custom-fs-18'>".__getPriceunit()."$item->price/-</p>
-      </div>
-      <div>
-      <span><i class='fas fa-shopping-cart custom-text-secondary custom-fs-28'></i></span>                                   
-      </div>
-  </div>
-</div>
 </a>
+
+  <div class='card-body p-0 d-flex justify-content-between align-items-center padx-4'>
+      <div>
+  <a href='".route('product.detail',['id'=>$item->id,'name'=>$item->name])."'>
+
+       <span class='custom-fs-28 custom-fw-500 custom-text-secondary'>$item->name</span>
+      </a>
+
+          <p class='custom-text-secondary custom-text-secondary custom-fs-18'>";
+          $data.=__getPriceunit().$item->price;
+          
+            $data.=" /-</p>
+      </div>
+  
+      <form action='".route('addtocart.cart')."' method='GET'>
+         
+          <input type='hidden' value='".$item->id."' name='pid'>
+          <button class='cartbtn'>
+
+          <span><i class='fas fa-shopping-cart custom-text-secondary custom-fs-28'></i></span>       
+      </button>
+      </form>
+      </div>
+</div>
 </div>";
         }   
 return response()->json($data);

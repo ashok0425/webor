@@ -50,6 +50,18 @@ $notification=array(
             // $path=Image::make($file)->resize(200,300);
             $file->move('upload/setting/logo/',$fname);
                 }
+
+                $fev=$request->file('fev');
+
+                if($fev){
+                    // File::delete(__getAdmin()->profile_photo_path);
+                    $fname=rand().'fev.'.$fev->getClientOriginalExtension();
+                    $web->fev='upload/setting/logo/'.$fname;
+                    // $path=Image::make($file)->resize(200,300);
+                    $fev->move('upload/setting/logo/',$fname);
+                        }
+
+
 $web->title=$request->title;
 $web->keyword=$request->keyword;
 $web->descr=$request->descr;
@@ -69,6 +81,8 @@ $web->facebook2=$request->facebook2;
 $web->twitter2=$request->twitter2;
 $web->instagram2=$request->instagram2;
 $web->other2=$request->other2;
+
+
         $web->save();
         $notification=array(
             'alert-type'=>'success',

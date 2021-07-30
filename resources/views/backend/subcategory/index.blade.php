@@ -7,8 +7,8 @@
 <div class="container">
     <div class="card py-3 px-4">
         <div class="d-flex justify-content-between">
-            <h3>Brand Data</h3>
-            <a href="{{route('admin.subcategory.create')}}" class="btn btn-info btn-lg" >Add Brand</a>
+            <h3>Sub Category Data</h3>
+            <a href="{{route('admin.subcategory.create')}}" class="btn btn-info btn-lg" >Add Subcategory</a>
         </div>
         <br>
 
@@ -16,8 +16,8 @@
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Brand</th>
-                    <th>Device</th>
+                    <th>Subcategory</th>
+                    <th>Category</th>
 
                     <th>Image</th>
                     <th>Status</th>

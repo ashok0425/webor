@@ -8,14 +8,14 @@
 @endphp
 
 <div class="card">
-        <h3>Add Device</h3>
+        <h3>Add Category</h3>
    
     <div class="card-body">
   
         <form action="{{route('admin.category.store')}}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">
-                <label class="form-label">Device</label>
+                <label class="form-label">Category</label>
                 <input type="text" name="category" class="form-control" placeholder="Category"value="{{old('category')}}" required>
             </div>
             <div class="mb-3">

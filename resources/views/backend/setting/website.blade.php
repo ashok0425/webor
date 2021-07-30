@@ -43,6 +43,15 @@
                   <br>
                   <img src="{{ asset($website->image) }}" width="70" alt="">
             </div>
+
+            <div class="mb-3">
+                <label class="form-label">Fevicon</label>
+                <div class="file-upload-wrapper" data-text="Select your file!">
+                    <input name="fev" type="file" class="file-upload-field" value="">
+                  </div>
+                  <br>
+                  <img src="{{ asset($website->fev) }}" width="70" alt="">
+            </div>
             <div class="col-md-6">
                 <div class="mb-3">
                     <label class="form-label"> Address </label>

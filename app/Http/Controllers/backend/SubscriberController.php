@@ -31,10 +31,13 @@ class SubscriberController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-     
-       return view('backend.subscriber.create');
+        $email=[];
+     foreach ($request->subscriber as  $value) {
+       $email[]=$value;
+     }
+       return view('backend.subscriber.create',compact('email'));
         
     }
 
@@ -85,59 +88,23 @@ class SubscriberController extends Controller
         }
     
     }
-  /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Blog  $category
-     * @return \Illuminate\Http\Response
-     */
+  
 
+     public function send(Request $request){
+       
+         foreach ($request->email as $value) {
+             $set['email']=$value;
+             $set['title']=$request->title;
+             $set['detail']=$request->detail;
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Category  $category
-     * @return \Illuminate\Http\Response
-     */
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\blogcategory  $category
-     * @return \Illuminate\Http\Response
-     */
-
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Category  $category
-     * @return \Illuminate\Http\Response
-     */
-    
-
-     public function sendBulkMail(Request $request){
-         $subcriber=Subscriber::all();
-         foreach ($subcriber as $value) {
-            Mail::to($value)->send(new newslater($request->all()));
+            Mail::send('mail.subscriberemail', $set, function($message)use($set) {
+        $message->to($set['email'])
+                ->subject($set['title']);
+    });
 
          }
+         return redirect()->route('admin.subscriber');
      }
 
-    public function selectedEmail(Request $request){
-        
-        $emails=$request->subscriber;
-        
-        return view('backend.subscriber.create',compact('emails'));
-
-    }
-
-
-
-    public function sendSelected(Request $request){
-
-        return view('backend.subscriber.create',compact('emails'));
-
-    }
+  
 }

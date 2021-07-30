@@ -13,6 +13,7 @@
        
         <form action="{{route('admin.contact.sendmail')}}" method="POST" enctype="multipart/form-data">
             @csrf
+            <input type="hidden" name="name" value="{{$con->fname}}">
             <div class="mb-3">
                 <label class="form-label">Email To</label>
                 <input type="email" name="email" class="form-control" placeholder="Mail title"value="{{ $con->email }}" required>
@@ -28,13 +29,13 @@
                 </textarea>
             </div>
            
-            <div class="mb-3">
+            {{-- <div class="mb-3">
                 <label class="form-label">Attachement</label>
                 <div class="file-upload-wrapper" data-text="Select your file!">
                     <input name="file" type="file" class="file-upload-field" value="">
                   </div>
                   <br>
-            </div>
+            </div> --}}
            
             <button type="submit" class="btn btn-primary">Update</button>
         </form>

@@ -1,6 +1,9 @@
 @php
     define('PAGE','about')
 @endphp
+@section('title')
+About us
+@endsection
 @extends('frontend.layout.master')
 @section('content')
 <section>

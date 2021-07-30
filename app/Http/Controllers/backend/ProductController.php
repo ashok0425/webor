@@ -173,7 +173,7 @@ class ProductController extends Controller
             $category->name=$request->name;
             $category->price=$request->price;
             $category->featured=$request->featured;
-            $category->long_desc=$request->description;
+            $category->long_desc=$request->descr;
 
             $category->top_rated=$request->top_rated;
             $category->bestseller=$request->bestseller;

@@ -88,6 +88,8 @@ Route::get('paypal/checkout-success/{order}', 'Frontend\PayPalController@getExpr
 Route::get('paypal/checkout-cancel', 'Frontend\PayPalController@cancelPage')->name('paypal.cancel');
 // Add to cart
 Route::post('/cart/store','Frontend\CartController@store')->name('addtocart');
+Route::get('/cart/store/cart','Frontend\CartController@store')->name('addtocart.cart');
+
 Route::get('/cart','Frontend\CartController@index')->name('cart');
 Route::get('/cart/delete/{id}','Frontend\CartController@destroy')->name('cartremove');
 Route::get('/checkout','Frontend\CartController@checkout')->name('checkout');
@@ -102,7 +104,7 @@ Route::get('remove-coupon','Frontend\CartController@CouponRemove')->name('coupon
 // Payment
 Route::get('payment','Frontend\CartController@PaymentPage')->name('payment');
 Route::post('payment/store','Frontend\PaymentController@store')->name('payment.store');
-Route::get('payment/success/{code}','Frontend\PaymentController@success')->name('payment.success');
+Route::get('payment/success/{orderid}','Frontend\PaymentController@success')->name('payment.success');
 Route::get('payment/failed/','Frontend\PaymentController@failed')->name('payment.error');
 
 // order 

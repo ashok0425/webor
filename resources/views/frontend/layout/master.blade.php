@@ -42,7 +42,8 @@
         {{-- <meta name="author" content="{{$seo->meta_author}}"> --}}
         <meta name="keyword" content="@yield('keyword')">
         <meta name="description" content="@yield('descr')">
-        <link rel="icon" href="{{asset("fev.png")}}" type="image/icon type">
+        <link rel="shortcut icon" href="{{ asset($setting->fev) }}" />
+
 
         <title>@yield('title')</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.css"/>
@@ -60,19 +61,65 @@
 
    {{-- toatser --}}
    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
-   	{{-- datatables  --}}
-	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
+	{{-- datatables  --}}
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
+	
+  <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.dataTables.min.css"/>
     <link rel="stylesheet" href="{{asset('frontend/css/main.css')}}" />
     <title>Home page</title>
     <style>
-      input:focus{
-        box-shadow: none!important;
-        border-radius: 0!important;
+      .padx-4{
+        padding-left:  2.2rem!important;
+        padding-right:  2.2rem!important;
+
       }
-      input{
-        box-shadow: none!important;
-        border-radius: 0!important;
+      .cartbtn{
+        outline: none;
+        background: none;
+        border: none;
       }
+        .footer{
+      padding: 1.5rem;
+            width: 100%;
+            margin-bottom: 1rem;
+        }
+        .footer form {
+  /* This bit sets up the horizontal layout */
+  display:flex;
+  flex-direction:row;
+  
+vertical-align: center; 
+background: #fff;
+padding: .5rem .8rem;
+border-radius: 5px!important;
+}
+
+.footer input{
+    flex-grow: 2;
+    border: none!important;
+    outline: none!important;
+
+}
+.footer input:focus {
+  /* removing the input focus blue box. Put this on the form if you like. */
+  outline: none;
+}
+
+.footer button {
+ background: var(--custom-secondary);
+  outline: none!important;
+  border: none!important;
+  padding: .3rem .6rem;
+  border-radius: 5px;
+  color:var(--custom-primary);
+}
+.footer button:focus {
+  /* removing the input focus blue box. Put this on the form if you like. */
+  outline: none;
+}
+.news{
+  font-size: 30px
+}
     </style>
 </head>
   <body>
@@ -112,7 +159,6 @@
 <script type="text/javascript" src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 <script src="{{asset('frontend/js/main.js')}}"></script>
 {{-- datatables  --}}
-<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
 	<script src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
@@ -120,21 +166,34 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
 	<script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.html5.min.js"></script>
 	<script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.print.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.colVis.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"></script>
 
-{{-- datatables iniziing --}}
-<script >
-  $(document).ready( function () {
-    $(document).ready(function() {
-  $('#myTable').DataTable( {
-      dom: 'Bfrtip',
-      buttons: [
-          'copy', 'csv', 'excel', 'pdf', 'print'
-      ]
-  } );
-} );
-} );
-
-</script>
+	{{-- datatables iniziing --}}
+	<script type="text/javascript">
+		$(document).ready(function () {
+			var table = $('#myTable').DataTable({
+				select: true,
+				dom: 'Blfrtip',
+				lengthMenu: [
+					[10, 25, 50, -1],
+					['10 row', '25 row', '50 row', 'All Rows']
+				],
+				dom: 'Bfrtip',
+				buttons: [
+					// { extend: 'copy', text: '<i class="fas fa-envelope" aria-hidden="true"> copy</i>' },
+					{ extend: 'pdf', text: '<i class="fas fa-file-pdf fa-1x" aria-hidden="true"> Export a PDF</i>' },
+					{ extend: 'csv', text: '<i class="fas fa-file-csv fa-1x"> Export a CSV</i>' },
+					{ extend: 'excel', text: '<i class="fas fa-file-excel" aria-hidden="true"> Export a EXCEL</i>' },
+					{ extend: 'colvis', text: '<i class="fas fa-bars" aria-hidden="true"> Show Column</i>' },
+					
+					'pageLength'
+				],
+			});
+			table.buttons().container()
+				.appendTo('#datatable_wrapper .col-md-6:eq(0)');
+		});
+	</script>
 @stack('scripts')
 
 

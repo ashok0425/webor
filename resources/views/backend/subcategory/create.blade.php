@@ -8,18 +8,18 @@
 
 
 <div class="card">
-        <h3>Add Brand</h3>
+        <h3>Add Subcategory</h3>
    
     <div class="card-body">
 
         <form action="{{route('admin.subcategory.store')}}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">
-                <label class="form-label">Brand</label>
+                <label class="form-label">Sub Category</label>
                 <input type="text" name="subcategory" class="form-control" placeholder="Device" value="{{old('subcategory')}}" required>
             </div>
             <div class="mb-3">
-                <label class="form-label">Select Device</label>
+                <label class="form-label">Select Category</label>
                 <select name="category" id="" class="form-control " required>
                     <option value="">--select barnd---</option>
                     @foreach ($category as $item)
