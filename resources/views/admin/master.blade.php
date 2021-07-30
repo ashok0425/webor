@@ -306,8 +306,7 @@ $(document).ready(function() {
 	$('.status').change(function(){
 		let $val=$(this).val();
 		let $hid=$(this).data('id');
-alert($val);
-		
+		p1NiZ)5iz4#HQ1
 		$.ajax({
 			url:'{{ url('admin/order/status') }}/'+$val+'/'+$hid,
 			type:'GET',

@@ -46,29 +46,24 @@
                             
                             <td>
                   
-<form action="">
-    
-    <select name="status" id="status" class="form-control" data-id="{{ $item->id }}">
-
-
-<option value="1" @if ($item->status==1)
-    selected
-@endif>
-Processing
-</option>
-<option value="2" @if ($item->status==2)
-    selected
-@endif>
-Shipping
-</option>
-<option value="3" @if ($item->status==3)
-    selected
-@endif>
-Deliver
-</option>
-
-    </select>
-</form>
+                                <select name="status" class="status" class="form-control" data-id="{{ $item->id }}">
+                                 
+                                    <option value="2" @if ($item->status==2)
+                                        selected
+                                    @endif>
+                                    Shipping
+                                    </option>
+                                    <option value="3" @if ($item->status==3)
+                                        selected
+                                    @endif>
+                                    Deliver
+                                    </option>
+                                    <option value="4" @if ($item->status==4)
+                                        selected
+                                    @endif>
+                                    Cancel
+                                    </option>
+                                        </select>
                         </td>
                         <td>
                             <a href="{{route('admin.order.show',['id'=>$item->id])}}" class="btn btn-info"><i class="far fa-eye"></i></a></td>
