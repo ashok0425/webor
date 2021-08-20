@@ -17,8 +17,6 @@ Outlook
         $outlook7=DB::table('times')->where('unit',7)->orderBy('id','desc')->value('image');
         $outlook8=DB::table('times')->where('unit',8)->orderBy('id','desc')->limit(4)->get();
         $outlook9=DB::table('times')->where('unit',9)->orderBy('id','desc')->get();
-
-
     @endphp
     <!-- First section -->
     <div class="container py-4">
@@ -37,10 +35,10 @@ Outlook
                         <h3 class="custom-fw-600 custom-text-secondary mt-5"> 1. PVC Outfit</h3>
                     <p class="custom-fw-400 custom-text-secondary custom-fs-16 m-0 mb-5 py-2">
                         Look fabulous with our PVC outfit. PVC outfit, also called vinyl clothing is shiny clothing made from plastic polyvinyl chloride. Shine on the floor with fitting PVC articles of clothing and flaunt your tantalizing beauty with these colorful items of clothing
-<br>
-Don’t let the societal norms hold you down and look fabulous while getting comfortable with your body. Embrace yourself with the PVC Outfit.
+                        <br>
+                        Don’t let the societal norms hold you down and look fabulous while getting comfortable with your body. Embrace yourself with the PVC Outfit.
                     </p>
-                    
+
                    <a href="#down" class="custom-text-secondary"><i class="far fa-arrow-alt-circle-down fa-4x"></i></a>
                     </div>
                 </div>
@@ -58,11 +56,11 @@ Don’t let the societal norms hold you down and look fabulous while getting com
                         Are you worried the mask is gonna ruin your outfit? Especially in these crucial times, you can’t afford to go maskless as well. You don’t have to worry anymore.
 <br>
                         With an attractive and trendy Mask Dress, you can easily make a mask part of your outfit as well. Wear the Mask Dress above your safety mask and Boom! No more bland-looking masks that don’t fit in with your dress.
-                        
+
                         Moreover, with these dresses on trends, you are guaranteed to look fabulous and trendy.
-                        
+
                     </p>
-                    
+
             </div>
         </div>
     </div>
@@ -79,8 +77,8 @@ Don’t let the societal norms hold you down and look fabulous while getting com
                         Looking for a dress that guarantees to make you the center of appreciating eyes? Mesh Dress is the one for you. Mesh is a loosely woven or knitted fabric that has many closely spaced holes. And, adding a super luxe finish to your look whilst showing off your shape is easily achievable through our Mesh Dress.
 <br>
                         With a wide variety of types, you can easily choose between which feels like you and suits you. Be confident in how you look and have all the eyes on you with our selection of elegant Mesh Dress.
-                        
-                        
+
+
                     </p>
                     <a href="{{route('store')}}" class="custom-fw-600 custom-fs-16 custom-text-secondary border border-0 custom-bc-secondary border-bottom">Browse all collection</a>
                 </div>
@@ -110,9 +108,9 @@ Don’t let the societal norms hold you down and look fabulous while getting com
                     Flaunt your curves and waist to boost your confidence with our selection of eye-catching and glamorous corsets. Looking your best with a corset has never been this comfortable before.
 <br>
                     Combine the curve flaunting dress with comfort and style with our Corset. Get your corset from the wide selection of designs and styles that are greatly varied to suit your style.
-                    
-                    
-                    
+
+
+
                 </p>
                 <a href="{{route('store')}}" class="mt-4 btn border custom-bc-secondary border-1 px-5 custom-fw-400 custom-fs-25">Shop now</a>
                 <div class="mt-4">
@@ -129,8 +127,8 @@ Don’t let the societal norms hold you down and look fabulous while getting com
                 @foreach ($outlook8 as $item)
                 <img class="custom-br-10 custom-lookbook-resize" src="{{asset($item->image)}}" alt="look book image banner" />
                 @endforeach
-              
-             
+
+
             </div>
         </div>
     </div>
@@ -153,12 +151,12 @@ Don’t let the societal norms hold you down and look fabulous while getting com
   <div class="text-center pt-5">
       <a href="{{$insta->instagram1}}" class="btn custom-fs-25 custom-fw-600 custom-bc-secondary px-4 custom-text-secondary border-2">
           <span>
-               <i class="fab fa-instagram custom-fs-30 "></i>                                  
+               <i class="fab fa-instagram custom-fs-30 "></i>
           </span>
           <span>Follow us</span>
       </a>
   </div>
-            
+
         </div>
     </div>
 </section>

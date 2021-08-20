@@ -5,12 +5,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Traits\status;
 use App\Models\Order;
-use App\Models\order_detail;
 use App\Models\shipping;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Barryvdh\DomPDF\Facade as PDF;
-
 use File;
 class OrderController extends Controller
 {

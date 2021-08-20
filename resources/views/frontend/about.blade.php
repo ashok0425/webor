@@ -56,18 +56,19 @@ About us
             </div>
         </div>
     </div>
+
     <!-- Our Process -->
     <div class="container">
         <h2 class="custom-fw-700 custom-fs-50 custom-text-secondary text-center">Our Process</h2>
         <div class="my-5" style="position: relative;max-width: 1080px; margin:auto;">
             <p class="process process-top m-0">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laboriosam beatae corporis deserunt laudantium. Quod, error asperiores blanditiis perferendis.
+                We empower those holding out on the constant societal pressure. Embrace our true self and redefine the norms.
             </p>
             <p class="process process-middle m-0">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laboriosam beatae corporis deserunt laudantium. Quod, error asperiores blanditiis perferendis.
+                As an inclusive brand, we are inspired by our customers and their need. We are here for all the shades of beauty.
             </p>
             <p class="process process-bottom m-0">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laboriosam beatae corporis deserunt laudantium. Quod, error asperiores blanditiis perferendis.
+                We are all for body positivity and acceptance of own self. We don’t shy away from being us. We embrace ourselves and accept our beauty.
             </p>
             <div class="d-none d-lg-block">
                 <div class="d-flex flex-column align-items-center">
@@ -88,14 +89,14 @@ About us
         <h3 class="custom-fs-40 custom-fw-600 custom-text-secondary text-center mb-5">Meet our Ambassadors</h3>
         <div class="custom-product-grid">
             @foreach ($ambassador as $item)
-                
+
             <div>
                 <img class="custom-br-10 custom-shop-banner-resize" src="{{asset($item->image)}}" alt="brand ambassadors thumbnail" />
                 <p class="custom-fs-30 custom-fw-700 text-center mt-2">{{$item->name}}</p>
             </div>
             @endforeach
-          
-         
+
+
         </div>
     </div>
 </section>
@@ -104,5 +105,5 @@ About us
 
 
 
-  
+
 		@endsection
