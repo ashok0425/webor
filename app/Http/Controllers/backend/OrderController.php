@@ -7,7 +7,10 @@ use App\Http\Traits\status;
 use App\Models\Order;
 use App\Models\order_detail;
 use App\Models\shipping;
-use DB;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
+use Barryvdh\DomPDF\Facade as PDF;
+
 use File;
 class OrderController extends Controller
 {
@@ -69,11 +72,11 @@ $order=DB::table('orders')->where('id',$hid)->first();
 $ship=DB::table('shippings')->where('order_id',$hid)->first();
 
 $cart = DB::table('order_details')->join('products','order_details.product_id','products.id')->select('products.name','products.image','order_details.*')->where('order_details.order_id',$hid)->get();
-      
+
 
 
 if($id==1){
-    
+
 $set=[
     'image'=>$data->image,
     'cart'=>$cart,
@@ -107,18 +110,18 @@ $set=[
 
 
 $pdf = PDF::loadView('mail.orderstatus', $set);
-   
-   
-   
+
+
+
     Mail::send('mail.order', $set, function($message)use($set, $pdf) {
         $message->to($set['ship_email'])
                 ->subject("Your order  is currently being reviewed and will be picked up for delivery soon.")
                 ->attachData($pdf->output(), "orderinvoice.pdf");
     });
-       
+
 }
 if($id==2){
-    
+
     $set=[
     'image'=>$data->image,
     'cart'=>$cart,
@@ -149,14 +152,14 @@ soon.",
 
 ];
 $pdf = PDF::loadView('mail.orderstatus', $set);
-   
+
     Mail::send('mail.order', $set, function($message)use($set, $pdf) {
         $message->to($set['ship_email'])
                 ->subject("Your order is currently on its way to you. One of our representatives will contact you
 soon.")
                 ->attachData($pdf->output(), "orderinvoice.pdf");
     });
-       
+
 }
 if($id==3){
       $set=[
@@ -190,18 +193,18 @@ if($id==3){
 ];
 
     $pdf = PDF::loadView('mail.orderstatus', $set);
-  
+
     Mail::send('mail.order', $set, function($message)use($set, $pdf) {
         $message->to($set['ship_email'])
                 ->subject("Your order  has been picked up. Thank you for shopping with us.
                 Continue shopping at www.krafftbox.com")
                 ->attachData($pdf->output(), "orderinvoice.pdf");
     });
-       
+
 }
 if($id==4){
-    
-    
+
+
           $set=[
     'image'=>$data->image,
     'cart'=>$cart,
@@ -238,114 +241,12 @@ if($id==4){
                 We’re sorry this order didn’t work out for you. But, we hope we’ll see you again later.")
                 ->attachData($pdf->output(), "orderinvoice.pdf");
     });
-       
+
 }
   return response()->json('success');
     }
 
-  
-    public function update(Request $request)
-    {
-     
-        try {
- 
-            $category=Apponitment::find($request->id);
-            $category->status=$request->status;
-            if($category->save()){
-                $notification=array(
-                    'alert-type'=>'success',
-                    'messege'=>'Status  updated',
-                   
-                 );
-                 return redirect()->back()->with($notification);
-            }else{
-                $notification=array(
-                    'alert-type'=>'info',
-                    'messege'=>'Status  not updated',
-                   
-                 );
-                 return redirect()->route('admin.appointment')->with($notification);
-            }
-            
-           
-        } catch (\Throwable $th) {
-            $notification=array(
-                'alert-type'=>'error',
-                'messege'=>'Something went wrong.Please try again later',
-                
-             );
-             return redirect()->back()->with($notification);
-        
-        }
-    
-    }
 
-
-
-
-    public function paidStatus(Request $request)
-    {
-        try {
-
-            $category=Apponitment::find($request->id);
-            $category->ispaid=$request->ispaid;
-            if($category->save()){
-                $notification=array(
-                    'alert-type'=>'success',
-                    'messege'=>'Paid status  updated',
-                   
-                 );
-                 return redirect()->back()->with($notification);
-            }else{
-                $notification=array(
-                    'alert-type'=>'info',
-                    'messege'=>'Paid status  not updated',
-                   
-                 );
-                 return redirect()->route('admin.appointment')->with($notification);
-            }
-            
-           
-        } catch (\Throwable $th) {
-            $notification=array(
-                'alert-type'=>'error',
-                'messege'=>'Something went wrong.Please try again later',
-                
-             );
-             return redirect()->back()->with($notification);
-        
-        }
-    
-    }
-  
-    public function edit(Apponitment $appointment,$id)
-    {
-        $appo=ApponitmentDetail::where('appointment_id',$id)->get();
-        $appointment=Apponitment::find($id);
-        return view('backend.appointment.edit',compact('appointment','appo'));
-    }
-
-
-    public function complete(Apponitment $appointment)
-    {
-        $appointment=Apponitment::where('status',2)->get();
-        return view('backend.appointment.complete',compact('appointment'));
-    }
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Category  $category
-     * @return \Illuminate\Http\Response
-     */
-   
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Category  $category
-     * @return \Illuminate\Http\Response
-     */
     public function show($id){
     $order=Order::find($id);
     $shipping=shipping::where('order_id',$id)->first();
