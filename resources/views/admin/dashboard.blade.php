@@ -1,8 +1,14 @@
 @extends('admin.master')
 @section('main-content')
 <style>
-    .rotate{
-        transform: rotateY(180deg)!important;
+
+    .card{
+        border: 0;
+        border-radius: 0;
+        font-size: 14px;
+    }
+    .fa{
+        font-size: 2.8rem;
     }
 </style>
 @php
@@ -10,14 +16,14 @@
 @endphp
 <div class="container-fluid p-0">
 
-				
+
     <div class="row">
         <div class="col-xl-6 col-xxl-5 d-flex">
             <div class="w-100">
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="card">
-                            <div class="card-body">
+                            <div class="card-body d-flex justify-content-between align-items-center">
                                 {{-- Total Sales in a day --}}
                                 @php
                                 $today_total=0;
@@ -28,105 +34,131 @@
                                     $today_total+=($value->total*$value->tax/100)+$value->total+$value->shipping_charge;
                                     }
                                 // {{-- Total Sales in a yesterday  --}}
-                                    
-                                    $yesterday=DB::table('orders')->whereDay('created_at',today()->subDays(1))->get();
-                               
-                              
-    
-                                    foreach ($yesterday as $value) {
-                                    $yesterday_total+=($value->total*$value->tax/100)+$value->total+$value->shipping_charge;
-                                    }
-                                    
-                                  
+
+
+
+
                                 @endphp
-                                <h5 class="card-title mb-4">Today Order</h5>
-                                <h1 class="mt-1 mb-3"><i class="fas fa-signal @if($today_total>$yesterday_total)text-success   @else text-danger rotate @endif"></i> {{ __getPriceunit() .number_format($today_total,2) }}</h1>
-                           
+                                <div>
+                                    <h5 class="card-title ">Today Order</h5>
+                                <h4 class="mt-1 "> <small>{{__getPriceunit() }}</small>
+{{ number_format($today_total,2) }}</h4>
+                                </div>
+                                <i class="fa fa-baby-carriage text-info"></i>
+
+
                             </div>
                         </div>
                         <div class="card">
-                            <div class="card-body">
+                            <div class="card-body d-flex justify-content-between align-items-center">
                                 {{-- Total order in a Month --}}
                                 @php
                                 $today_total=0;
                                 $yesterday_total=0;
 
-                                    $today=DB::table('orders')->whereMonth('created_at',today()->month)->get();
+                                    $today=DB::table('orders')->get();
                                     foreach ($today as $value) {
                                     $today_total+=($value->total*$value->tax/100)+$value->total+$value->shipping_charge;
                                     }
-                                
+
                                 // {{-- Total order in a a previous  --}}
-                                    
-                                    $yesterday=DB::table('orders')->whereMonth('created_at',today()->subMonth(1))->get();
-                               
-                              
-    
-                                    foreach ($yesterday as $value) {
-                                    $yesterday_total+=($value->total*$value->tax/100)+$value->total+$value->shipping_charge;
-                                    }
-                                    
-                                  
+
+
+
                                 @endphp
-                                <h5 class="card-title mb-4">This Month Order</h5>
-                                <h1 class="mt-1 mb-3">
-                                    <h1 class="mt-1 mb-3"><i class="fas fa-signal @if($today_total>$yesterday_total)text-success   @else text-danger rotate @endif"></i> {{ __getPriceunit() .number_format($today_total,2) }}</h1>
-                                 </h1>
-                              
+                                <div>
+                                    <h5 class="card-title ">Total Order</h5>
+                                    <h4 class="mt-1 "> <small>{{__getPriceunit() }}</small>
+{{ number_format($today_total,2) }}</h4>
+                                </div>
+
+                                 <i class=" fa fa-truck text-primary"></i>
                             </div>
                         </div>
 
                         <div class="card">
-                            <div class="card-body">
+                            <div class="card-body  d-flex justify-content-between align-items-center">
                                 {{-- Total order in a Month --}}
                                 @php
-                             
-                               $user=DB::table('users')->get();
-                                  
+
+                               $order=DB::table('orders')->whereDate('created_at',today())->get();
+
                                 @endphp
-                                <h5 class="card-title mb-4">Today  Register Vendor</h5>
-                                <h1 class="mt-1 mb-3">
-                                    <h1 class="mt-1 mb-3"><i class="fas fa-signal text-success"></i> {{ count($user)}}</h1>
-                                 </h1>
-                             
+                                <div>
+                                    <h5 class="card-title ">Today Order No</h5>
+                                    <h4 class="mt-1 "> {{ count($order)}}</h4>
+                                </div>
+                                <i class=" text-success fa fa-envelope"></i>
+
                             </div>
                         </div>
 
                         <div class="card">
-                            <div class="card-body">
+                            <div class="card-body d-flex justify-content-between align-items-center">
                                 {{-- Total order in a Month --}}
                                 @php
-                             
-                               $user=DB::table('users')->get();
-                                  
+
+                               $user=DB::table('orders')->get();
+
                                 @endphp
-                                <h5 class="card-title mb-4">Today  Active Visitor</h5>
-                                <h1 class="mt-1 mb-3">
-                                    <h1 class="mt-1 mb-3"><i class="fas fa-signal text-success"></i> {{ count($user)}}</h1>
-                                 </h1>
-                             
+                              <div>
+                                <h5 class="card-title ">Total Orders No</h5>
+                                <h4 class="mt-1 "> {{ count($user)}}</h4>
+                              </div>
+                                    <i class=" fa fa-peace text-warning"></i>
                             </div>
                         </div>
 
                         <div class="card">
-                            <div class="card-body">
+                            <div class="card-body d-flex justify-content-between align-items-center">
                                 {{-- Total order in a Month --}}
                                 @php
-                             
-                               $user=DB::table('products')->get();
-                                  
+
+                                    $today=DB::table('orders')->where('status',3)->whereDate('created_at',today())->get();
+
                                 @endphp
-                                <h5 class="card-title mb-4">Today  Product</h5>
-                                <h1 class="mt-1 mb-3">
-                                    <h1 class="mt-1 mb-3"><i class="fas fa-signal text-success"></i> {{ count($user)}}</h1>
-                                 </h1>
-                             
+                                <div>
+
+                                </div>
+                         <div>
+                            <h5 class="card-title">Today Deliver No</h5>
+                            <h4 class="mt-1 "> <small>
+{{ count($today) }}</small></h4>
+
+                         </div>
+                         <i class="fa fa-truck-moving text-success "></i>
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-6">
+
                         <div class="card">
-                            <div class="card-body">
+                            <div class="card-body d-flex justify-content-between align-items-center">
+                                {{-- Total order in a Month --}}
+                                @php
+
+                                    $today=DB::table('orders')->where('status',0)->get();
+
+
+                                // {{-- Total order in a a previous  --}}
+
+
+
+                                @endphp
+                                <div>
+                                    <h5 class="card-title ">Pending Order</h5>
+                                    <h4 class="mt-1 "> <small>
+{{count($today)}}</small></h4>
+                                </div>
+
+                                 <i class=" fa fa-truck text-danger"></i>
+                            </div>
+                        </div>
+
+
+
+                        <div class="card">
+                            <div class="card-body d-flex justify-content-between align-items-center">
                                 {{-- Total Deliver in a day --}}
                                 @php
                                 $today_total=0;
@@ -136,106 +168,79 @@
                                     foreach ($today as $value) {
                                     $today_total+=($value->total*$value->tax/100)+$value->total+$value->shipping_charge;
                                     }
-                                
+
                                 // {{-- Total Deliver in a yesterday  --}}
-                                    
-                                    $yesterday=DB::table('orders')->where('status',3)->whereDay('created_at',today()->subDays(1))->get();
-                               
-                              
-    
-                                    foreach ($yesterday as $value) {
-                                    $yesterday_total+=($value->total*$value->tax/100)+$value->total+$value->shipping_charge;
-                                    }
-                                    
-                                  
+
                                 @endphp
-                                <h5 class="card-title mb-4">Today Deliver</h5>
-                                <h1 class="mt-1 mb-3"> 
-                                    <h1 class="mt-1 mb-3"><i class="fas fa-signal @if($today_total>$yesterday_total)text-success   @else text-danger rotate @endif"></i> {{ __getPriceunit() .number_format($today_total,2) }}</h1>
-                                  </h1>
-                              
+                                <div>
+                                <h5 class="card-title ">Today Deliver</h5>
+
+                                    <h4 class="mt-1 "><small>{{__getPriceunit() }}
+{{ number_format($today_total,2) }}</small></h4>
+</div>
+<i class="fa fa-signal text-success"></i>
                             </div>
                         </div>
                         <div class="card">
-                            <div class="card-body">
+                            <div class="card-body d-flex justify-content-between align-items-center">
                                 {{-- Total order in a Month --}}
                                 @php
                                 $today_total=0;
-                                $yesterday_total=0;
 
-                                    $today=DB::table('orders')->where('status',3)->whereMonth('created_at',today()->month)->get();
+                                    $today=DB::table('orders')->where('status',3)->get();
                                     foreach ($today as $value) {
                                     $today_total+=($value->total*$value->tax/100)+$value->total+$value->shipping_charge;
                                     }
-                                
-                                // {{-- Total order in a a previous  --}}
-                                    
-                                    $yesterday=DB::table('orders')->where('status',3)->whereMonth('created_at',today()->subMonth(1))->get();
-                               
-                              
-    
-                                    foreach ($yesterday as $value) {
-                                    $yesterday_total+=($value->total*$value->tax/100)+$value->total+$value->shipping_charge;
-                                    }
-                                    
-                                  
+
+
+
+
                                 @endphp
-                                <h5 class="card-title mb-4">This Month Deliver</h5>
-                                <h1 class="mt-1 mb-3">
-                                    <h1 class="mt-1 mb-3"><i class="fas fa-signal @if($today_total>$yesterday_total)text-success   @else text-danger rotate @endif"></i> {{ __getPriceunit() .number_format($today_total,2) }}</h1>
-                                  </h1>
-                             
+                                <div>
+
+                                <h5 class="card-title ">Total Deliver</h5>
+                                    <h4 class="mt-1 "> <small>{{__getPriceunit() }} {{ number_format($today_total,2) }}</small>
+                                  </h4>
+                                </div>
+                                <i class="fa fa-calendar-plus text-success "></i>
+
                             </div>
                         </div>
 
                         <div class="card">
-                            <div class="card-body">
+                            <div class="card-body d-flex justify-content-between align-items-center">
                                 {{-- Total order in a Month --}}
                                 @php
-                             
+
                                $user=DB::table('users')->get();
-                                  
+
                                 @endphp
-                                <h5 class="card-title mb-4">Total Register Vendor</h5>
-                                <h1 class="mt-1 mb-3">
-                                    <h1 class="mt-1 mb-3"><i class="fas fa-signal text-success"></i> {{ count($user)}}</h1>
-                                 </h1>
-                             
+                                <div>
+                                    <h5 class="card-title ">Total User</h5>
+                                    <h1 class="mt-1 ">
+                                        <h4 class="mt-1 "> <small>{{ count($user)}}</small></h1>
+                                     </h4>
+                                </div>
+
+                                 <i class="fa fa-user text-danger"></i>
                             </div>
                         </div>
-
                         <div class="card">
-                            <div class="card-body">
+                            <div class="card-body d-flex justify-content-between align-items-center">
                                 {{-- Total order in a Month --}}
                                 @php
-                             
-                               $user=DB::table('users')->get();
-                                  
-                                @endphp
-                                <h5 class="card-title mb-4">Total  Active Visitor</h5>
-                                <h1 class="mt-1 mb-3">
-                                    <h1 class="mt-1 mb-3"><i class="fas fa-signal text-success"></i> {{ count($user)}}</h1>
-                                 </h1>
-                             
-                            </div>
-                        </div>
 
-                        <div class="card">
-                            <div class="card-body">
-                                {{-- Total order in a Month --}}
-                                @php
-                             $totalsale=0;
-                             $sale=DB::table('orders')->where('status',3)->get();
-                                    foreach ($sale as $value) {
-                                    $totalsale+=($value->total*$value->tax/100)+$value->total+$value->shipping_charge;
-                                    }
-                                  
+                               $user=DB::table('orders')->where('status',3)->get();
+
                                 @endphp
-                                <h5 class="card-title mb-4">Total  Sales</h5>
-                                <h1 class="mt-1 mb-3">
-                                    <h1 class="mt-1 mb-3"><i class="fas fa-signal text-success"></i> {{__getPriceunit(). number_format($totalsale,2)}}</h1>
-                                 </h1>
-                             
+                                <div>
+                                    <h5 class="card-title ">Total Deliver No</h5>
+                                    <h1 class="mt-1 ">
+                                        <h4 class="mt-1 "> <small>{{ count($user)}}</small></h1>
+                                     </h4>
+                                </div>
+
+                                 <i class="fa fa-truck-moving text-info"></i>
                             </div>
                         </div>
                     </div>
@@ -246,14 +251,14 @@
         <div class="col-xl-6 col-xxl-7">
             {{-- sales in week --}}
             <div class="card flex-fill w-100">
-               
+
                 <div class="card-body py-3">
                     <div id="chartContainer1" style="height: 340px; width: 100%;"></div>
 
                 </div>
             </div>
             <div class="card flex-fill w-100">
-               
+
                 <div class="card-body py-3">
                     <div id="chartContainer2" style="height: 340px; width: 100%;"></div>
 
@@ -266,11 +271,11 @@
         <div class="col-12 ">
             <div class="card flex-fill w-100">
                 <div id="chartContainer3" style="height: 340px; width: 100%;"></div>
-              
+
             </div>
         </div>
-     
-     
+
+
     </div>
     {{-- Lastest order  --}}
 @php
@@ -301,7 +306,7 @@
                         @foreach ($order as $item)
                         @php
                             $vat=($item->total*$item->tax)/100
-                            
+
                         @endphp
                         <tr>
                             <td>{{ $item->tracking_code }}</td>
@@ -326,14 +331,14 @@
                         </tr>
                         @endforeach
 
-                      
+
                     </tbody>
                 </table>
             </div>
         </div>
         {{-- <div class="col-12 col-lg-4 col-xxl-3 d-flex">
             <div class="card flex-fill w-100">
-               
+
                 <div class="card-body d-flex w-100">
                     <div id="chartContainer4" style="height: 340px; width: 100%;"></div>
 
