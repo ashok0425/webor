@@ -43,23 +43,23 @@ class ModalController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            
+
             'file'=>'required',
 
 
         ]);
         try {
- 
+
             $category=new Modal;
-            
+
             $file=$request->file('file');
-           
+
             if($file){
                 // File::delete(__getAdmin()->profile_photo_path);
                 $fname=rand().'modal.'.$file->getClientOriginalExtension();
                 $category->image='upload/model/'.$fname;
                 // $path=Image::make($file)->resize(200,300);
-                $file->move('upload/model/',$fname);
+                $file->move(public_path().'/upload/model/',$fname);
             }
 
 
@@ -67,29 +67,29 @@ class ModalController extends Controller
                 $notification=array(
                     'alert-type'=>'success',
                     'messege'=>'Gallery  Added',
-                   
+
                  );
                  return redirect()->back()->with($notification);
             }else{
                 $notification=array(
                     'alert-type'=>'info',
                     'messege'=>'Modal  not added',
-                   
+
                  );
                  return redirect()->back()->with($notification);
             }
-            
-           
+
+
         } catch (\Throwable $th) {
             $notification=array(
                 'alert-type'=>'error',
                 'messege'=>'Something went wrong.Please try again later',
-                
+
              );
              return redirect()->back()->with($notification);
-        
+
         }
-    
+
     }
   /**
      * Display the specified resource.
@@ -129,46 +129,46 @@ class ModalController extends Controller
         ]);
         try {
             $category=Modal::find($request->id);
-            
+
             $file=$request->file('file');
-           
+
             if($file){
                 File::delete($category->image);
                 $fname=rand().'model.'.$file->getClientOriginalExtension();
                 $category->image='upload/model/'.$fname;
                 // $path=Image::make($file)->resize(200,300);
-                $file->move('upload/model/',$fname);
+                $file->move(public_path().'/upload/model/',$fname);
             }
-      
+
 
 
             if($category->save()){
                 $notification=array(
                     'alert-type'=>'success',
                     'messege'=>'Gallery  updated',
-                   
+
                  );
                  return redirect()->route('admin.model')->with($notification);
             }else{
                 $notification=array(
                     'alert-type'=>'info',
                     'messege'=>'Modal  not updated',
-                   
+
                  );
                  return redirect()->back()->with($notification);
             }
-            
-           
+
+
         } catch (\Throwable $th) {
             $notification=array(
                 'alert-type'=>'error',
                 'messege'=>'Something went wrong.Please try again later',
-                
+
              );
              return redirect()->back()->with($notification);
-        
+
         }
-    
+
     }
 
     /**

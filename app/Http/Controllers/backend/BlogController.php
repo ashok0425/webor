@@ -34,7 +34,7 @@ class BlogController extends Controller
     {
         $category=Blogcategory::all();
        return view('backend.blog.create',compact('category'));
-        
+
     }
 
     /**
@@ -51,51 +51,51 @@ class BlogController extends Controller
 
         ]);
         // try {
- 
+
             $category=new Blog;
-            
+
             $file=$request->file('file');
-           
+
             if($file){
                 // File::delete(__getAdmin()->profile_photo_path);
                 $fname=rand().'blog.'.$file->getClientOriginalExtension();
                 $category->image='upload/blog/'.$fname;
                 // $path=Image::make($file)->resize(200,300);
-                $file->move('upload/blog/',$fname);
+                $file->move(public_path().'/upload/blog/',$fname);
             }
             $category->category_id=$request->category;
             $category->title=$request->title;
             $category->detail=$request->detail;
             // $category->short_desc=$request->short_desc;
 
-    
+
             if($category->save()){
                 $notification=array(
                     'alert-type'=>'success',
                     'messege'=>'Blog  Added',
-                   
+
                  );
                  return redirect()->back()->with($notification);
             }else{
                 $notification=array(
                     'alert-type'=>'info',
                     'messege'=>'Blog  not added',
-                   
+
                  );
                  return redirect()->back()->with($notification);
             }
-            
-           
+
+
         // } catch (\Throwable $th) {
             $notification=array(
                 'alert-type'=>'error',
                 'messege'=>'Something went wrong.Please try again later',
-                
+
              );
              return redirect()->back()->with($notification);
-        
+
         // }
-    
+
     }
   /**
      * Display the specified resource.
@@ -136,15 +136,15 @@ class BlogController extends Controller
         try {
 
             $category=Blog::find($request->id);
-            
+
             $file=$request->file('file');
-           
+
             if($file){
                 File::delete($category->image);
                 $fname=rand().'category.'.$file->getClientOriginalExtension();
                 $category->image='upload/blog/'.$fname;
                 // $path=Image::make($file)->resize(200,300);
-                $file->move('upload/blog/',$fname);
+                $file->move(public_path().'/upload/blog/',$fname);
             }
             $category->category_id=$request->category;
             $category->title=$request->title;
@@ -155,29 +155,29 @@ class BlogController extends Controller
                 $notification=array(
                     'alert-type'=>'success',
                     'messege'=>'Blog  updated',
-                   
+
                  );
                  return redirect()->route('admin.blogcategory')->with($notification);
             }else{
                 $notification=array(
                     'alert-type'=>'info',
                     'messege'=>'Blog  not updated',
-                   
+
                  );
                  return redirect()->back()->with($notification);
             }
-            
-           
+
+
         } catch (\Throwable $th) {
             $notification=array(
                 'alert-type'=>'error',
                 'messege'=>'Something went wrong.Please try again later',
-                
+
              );
              return redirect()->back()->with($notification);
-        
+
         }
-    
+
     }
 
     /**
@@ -186,5 +186,5 @@ class BlogController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    
+
 }

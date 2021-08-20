@@ -28,7 +28,7 @@
 
 		{{-- datatables  --}}
 		<link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
-	
+
 		<link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.dataTables.min.css"/>
     {{-- toastr  --}}
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
@@ -142,10 +142,10 @@ h3{
 @include('admin.layout.breadcrum')
 <x-errormsg />
     @yield('main-content')
-			
+
 			</main>
 
-		
+
 		</div>
 	</div>
 {{-- bootstrap  --}}
@@ -176,23 +176,23 @@ h3{
 <script>
 $(document).ready(function(){
 $(document).on('click','.data',function(){
-		
+
 		let datas=$(this).attr('data-text');
 		let id=$(this).val();
 if(datas=='subcategory'){
 let option=	$('.category').val();
-	loadData(datas,id,option)	
+	loadData(datas,id,option)
 
 }else{
-	loadData(datas,id)	
+	loadData(datas,id)
 
 }
 	})
 })
-	
+
 	function loadData(table,id,option){
 $.ajax({
-	
+
 	url:'{{url('admin/loaddata')}}/'+table+'/'+id+'/'+option,
 	DataType:'json',
 	type:'GET',
@@ -246,11 +246,11 @@ $(document).ready(function() {
       }
     @endif
  </script>
-	
+
 
     {{-- file upload  --}}
     <script>
-        $("form").on("change", ".file-upload-field", function(){ 
+        $("form").on("change", ".file-upload-field", function(){
     $(this).parent(".file-upload-wrapper").attr("data-text", $(this).val().replace(/.*(\/|\\)/, '') );
 });
     </script>
@@ -272,7 +272,7 @@ $(document).ready(function() {
 					{ extend: 'csv', text: '<i class="fas fa-file-csv fa-1x"> Export a CSV</i>' },
 					{ extend: 'excel', text: '<i class="fas fa-file-excel" aria-hidden="true"> Export a EXCEL</i>' },
 					{ extend: 'colvis', text: '<i class="fas fa-bars" aria-hidden="true"> Show Column</i>' },
-					
+
 					'pageLength'
 				],
 			});
@@ -306,7 +306,6 @@ $(document).ready(function() {
 	$('.status').change(function(){
 		let $val=$(this).val();
 		let $hid=$(this).data('id');
-		p1NiZ)5iz4#HQ1
 		$.ajax({
 			url:'{{ url('admin/order/status') }}/'+$val+'/'+$hid,
 			type:'GET',

@@ -40,11 +40,11 @@ class ProductController extends Controller
     {
         $category=Category::all();
        return view('backend.product.create',compact('category'));
-        
+
     }
 
 
-  
+
     /**
      * Store a newly created resource in storage.
      *
@@ -53,7 +53,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         $request->validate([
             'category'=>'required',
             'name'=>'required',
@@ -62,19 +62,19 @@ class ProductController extends Controller
 
         ]);
         try {
- 
+
             $category=new Product;
-           
+
             $file=$request->file('file');
-           
+
             if($file){
                 // File::delete(__getAdmin()->profile_photo_path);
                 $fname=rand().'product.'.$file->getClientOriginalExtension();
                 $category->image='upload/product/'.$fname;
                 // $path=Image::make($file)->resize(200,300);
-                $file->move('upload/product/',$fname);
+                $file->move(public_path().'/upload/product/',$fname);
             }
-            
+
             $category->category_id=$request->category;
             $category->subcategory_id=$request->subcategory;
             $category->price=$request->price;
@@ -85,36 +85,36 @@ class ProductController extends Controller
             $category->top_rated=$request->top_rated;
             $category->bestseller=$request->bestseller;
 
-       
+
 
             if($category->save()){
-                
+
                 $notification=array(
                     'alert-type'=>'success',
                     'messege'=>'Product  Added',
-                   
+
                  );
                  return redirect()->back()->with($notification);
             }else{
                 $notification=array(
                     'alert-type'=>'info',
                     'messege'=>'Product  not added',
-                   
+
                  );
                  return redirect()->back()->with($notification);
             }
-            
-           
+
+
         } catch (\Throwable $th) {
             $notification=array(
                 'alert-type'=>'error',
                 'messege'=>'Something went wrong.Please try again later',
-                
+
              );
              return redirect()->back()->with($notification);
-        
+
         }
-    
+
     }
   /**
      * Display the specified resource.
@@ -135,7 +135,7 @@ class ProductController extends Controller
         $product=Product::find($id);
         $category=Category::all();
         $subcategory=Subcategory::all();
-     
+
 
 
 
@@ -158,15 +158,15 @@ class ProductController extends Controller
         ]);
         try {
             $category=Product::find($request->id);
-            
+
             $file=$request->file('file');
-           
+
             if($file){
                 File::delete($category->image);
                 $fname=rand().'product.'.$file->getClientOriginalExtension();
                 $category->image='upload/product/'.$fname;
                 // $path=Image::make($file)->resize(200,300);
-                $file->move('upload/product/',$fname);
+                $file->move(public_path().'/upload/product/',$fname);
             }
             $category->category_id=$request->category;
             $category->subcategory_id=$request->subcategory;
@@ -184,29 +184,29 @@ class ProductController extends Controller
                 $notification=array(
                     'alert-type'=>'success',
                     'messege'=>'Product  updated',
-                   
+
                  );
                  return redirect()->route('admin.product')->with($notification);
             }else{
                 $notification=array(
                     'alert-type'=>'info',
                     'messege'=>'Product  not updated',
-                   
+
                  );
                  return redirect()->back()->with($notification);
             }
-            
-           
+
+
         } catch (\Throwable $th) {
             $notification=array(
                 'alert-type'=>'error',
                 'messege'=>'Something went wrong.Please try again later',
-                
+
              );
              return redirect()->back()->with($notification);
-        
+
         }
-    
+
     }
 
     /**

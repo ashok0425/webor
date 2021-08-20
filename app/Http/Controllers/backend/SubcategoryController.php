@@ -34,7 +34,7 @@ class SubcategoryController extends Controller
     {
         $category=Category::all();
        return view('backend.subcategory.create',compact('category'));
-        
+
     }
 
     /**
@@ -51,17 +51,17 @@ class SubcategoryController extends Controller
 
         ]);
         try {
- 
+
             $category=new Subcategory;
-            
+
             $file=$request->file('file');
-           
+
             if($file){
                 // File::delete(__getAdmin()->profile_photo_path);
                 $fname=rand().'category.'.$file->getClientOriginalExtension();
                 $category->image='upload/subcategory/'.$fname;
                 // $path=Image::make($file)->resize(200,300);
-                $file->move('upload/subcategory/',$fname);
+                $file->move(public_path().'/upload/subcategory/',$fname);
             }
             $category->subcategory=$request->subcategory;
             $category->category_id=$request->category;
@@ -70,29 +70,29 @@ class SubcategoryController extends Controller
                 $notification=array(
                     'alert-type'=>'success',
                     'messege'=>'Subcategory  Added',
-                   
+
                  );
                  return redirect()->back()->with($notification);
             }else{
                 $notification=array(
                     'alert-type'=>'info',
                     'messege'=>'SubCategory  not added',
-                   
+
                  );
                  return redirect()->back()->with($notification);
             }
-            
-           
+
+
         } catch (\Throwable $th) {
             $notification=array(
                 'alert-type'=>'error',
                 'messege'=>'Something went wrong.Please try again later',
-                
+
              );
              return redirect()->back()->with($notification);
-        
+
         }
-    
+
     }
   /**
      * Display the specified resource.
@@ -133,15 +133,15 @@ class SubcategoryController extends Controller
         try {
 
             $category=Subcategory::find($request->id);
-            
+
             $file=$request->file('file');
-           
+
             if($file){
                 File::delete($category->image);
                 $fname=rand().'category.'.$file->getClientOriginalExtension();
                 $category->image='upload/subcategory/'.$fname;
                 // $path=Image::make($file)->resize(200,300);
-                $file->move('upload/subcategory/',$fname);
+                $file->move(public_path().'/upload/subcategory/',$fname);
             }
             $category->subcategory=$request->subcategory;
             $category->category_id=$request->category;
@@ -150,29 +150,29 @@ class SubcategoryController extends Controller
                 $notification=array(
                     'alert-type'=>'success',
                     'messege'=>'subcategory  updated',
-                   
+
                  );
                  return redirect()->route('admin.subcategory')->with($notification);
             }else{
                 $notification=array(
                     'alert-type'=>'info',
                     'messege'=>'subategory  not updated',
-                   
+
                  );
                  return redirect()->back()->with($notification);
             }
-            
-           
+
+
         } catch (\Throwable $th) {
             $notification=array(
                 'alert-type'=>'error',
                 'messege'=>'Something went wrong.Please try again later',
-                
+
              );
              return redirect()->back()->with($notification);
-        
+
         }
-    
+
     }
 
     /**

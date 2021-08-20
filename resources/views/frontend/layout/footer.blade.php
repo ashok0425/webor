@@ -2,9 +2,9 @@
     @php
         $social=DB::table('websites')->first()
     @endphp
-    
 
-  
+
+
     <footer class="py-5">
         <div class="footer custom-bg-primary  mx-0 px-0">
             <div class="container">
@@ -15,10 +15,10 @@
                 <div class="col-md-4  text-center ">
                     <form action="{{route('subscriber.store')}}" method="POST">
                         @csrf
-                     
+
                         <input   type="email"
                             placeholder="Email" name="email" required>
-                            <button 
+                            <button
                              ><i class="fas fa-location-arrow"></i></button>
                       </form>
                 </div>
@@ -27,7 +27,7 @@
         </div>
       <div class="container">
           <div class="row">
-             
+
               <div class="col-md-10 col-lg-10 offset-md-1">
                   <div class="row ">
                      @php
@@ -41,19 +41,19 @@
                    @endforeach
                   </div>
               </div>
-              <div class="col-md-8 col-lg-8 offset-md-4">
-                     
-              <div class="row">
-                <div class=" col-sm-4 col-md-3 col-lg-2  my-3 col-4"><a
+              <div class="col-md-8 col-lg-8 offset-md-4 pad_l">
+
+              <div class="row ">
+                <div class=" col-sm-4 col-md-2 col-lg-2  my-3 col-4 "><a
                     href="{{$social->instagram1}}">
                  <i class="fab fa-instagram-square fa-2x text-dark"></i>
                 </a></div>
-            <div class=" col-sm-4 col-md-3 col-lg-2  my-3 col-4"><a
+            <div class=" col-sm-4 col-md-2 col-lg-2  my-3 col-4 "><a
                     href="{{$social->other1}}">
                     <i class="fab fa-tiktok fa-2x text-dark"></i>
 
                 </a></div>
-            <div class=" col-sm-4 col-md-3 col-lg-2  my-3 col-4"><a
+            <div class=" col-sm-4 col-md-2 col-lg-2  my-3 col-4 "><a
                     href="{{$social->facebook1}}">
                     <i class="fab fa-facebook fa-2x text-dark"></i>
 
@@ -62,13 +62,13 @@
             </div>
 
 
-<div class="col-md-6 offset-md-3">
+<div class="col-md-6 offset-md-3 ">
     &copy;2021 <a href="{{route('/')}}"  class="custom-text-secondary">RumorhasitNepal</a> All Rights Reserved.&nbsp; Powered by <a href="https://falcontechnepal.com"  class="custom-text-secondary">Falcon Tech </a>
 </div>
 
                   </div>
               </div>
-           
+
           </div>
       </div>
   </footer>

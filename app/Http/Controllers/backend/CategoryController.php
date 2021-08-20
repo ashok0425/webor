@@ -21,7 +21,7 @@ class CategoryController extends Controller
     public function index()
     {
         $category=Category::all();
-     
+
        return view('backend.category.index',compact('category'));
     }
 
@@ -33,7 +33,7 @@ class CategoryController extends Controller
     public function create()
     {
        return view('backend.category.create');
-        
+
     }
 
     /**
@@ -48,46 +48,46 @@ class CategoryController extends Controller
             'category'=>'required|max:255|unique:categories',
         ]);
         try {
- 
+
             $category=new Category;
-            
+
             $file=$request->file('file');
-           
+
             if($file){
                 // File::delete(__getAdmin()->profile_photo_path);
                 $fname=rand().'category.'.$file->getClientOriginalExtension();
                 $category->image='upload/category/'.$fname;
                 // $path=Image::make($file)->resize(200,300);
-                $file->move('upload/category/',$fname);
+                $file->move(public_path().'/upload/category/',$fname);
             }
             $category->category=$request->category;
             if($category->save()){
                 $notification=array(
                     'alert-type'=>'success',
                     'messege'=>'Category  Added',
-                   
+
                  );
                  return redirect()->back()->with($notification);
             }else{
                 $notification=array(
                     'alert-type'=>'info',
                     'messege'=>'Category  not added',
-                   
+
                  );
                  return redirect()->back()->with($notification);
             }
-            
-           
+
+
         } catch (\Throwable $th) {
             $notification=array(
                 'alert-type'=>'error',
                 'messege'=>'Something went wrong.Please try again later',
-                
+
              );
              return redirect()->back()->with($notification);
-        
+
         }
-    
+
     }
   /**
      * Display the specified resource.
@@ -124,44 +124,44 @@ class CategoryController extends Controller
         try {
 
             $category=Category::find($request->id);
-            
+
             $file=$request->file('file');
-           
+
             if($file){
                 File::delete($category->image);
                 $fname=rand().'category.'.$file->getClientOriginalExtension();
                 $category->image='upload/category/'.$fname;
                 // $path=Image::make($file)->resize(200,300);
-                $file->move('upload/category/',$fname);
+                $file->move(public_path().'/upload/category/',$fname);
             }
             $category->category=$request->category;
             if($category->save()){
                 $notification=array(
                     'alert-type'=>'success',
                     'messege'=>'Category  updated',
-                   
+
                  );
                  return redirect()->route('admin.category')->with($notification);
             }else{
                 $notification=array(
                     'alert-type'=>'info',
                     'messege'=>'Category  not updated',
-                   
+
                  );
                  return redirect()->back()->with($notification);
             }
-            
-           
+
+
         } catch (\Throwable $th) {
             $notification=array(
                 'alert-type'=>'error',
                 'messege'=>'Something went wrong.Please try again later',
-                
+
              );
              return redirect()->back()->with($notification);
-        
+
         }
-    
+
     }
 
     /**

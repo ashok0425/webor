@@ -27,12 +27,12 @@ $page->save();
 $notification=array(
     'alert-type'=>'success',
     'messege'=>'Page setting updated',
-    
+
  );
  return redirect()->back()->with($notification);
     }
 
-   
+
 
     public function website(){
         $website=Website::find(1);
@@ -48,7 +48,7 @@ $notification=array(
             $fname=rand().'seeting.'.$file->getClientOriginalExtension();
             $web->image='upload/setting/logo/'.$fname;
             // $path=Image::make($file)->resize(200,300);
-            $file->move('upload/setting/logo/',$fname);
+            $file->move(public_path().'/upload/setting/logo/',$fname);
                 }
 
                 $fev=$request->file('fev');
@@ -58,7 +58,7 @@ $notification=array(
                     $fname=rand().'fev.'.$fev->getClientOriginalExtension();
                     $web->fev='upload/setting/logo/'.$fname;
                     // $path=Image::make($file)->resize(200,300);
-                    $fev->move('upload/setting/logo/',$fname);
+                    $fev->move(public_path().'/upload/setting/logo/',$fname);
                         }
 
 
@@ -87,7 +87,7 @@ $web->other2=$request->other2;
         $notification=array(
             'alert-type'=>'success',
             'messege'=>'website setting updated',
-            
+
         );
  return redirect()->back()->with($notification);
     }
@@ -99,7 +99,7 @@ $web->other2=$request->other2;
         return view('backend.banner.index',compact('banner'));
     }
 
-    
+
     public function create(){
         return view('backend.banner.create');
     }
@@ -116,7 +116,7 @@ $web->other2=$request->other2;
             $fname=rand().'banner.'.$file->getClientOriginalExtension();
             $banner->image='upload/setting/banner/'.$fname;
             // $path=Image::make($file)->resize(200,300);
-            $file->move('upload/setting/banner/',$fname);
+            $file->move(public_path().'/upload/setting/banner/',$fname);
                 }
         $banner->title=$request->title;
         $banner->text=$request->text;
@@ -126,7 +126,7 @@ $banner->save();
 $notification=array(
     'alert-type'=>'success',
     'messege'=>'Banner Added',
-    
+
 );
 return redirect()->back()->with($notification);
     }
@@ -138,10 +138,10 @@ return redirect()->back()->with($notification);
         return view('backend.banner.edit',compact('banner'));
     }
 
-  
+
     public function update(Request $request){
         $banner=Banner::find($request->id);
-        
+
         $file=$request->file('file');
 
         if($file){
@@ -149,7 +149,7 @@ return redirect()->back()->with($notification);
             $fname=rand().'banner.'.$file->getClientOriginalExtension();
             $banner->image='upload/setting/banner/'.$fname;
             // $path=Image::make($file)->resize(200,300);
-            $file->move('upload/setting/banner/',$fname);
+            $file->move(public_path().'/upload/setting/banner/',$fname);
                 }
         $banner->title=$request->title;
         $banner->text=$request->text;
@@ -160,7 +160,7 @@ $banner->save();
 $notification=array(
     'alert-type'=>'success',
     'messege'=>'Banner updated',
-    
+
 );
 return redirect()->route('admin.banner')->with($notification);
 

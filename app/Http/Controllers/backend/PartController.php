@@ -35,11 +35,11 @@ class PartController extends Controller
     {
         $category=Category::all();
        return view('backend.part.create',compact('category'));
-        
+
     }
 
 
-  
+
     /**
      * Store a newly created resource in storage.
      *
@@ -48,7 +48,7 @@ class PartController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         $request->validate([
             'subcategory'=>'required',
             'category'=>'required',
@@ -60,57 +60,57 @@ class PartController extends Controller
 
         ]);
         try {
- 
+
             $category=new Part;
-           
+
             $file=$request->file('file');
-           
+
             if($file){
                 // File::delete(__getAdmin()->profile_photo_path);
                 $fname=rand().'accesssories.'.$file->getClientOriginalExtension();
                 $category->image='upload/accesssories/'.$fname;
                 // $path=Image::make($file)->resize(200,300);
-                $file->move('upload/accesssories/',$fname);
+                $file->move(public_path().'/upload/accesssories/',$fname);
             }
-            
+
             $category->category_id=$request->category;
 
             $category->subcategory_id=$request->subcategory;
-           
+
             $category->modal_id=$request->modal;
             $category->price=$request->price;
 
             $category->part=$request->part;
-       
+
 
             if($category->save()){
-                
+
                 $notification=array(
                     'alert-type'=>'success',
                     'messege'=>'Accessories  Added',
-                   
+
                  );
                  return redirect()->back()->with($notification);
             }else{
                 $notification=array(
                     'alert-type'=>'info',
                     'messege'=>'Accessories  not added',
-                   
+
                  );
                  return redirect()->back()->with($notification);
             }
-            
-           
+
+
         } catch (\Throwable $th) {
             $notification=array(
                 'alert-type'=>'error',
                 'messege'=>'Something went wrong.Please try again later',
-                
+
              );
              return redirect()->back()->with($notification);
-        
+
         }
-    
+
     }
   /**
      * Display the specified resource.
@@ -131,7 +131,7 @@ class PartController extends Controller
         $part=Part::find($id);
         $category=Category::all();
         $subcategory=Subcategory::all();
-     
+
 
 
 
@@ -160,20 +160,20 @@ class PartController extends Controller
         ]);
         try {
             $category=Part::find($request->id);
-            
+
             $file=$request->file('file');
-           
+
             if($file){
                 File::delete($category->image);
                 $fname=rand().'accesssories.'.$file->getClientOriginalExtension();
                 $category->image='upload/accesssories/'.$fname;
                 // $path=Image::make($file)->resize(200,300);
-                $file->move('upload/accesssories/',$fname);
+                $file->move(public_path().'/upload/accesssories/',$fname);
             }
             $category->category_id=$request->category;
 
             $category->subcategory_id=$request->subcategory;
-           
+
             $category->modal_id=$request->modal;
             $category->part=$request->part;
             $category->price=$request->price;
@@ -185,29 +185,29 @@ class PartController extends Controller
                 $notification=array(
                     'alert-type'=>'success',
                     'messege'=>'Accesroies  updated',
-                   
+
                  );
                  return redirect()->route('admin.part')->with($notification);
             }else{
                 $notification=array(
                     'alert-type'=>'info',
                     'messege'=>'Accessories  not updated',
-                   
+
                  );
                  return redirect()->back()->with($notification);
             }
-            
-           
+
+
         } catch (\Throwable $th) {
             $notification=array(
                 'alert-type'=>'error',
                 'messege'=>'Something went wrong.Please try again later',
-                
+
              );
              return redirect()->back()->with($notification);
-        
+
         }
-    
+
     }
 
     /**

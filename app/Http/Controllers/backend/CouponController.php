@@ -33,7 +33,7 @@ class CouponController extends Controller
     public function create()
     {
        return view('backend.coupon.create');
-        
+
     }
 
     /**
@@ -52,17 +52,17 @@ class CouponController extends Controller
 
         ]);
         try {
- 
+
             $category=new Coupon;
-            
+
             $file=$request->file('file');
-           
+
             if($file){
                 // File::delete(__getAdmin()->profile_photo_path);
                 $fname=rand().'Coupon.'.$file->getClientOriginalExtension();
                 $category->image='upload/coupon/'.$fname;
                 // $path=Image::make($file)->resize(200,300);
-                $file->move('upload/coupon/',$fname);
+                $file->move(public_path().'/upload/coupon/',$fname);
             }
             $category->coupon=$request->coupon;
             $category->price=$request->price;
@@ -73,29 +73,29 @@ class CouponController extends Controller
                 $notification=array(
                     'alert-type'=>'success',
                     'messege'=>'Coupon  Added',
-                   
+
                  );
                  return redirect()->back()->with($notification);
             }else{
                 $notification=array(
                     'alert-type'=>'info',
                     'messege'=>'Coupon  not added',
-                   
+
                  );
                  return redirect()->back()->with($notification);
             }
-            
-           
+
+
         } catch (\Throwable $th) {
             $notification=array(
                 'alert-type'=>'error',
                 'messege'=>'Something went wrong.Please try again later',
-                
+
              );
              return redirect()->back()->with($notification);
-        
+
         }
-    
+
     }
   /**
      * Display the specified resource.
@@ -136,15 +136,15 @@ class CouponController extends Controller
         try {
 
             $category=Coupon::find($request->id);
-            
+
             $file=$request->file('file');
-           
+
             if($file){
                 File::delete($category->image);
                 $fname=rand().'coupon.'.$file->getClientOriginalExtension();
                 $category->image='upload/coupon/'.$fname;
                 // $path=Image::make($file)->resize(200,300);
-                $file->move('upload/coupon/',$fname);
+                $file->move(public_path().'/upload/coupon/',$fname);
             }
             $category->coupon=$request->coupon;
             $category->price=$request->price;
@@ -155,29 +155,29 @@ class CouponController extends Controller
                 $notification=array(
                     'alert-type'=>'success',
                     'messege'=>'Coupon  updated',
-                   
+
                  );
                  return redirect()->route('admin.coupon')->with($notification);
             }else{
                 $notification=array(
                     'alert-type'=>'info',
                     'messege'=>'Coupon  not updated',
-                   
+
                  );
                  return redirect()->back()->with($notification);
             }
-            
-           
+
+
         } catch (\Throwable $th) {
             $notification=array(
                 'alert-type'=>'error',
                 'messege'=>'Something went wrong.Please try again later',
-                
+
              );
              return redirect()->back()->with($notification);
-        
+
         }
-    
+
     }
 
     /**
