@@ -27,7 +27,7 @@ public function store(Request $request)
             'messege'=>'Thankyou for subscribing our newslater',
             'alert-type'=>'success'
              );
-             Mail::to($request->email)->send(new newslater);
+             Mail::to($request->email)->send(new newslater($request->email));
     }else{
         $notification=array(
             'messege'=>'Already Subscribed from this email !',
