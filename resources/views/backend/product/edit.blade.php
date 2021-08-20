@@ -5,7 +5,7 @@
 @endphp
 <div class="card">
         <h3>Edit Product</h3>
-   
+
     <div class="card-body">
 
         <form action="{{route('admin.product.update')}}" method="POST" enctype="multipart/form-data">
@@ -18,25 +18,24 @@
             <div class="mb-3">
                 <label class="form-label">Select Brand</label>
                 <select name="category"  class="form-control category data" data-text="category" required>
-                 
+
                     @foreach ($category as $item)
                     <option value="{{$item->id}}" @if($item->id==$product->id)selected @endif >{{$item->category}}</option>
 
                     @endforeach
                 </select>
             </div>
-            
+
             <div class="mb-3">
-                <label class="form-label">Select Device</label>
-                <select name="subcategory"  class="form-control subcategory data" data-text="subcategory" required>
+                <label class="form-label">Select Subcategory</label>
                 @if ($product->subcategory_id!==null)
-                     <option value="{{$product->subcategory_id}}">{{$product->subcat->subcategory}}</option> 
+                     <option value="{{$product->subcategory_id}}">{{$product->subcat->subcategory}}</option>
                 @endif
-                  
-                    
+
+
                 </select>
             </div>
-               
+
              <div class="mb-3">
                 <label class="form-label">Price</label>
                 <input type="text" name="price" class="form-control" placeholder="Price" value="{{$product->price}}" required>
@@ -66,7 +65,7 @@
                  <label><input type="checkbox" name="top_rated" @if($product->top_rated==1)
                     checked
                 @endif  value="1"> Top Rated Product</label>
-             </div>  
+             </div>
              <div class="col-md-4 col-6">
                  <label><input type="checkbox" name="bestseller" @if($product->bestseller==1)
                     checked

@@ -6,7 +6,7 @@
 @endphp
 <div class="card">
         <h3>Add Product</h3>
-   
+
 
         <form action="{{route('admin.product.store')}}" method="POST" enctype="multipart/form-data">
             @csrf
@@ -24,15 +24,15 @@
                     @endforeach
                 </select>
             </div>
-            
+
             <div class="mb-3">
-                <label class="form-label">Select Device</label>
+                <label class="form-label">Select Subcategory</label>
                 <select name="subcategory"  class="form-control subcategory data" data-text="subcategory" >
-                    <option value="">--select device---</option>
-                    
+                    <option value="">--select Subcategory---</option>
+
                 </select>
             </div>
-               
+
              <div class="mb-3">
                 <label class="form-label">Price</label>
                 <input type="text" name="price" class="form-control" placeholder="Price" value="{{old('price')}}" required>
@@ -58,7 +58,7 @@
                </div>
                <div class="col-md-4 col-6">
                 <label><input type="checkbox" name="top_rated" value="1"> Top Rated Product</label>
-            </div>  
+            </div>
             <div class="col-md-4 col-6">
                 <label><input type="checkbox" name="bestseller" value="1"> Best Seller Product</label>
             </div>
