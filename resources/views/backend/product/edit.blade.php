@@ -28,6 +28,7 @@
 
             <div class="mb-3">
                 <label class="form-label">Select Subcategory</label>
+                <select name="subcategory"  class="form-control subcategory data" data-text="subcategory" >
                 @if ($product->subcategory_id!==null)
                      <option value="{{$product->subcategory_id}}">{{$product->subcat->subcategory}}</option>
                 @endif

@@ -6,13 +6,13 @@
 
 <div class="card">
         <h3>Edit Gallery</h3>
-   
+
     <div class="card-body">
 
         <form action="{{route('admin.model.update')}}" method="POST" enctype="multipart/form-data">
             @csrf
-           
-          
+           <input type="hidden" value="{{$modal->id}}" name="id">
+
             <div class="mb-3">
                 <label class="form-label">Image</label>
                 <div class="file-upload-wrapper" data-text="Select your file!">
@@ -21,7 +21,7 @@
                   <br>
                   <img src="{{asset($modal->image)}}" alt="{{$modal->image}}" width="100">
             </div>
-           
+
             <button type="submit" class="btn btn-primary">update</button>
         </form>
     </div>

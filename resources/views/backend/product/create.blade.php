@@ -15,7 +15,7 @@
                 <input type="text" name="name" class="form-control" placeholder="Product name" value="{{old('name')}}" required>
             </div>
             <div class="mb-3">
-                <label class="form-label">Select Brand</label>
+                <label class="form-label">Select Category</label>
                 <select name="category"  class="form-control category data" data-text="category" required>
                     <option value="">--select barnd---</option>
                     @foreach ($category as $item)
