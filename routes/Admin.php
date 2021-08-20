@@ -150,7 +150,6 @@ Route::get('/blogcategory/active/{id}/{table}','backend\BlogcategoryController@a
 Route::get('/blogcategory/deactive/{id}/{table}','backend\BlogcategoryController@deactive')->name('blogcategory.deactive');
 Route::get('/blogcategory/delete/{id}/{table}','backend\BlogcategoryController@destroy')->name('blogcategory.delete');
 
-
 // Blog
 Route::get('/blog','backend\BlogController@index')->name('blog');
 Route::get('/blog/create','backend\BlogController@create')->name('blog.create');
