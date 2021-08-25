@@ -15,26 +15,26 @@ $social=DB::table('websites')->first()
       <div class="row">
           <div class="col-lg-6"><img class="custom-lookbook-resize" src="{{asset('frontend/images/gallery-img-4.jpg')}}" alt="look book image/thumbnail" /></div>
           <div class="col-lg-6">
-              <h2 class="custom-fs-75 custom-text-primary custom-fw-600 mb-5" style="text-align: right;">Contact Us</h2>
+              <h2 class="custom-fs-50 custom-text-primary custom-fw-600 mb-1" style="text-align: right;">Contact Us</h2>
               <div class="d-flex justify-content-end" style="position: relative;">
                   <div class="custom-bg-secondary d-flex align-items-end contact-part-resize">
                       <div class="d-flex justify-content-around py-3" style="width: 100%;">
                           <a href="{{$social->instagram1}}" target="_blank">
                             <i class="fab fa-instagram text-white fa-2x"></i>
-                            
+
                           </a>
                           <a href="{{$social->other1}}" target="_blank">
                             <i class="fab fab fa-tiktok text-white fa-2x"></i>
-                                
+
                           </a>
                           <a href="{{$social->facebook1}}" target="_blank">
                             <i class="fab fab fa-facebook text-white fa-2x"></i>
-                                
+
                           </a>
                       </div>
                   </div>
 
-                
+
                   <div style="width: 100%;" class="custom-shadow custom-bg-white p-5 contact-page-reposition">
                       <h3 class="custom-fw-700 custom-fs-35 custom-text-secondary custom-font-work">info</h3>
                       <div class="d-flex align-items-center">
@@ -53,7 +53,7 @@ $social=DB::table('websites')->first()
                       <div class="d-flex align-items-center">
                           <p class="m-0 custom-font-work custom-fw-400 custom-fs-28 custom-text-secondary" >
                             <span><i class="fas fa-map-marker-alt"></i></span>
-                               
+
                               <span>{{$social->address1}}</span>
                           </p>
                       </div>
