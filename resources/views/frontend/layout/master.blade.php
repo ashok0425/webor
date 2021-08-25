@@ -1,6 +1,6 @@
 @php
 	$setting=DB::table('websites')->first();
-	
+
 @endphp
 
 @section('title')
@@ -23,7 +23,7 @@
 @endsection
 <!DOCTYPE html>
 <html lang="en">
- 
+
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -37,7 +37,7 @@
             <meta charset="utf-8">
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="csrf_token" content="{{csrf_token()}}">
-    
+
             <meta name="viewport" content="width=device-width, initial-scale=1">
         {{-- <meta name="author" content="{{$seo->meta_author}}"> --}}
         <meta name="keyword" content="@yield('keyword')">
@@ -63,10 +63,9 @@
    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
 	{{-- datatables  --}}
   <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
-	
+
   <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.dataTables.min.css"/>
     <link rel="stylesheet" href="{{asset('frontend/css/main.css')}}" />
-    <title>Home page</title>
     <style>
       .padx-4{
         padding-left:  2.2rem!important;
@@ -87,8 +86,8 @@
   /* This bit sets up the horizontal layout */
   display:flex;
   flex-direction:row;
-  
-vertical-align: center; 
+
+vertical-align: center;
 background: #fff;
 padding: .5rem .8rem;
 border-radius: 5px!important;
@@ -123,15 +122,15 @@ border-radius: 5px!important;
     </style>
 </head>
   <body>
-   
+
 
     <!-- navbar section -->
- 
+
     @include('frontend.layout.topheader')
 
     <!-- mini navbar -->
   @include('frontend.layout.header')
-   
+
 
 
     {{-- main-content  --}}
@@ -140,7 +139,7 @@ border-radius: 5px!important;
     <!-- new section -->
     <!-- footer section -->
   @include('frontend.layout.footer')
-  
+
   {{-- jquery  --}}
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" ></script>
   <!-- Bootstrap JavaScript Bundle with Popper -->
@@ -186,7 +185,7 @@ border-radius: 5px!important;
 					{ extend: 'csv', text: '<i class="fas fa-file-csv fa-1x"> Export a CSV</i>' },
 					{ extend: 'excel', text: '<i class="fas fa-file-excel" aria-hidden="true"> Export a EXCEL</i>' },
 					{ extend: 'colvis', text: '<i class="fas fa-bars" aria-hidden="true"> Show Column</i>' },
-					
+
 					'pageLength'
 				],
 			});
@@ -231,7 +230,7 @@ $('.storage').click(function(){
         },
         success:function(data){
           $('.Vprice').html(data);
-          
+
         },
         complete:function(){
           $('.loading').css('display','none')
@@ -244,7 +243,7 @@ $('.storage').click(function(){
 {{-- load image using ajax according to color --}}
 <script>
   $('.photo').click(function(){
-    
+
     let val=$(this).siblings('.img').val();
     $.ajax({
           url:'{{ url('loadimage') }}/'+val,
@@ -256,7 +255,7 @@ $('.storage').click(function(){
           success:function(data){
             console.log(data);
             $('.main_image').attr('src',data);
-            
+
           },
           complete:function(){
             $('.loading').css('display','none')
@@ -264,21 +263,21 @@ $('.storage').click(function(){
     })
   })
   </script>
-    
+
     {{-- elvator zoom  --}}
     <script>
- 
+
 
      //initiate the plugin and pass the id of the div containing gallery images
 $("#zoom_01").elevateZoom({
   zoomType				: "lens",
    lensShape : "round",
   lensSize    : 200,
-  gallery:'gal1', cursor: 'pointer', galleryActiveClass: 'active', imageCrossfade: true, loadingIcon: 'http://www.elevateweb.co.uk/spinner.gif'}); 
+  gallery:'gal1', cursor: 'pointer', galleryActiveClass: 'active', imageCrossfade: true, loadingIcon: 'http://www.elevateweb.co.uk/spinner.gif'});
 
 //pass the images to Fancybox
-$("#zoom_01").bind("click", function(e) {  
-  var ez =   $('#zoom_01').data('elevateZoom');	
+$("#zoom_01").bind("click", function(e) {
+  var ez =   $('#zoom_01').data('elevateZoom');
 	$.fancybox(ez.getGalleryList());
   return false;
 });
@@ -288,7 +287,7 @@ $("#zoom_01").bind("click", function(e) {
 {{-- rewvie edit  --}}
 <script>
 
-                 
+
 	$('.editreview').on('click',function(e){
     var id=$(this).data('id');
   $.ajax({
@@ -320,10 +319,10 @@ $("#zoom_01").bind("click", function(e) {
 		$('.change-image').css('display', 'block');
 	}
 });
-						
+
 $('.change-image').on('click', function() {
-	$control = $(this);			
-	$('#imageInput').val('');	
+	$control = $(this);
+	$('#imageInput').val('');
 	$preview = $('.image-preview');
 	$preview.attr('src', '');
 	$preview.css('display', 'none');
