@@ -19,6 +19,7 @@ Outlook
         $outlook9=DB::table('times')->where('unit',9)->orderBy('id','desc')->get();
     @endphp
     <!-- First section -->
+    {{-- .py-5.my-5 --}}
     <div class="container py-4">
         <div class="row align-items-end">
             <div class="col-md-6 col-lg-6">
