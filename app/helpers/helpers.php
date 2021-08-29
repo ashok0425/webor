@@ -8,7 +8,7 @@ return Auth::guard('admin')->user();
 }
 
 function __getPriceunit(){
-return "NRP";
+return "Nrs";
 }
 
 function __getDifference($total1,$total2){

@@ -121,13 +121,13 @@ define('PAGE','shop')
 @csrf
 <input type="hidden" value="{{$product->id}}" name='pid'>
       <div class="row align-items-center border border-0 border-2 border-bottom pb-4 custom-bc-secondary">
-          <div class="col-lg-4 col-md-6 col-sm-12 py-1"><h3 class="custom-fs-40 custom-fw-500 custom-text-secondary">{{$product->name}}</h3></div>
-          <div class="col-lg-2 col-md-6 col-sm-12 py-1"><p class="m-0 custom-fs-30 custom-fw-400 custom-text-secondary">{{__getPriceunit()}} {{$product->price}}/-</p></div>
+          <div class="col-lg-4 col-md-6 col-sm-12 py-1"><h3 class="custom-fs-30 custom-fw-600 custom-text-secondary">{{$product->name}}</h3></div>
+          <div class="col-lg-2 col-md-6 col-sm-12 py-1"><p class="m-0 custom-fs-22 custom-fw-600 custom-text-secondary">{{__getPriceunit()}} {{$product->price}}/-</p></div>
           <div class="col-lg-3 col-md-6 col-sm-12 py-1">
               @foreach ($variation as $item)
 
               
-              <label class="size custom-fs-30 custom-fw-400 ">
+              <label class="size custom-fs-30 custom-fw-400 custom-br-10">
                 <input  type="radio" name="size" @if ($loop->first)
                     checked
                 @endif value="{{$item->variation}}" />

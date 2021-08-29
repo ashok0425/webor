@@ -106,7 +106,7 @@ Store All Product
            <span class="custom-fs-28 custom-fw-500 custom-text-secondary">{{$item->name}}</span>
           </a>
 
-              <p class="custom-text-secondary custom-text-secondary custom-fs-18">{{__getPriceunit()}}{{$item->price}}/-</p>
+              <p class="custom-text-secondary custom-text-secondary custom-fs-18">{{__getPriceunit()}} {{$item->price}}/-</p>
           </div>
       
           <form action="{{route('addtocart.cart')}}" method="GET">

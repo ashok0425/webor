@@ -53,7 +53,7 @@
               </div>
           </div>
           <div class="container">
-              <div class="d-flex justify-content-between py-2">
+              <div class="d-flex justify-content-between pb-4 pt-2">
                   <span></span>
                   <a href="{{route('/')}}" class="@if (PAGE=='home')
                   custom-text-primary 
