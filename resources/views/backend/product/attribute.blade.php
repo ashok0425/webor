@@ -11,7 +11,7 @@
 <div class='row'>
 <div class="col-md-6 border-right">
         <div class="d-flex justify-content-between">
-            <h3>Color Data</h3>
+            <h3>Image Data</h3>
             <a href="{{route('admin.color.create',['id'=>$pid])}}" class="btn btn-info btn-lg" >Add Multiple Image</a>
         </div>
         <br>
@@ -46,7 +46,7 @@
     <div class="col-md-6">
         <div class="d-flex justify-content-between">
             <h3>Product Size</h3>
-            <a href="{{route('admin.variation.create',['id'=>$pid])}}" class="btn btn-info btn-lg" >Add variation</a>
+            <a href="{{route('admin.variation.create',['id'=>$pid])}}" class="btn btn-info btn-lg" >Add Size</a>
         </div>
         <br>
         <table  class="table table-responsive-sm" >

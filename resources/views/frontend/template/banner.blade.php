@@ -1,7 +1,7 @@
 
 
 <style>
-.owl-theme .owl-dots .owl-dot{
+.owl-theme .owl-dots {
     bottom:-40%!important;
    
 
@@ -42,7 +42,7 @@
     loop:true,
     margin:10,
     responsiveClass:true,
-    dots:true,
+    dots:false,
     nav:false,
     responsive:{
         0:{

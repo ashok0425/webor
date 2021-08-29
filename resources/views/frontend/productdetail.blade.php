@@ -83,8 +83,8 @@ define('PAGE','shop')
   }
   .size{
     margin: 0 10px ;
-    
-
+    max-width:40px;
+    font-size:20px;
   }
   .size input{
       display: none;
@@ -92,7 +92,7 @@ define('PAGE','shop')
   .size input:checked + span{
       border: 2px solid #d2a758;
       padding: 2px 10px ;
-
+      border-radius:5px;
   }
 </style>
 
@@ -138,10 +138,10 @@ define('PAGE','shop')
           
           </div>
           <div class="col-lg-3 col-md-6 col-sm-12 py-1">
-              <button class="btn border border-2 custom-bc-secondary custom-text-secondary custom-fs-25 custom-fw-400 px-5 bg_hover">Add to Bag</button>
+              <button class="btn border border-2 custom-bc-secondary custom-text-secondary custom-fs-25 custom-fw-400 px-2 bg_hover"><i class='fas fa-shopping-cart'></i>  Add to Bag</button>
           </div>
-          <div class="col-md-2 offset-md-6 text-center">
-            <p class="ml-5 mt-2"> 
+          <div class="col-md-2 offset-md-6 ">
+            <p class=" mt-1"> 
               <a href="" data-bs-toggle="modal" data-bs-target="#size" class="custom-text-secondary review_model ">Size Detail</a> </p>
           </div>
       </div>
@@ -179,7 +179,7 @@ define('PAGE','shop')
                   @if(Auth::check()&&DB::table('productreviews')->where('uid',Auth::user()->id)->where('pid',$product->id)->first())
                   @else 
                   
-                   <a href="" data-bs-toggle="modal" data-bs-target="#reviewmodel" class="review_model badge custom-bg-primary text-white mb-1 px-5 py-2">Write  Review</a> 
+                   <a href="" data-bs-toggle="modal" data-bs-target="#reviewmodel" class="review_model btn custom-fs-25 custom-fw-400 custom-bc-secondary bg-white px-4 custom-text-secondary text-transform-uppercase bg_hover">Write  Review</a> 
                   @endif
               </div>
               <?php
