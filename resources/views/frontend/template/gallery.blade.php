@@ -19,7 +19,7 @@
       $insta=DB::table('websites')->first();
   @endphp
   <div class="text-center pt-5">
-      <a href="{{$insta->instagram1}}" class="btn custom-fs-25 custom-fw-600 custom-bc-secondary px-4 custom-text-secondary border-2">
+      <a href="{{$insta->instagram1}}" class="btn custom-fs-25 custom-fw-600 custom-bc-secondary px-4 custom-text-secondary border-2 bg_hover">
           <span>
                <i class="fab fa-instagram custom-fs-30 "></i>                                  
           </span>

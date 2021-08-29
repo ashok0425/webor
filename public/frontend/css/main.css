@@ -54,6 +54,10 @@
 .custom-br-0 {
     border-radius: 0 !important;
 }
+.navbar-toggler:focus{
+    outline:none!important;
+    border:0!important;
+}
 .custom-bc-primary {
     border-color: var(--custom-primary) !important;
 }
@@ -387,4 +391,11 @@ a {
     /* Hero Carousel Wrapper */
     .custom-hero-resize { height: 20rem; }
     /* ==================== */
+}
+.bg_hover{
+    transition:.5s ease-in-out;
+}
+.bg_hover:hover{
+    background:var(--custom-secondary)!important;
+    color:#fff!important;
 }

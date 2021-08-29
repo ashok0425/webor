@@ -138,7 +138,7 @@ define('PAGE','shop')
           
           </div>
           <div class="col-lg-3 col-md-6 col-sm-12 py-1">
-              <button class="btn border border-2 custom-bc-secondary custom-text-secondary custom-fs-25 custom-fw-400 px-5">Add to Bag</button>
+              <button class="btn border border-2 custom-bc-secondary custom-text-secondary custom-fs-25 custom-fw-400 px-5 bg_hover">Add to Bag</button>
           </div>
           <div class="col-md-2 offset-md-6 text-center">
             <p class="ml-5 mt-2"> 
@@ -183,18 +183,22 @@ define('PAGE','shop')
                   @endif
               </div>
               <?php
-              $revs=DB::table('productreviews')->join('users','users.id','productreviews.uid')->where('productreviews.pid',$product->id)->select('productreviews.*','users.name','users.profile_photo_path')->orderBy('id','desc')->get();
+              $revs=DB::table('productreviews')->join('users','users.id','productreviews.uid')->where('productreviews.pid',$product->id)->select('productreviews.*','users.name','users.profile_photo_path')->orderBy('id','desc')->paginate(2);
                                   ?>
                                   @foreach ($revs as $item)
                                       
               <div class="border border-2 custom-bc-secondary px-4 py-1 mt-3">
                   {{-- <h4 class="custom-text-secondary custom-fw-700 custom-fs-22 m-0">Comfortable to Wear</h4> --}}
-                  <p class="custom-text-secondary custom-fw-400 custom-fs-16 m-0 ">
+                <p class="custom-text-secondary custom-fw-400 custom-fs-16 m-0 ">
                      {{$item->feedback}}
                   </p>
                   <div class="d-flex align-items-center justify-content-between mt-3">
                       <div class="d-flex align-items-center">
-                    <p class="custom-fs-28 custom-fw-600">    {{ $item->name }}&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                    <p class="custom-fs-28 custom-fw-600">@if ($item->profile_photo_path==null)
+                        <img src='{{asset('frontend/download.webp')}}' alt='user proflie image' class='rounded-circle' width='80' height='80'/> 
+                        @else 
+<img src='{{asset($item->profile_photo_path)}}' alt='user proflie image' class='rounded-circle' width='80' height='80'/> 
+                    @endif    {{ $item->name }}&nbsp;&nbsp;&nbsp;&nbsp;</p>
                         @if (Auth::check() && Auth::user()->id==$item->uid)
                         <p style="margin-left: auto"><a href="" data-bs-toggle="modal" data-bs-target="#editreviewmodel" data-id="{{$item->id}}" class="editreview" style="font-size: 1rem;color:rgb(0, 68, 255);">
                     Edit
@@ -213,8 +217,10 @@ define('PAGE','shop')
                   </div>
               </div>
               @endforeach
-             
+            <div class='d-flex justify-content-right mt-2'>
+             {{$revs->links()}}
           </div>
+          
       </div>
   </div>
   @php

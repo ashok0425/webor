@@ -44,16 +44,16 @@
               <div class="col-md-8 col-lg-8 offset-md-4 pad_l">
 
               <div class="row ">
-                <div class=" col-sm-4 col-md-2 col-lg-2  my-3 col-4 "><a
+                <div class=" col-sm-4 col-md-2 col-lg-2  my-3 col-4 text-center"><a
                     href="{{$social->instagram1}}">
                  <i class="fab fa-instagram-square fa-2x text-dark"></i>
                 </a></div>
-            <div class=" col-sm-4 col-md-2 col-lg-2  my-3 col-4 "><a
+            <div class=" col-sm-4 col-md-2 col-lg-2  my-3 col-4 text-center"><a
                     href="{{$social->other1}}">
                     <i class="fab fa-tiktok fa-2x text-dark"></i>
 
                 </a></div>
-            <div class=" col-sm-4 col-md-2 col-lg-2  my-3 col-4 "><a
+            <div class=" col-sm-4 col-md-2 col-lg-2  my-3 col-4 text-center"><a
                     href="{{$social->facebook1}}">
                     <i class="fab fa-facebook fa-2x text-dark"></i>
 
@@ -62,7 +62,7 @@
             </div>
 
 
-<div class="col-md-6 offset-md-3 ">
+<div class="col-md-6 offset-md-3 text-center ml-2">
     &copy;2021 <a href="{{route('/')}}"  class="custom-text-secondary">RumorhasitNepal</a> All Rights Reserved.&nbsp; Powered by <a href="https://falcontechnepal.com"  class="custom-text-secondary">Falcon Tech </a>
 </div>
 

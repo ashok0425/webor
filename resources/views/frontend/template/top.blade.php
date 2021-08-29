@@ -40,7 +40,7 @@ $banner=DB::table('products')->where('status',1)->where('top_rated',1)->orderBy(
 
 
       <div class="text-center pt-4">
-          <a href="{{route('store')}}" class="btn custom-fs-25 custom-fw-400 custom-bc-secondary px-4 custom-text-secondary">Shop more</a>
+          <a href="{{route('store')}}" class="btn custom-fs-25 custom-fw-400 custom-bc-secondary px-4 custom-text-secondary bg_hover">Shop more</a>
       </div>
   </div>
 </section>

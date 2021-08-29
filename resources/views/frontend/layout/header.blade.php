@@ -40,9 +40,15 @@
                           style="position:absolute; left:18px; top:-10px;">0</span>
                   </a>
                   <span class="mx-1"></span>
-                  <a href="./profile.html">
-                    <i class="fas fa-user-circle fa-2x text-dark"></i>
-                  </a>
+                    @auth
+                      <a href="{{route('profile')}}">
+                        <i class="fas fa-user-circle fa-2x text-dark"></i>
+                     </a>
+                          @else 
+                          <a href="{{route('login')}}">
+                            <i class="fas fa-user-circle fa-2x text-dark"></i>
+                         </a>
+                      @endauth
               </div>
               <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
                   <ul class="navbar-nav me-auto mb-2 mb-lg-0">

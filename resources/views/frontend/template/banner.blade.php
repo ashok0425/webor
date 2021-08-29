@@ -15,7 +15,7 @@
                     <a class="custom-fs-40 custom-fw-600 mt-4 mb-4 custom-text-white">New
                         Collection</a>
 <div class=" mt-5">
-    <a class="custom-fs-25 custom-fw-200 mt-5 text-dark text-decoration-underline text-transform-uppercase" href="{{route('store')}}">SHOP NOW</a>
+    <a class="btn custom-fs-25 custom-fw-400 custom-bc-secondary bg-white px-4 custom-text-secondary text-transform-uppercase bg_hover" href="{{route('store')}}">SHOP NOW</a>
 
 </div>
                 </div>

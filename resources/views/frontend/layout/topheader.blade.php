@@ -5,7 +5,7 @@
     <header class="d-none d-sm-block d-md-block">
       <nav class="custom-bg-white">
           <div class="container">
-              <div class="d-flex justify-content-between align-items-center py-5">
+              <div class="d-flex justify-content-between align-items-center py-4">
                   <div>
                       <a onclick="pageSearch(this);" class="custom-cursor-pointer">
                         <i class="fas fa-search  fa-2x text-dark"></i>
@@ -53,7 +53,7 @@
               </div>
           </div>
           <div class="container">
-              <div class="d-flex justify-content-between py-4">
+              <div class="d-flex justify-content-between py-2">
                   <span></span>
                   <a href="{{route('/')}}" class="@if (PAGE=='home')
                   custom-text-primary 

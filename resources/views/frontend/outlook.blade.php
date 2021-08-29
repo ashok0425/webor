@@ -81,7 +81,7 @@ Outlook
 
 
                     </p>
-                    <a href="{{route('store')}}" class="custom-fw-600 custom-fs-16 custom-text-secondary border border-0 custom-bc-secondary border-bottom">Browse all collection</a>
+                    <a href="{{route('store')}}" class=" btn border custom-bc-secondary border-1 px-3 custom-fw-400 custom-fs-25 bg_hover ">View all collection</a>
                 </div>
             </div>
             <div class="col-md-6 col-lg-5">
@@ -113,7 +113,7 @@ Outlook
 
 
                 </p>
-                <a href="{{route('store')}}" class="mt-4 btn border custom-bc-secondary border-1 px-5 custom-fw-400 custom-fs-25">Shop now</a>
+                <a href="{{route('store')}}" class="mt-4 btn border custom-bc-secondary border-1 px-5 custom-fw-400 custom-fs-25 bg_hover">Shop now</a>
                 <div class="mt-4">
                     <img class="custom-lookbook-resize" src="{{asset($outlook7)}}" alt="comfy and moder image/thumbnail" />
                 </div>
@@ -150,7 +150,7 @@ Outlook
       $insta=DB::table('websites')->first();
   @endphp
   <div class="text-center pt-5">
-      <a href="{{$insta->instagram1}}" class="btn custom-fs-25 custom-fw-600 custom-bc-secondary px-4 custom-text-secondary border-2">
+      <a href="{{$insta->instagram1}}" class="btn custom-fs-25 custom-fw-600 custom-bc-secondary px-4 custom-text-secondary border-2 bg_hover">
           <span>
                <i class="fab fa-instagram custom-fs-30 "></i>
           </span>

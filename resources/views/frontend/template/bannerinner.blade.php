@@ -48,7 +48,7 @@ $banner=DB::table('products')->where('status',1)->orderBy('id','desc')->limit(8)
 
 
       <div class="text-center pt-4">
-          <a href="{{route('store')}}" class="btn custom-fs-25 custom-fw-400 custom-bc-secondary px-4 custom-text-secondary">View All</a>
+          <a href="{{route('store')}}" class="btn custom-fs-25 custom-fw-400 custom-bc-secondary px-4 custom-text-secondary bg_hover">View All</a>
       </div>
   </div>
 </section>
