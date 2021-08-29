@@ -4,7 +4,7 @@
     define('PAGE','product')
 @endphp
 <div class="card">
-        <h3>Edit Color</h3>
+        <h3>Edit Image</h3>
    
     <div class="card-body">
  

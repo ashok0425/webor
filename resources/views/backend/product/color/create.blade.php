@@ -5,7 +5,7 @@
 @endphp
 
 <div class="card">
-        <h3>Add Color</h3>
+        <h3>Add Image</h3>
    
     <div class="card-body">
 

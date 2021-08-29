@@ -12,7 +12,7 @@
 <div class="col-md-6 border-right">
         <div class="d-flex justify-content-between">
             <h3>Color Data</h3>
-            <a href="{{route('admin.color.create',['id'=>$pid])}}" class="btn btn-info btn-lg" >Add Color</a>
+            <a href="{{route('admin.color.create',['id'=>$pid])}}" class="btn btn-info btn-lg" >Add Multiple Image</a>
         </div>
         <br>
 
@@ -20,7 +20,6 @@
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Color</th>
                     <th>Image</th>
                     <th>Action</th>
                 </tr>
@@ -30,9 +29,7 @@
                 @foreach ($color as $item)
                     <tr>
                         <td>{{$loop->iteration}}</td>
-                        <td>{{$item->color}}
-                            <div style="background: {{ $item->color }};width:50px;height:20px;"></div>
-                        </td>
+                       
                         <td> <img src="{{asset($item->image)}}" width="80" alt=""></td>
                       
                         <td>
@@ -48,7 +45,7 @@
     </div>
     <div class="col-md-6">
         <div class="d-flex justify-content-between">
-            <h3>Product Variation</h3>
+            <h3>Product Size</h3>
             <a href="{{route('admin.variation.create',['id'=>$pid])}}" class="btn btn-info btn-lg" >Add variation</a>
         </div>
         <br>
@@ -56,8 +53,7 @@
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Variation</th>
-                    <th>Price</th>
+                    <th>Size</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -69,9 +65,7 @@
                         <td>{{$item->variation}}
                             
                         </td>
-                        <td>{{$item->price}}
-                            
-                        </td>
+                        
                         <td>
 
                       <a href="{{route('admin.variation.edit',['id'=>$item->id])}}" class="btn btn-primary"><i class="far fa-edit"></i></a>
