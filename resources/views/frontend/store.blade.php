@@ -96,7 +96,7 @@ Store All Product
    <div class="col-md-4 col-12">
     <div class="card border-0">
       <a href="{{route('product.detail',['id'=>$item->id,'name'=>$item->name])}}">
-      <img src="{{asset($item->image)}}" alt="product thumbnail" />
+      <img src="{{asset($item->image)}}" alt="product thumbnail" class='img-fluid'/>
   </a>
 
       <div class="card-body p-0 d-flex justify-content-between align-items-center padx-4">

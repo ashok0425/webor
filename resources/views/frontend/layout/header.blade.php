@@ -19,7 +19,7 @@
         $logo=DB::table('websites')->value('image');
     @endphp
       <nav class="navbar">
-          <div class="container py-2">
+          <div class="container pt-2 pb-5">
               <button class="navbar-toggler p-0  " type="button" data-bs-toggle="collapse"
                   data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false"
                   aria-label="Toggle navigation">
