@@ -5,7 +5,7 @@
 Store All Product
 @endsection
 @extends('frontend.layout.master')
-<style> 
+<style>
 .store select:focus{
   outline: none;
   border: 0;
@@ -22,15 +22,15 @@ Store All Product
 
 
 
-              
+
               <div>
                   <select class="custom-fs-20 custom-fw-400 form-select border-0 selector category" aria-label="category" >
                       <option selected>Category</option>
                       @foreach ($category as $item)
                       <option  value="{{ $item->id }}">{{$item->category}}</option>
-                          
+
                       @endforeach
-                     
+
                   </select>
               </div>
               <div>
@@ -38,9 +38,9 @@ Store All Product
                     <option selected>Sub Category</option>
                     @foreach ($subcategory as $item)
                     <option  value="{{ $item->id }}">{{$item->subcategory}}</option>
-                        
+
                     @endforeach
-                   
+
                 </select>
             </div>
               {{-- <div class="mx-2">
@@ -50,7 +50,7 @@ Store All Product
 
                       <option value="{{$item->id}}"><span style="background: {{$item->color}}!important">{{$item->color}}</span></option>
                       @endforeach
-                   
+
                   </select>
               </div> --}}
               <div>
@@ -93,7 +93,7 @@ Store All Product
     <div class="row custom_grid">
 
         @foreach ($product as $item)
-   <div class="col-md-4 col-12">
+   <div class="col-md-4 col-12 p-0 m-0 text-center">
     <div class="card border-0">
       <a href="{{route('product.detail',['id'=>$item->id,'name'=>$item->name])}}">
       <img src="{{asset($item->image)}}" alt="product thumbnail" class='img-fluid'/>
@@ -108,13 +108,13 @@ Store All Product
 
               <p class="custom-text-secondary custom-text-secondary custom-fs-18">{{__getPriceunit()}} {{$item->price}}/-</p>
           </div>
-      
+
           <form action="{{route('addtocart.cart')}}" method="GET">
               @csrf
               <input type="hidden" value="{{$item->id}}" name='pid'>
               <button class="cartbtn">
 
-              <span><i class="fas fa-shopping-cart custom-text-secondary custom-fs-28"></i></span>       
+              <span><i class="fas fa-shopping-cart custom-text-secondary custom-fs-28"></i></span>
           </button>
           </form>
           </div>
@@ -122,7 +122,7 @@ Store All Product
    </div>
         @endforeach
     </div>
-         
+
 
       <!-- Pagination -->
   <div class="d-flex justify-content-center mt-5">
@@ -130,7 +130,7 @@ Store All Product
      {{$product->links()}}
     </nav>
 </div>
-@else 
+@else
 <div class="custom-bg-primary text-white px-5 py-2">No item found</div>
 <div class="py-5 my-5"></div>
 @endif
@@ -138,7 +138,7 @@ Store All Product
       </div>
   </div>
 
- 
+
 </section>
 @endsection
 @push('scripts')

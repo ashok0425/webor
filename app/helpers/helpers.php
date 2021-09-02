@@ -8,7 +8,7 @@ return Auth::guard('admin')->user();
 }
 
 function __getPriceunit(){
-return "Nrs";
+return "Nrs ";
 }
 
 function __getDifference($total1,$total2){
@@ -20,7 +20,7 @@ function __getDifference($total1,$total2){
             $total=$total2-$total1;
             $percent=($total/$total2)*100;
         }
-        
+
         return number_format($percent,2);
     }else{
         return  0;
