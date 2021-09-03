@@ -25,7 +25,7 @@ Store All Product
 
               <div>
                   <select class="custom-fs-20 custom-fw-400 form-select border-0 selector category" aria-label="category" >
-                      <option selected>Category</option>
+                      <option value="">--select Category--</option>
                       @foreach ($category as $item)
                       <option  value="{{ $item->id }}">{{$item->category}}</option>
 
@@ -35,7 +35,7 @@ Store All Product
               </div>
               <div>
                 <select class="custom-fs-20 custom-fw-400 form-select border-0 selector subcategory" aria-label="category" >
-                    <option selected>Sub Category</option>
+                    <option value="">--select Sub Category--</option>
                     @foreach ($subcategory as $item)
                     <option  value="{{ $item->id }}">{{$item->subcategory}}</option>
 
@@ -43,22 +43,13 @@ Store All Product
 
                 </select>
             </div>
-              {{-- <div class="mx-2">
-                  <select class="custom-fs-20 custom-fw-400 form-select border-0" aria-label="category">
-                      <option selected>Color</option>
-                    @foreach ($color as $item)
 
-                      <option value="{{$item->id}}"><span style="background: {{$item->color}}!important">{{$item->color}}</span></option>
-                      @endforeach
-
-                  </select>
-              </div> --}}
               <div>
-                  <select class="custom-fs-20 custom-fw-400 form-select border-0" aria-label="category">
-                      <option selected>Size</option>
+                  <select class="custom-fs-20 custom-fw-400 form-select border-0 selector space" aria-label="category">
+                      <option value="">--select Size--</option>
                     @foreach ($space as $item)
 
-                      <option value="{{$item->id}}">{{$item->variation}}</option>
+                      <option value="{{$item->variation}}">{{$item->variation}}</option>
                       @endforeach
 
                   </select>
@@ -149,61 +140,34 @@ Store All Product
 
 product_filter();
   });
-    $( "#mySlider" ).slider({//price range slider
-    range: true,
-    min: 0,
-    max: 2500,
-    values: [ 0, 2500 ],
-    step:50,
-    stop: function( event, ui ) {
-$( "#price" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
-$( "#hidden_max" ).val(ui.values[ 1 ]);
-$( "#hidden_min" ).val(ui.values[ 0 ]);
-product_filter();
 
-},
 
-});
-
-$( "#price" ).val( "$ " + $( "#mySlider" ).slider( "values", 0 ) +
-         " - $" + $( "#mySlider" ).slider( "values", 1 ) );
     //function filter data
     function product_filter(){
 let order=$('#sort').val();
 let category=get_category('category');
 let space=get_category('space');
 let subcategory=get_category('subcategory');
-let min=$( "#hidden_min" ).val();
-let max=$( "#hidden_max" ).val();
 let _token   = $('meta[name="csrf-token"]').attr('content');
 
       $.ajax({//aax call
       url:'{{url('filterproduct/ajax')}}/',
       type:"GET",
-    data:{min:min,max:max,category:category,space:space,subcategory:subcategory,order:order,_token:_token},
-beforeSend:function(){
-
-    $(".loading").css("display",'block');
-
-},
-dataType:"json",
-success:function(data){
+    dataType:"json",
+    data:{category,space:space,subcategory:subcategory,order:order,_token:_token},
+       success:function(data){
 $('.custom_grid').empty();
 
 console.log(data);
   $('.custom_grid').append(data);
 },
-complete:function(){
-            $(".loading").css('display','none');
-}
+
 })
     }
 //getting category/brand
 function get_category(class_name){
-  let product=[];
-  $('.'+class_name+':checked').each(function(){
-product.push($(this).val());
-  })
+  let product=$('.'+class_name).val();
+
   return product;
 }
 
