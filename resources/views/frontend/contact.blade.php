@@ -82,7 +82,7 @@ $social=DB::table('websites')->first()
             </div>
 
               <div class="">
-                  <input type="text" class="custom-bg-light form-control custom-fs-30 custom-fw-400 custom-text-secondary custom-font-work border border-0 border-1 border-bottom custom-bc-secondary" id="form-message" placeholder="Message" name="message">
+                  <textarea class="custom-bg-light form-control custom-fs-30 custom-fw-400 custom-text-secondary custom-font-work border border-0 border-1 border-bottom custom-bc-secondary" id="form-message" placeholder="Message" name="msg"></textarea>
               </div>
 
               <div class="text-center mt-4">
