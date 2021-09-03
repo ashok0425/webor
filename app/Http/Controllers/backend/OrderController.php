@@ -64,7 +64,7 @@ $order=Order::find($hid);
 $order->status=$id;
 
 $order->save();
-return response()->json('updated');
+// return response()->json('updated');
 $data=DB::table('websites')->first();
 $order=DB::table('orders')->where('id',$hid)->first();
 $ship=DB::table('shippings')->where('order_id',$hid)->first();
