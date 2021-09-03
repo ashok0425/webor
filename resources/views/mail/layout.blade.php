@@ -163,6 +163,7 @@ padding-bottom: 1rem;
     padding-left:10px;
          padding-right:10px;
          padding-bottom:2rem;
+         width: 100%!important;
 }
         }
     </style>
