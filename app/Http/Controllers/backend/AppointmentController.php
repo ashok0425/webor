@@ -23,7 +23,7 @@ class AppointmentController extends Controller
      */
     public function index()
     {
-        $ambassador=Apponitment::where('status',0)->get();
+        $ambassador=Apponitment::all();
 
        return view('backend.ambassador.index',compact('ambassador'));
     }
@@ -128,23 +128,6 @@ public function create()
 
     }
 
-
-
-
-  /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Category  $category
-     * @return \Illuminate\Http\Response
-     */
-
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Category  $category
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Apponitment $appointment,$id)
     {
 
