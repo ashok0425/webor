@@ -30,13 +30,13 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
     'google' => [
-        'client_id' => '623644980909-u4g7d2nuifrt3hbaslplb1pqmf2ci0q6.apps.googleusercontent.com',
-        'client_secret' => 'miJByDl_z3rU3A5HXWdyOjmV',
-        'redirect' => 'http://localhost:8000/auth/google/callback',
+        'client_id' => '623644980909-8qgkf0q98umi3cah3tj41u94ffq7el9g.apps.googleusercontent.com',
+        'client_secret' => '_X1WjvqIuLeTpxXvFK4F4-6c',
+        'redirect' => 'https://rumorhasitnepal.com/auth/google/callback',
     ],
     'facebook' => [
         'client_id' => '973081543479024',
         'client_secret' => 'cfd6e0c9fe7688c29a5c884b72262d51',
-        'redirect' => 'http://localhost:8000/auth/facebook/callback',
+        'redirect' => 'http://rumorhasitnepal/auth/facebook/callback',
     ],
 ];
