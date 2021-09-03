@@ -128,12 +128,13 @@ padding-bottom: 1rem;
        }
 
 .border_bottom{
-    width:120%;
+    width:110%;
     position:fixed;
     bottom:-50px;
     height:80px;
     background:#005aa6;
     padding:0;
+    left:-100px;
     margin:0;
 
 }
