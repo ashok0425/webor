@@ -58,7 +58,7 @@ public function store(Request $request){
 
 
     );
-    Mail::to(Auth::user()->email)->send(new contactmail($data));
+    Mail::to($data['email'])->send(new contactmail($data));
 
 
 // } catch (\Throwable $th) {
