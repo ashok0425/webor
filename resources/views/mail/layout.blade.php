@@ -129,6 +129,10 @@ padding-bottom: 1rem;
     color:#fff;
     text-decoration:none;
 }
+
+.add img{
+    max-width: 300px;
+}
 @media only screen and (max-width: 600px) {
             .padding{
             padding-left:0px;
@@ -153,6 +157,11 @@ padding-bottom: 1rem;
 .information{
     padding: 0 3px!important;
 }
+.invoice-box{
+    padding-left:0px;
+         padding-right:0px;
+         padding-bottom:2rem;
+}
         }
     </style>
 </head>
@@ -171,7 +180,7 @@ padding-bottom: 1rem;
                         <tr>
                             <td class="title ">
                               <a href="{{route('/')}}" class='add' >
-                                    <img src="{{ asset('frontend/images/logo.png') }}" style="width: 100%; max-width: 300px" />
+                                    <img src="{{ asset('frontend/images/logo.png') }}"  />
                               </a>
                           <div class="text">
 
