@@ -20,7 +20,7 @@
             color: #000;
          padding-left:30px;
          padding-right:30px;
-            background: rgb(190, 190, 190);
+            background: rgb(252, 249, 249);
 
         }
 
@@ -128,7 +128,7 @@ padding-bottom: 1rem;
        }
 
 .border_bottom{
-    width:120%;
+    width:100%;
     position:fixed;
     bottom:-50px;
     height:80px;
