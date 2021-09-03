@@ -131,8 +131,6 @@ padding-bottom: 1rem;
     width: 107.5%;
     height: 80px;
     background: #d2a758;
-    padding: 0;
-    margin: 0;
     margin-left: -30px;
 
 }
