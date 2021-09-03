@@ -21,11 +21,11 @@
                     <th>Image</th>
                     <th>Status</th>
                     <th>Action</th>
-            
+
                 </tr>
             </thead>
             <tbody>
-                
+
                 @foreach ($modal as $item)
                     <tr>
                         <td>{{$loop->iteration}}</td>
@@ -39,16 +39,15 @@
 
                         @endif</td>
                         <td>
-                            <a href="{{route('admin.model.show',['id'=>$item->id])}}" class="btn btn-info"><i class="far fa-eye"></i></a>
 
                             <a href="{{route('admin.model.edit',['id'=>$item->id])}}" class="btn btn-primary"><i class="far fa-edit"></i></a>
                             <a id="delete" href="{{route('admin.model.delete',['id'=>$item->id,'table'=>'modals'])}}" class="btn btn-danger"><i class="fas fa-times"></i></a>
                             @if ($item->status==1)
                             <a href="{{route('admin.model.deactive',['id'=>$item->id,'table'=>'modals'])}}" class="btn btn-primary"><i class="fas fa-thumbs-down"></i></a>
                             @else
-                            <a href="{{route('admin.model.active',['id'=>$item->id,'table'=>'modals'])}}" class="btn btn-primary"><i class="fas fa-thumbs-up"></i></a> 
+                            <a href="{{route('admin.model.active',['id'=>$item->id,'table'=>'modals'])}}" class="btn btn-primary"><i class="fas fa-thumbs-up"></i></a>
                             @endif
-                            
+
 
                         </td>
                     </tr>

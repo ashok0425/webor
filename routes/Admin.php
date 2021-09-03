@@ -207,9 +207,9 @@ Route::post('/ambassador/store','backend\AppointmentController@store')->name('am
 Route::get('/ambassador/edit/{id}','backend\AppointmentController@edit')->name('ambassador.edit');
 Route::post('/ambassador/update','backend\AppointmentController@update')->name('ambassador.update');
 Route::get('/ambassador/show/{id}','backend\AppointmentController@show')->name('ambassador.show');
-Route::get('/ambassador/active/{id}/{table}','backend\AppointmentController@active')->name('time.active');
-Route::get('/ambassador/deactive/{id}/{table}','backend\AppointmentController@deactive')->name('time.deactive');
-Route::get('/outlook/delete/{id}/{table}','backend\AppointmentController@destroy')->name('time.delete');
+Route::get('/ambassador/active/{id}/{table}','backend\AppointmentController@active')->name('ambassador.active');
+Route::get('/ambassador/deactive/{id}/{table}','backend\AppointmentController@deactive')->name('ambassador.deactive');
+Route::get('/ambassador/delete/{id}/{table}','backend\AppointmentController@destroy')->name('ambassador.delete');
 
     //  order
     Route::get('/order/new','backend\OrderController@newOrder')->name('order.new');

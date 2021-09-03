@@ -89,7 +89,7 @@ public function create()
         try {
 
             $category=Apponitment::find($request->id);
-            $category->status=$request->status; $category->name=$request->name;
+           $category->name=$request->name;
             $file=$request->file('file');
 
             if($file){
