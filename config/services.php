@@ -37,6 +37,6 @@ return [
     'facebook' => [
         'client_id' => '973081543479024',
         'client_secret' => 'cfd6e0c9fe7688c29a5c884b72262d51',
-        'redirect' => 'http://rumorhasitnepal/auth/facebook/callback',
+        'redirect' => 'https://rumorhasitnepal.com/auth/facebook/callback',
     ],
 ];
