@@ -149,7 +149,10 @@ padding-right:0;
 
 <table>
  <tr>
+    @php
+    $web=DB::table('websites')->first();
 
+@endphp
                      <td colspan='4' style='text-align:left!important;'>
                           <h4>
                        Hello, {{$ship_name}}</h4>
@@ -165,7 +168,7 @@ padding-right:0;
                                <div class="invoice">
                                 <h3>Invoice</h3>
 
-                                 Invoice #: KB{{$order_id}}<br />
+                                 Invoice #:RN{{$order_id}}<br />
 
                                {{\Carbon\Carbon::parse($order_date)->format('d- M-Y')}}
                                <br>
@@ -246,9 +249,9 @@ padding-right:0;
 
 
                         <h4 style="margin-left:10%;">
-        Please do not hesitate to reach us at  <a href='tel:9818212439'>98********</a> or
+        Please do not hesitate to reach us at  <a href='tel:9818212439'>{{$web->phone1}}</a> or
 
-            <a href='mailto:support@krafftbox.com'>support@easy.com</a>
+            <a href='mailto:support@krafftbox.com'>{{$web->email1}}</a>
         if you have any questions or queries.
 </h4>
 
