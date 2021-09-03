@@ -28,6 +28,6 @@ class contactmail extends Mailable
      */
     public function build()
     {
-        return $this->view('mail.contact')->subject($this->data['title'])->with($this->data);
+        return $this->view('mail.contact')->subject('Your query has been received.We will get back to u as soon as possible')->with($this->data);
     }
 }
