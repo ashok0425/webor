@@ -128,14 +128,12 @@ padding-bottom: 1rem;
        }
 
 .border_bottom{
-    width:110%;
-    position:fixed;
-    bottom:-50px;
-    height:80px;
-    background:#D2A758;
-    padding:0;
-    left:-100px;
-    margin:0;
+    width: 107.5%;
+    height: 80px;
+    background: #d2a758;
+    padding: 0;
+    margin: 0;
+    margin-left: -30px;
 
 }
 .links{
@@ -172,15 +170,15 @@ padding-bottom: 1rem;
 
 
                             <div class='add'>
-                                {{$web->phone1}}
+                                &nbsp;&nbsp;{{$web->phone1}}
 
                                      </div>
                               <div class='add'>
-                              {{$web->email1}}
+                                &nbsp;&nbsp; <a href="mailto::{{$web->email1}}" style="color:white;">{{$web->email1}}</a>
 
                               </div>
                               <div class='add'>
-                                {{$web->address1}}
+                                &nbsp;&nbsp;{{$web->address1}}
 
                                      </div>
                           </div>
