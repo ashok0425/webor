@@ -29,7 +29,7 @@ public function store(Request $request){
         'msg'=>'required',
 
     ]);
-    // try {
+    try {
 
 
     $cont=new Contact;
@@ -58,18 +58,26 @@ public function store(Request $request){
 
 
     );
+    $email=DB::table('websites')->value('email');
     Mail::to($data['email'])->send(new contactmail($data));
+    Mail::to($email)->send(new contactmail($data));
 
+    $notification=array(
+        'alert-type'=>'success',
+        'messege'=>'Your query has been placed we will get back to you as soon as possible.',
 
-// } catch (\Throwable $th) {
-//     //throw $th;
-//     $notification=array(
-//         'alert-type'=>'error',
-//         'messege'=>'Something went wrong. Please try again later.',
+     );
+     return redirect()->back()->with($notification);
 
-//      );
-//      return redirect()->back()->with($notification);
-// }
+} catch (\Throwable $th) {
+    //throw $th;
+    $notification=array(
+        'alert-type'=>'error',
+        'messege'=>'Something went wrong. Please try again later.',
+
+     );
+     return redirect()->back()->with($notification);
+}
 
 }
 
