@@ -131,8 +131,8 @@ public function create()
     public function edit(Apponitment $appointment,$id)
     {
 
-        $outloock=Apponitment::find($id);
-        return view('backend.ambassador.edit',compact('outloock'));
+        $outlook=Apponitment::find($id);
+        return view('backend.ambassador.edit',compact('outlook'));
     }
 
 
