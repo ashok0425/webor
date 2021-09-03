@@ -8,7 +8,7 @@
 
 <div class="card">
         <h3>Send Email </h3>
-   
+
     <div class="card-body">
 
         <form action=" {{route('admin.subscriber.store')}} " method="POST" enctype="multipart/form-data">
@@ -26,16 +26,16 @@
                     {{old('detail')}}
                 </textarea>
             </div>
-           
-            <div class="mb-3">
+
+            {{-- <div class="mb-3">
                 <label class="form-label">Attachement</label>
                 <div class="file-upload-wrapper" data-text="Select your file!">
                     <input name="file" type="file" class="file-upload-field" value="">
                   </div>
                   <br>
-            </div>
-           
-            <button type="submit" class="btn btn-primary">Update</button>
+            </div> --}}
+
+            <button type="submit" class="btn btn-primary">Send Mail</button>
         </form>
     </div>
 </div>

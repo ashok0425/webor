@@ -3,14 +3,14 @@
 @section('main-content')
 @php
     define('PAGE','subscriber')
-    
+
 @endphp
 
 
 <div class="card p-4">
 
             <h3>Send Email </h3>
-       
+
         <form action="{{route('admin.contact.sendmail')}}" method="POST" enctype="multipart/form-data">
             @csrf
             <input type="hidden" name="name" value="{{$con->fname}}">
@@ -28,7 +28,7 @@
                     {{old('detail')}}
                 </textarea>
             </div>
-           
+
             {{-- <div class="mb-3">
                 <label class="form-label">Attachement</label>
                 <div class="file-upload-wrapper" data-text="Select your file!">
@@ -36,8 +36,8 @@
                   </div>
                   <br>
             </div> --}}
-           
-            <button type="submit" class="btn btn-primary">Update</button>
+
+            <button type="submit" class="btn btn-primary">Send Mail</button>
         </form>
     </div>
 </div>

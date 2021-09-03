@@ -33,7 +33,7 @@ public function store(Request $request){
 
 
     $cont=new Contact;
-    $cont->name=$request->name;
+    $cont->fname=$request->name;
     $cont->email=$request->email;
     $cont->phone=$request->phone;
     $cont->address=$request->address;
