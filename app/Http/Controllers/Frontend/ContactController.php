@@ -36,7 +36,6 @@ public function store(Request $request){
     $cont->fname=$request->name;
     $cont->email=$request->email;
     $cont->phone=$request->phone;
-    $cont->address=$request->address;
 
     $cont->msg=$request->msg;
     $cont->save();
@@ -53,7 +52,6 @@ public function store(Request $request){
         'address'=>$request->address,
         'email'=>$request->email,
         'phone'=>$request->phone,
-        'address'=>$request->address,
 
 
 
