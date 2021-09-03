@@ -17,10 +17,10 @@
             box-shadow: 0 0 10px rgb(14, 13, 13);
             font-size: 16px;
             line-height: 24px;
-            color: #000;
+            color: #fff;
          padding-left:30px;
          padding-right:30px;
-            background: rgb(252, 249, 249);
+            background: #005aa6;
 
         }
 
@@ -132,7 +132,7 @@ padding-bottom: 1rem;
     position:fixed;
     bottom:-50px;
     height:80px;
-    background:#005aa6;
+    background:#D2A758;
     padding:0;
     left:-100px;
     margin:0;
