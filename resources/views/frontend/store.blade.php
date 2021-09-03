@@ -93,7 +93,7 @@ Store All Product
     <div class="row custom_grid">
 
         @foreach ($product as $item)
-   <div class="col-md-4 col-12 p-0 m-0 text-center">
+   <div class="col-md-4 col-12 p-0 m-0 px-2 text-center">
     <div class="card border-0">
       <a href="{{route('product.detail',['id'=>$item->id,'name'=>$item->name])}}">
       <img src="{{asset($item->image)}}" alt="product thumbnail" class='img-fluid'/>
