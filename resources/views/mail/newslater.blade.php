@@ -8,7 +8,8 @@
 <tr class="information">
     <td colspan="4">
        <h2>Thank you for subscribing our newsletter.</h2>
-       Rumor Has It, is a clothing brand based on [location] that always got the back of our brave girls, women, and LGBTQs. Our goal is to empower those who are living under the constant pressure to act, dress, and behave in a certain way and help them be more confident in who they are and embrace themselves.
+       <br>
+      <strong>Rumor Has It</strong> , is a clothing brand based on [location] that always got the back of our brave girls, women, and LGBTQs. Our goal is to empower those who are living under the constant pressure to act, dress, and behave in a certain way and help them be more confident in who they are and embrace themselves.
 <br>
        We are a bold and straightforward thinking brand inspired by the real-life problems and obstacles in the real world and aims to acknowledge that and help inspire to face them head-on and come out as a winner.
 <br>

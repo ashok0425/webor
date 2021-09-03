@@ -164,6 +164,7 @@ padding-bottom: 1rem;
          padding-right:10px;
          padding-bottom:2rem;
          width: 100%!important;
+         margin:0!important;
 }
         }
     </style>
