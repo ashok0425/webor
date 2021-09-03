@@ -17,10 +17,10 @@
             box-shadow: 0 0 10px rgb(14, 13, 13);
             font-size: 16px;
             line-height: 24px;
-            color: #fff;
+            color: #000;
          padding-left:30px;
          padding-right:30px;
-            background: #005aa6;
+            background: #fff;
          padding-bottom:2rem;
 
 
@@ -194,7 +194,7 @@ padding-bottom: 1rem;
 
                                      </div>
                               <div class='add'>
-                                &nbsp;&nbsp; <a href="mailto::{{$web->email1}}" style="color:white;">{{$web->email1}}</a>
+                                &nbsp;&nbsp; <a href="mailto::{{$web->email1}}" style="color:#000;">{{$web->email1}}</a>
 
                               </div>
                               <div class='add'>
