@@ -21,6 +21,8 @@
          padding-left:30px;
          padding-right:30px;
             background: #005aa6;
+         padding-bottom:2rem;
+
 
         }
 
@@ -158,8 +160,8 @@ padding-bottom: 1rem;
     padding: 0 3px!important;
 }
 .invoice-box{
-    padding-left:0px;
-         padding-right:0px;
+    padding-left:10px;
+         padding-right:10px;
          padding-bottom:2rem;
 }
         }
