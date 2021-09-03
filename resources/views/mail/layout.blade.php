@@ -147,6 +147,12 @@ padding-bottom: 1rem;
            display: none!important;
 
 }
+.add img{
+    max-width: 200px!important;
+}
+.information{
+    padding: 0 3px!important;
+}
         }
     </style>
 </head>
@@ -192,12 +198,6 @@ padding-bottom: 1rem;
             @yield('content')
         </table>
 
-    <div class='border_bottom '>
-
- <div class='links'>
-            <a href='mailto:{{$web->email1}}'>{{$web->email1}}</a> <a herf=''>www.easylaundry.com</a> <a href='tel:{{$web->phone1}}'>{{$web->phone1}}</a>
- </div>
-    </div>
 </body>
 
 </html>
