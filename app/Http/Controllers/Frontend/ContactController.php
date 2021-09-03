@@ -29,7 +29,7 @@ public function store(Request $request){
         'msg'=>'required',
 
     ]);
-    try {
+    // try {
 
 
     $cont=new Contact;
@@ -69,7 +69,7 @@ public function store(Request $request){
      );
      return redirect()->back()->with($notification);
 
-} catch (\Throwable $th) {
+// } catch (\Throwable $th) {
     //throw $th;
     $notification=array(
         'alert-type'=>'error',
@@ -77,7 +77,7 @@ public function store(Request $request){
 
      );
      return redirect()->back()->with($notification);
-}
+// }
 
 }
 
