@@ -80,22 +80,7 @@ padding-bottom: 1rem;
 
         }
 
-        @media only screen and (max-width: 600px) {
-            .padding{
-            padding-left:0px;
-        }
-            .invoice-box table tr.top table td {
-                width: 100%;
-                display: block;
-                text-align: center;
-            }
-            .invoice-box table tr.information table td {
-                width: 100%;
-                display: block;
-                text-align: center;
-            }
 
-        }
         /** RTL **/
 
         .rtl {
@@ -144,7 +129,25 @@ padding-bottom: 1rem;
     color:#fff;
     text-decoration:none;
 }
+@media only screen and (max-width: 600px) {
+            .padding{
+            padding-left:0px;
+        }
+            .invoice-box table tr.top table td {
+                width: 100%;
+                display: block;
+                text-align: center;
+            }
+            .invoice-box table tr.information table td {
+                width: 100%;
+                display: block;
+                text-align: center;
+            }
+            .border_bottom{
+           display: none!important;
 
+}
+        }
     </style>
 </head>
 
