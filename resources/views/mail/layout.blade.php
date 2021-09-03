@@ -128,13 +128,12 @@ padding-bottom: 1rem;
        }
 
 .border_bottom{
-    width:100%;
+    width:120%;
     position:fixed;
     bottom:-50px;
     height:80px;
     background:#005aa6;
     padding:0;
-    left:-100px;
     margin:0;
 
 }
@@ -166,21 +165,21 @@ padding-bottom: 1rem;
                         <tr>
                             <td class="title ">
                               <a href="{{route('/')}}" class='add' >
-                                    <img src="{{ asset('frontend/images/logo.png') }}" style="width: 100%; max-width: 400px" />
+                                    <img src="{{ asset('frontend/images/logo.png') }}" style="width: 100%; max-width: 300px" />
                               </a>
                           <div class="text">
 
 
                             <div class='add'>
-                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp;{{$web->phone1}}
+                                {{$web->phone1}}
 
                                      </div>
                               <div class='add'>
-                              &nbsp;  &nbsp; &nbsp;    &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp; {{$web->email1}}
+                              {{$web->email1}}
 
                               </div>
                               <div class='add'>
-                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp;{{$web->address1}}
+                                {{$web->address1}}
 
                                      </div>
                           </div>
