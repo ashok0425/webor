@@ -45,34 +45,20 @@ class CouponController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'coupon'=>'required|unique:coupons',
-            'price'=>'required',
-            'expire_at'=>'required',
+            'title'=>'required|unique:coupons',
+            'description'=>'required',
 
 
         ]);
         try {
 
             $category=new Coupon;
-
-            $file=$request->file('file');
-
-            if($file){
-                // File::delete(__getAdmin()->profile_photo_path);
-                $fname=rand().'Coupon.'.$file->getClientOriginalExtension();
-                $category->image='upload/coupon/'.$fname;
-                // $path=Image::make($file)->resize(200,300);
-                $file->move(public_path().'/upload/coupon/',$fname);
-            }
-            $category->coupon=$request->coupon;
-            $category->price=$request->price;
-            $category->expire_at=$request->expire_at;
-            $category->card_value=$request->card_value;
-
-            if($category->save()){
+            $category->title=$request->title;
+            $category->description=$request->description;
+                      if($category->save()){
                 $notification=array(
                     'alert-type'=>'success',
-                    'messege'=>'Coupon  Added',
+                    'messege'=>'Service  Added',
 
                  );
                  return redirect()->back()->with($notification);
@@ -127,35 +113,19 @@ class CouponController extends Controller
     public function update(Request $request, Coupon $coupon)
     {
         $request->validate([
-            'coupon'=>'required',
-            'price'=>'required',
-            'expire_at'=>'required',
-
-
+            'title'=>'required|unique:coupons',
+            'description'=>'required',
         ]);
         try {
-
             $category=Coupon::find($request->id);
-
-            $file=$request->file('file');
-
-            if($file){
-                File::delete($category->image);
-                $fname=rand().'coupon.'.$file->getClientOriginalExtension();
-                $category->image='upload/coupon/'.$fname;
-                // $path=Image::make($file)->resize(200,300);
-                $file->move(public_path().'/upload/coupon/',$fname);
-            }
-            $category->coupon=$request->coupon;
-            $category->price=$request->price;
-            $category->expire_at=$request->expire_at;
-            $category->card_value=$request->card_value;
+            $category->title=$request->title;
+            $category->description=$request->description;
+            
 
             if($category->save()){
                 $notification=array(
                     'alert-type'=>'success',
-                    'messege'=>'Coupon  updated',
-
+                    'messege'=>'Service  updated',
                  );
                  return redirect()->route('admin.coupon')->with($notification);
             }else{

@@ -122,9 +122,7 @@ h3{
 	font-weight: bold;
 	color: #ffffff;
 }
-.card{
-	padding: 0 1rem;
-}
+
 </style>
 <body>
 	<div class="wrapper">

@@ -27,7 +27,7 @@
             
             <li class="sidebar-item <?php  echo PAGE=='coupon'?'active':'' ?>">
                 <a class="sidebar-link" href="{{route('admin.coupon')}}">
-      <i class="fas fa-copy" ></i> <span class="align-middle">Coupon</span>
+      <i class="fas fa-copy" ></i> <span class="align-middle">Service</span>
     </a>
             </li>
            

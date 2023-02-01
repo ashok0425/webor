@@ -5,23 +5,22 @@
 @endphp
 
 <div class="container">
-    <div class="card py-3 px-4">
-        <div class="d-flex justify-content-between">
-            <h3>Coupon Data</h3>
-            <a href="{{route('admin.coupon.create')}}" class="btn btn-info btn-lg" >Add Coupon</a>
+    <div class="card ">
+        <div class="">
+            <h3 class="d-flex justify-content-between">Coupon Data  
+            <a href="{{route('admin.coupon.create')}}" class="btn btn-info btn-lg" > <i class="fas fa-plus"></i> Add Service</a>
+
+            </h3>
         </div>
         <br>
-
+<div class="card-body">
         <table id="myTable" class="table table-responsive-sm" >
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Coupon</th>
-                    <th>Discount %</th>
-                    <th>Cart Value</th>
+                    <th>Title</th>
+                    <th>Description</th>
 
-                    <th>Expire At</th>
-                    <th>Image</th>
                     <th>Status</th>
 
 
@@ -33,17 +32,10 @@
                 @foreach ($coupon as $item)
                     <tr>
                         <td>{{$loop->iteration}}</td>
-                        <td>{{$item->coupon}}</td>
-                        <td>{{$item->price}}</td>
-                        <td>{{$item->card_value}}</td>
-                        <td>{{$item->expire_at}}
-                        @if ($item->expire_at<today())
-                <span class="badge bg-danger ">Expired</span>
-                           
-                        @endif
-                        </td>
+                        <td>{{$item->title}}</td>
+                        <td>{{$item->description}}</td>
+                
 
-                        <td> <img src="{{asset($item->image)}}" width="80" alt=""></td>
                         <td>@if ($item->status==1)
                             <a  class="badge bg-success">Active</a>
                             @else
@@ -67,6 +59,7 @@
             </tbody>
               </table>
     </div>
+</div>
 </div>
 
 

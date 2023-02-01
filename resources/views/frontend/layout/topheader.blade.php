@@ -1,87 +1,176 @@
     <!-- Navigation bar wrapper for larger screen -->
     @php
-        $logo=DB::table('websites')->value('image');
+        $logo=DB::table('websites')->first();
+        $categories=DB::table('categories')->where('status',1)->get();
+
     @endphp
-    <header class="d-none d-sm-block d-md-block">
-      <nav class="custom-bg-white">
-          <div class="container">
-              <div class="d-flex justify-content-between align-items-center py-4">
-                  <div>
-                      <a onclick="pageSearch(this);" class="custom-cursor-pointer">
-                        <i class="fas fa-search  fa-2x text-dark"></i>
-                      </a>
+  
+  <nav class="nav_bar navbar navbar-expand-lg">
+    <div class="container">
+      <img
+        src="{{$logo->image}}"
+        width="150"
+        height="60"
+        alt=" {{$logo->title}}"
+      />
+
+      <div
+        class="d-flex gap-5 d-none d-lg-block "
+        id="navbarTogglerDemo02">
+
+        <a href="">
+          <a
+            type="button"
+            class="nav_link">
+            Home
+          </a>
+        </a>
+
+        <a
+          type="button"
+          class=" dropdown-toggle px-3 nav_link"
+          data-bs-toggle="dropdown">
+          Category
+        </a>
+
+        <div class="nav_drop_large dropdown-menu">
+          <div class="row">
+      
+           @foreach ($categories as $category)
+               
+                <a class='col-md-2 mx-1' href="">
+                  <div
+                    class=" border px-0 pb-2">
+                    <div class="">
+                      <img
+                        src="{{asset($category->image)}}"
+                        alt="img"
+class="img-fluid w-100 max_height"
+                      />
+                    </div>
+                    <h6 class="pt-2 text-white text-center h6 pb-0 mb-0">{{$category->category}}</h6>
                   </div>
-                  <a class="p-0 m-0" href="{{route('/')}}">
-                      <img src="{{asset($logo)}}" alt="rumor logo" class="img-fluid"/>
-                  </a>
-                  <div>
-                      <a href="{{route('cart')}}" class="position-relative">
-                         <i class="fas fa-shopping-cart fa-2x text-dark"></i>
-                       @if (Auth::check())
-                       @php
-                       $cart=DB::table('carts')->where('uid',Auth::user()->id)->get();
-                           
-                       @endphp
-                       <span class="bg-danger rounded-circle px-2 text-white round_cart"
-                       >{{count($cart)}}</span>
-                       @endif
-                         
-                      </a>
-                      <span class="mx-3"></span>
-                      @auth
-                      <a href="{{route('profile')}}">
-                        <i class="fas fa-user-circle fa-2x text-dark"></i>
-                     </a>
-                          @else 
-                          <a href="{{route('login')}}">
-                            <i class="fas fa-user-circle fa-2x text-dark"></i>
-                         </a>
-                      @endauth
-                      
-                  </div>
-              </div>
+                </a>
+                @endforeach
+
           </div>
-          <div id="navbar-searchbar" class="container d-none">
-              <div class="d-flex">
-                  <form class="d-flex" style="width:100%;" action="{{route('search')}}">
-                      <input class="form-control custom-br-0 border-2 custom-bc-primary custom-fs-24" type="search" placeholder="Search Products..." aria-label="Search" name="product">
-                      <button class="btn custom-br-0 custom-bc-primary border-0 border-end border-top border-bottom border-2 custom-text-primary custom-fs-24"
-                          type="submit">Search</button>
-                  </form>
-                  <span class="mx-2"></span>
-                  <button class="btn custom-fs-24 p-0" title="close search bar" onclick="closeSearch(this);">&#215;</button>
+        </div>
+
+        <a href="">
+          <a
+            type="button"
+            class="nav_link px-3">
+            About
+          </a>
+        </a>
+
+        <a href="">
+          <a
+            type="button"
+            class="nav_link px-3">
+            Products
+          </a>
+        </a>
+
+        <a href="">
+          <a
+            type="button"
+            class="nav_link ps-3">
+            Contact
+          </a>
+        </a>
+      </div>
+      <button
+        typeof="button"
+        class="navbar-toggler d-flex d-block d-lg-none m-0 p-0"
+        type="button"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#offcanvasNavbar"
+        aria-controls="offcanvasNavbar">
+        <i class="fas fa-bars"></i>
+      </button>
+      <div
+        class="off_canvas_wrapper offcanvas offcanvas-end d-lg-none"
+        id="offcanvasNavbar"
+        aria-labelledby="offcanvasNavbarLabel">
+        <div class="offcanvas-header">
+          <h5
+            class="offcanvas-title fw-bold"
+            id="offcanvasNavbarLabel">
+            Gem Plastic
+          </h5>
+
+          <i
+            class="off_canvas_button_close btn-close m-0 p-0"
+            data-bs-dismiss="offcanvas"
+            aria-label="Close"
+          ></i>
+        </div>
+        <div class="offcanvas-body">
+          <div class="navbar-nav justify-content-end flex-grow-1 pe-3 mb-5">
+            <Link href="">
+              <div
+                class="off_canvas_nav_active off_canvas_nav_link  d-flex align-items-center gap-2 pb-3 "
+                data-bs-dismiss="offcanvas">
+                <ImHome />
+                Home
               </div>
-          </div>
-          <div class="container">
-              <div class="d-flex justify-content-between pb-4 pt-2">
-                  <span></span>
-                  <a href="{{route('/')}}" class="@if (PAGE=='home')
-                  custom-text-primary 
-                  @else
-                  custom-text-secondary
-                  @endif custom-fs-16 custom-fw-400">Home</a>
-                  <a href="{{route('lookbook')}}" class="@if (PAGE=='lookbook')
-                  custom-text-primary 
-                  @else
-                  custom-text-secondary
-                  @endif custom-fs-16 custom-fw-400">Look Book</a>
-                  <a href="{{route('store')}}" class="@if (PAGE=='shop')
-                  custom-text-primary 
-                  @else
-                  custom-text-secondary
-                  @endif custom-fs-16 custom-fw-400">Shop</a>
-                  <a href="{{route('about')}}" class="@if (PAGE=='about')
-                  custom-text-primary 
-                  @else
-                  custom-text-secondary
-                  @endif custom-fs-16 custom-fw-400">About</a>
-                  <a href="{{route('contact')}}" class="@if (PAGE=='contact')
-                  custom-text-primary 
-                  @else
-                  custom-text-secondary
-                  @endif custom-fs-16 custom-fw-400">Contact</a>
-                  <span></span>
+            </Link>
+            <Link href="">
+              <div
+                class="{`off_canvas_nav_active  off_canvas_nav_link  d-flex align-items-center gap-2  pb-3 "
+                data-bs-dismiss="offcanvas">
+                {{-- <HiTemplate /> --}}
+                Products
               </div>
+            </Link>
+
+            <div class="dropdown">
+              <button
+                type="button"
+                class="category_off_canvas_dropdown dropdown-toggle p-0 pb-3 ""
+                data-bs-toggle="dropdown"
+                aria-expanded="false">
+                <FaSitemap class="me-2" />
+                Categories
+              </button>
+              <ul class="off_canvas_category_drop dropdown-menu mb-3">
+                @foreach ($categories as $category)
+                    
+                    <a
+                      data-bs-dismiss="offcanvas">
+                      <Link href="">
+                        <a
+                          class="dropdown_item dropdown-item "
+                          href="#">
+                          {{$category->category}}
+                        </a>
+                      </Link>
+                    </a>
+                    @endforeach
+
+              </ul>
+            </div>
+
+            <Link href="">
+              <div
+                class=" off_canvas_nav_active  off_canvas_nav_link  d-flex align-items-center gap-2 pb-3 "
+                data-bs-dismiss="offcanvas">
+                {{-- <HiInformationCircle /> --}}
+                About
+              </div>
+            </Link>
+
+            <Link href="">
+              <div
+                class=" off_canvas_nav_active  off_canvas_nav_link d-flex align-items-center gap-2 pb-3 "
+                data-bs-dismiss="offcanvas">
+                {{-- <GrMail /> --}}
+                Contact
+              </div>
+            </Link>
           </div>
-      </nav>
-  </header>
+        </div>
+      </div>
+    </div>
+  </nav>

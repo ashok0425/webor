@@ -51,13 +51,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
 @stack('style')
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" referrerpolicy="no-referrer" />
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
    {{-- toatser --}}
    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
@@ -65,60 +58,29 @@
   <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
 
   <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.dataTables.min.css"/>
-    <link rel="stylesheet" href="{{asset('frontend/css/main.css')}}" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.0/css/all.min.css"  />
+    <link rel="stylesheet" href="{{asset('frontend/css/global.css')}}" />
+    <link rel="stylesheet" href="{{asset('frontend/css/modules/Nav.css')}}" />
+
     <style>
-      .padx-4{
-        padding-left:  2.2rem!important;
-        padding-right:  2.2rem!important;
-
+      .max_height{
+        height: 200px!important;
+        object-fit: cover;
       }
-      .cartbtn{
-        outline: none;
-        background: none;
-        border: none;
+      #owl-banner{
+        position: relative;
       }
-        .footer{
-      padding: 1.5rem;
-            width: 100%;
-            margin-bottom: 1rem;
-        }
-        .footer form {
-  /* This bit sets up the horizontal layout */
-  display:flex;
-  flex-direction:row;
-
-vertical-align: center;
-background: #fff;
-padding: .5rem .8rem;
-border-radius: 5px!important;
-}
-
-.footer input{
-    flex-grow: 2;
-    border: none!important;
-    outline: none!important;
-
-}
-.footer input:focus {
-  /* removing the input focus blue box. Put this on the form if you like. */
-  outline: none;
-}
-
-.footer button {
- background: var(--custom-secondary);
-  outline: none!important;
-  border: none!important;
-  padding: .3rem .6rem;
-  border-radius: 5px;
-  color:var(--custom-primary);
-}
-.footer button:focus {
-  /* removing the input focus blue box. Put this on the form if you like. */
-  outline: none;
-}
-.news{
-  font-size: 30px
-}
+      #owl-banner .owl-nav .owl-next, #owl-banner .owl-nav .owl-prev{
+        position: absolute;
+        top:45%;
+        font-size: 50px;
+        font-weight: 400;
+        color: var(--color-yellow);
+        left: 3%;
+      }
+      #owl-banner .owl-nav .owl-next{
+        left: 95%;
+      }
     </style>
 </head>
   <body>
@@ -128,8 +90,6 @@ border-radius: 5px!important;
 
     @include('frontend.layout.topheader')
 
-    <!-- mini navbar -->
-  @include('frontend.layout.header')
 
 
 
@@ -138,7 +98,7 @@ border-radius: 5px!important;
 
     <!-- new section -->
     <!-- footer section -->
-  @include('frontend.layout.footer')
+  {{-- @include('frontend.layout.footer') --}}
 
   {{-- jquery  --}}
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" ></script>
@@ -149,14 +109,10 @@ border-radius: 5px!important;
 
   {{-- jquery ui --}}
   <script src="https://code.jquery.com/ui/1.11.2/jquery-ui.js "></script>
-  {{-- elvator zoom jquery --}}
-	<script src='{{ asset('frontend/jquery.elevatezoom.js')}}'></script>
- {{-- elvator zoom --}}
- <script src="{{ asset('frontend/jquery.elevatezoom.js')}}"></script>
+  
   {{-- toastr  --}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-<script src="{{asset('frontend/js/main.js')}}"></script>
 {{-- datatables  --}}
 <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
 	<script src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"></script>
@@ -217,123 +173,26 @@ border-radius: 5px!important;
   }
 @endif
 </script>
-{{-- load price using ajax according to variation --}}
-<script>
-$('.storage').click(function(){
-  let val=$(this).siblings('.variation').val();
-  $.ajax({
-        url:'{{ url('loadprice') }}/'+val,
-        type:'GET',
-        DataType:'Json',
-        beforeSend:function(){
-          $('.loading').css('display','block')
-        },
-        success:function(data){
-          $('.Vprice').html(data);
 
+
+<script>
+  $('#owl-banner').owlCarousel({
+    loop:true,
+    margin:10,
+    nav:true,
+    navText:['<i class="fas fa-chevron-left"></i>','<i class="fas fa-chevron-right"></i>'],
+    responsive:{
+        0:{
+            items:1
         },
-        complete:function(){
-          $('.loading').css('display','none')
+        600:{
+            items:1
+        },
+        1000:{
+            items:1
         }
-  })
+    }
 })
 </script>
-
-
-{{-- load image using ajax according to color --}}
-<script>
-  $('.photo').click(function(){
-
-    let val=$(this).siblings('.img').val();
-    $.ajax({
-          url:'{{ url('loadimage') }}/'+val,
-          type:'GET',
-          DataType:'Json',
-          beforeSend:function(){
-            $('.loading').css('display','block')
-          },
-          success:function(data){
-            console.log(data);
-            $('.main_image').attr('src',data);
-
-          },
-          complete:function(){
-            $('.loading').css('display','none')
-          }
-    })
-  })
-  </script>
-
-    {{-- elvator zoom  --}}
-    <script>
-
-
-     //initiate the plugin and pass the id of the div containing gallery images
-$("#zoom_01").elevateZoom({
-  zoomType				: "lens",
-   lensShape : "round",
-  lensSize    : 200,
-  gallery:'gal1', cursor: 'pointer', galleryActiveClass: 'active', imageCrossfade: true, loadingIcon: 'http://www.elevateweb.co.uk/spinner.gif'});
-
-//pass the images to Fancybox
-$("#zoom_01").bind("click", function(e) {
-  var ez =   $('#zoom_01').data('elevateZoom');
-	$.fancybox(ez.getGalleryList());
-  return false;
-});
-  </script>
-
-
-{{-- rewvie edit  --}}
-<script>
-
-
-	$('.editreview').on('click',function(e){
-    var id=$(this).data('id');
-  $.ajax({
-    url:'{{url('review/edit')}}/'+id,
-    type:'GET',
-    dataType:'json',
-    success:function(data){
-      $('#text').html(data['feedback']);
-      $('#vid').val(data['id']);
-
-    }
-  })
-  })
-            </script>
-
-            {{-- custom input fielsd file  --}}
-            <script>
-              // Add the following code if you want the name of the file appear on select
-              $('#imageInput').on('change', function() {
-	$input = $(this);
-	if($input.val().length > 0) {
-		fileReader = new FileReader();
-		fileReader.onload = function (data) {
-		$('.image-preview').attr('src', data.target.result);
-		}
-		fileReader.readAsDataURL($input.prop('files')[0]);
-		$('.image-button').css('display', 'none');
-		$('.image-preview').css('display', 'block');
-		$('.change-image').css('display', 'block');
-	}
-});
-
-$('.change-image').on('click', function() {
-	$control = $(this);
-	$('#imageInput').val('');
-	$preview = $('.image-preview');
-	$preview.attr('src', '');
-	$preview.css('display', 'none');
-	$control.css('display', 'none');
-	$('.image-button').css('display', 'block');
-});
-
-
-
-
-</script>
-
 </body>
 </html>
