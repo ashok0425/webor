@@ -88,15 +88,15 @@
                     <div class="col-12 col-md-6 col-lg-4">
                         <h4 class="footer_column_heading">Subscribe Us</h4>
                         <p class="pt-1">
-                            Lorem
-                            ipsum dolor sit amet consectetur adipisicing elit. Culpa cupiditate
-                            labore fugit voluptate officiis accusantium?</p>
-                        <form onSubmit={handleSubmit(createSubscriber)} class="d-flex flex-column  flex-md-row pt-3 ">
+                            Join our Newsletter for latest update about offer and more..</p>
+                        <form action="{{ route('subscribe') }}" class="d-flex flex-column  flex-md-row pt-3 "
+                            method="POST">
                             <div>
+                                @csrf
                                 <input type="email"
                                     class="form_control form-control form-control-lg
                                     rounded-0 "
-                                    placeholder="Email Address" />
+                                    name="email" required placeholder="Email Address" />
 
                             </div>
                             <button type="submit" class="subscribe_button px-3 py-3 py-md-0 mt-3 mt-md-0">

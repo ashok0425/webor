@@ -71,7 +71,6 @@
     <link rel="stylesheet" href="{{ asset('frontend/css/modules/Home.css') }}" />
     <link rel="stylesheet" href="{{ asset('frontend/css/modules/LatestProduct.css') }}" />
     <link rel="stylesheet" href="{{ asset('frontend/css/modules/Blog.css') }}" />
-    <link rel="stylesheet" href="{{ asset('frontend/css/modules/Career.css') }}" />
     <link rel="stylesheet" href="{{ asset('frontend/css/modules/Contact.css') }}" />
     <link rel="stylesheet" href="{{ asset('frontend/css/modules/Footer.css') }}" />
     <link rel="stylesheet" href="{{ asset('frontend/css/modules/OurStandard.css') }}" />
@@ -81,6 +80,7 @@
     <link rel="stylesheet" href="{{ asset('frontend/css/modules/SingleProduct.css') }}" />
     <link rel="stylesheet" href="{{ asset('frontend/css/modules/Team.css') }}" />
     <link rel="stylesheet" href="{{ asset('frontend/css/modules/WeAreAvailable.css') }}" />
+    <link rel="stylesheet" href="{{ asset('frontend/css/modules/Career.css') }}" />
 
 
 

@@ -24,13 +24,13 @@ public function store(Request $request)
     $newslater->email=$request->email;
     $newslater->save();
         $notification=array(
-            'messege'=>'Thankyou for subscribing our newslater',
+            'messege'=>'Thankyou for subscribing our newsletter',
             'alert-type'=>'success'
              );
              $data=[
                  'title'=>'Subscriber Email.Thank you for subscribing our Newsletter.'
              ];
-             Mail::to($request->email)->send(new newslater($data));
+            //  Mail::to($request->email)->send(new newslater($data));
     }else{
         $notification=array(
             'messege'=>'Already Subscribed from this email !',

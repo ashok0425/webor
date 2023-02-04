@@ -4,13 +4,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Website;
 use App\Models\Contact;
-use App\Models\Subscriber;
-use App\Models\Contactvendor;
 
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Auth;
-use Session;
-use App\Mail\newslater;
 use App\Mail\contactmail;
 
 use Illuminate\Support\Facades\Mail;
@@ -26,7 +21,7 @@ public function store(Request $request){
 
         'email'=>'required|email',
         'phone'=>'required',
-        'msg'=>'required',
+        'message'=>'required',
 
     ]);
     try {
@@ -36,8 +31,7 @@ public function store(Request $request){
     $cont->fname=$request->name;
     $cont->email=$request->email;
     $cont->phone=$request->phone;
-
-    $cont->msg=$request->msg;
+    $cont->msg=$request->message;
     $cont->save();
     $notification=array(
         'alert-type'=>'success',
@@ -51,16 +45,11 @@ public function store(Request $request){
         'name'=>$request->name,
         'address'=>$request->address,
         'email'=>$request->email,
-        'phone'=>$request->phone,
-
-
-
-
-
+        'phone'=>$request->phone
     );
-    $email=DB::table('websites')->value('email1');
-    Mail::to($data['email'])->send(new contactmail($data));
-    Mail::to($email)->send(new contactmail($data));
+    // $email=DB::table('websites')->value('email1');
+    // Mail::to($data['email'])->send(new contactmail($data));
+    // Mail::to($email)->send(new contactmail($data));
 
     $notification=array(
         'alert-type'=>'success',

@@ -249,6 +249,7 @@ p {
   position: relative;
   /* height: calc(100vh - 5rem); */
   z-index: 1;
+  width: 100%;
 }
  .home_banner_text_area{
   position: absolute;

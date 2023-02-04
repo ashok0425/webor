@@ -1,8 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\backend\ModalController;
-use App\Models\Subscriber;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,4 +22,19 @@ Route::get('/about', function () {
     
     return view('frontend.about.index');
 })->name('about');
+
+
+Route::get('/contact', function () {
+    
+    return view('frontend.contact.index');
+})->name('about');
+
+
+Route::post('/contact', 'Frontend\ContactController@store')->name('contact');
+Route::get('/category/{id}', 'Frontend\StoreController@index')->name('store');
+Route::get('/products', 'Frontend\ProductController@index')->name('products');
+Route::get('/product-detail/{id}', 'Frontend\ProductController@deatil')->name('product.deatil');
+Route::post('/subscribe','Frontend\NewsletterController@store')->name('subscribe');
+
+
 

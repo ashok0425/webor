@@ -9,19 +9,23 @@ use Illuminate\Support\Facades\DB;
 class ProductController extends Controller
 {
 
-    public function index($id,$name){
-        $product=DB::table('products')->join('categories','products.category_id','categories.id')->leftjoin('subcategories','subcategories.id','products.subcategory_id')->select('products.*','categories.category','subcategories.subcategory')->where('products.id',$id)->first();
-        $variation=Productvariation::where('product_id',$id)->get();
-        $color1=Productcolor::where('product_id',$id)->orderBy('id','desc')->value('image');
-        $color2=Productcolor::where('product_id',$id)->orderBy('id','desc')->skip(1)->value('image');
+    public function index(){
+        $products=DB::table('products')->orderBy('id','desc')->paginate(12);
 
 
-       return view('frontend.productdetail',compact('product','variation','color1','color2'));
+       return view('frontend.product.index',compact('products'));
     }
 
-   public function loadPrice($id){
-       $price=Productvariation::find($id);
-       return response()->json($price->price);
+   public function deatil($id){
+       $product=Product::find($id);
+       $sizes=Productvariation::where('product_id',$id)->get();
+       $colors=Productcolor::where('product_id',$id)->get();
+       $similar=Product::where('category_id',$id)->where('id','!=',$id)->limit(4)->get();
+
+
+
+       return view('frontend.product.detail',compact('product','sizes','colors','similar'));
+
    }
 
 

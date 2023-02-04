@@ -14,12 +14,12 @@ use App\Models\Subcategory;
 use Illuminate\Support\Facades\DB;
 class StoreController extends Controller
 {
-    public function allProduct(){
-        $product=Product::where('status',1)->orderBy('id','desc')->paginate(12);
-        $category=Category::orderBy('id','desc')->get();
-        $subcategory=Subcategory::orderBy('id','desc')->get();
-        $space=Productvariation::orderBy('id','desc')->select('variation')->groupBy('variation')->get();
-        return view('frontend.store',compact('product','category','subcategory','space'));
+    public function index($id){
+        $products=Product::where('status',1)->orderBy('id','desc')->where('category_id',$id)->paginate(12);
+        $categories=Category::where('id','!=',$id)->orderBy('id','desc')->get();
+        $category=Category::where('id',$id)->first();
+
+        return view('frontend.store.index',compact('products','categories','category'));
     }
 
 

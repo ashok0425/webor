@@ -1,4 +1,4 @@
-.item {
+.partner_item {
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   padding: 50px 10px;
   display: flex;
@@ -10,7 +10,7 @@
   z-index: 999;
 }
 
-.item:hover {
+.partner_item:hover {
   transform: translateY(-10px);
 }
 

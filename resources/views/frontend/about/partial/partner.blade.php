@@ -20,7 +20,7 @@
         <div class="row">
             @foreach ($partners as $partner)
                 <div class="col-12 col-sm-6 col-xl-3 mb-4 mb-xl-0 ">
-                    <div class="item">
+                    <div class="partner_item">
                         <img src="{{ asset($partner->image) }}" objectFit="cover" class="img-fluid" alt="img"
                             width="100" />
 
