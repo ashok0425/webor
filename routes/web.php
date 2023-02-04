@@ -19,7 +19,6 @@ Route::get('/', function () {
 })->name('/');
 
 Route::get('/about', function () {
-    
     return view('frontend.about.index');
 })->name('about');
 
@@ -27,7 +26,7 @@ Route::get('/about', function () {
 Route::get('/contact', function () {
     
     return view('frontend.contact.index');
-})->name('about');
+})->name('contact.page');
 
 
 Route::post('/contact', 'Frontend\ContactController@store')->name('contact');
