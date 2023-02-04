@@ -126,15 +126,15 @@ Route::get('/coupon/delete/{id}/{table}','backend\CouponController@destroy')->na
 
 
 // coupon
-Route::get('/outlook','backend\TimeController@index')->name('time');
-Route::get('/outlook/create','backend\TimeController@create')->name('time.create');
-Route::post('/outlook/store','backend\TimeController@store')->name('time.store');
-Route::get('/outlook/edit/{id}','backend\TimeController@edit')->name('time.edit');
-Route::post('/outlook/update','backend\TimeController@update')->name('time.update');
-Route::get('/outlook/show/{id}','backend\TimeController@show')->name('time.show');
-Route::get('/outlook/active/{id}/{table}','backend\TimeController@active')->name('time.active');
-Route::get('/outlook/deactive/{id}/{table}','backend\TimeController@deactive')->name('time.deactive');
-Route::get('/outlook/delete/{id}/{table}','backend\TimeController@destroy')->name('time.delete');
+Route::get('/review','backend\TimeController@index')->name('time');
+Route::get('/review/create','backend\TimeController@create')->name('time.create');
+Route::post('/review/store','backend\TimeController@store')->name('time.store');
+Route::get('/review/edit/{id}','backend\TimeController@edit')->name('time.edit');
+Route::post('/review/update','backend\TimeController@update')->name('time.update');
+Route::get('/review/show/{id}','backend\TimeController@show')->name('time.show');
+Route::get('/review/active/{id}/{table}','backend\TimeController@active')->name('time.active');
+Route::get('/review/deactive/{id}/{table}','backend\TimeController@deactive')->name('time.deactive');
+Route::get('/review/delete/{id}/{table}','backend\TimeController@destroy')->name('time.delete');
 
 
 

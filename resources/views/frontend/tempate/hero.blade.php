@@ -1,6 +1,8 @@
 @php
     $banners = DB::table('banners')
         ->where('status', 1)
+        ->where('type', 1)
+    
         ->get();
 @endphp
 <div class="owl-carousel" id="owl-banner">

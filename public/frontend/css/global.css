@@ -372,6 +372,7 @@ p {
   bottom: 15px;
   transition: 300ms ease-in-out;
   z-index: 5;
+  color: #949292;
 }
 
 button {

@@ -1,7 +1,7 @@
 @extends('admin.master')
 @section('main-content')
     @php
-        define('PAGE', 'gallery');
+        define('PAGE', 'partner');
     @endphp
 
 
@@ -13,6 +13,8 @@
             <form action="{{ route('admin.time.update') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <input type="hidden" value="{{ $outlook->id }}" name="id">
+                <input type="hidden" value="2" name="type">
+
                 <div class="mb-3">
                     <label class="form-label">Image</label>
                     <div class="file-upload-wrapper" data-text="Select your file!">

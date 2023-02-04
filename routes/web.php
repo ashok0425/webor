@@ -20,3 +20,8 @@ Route::get('/', function () {
     return view('frontend.index');
 })->name('/');
 
+Route::get('/about', function () {
+    
+    return view('frontend.about.index');
+})->name('about');
+

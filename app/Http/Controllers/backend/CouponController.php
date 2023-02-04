@@ -99,8 +99,8 @@ class CouponController extends Controller
      */
     public function edit(Coupon $coupon,$id)
     {
-        $category=Coupon::find($id);
-        return view('backend.coupon.edit',compact('category'));
+        $service=Coupon::find($id);
+        return view('backend.coupon.edit',compact('service'));
     }
 
     /**
@@ -113,7 +113,7 @@ class CouponController extends Controller
     public function update(Request $request, Coupon $coupon)
     {
         $request->validate([
-            'title'=>'required|unique:coupons',
+            'title'=>'required',
             'description'=>'required',
         ]);
         try {

@@ -9,9 +9,7 @@
   cursor: pointer;
   z-index: 999;
 }
-body{
-  background-color: red!important;
-}
+
 .item:hover {
   transform: translateY(-10px);
 }

@@ -119,8 +119,9 @@ $web->other2=$request->other2;
             $file->move(public_path().'/upload/setting/banner/',$fname);
                 }
         $banner->title=$request->title;
-        $banner->text=$request->text;
         $banner->descr=$request->descr;
+        $banner->type=$request->type;
+
 
 $banner->save();
 $notification=array(
@@ -152,8 +153,8 @@ return redirect()->back()->with($notification);
             $file->move(public_path().'/upload/setting/banner/',$fname);
                 }
         $banner->title=$request->title;
-        $banner->text=$request->text;
-        $banner->title=$request->title;
+        $banner->type=$request->type;
+
         $banner->descr=$request->descr;
 
 $banner->save();

@@ -19,9 +19,16 @@ class TimeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $coupon=Time::orderBy('id','desc')->get();
+
+        if($request->type==2){
+        $coupon=Time::orderBy('id','desc')->where('type',2)->get();
+            return view('backend.partner.index',compact('coupon'));
+
+        }
+        $coupon=Time::orderBy('id','desc')->where('type',1)->get();
+
        return view('backend.time.index',compact('coupon'));
     }
 
@@ -30,8 +37,12 @@ class TimeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
+        if($request->type==2){
+                return view('backend.partner.create');
+    
+            }
        return view('backend.time.create');
         
     }
@@ -45,12 +56,15 @@ class TimeController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'file'=>'required|mimes:png,jpg,jpeg',
-            'unit'=>'required',
+            'file'=>'required|mimes:png,jpg,jpeg,webp',
+            'name'=>'required',
+            'review'=>'required',
+
 
         ]);
         try {
- 
+ $request['type']=$request->type?$request->type:1;
+
             $category=new Time;
             $file=$request->file('file');
             
@@ -61,21 +75,23 @@ class TimeController extends Controller
                 // $path=Image::make($file)->resize(200,300);
                 $file->move(public_path().'/upload/outlook/',$fname);
             }
-            $category->times=$request->time;
-            $category->unit=$request->unit;
+            $category->name=$request->name;
+            $category->review=$request->review;
+            $category->type=$request->type;
+
         
 
             if($category->save()){
                 $notification=array(
                     'alert-type'=>'success',
-                    'messege'=>'outlook  Added',
+                    'messege'=>'Review  Added',
                    
                  );
                  return redirect()->back()->with($notification);
             }else{
                 $notification=array(
                     'alert-type'=>'info',
-                    'messege'=>'outlook  not added',
+                    'messege'=>'Review  not added',
                    
                  );
                  return redirect()->back()->with($notification);
@@ -123,7 +139,8 @@ class TimeController extends Controller
     public function update(Request $request, Time $time)
     {
         $request->validate([
-            'unit'=>'required',
+            'name'=>'required',
+            'review'=>'required',
 
         ]);
         // try {
@@ -138,20 +155,20 @@ class TimeController extends Controller
                 // $path=Image::make($file)->resize(200,300);
                 $file->move(public_path().'/upload/outlook/',$fname);
             }
-            $category->times=$request->time;
-            $category->unit=$request->unit;
+            $category->name=$request->name;
+            $category->review=$request->review;
 
             if($category->save()){
                 $notification=array(
                     'alert-type'=>'success',
-                    'messege'=>'outlook  updated',
+                    'messege'=>'Review  updated',
                    
                  );
                  return redirect()->route('admin.time')->with($notification);
             }else{
                 $notification=array(
                     'alert-type'=>'info',
-                    'messege'=>'outlook  not updated',
+                    'messege'=>'Review  not updated',
                    
                  );
                  return redirect()->back()->with($notification);
