@@ -28,7 +28,7 @@
                     <label class="form-label">Type</label>
                     <select name="type" id="" class="form-control">
                         <option value="1" @if ($banner->type == 1) selected @endif>Main banner</option>
-                        <option value="2" @if ($banner->type == 2) selected @endif>Event banner</option>
+                        <option value="2" @if ($banner->type == 2) selected @endif>Mid banner</option>
                         <option value="3" @if ($banner->type == 3) selected @endif>About banner</option>
 
                     </select>

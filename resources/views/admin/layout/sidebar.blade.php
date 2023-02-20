@@ -25,11 +25,11 @@
                 </a>
             </li>
 
-            <li class="sidebar-item <?php echo PAGE == 'coupon' ? 'active' : ''; ?>">
+            {{-- <li class="sidebar-item <?php echo PAGE == 'coupon' ? 'active' : ''; ?>">
                 <a class="sidebar-link" href="{{ route('admin.coupon') }}">
                     <i class="fas fa-copy"></i> <span class="align-middle">Service</span>
                 </a>
-            </li>
+            </li> --}}
 
 
 
@@ -71,40 +71,14 @@
 
 
 
-
-
-            {{-- <li class="sidebar-header">
-                Manage Order
-            </li>
-
-            <li class="sidebar-item <?php echo PAGE == 'order' ? 'active' : ''; ?>">
-                <a data-target="#order" data-toggle="collapse" class="sidebar-link" aria-expanded="false">
-                    <i class="fas fa-plane-departure"></i> <span class="align-middle">Order Trackingg</span>
-                </a>
-                <ul id="order" class="sidebar-dropdown list-unstyled collapse <?php echo PAGE == 'order' ? 'show' : ''; ?>"
-                    data-parent="#sidebar" style="">
-                    <li class="sidebar-item"><a class="sidebar-link" href="{{ route('admin.order.new') }}">New Order</a>
-                    </li>
-                    <li class="sidebar-item"><a class="sidebar-link"
-                            href="{{ route('admin.order.processing') }}">Processing Order</a></li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="{{ route('admin.order.shipping') }}">
-                            ShippingOrder</a></li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="{{ route('admin.order.deliver') }}">Deliver
-                            order</a></li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="{{ route('admin.order.cancel') }}"> Cancel
-                            Order</a></li>
-
-                </ul>
-            </li> --}}
-
             <li class="sidebar-item <?php echo PAGE == 'gallery' ? 'active' : ''; ?>">
                 <a data-target="#gallery" data-toggle="collapse" class="sidebar-link" aria-expanded="false">
-                    <i class="fas fa-envelope"></i> <span class="align-middle">Reviews</span>
+                    <i class="fas fa-envelope"></i> <span class="align-middle">Gallery</span>
                 </a>
                 <ul id="gallery" class="sidebar-dropdown list-unstyled collapse <?php echo PAGE == 'gallery' ? 'show' : ''; ?>"
                     data-parent="#sidebar" style="">
 
-                    <li class="sidebar-item"><a class="sidebar-link" href="{{ route('admin.time') }}">Review</a>
+                    <li class="sidebar-item"><a class="sidebar-link" href="{{ route('admin.coupon') }}">Gallery</a>
                     </li>
 
 
@@ -112,20 +86,7 @@
             </li>
 
 
-            <li class="sidebar-item <?php echo PAGE == 'partner' ? 'active' : ''; ?>">
-                <a data-target="#partner" data-toggle="collapse" class="sidebar-link" aria-expanded="false">
-                    <i class="fas fa-envelope"></i> <span class="align-middle">Partners</span>
-                </a>
-                <ul id="partner" class="sidebar-dropdown list-unstyled collapse <?php echo PAGE == 'partner' ? 'show' : ''; ?>"
-                    data-parent="#sidebar" style="">
 
-                    <li class="sidebar-item"><a class="sidebar-link"
-                            href="{{ route('admin.time', ['type=2']) }}">Partner</a>
-                    </li>
-
-
-                </ul>
-            </li>
 
             <li class="sidebar-item <?php echo PAGE == 'setting' ? 'active' : ''; ?>">
                 <a data-target="#setting" data-toggle="collapse" class="sidebar-link" aria-expanded="false">
@@ -148,12 +109,12 @@
 
             <li class="sidebar-item <?php echo PAGE == 'blog' ? 'active' : ''; ?>">
                 <a data-target="#blog" data-toggle="collapse" class="sidebar-link" aria-expanded="false">
-                    <i class="fas fa-envelope"></i> <span class="align-middle">Blog Category</span>
+                    <i class="fas fa-envelope"></i> <span class="align-middle">Blog</span>
                 </a>
                 <ul id="blog" class="sidebar-dropdown list-unstyled collapse <?php echo PAGE == 'blog' ? 'show' : ''; ?>"
                     data-parent="#sidebar" style="">
-                    <li class="sidebar-item"><a class="sidebar-link"
-                            href="{{ route('admin.blogcategory') }}">Category</a></li>
+                    {{-- <li class="sidebar-item"><a class="sidebar-link"
+                            href="{{ route('admin.blogcategory') }}">Category</a></li> --}}
                     <li class="sidebar-item"><a class="sidebar-link" href="{{ route('admin.blog') }}">Blog</a></li>
 
 

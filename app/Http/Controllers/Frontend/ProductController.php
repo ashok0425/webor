@@ -9,9 +9,13 @@ use Illuminate\Support\Facades\DB;
 class ProductController extends Controller
 {
 
-    public function index(){
-        $products=DB::table('products')->orderBy('id','desc')->paginate(12);
-
+    public function index($id=null){
+        if(isset($id)){
+            $products=DB::table('products')->where('category_id',$id)->orderBy('id','desc')->get();
+        }else{
+            $products=DB::table('products')->orderBy('id','desc')->get();
+        }
+        
 
        return view('frontend.product.index',compact('products'));
     }
@@ -20,7 +24,7 @@ class ProductController extends Controller
        $product=Product::find($id);
        $sizes=Productvariation::where('product_id',$id)->get();
        $colors=Productcolor::where('product_id',$id)->get();
-       $similar=Product::where('category_id',$id)->where('id','!=',$id)->limit(4)->get();
+       $similar=Product::where('category_id',$id)->where('id','!=',$id)->limit(3)->get();
 
 
 

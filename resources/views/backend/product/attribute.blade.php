@@ -11,7 +11,7 @@
             <div class='row'>
                 <div class="col-md-6 border-right">
                     <h3 class="d-flex justify-content-between">
-                        <span>Color Attribute</span>
+                        <span>More Image</span>
                         <a href="{{ route('admin.color.create', ['id' => $pid]) }}" class="btn btn-info btn-lg">Add
                             New</a>
                     </h3>

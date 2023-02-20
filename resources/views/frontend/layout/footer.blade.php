@@ -1,156 +1,80 @@
-    <!-- Footer wrapper -->
-    @php
-        $social = DB::table('websites')->first();
-    @endphp
-
-
-    <div>
-        <footer class="footer">
-            <svg class="footer_wave_svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 100"
-                preserveAspectRatio="none">
-                <path class="footer-wave-path"
-                    d="M851.8,100c125,0,288.3-45,348.2-64V0H0v44c3.7-1,7.3-1.9,11-2.9C80.7,22,151.7,10.8,223.5,6.3C276.7,2.9,330,4,383,9.8 c52.2,5.7,103.3,16.2,153.4,32.8C623.9,71.3,726.8,100,851.8,100z">
-                </path>
-            </svg>
-
-            {{-- {/* Footer icon link----------------------------------------> */} --}}
-            <div class="footer-content container">
-                <div class="row px-0 mx-0">
-                    <div class="col-12 d-flex align-items-center justify-content-center mb-5 col-lg-4">
-                        <img src="{{ asset($social->image) }}" alt="">
-                    </div>
-
-                    <div class="col-12 col-md-6 col-lg-4 mb-5 pb-3 d-flex flex-column">
-                        <h4 class="footer_column_heading ">Useful Links</h4>
-                        {{-- {/*
-                        <hr /> */} --}}
-                        <div class="row
-                            pt-1">
-                            <div class="col d-flex flex-column gap-1">
-                                <Link href="">
-                                <a class="nav_link" href="">
-                                    Home
-                                </a>
-                                </Link>
-
-                                <Link href="">
-                                <a class="nav_link" href="">
-                                    About
-                                </a>
-                                </Link>
-
-                                <Link href="">
-                                <a class="nav_link" href="">
-                                    Blogs
-                                </a>
-                                </Link>
-                                <Link href="">
-                                <a class="nav_link" href="">
-                                    Careers
-                                </a>
-                                </Link>
-
-                                {{-- {/*
-                                <Link href=''>
-                                <a class="nav_link" href="">
-                                    Contact
-                                </a>
-                                </Link> */} --}}
-                            </div>
-
-                            <div class="col d-flex flex-column gap-1">
-                                <Link href="">
-                                <a class="nav_link" href="">
-                                    Terms and Conditions
-                                </a>
-                                </Link>
-
-                                <Link href="">
-                                <a class="nav_link" href="">
-                                    privacy Policy
-                                </a>
-                                </Link>
-                                <Link href="">
-                                <a class="nav_link" href="">
-                                    Products
-                                </a>
-                                </Link>
-
-                                <Link href="">
-                                <a class="nav_link" href="">
-                                    Contact
-                                </a>
-                                </Link>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-6 col-lg-4">
-                        <h4 class="footer_column_heading">Subscribe Us</h4>
-                        <p class="pt-1">
-                            Join our Newsletter for latest update about offer and more..</p>
-                        <form action="{{ route('subscribe') }}" class="d-flex flex-column  flex-md-row pt-3 "
-                            method="POST">
-                            <div>
-                                @csrf
-                                <input type="email"
-                                    class="form_control form-control form-control-lg
-                                    rounded-0 "
-                                    name="email" required placeholder="Email Address" />
-
-                            </div>
-                            <button type="submit" class="subscribe_button px-3 py-3 py-md-0 mt-3 mt-md-0">
-                                Subscribe
-                            </button>
-                        </form>
-
-                    </div>
-                </div>
-
-                <div class="footer-social-links">
-                    <svg class="footer-social-amoeba-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 236 54">
-                        <path class="footer-social-amoeba-path"
-                            d="M223.06,43.32c-.77-7.2,1.87-28.47-20-32.53C187.78,8,180.41,18,178.32,20.7s-5.63,10.1-4.07,16.7-.13,15.23-4.06,15.91-8.75-2.9-6.89-7S167.41,36,167.15,33a18.93,18.93,0,0,0-2.64-8.53c-3.44-5.5-8-11.19-19.12-11.19a21.64,21.64,0,0,0-18.31,9.18c-2.08,2.7-5.66,9.6-4.07,16.69s.64,14.32-6.11,13.9S108.35,46.5,112,36.54s-1.89-21.24-4-23.94S96.34,0,85.23,0,57.46,8.84,56.49,24.56s6.92,20.79,7,24.59c.07,2.75-6.43,4.16-12.92,2.38s-4-10.75-3.46-12.38c1.85-6.6-2-14-4.08-16.69a21.62,21.62,0,0,0-18.3-9.18C13.62,13.28,9.06,19,5.62,24.47A18.81,18.81,0,0,0,3,33a21.85,21.85,0,0,0,1.58,9.08,16.58,16.58,0,0,1,1.06,5A6.75,6.75,0,0,1,0,54H236C235.47,54,223.83,50.52,223.06,43.32Z">
-                        </path>
-                    </svg>
-
-                    <a href="">
-                        <div class="div footer-social-link linkedin">
-                            <i class="fab fa-facebook footer_icon"></i>
-                        </div>
+@php
+    $page = DB::table('pages')->value('about');
+@endphp
+<footer class='mt-28 bg-black py-14'>
+    <div class='my-container pt-12'>
+        <div class='sm:grid md:grid-cols-4 gap-16 lg:gap-0 lg:grid-cols-5 space-y-12'>
+            <div class='col-span-2 space-y-6'>
+                <img src="{{ asset($setting->image) }}" alt='' height={30} width={130} />
+                <div class='flex gap-6'>
+                    <a href="{{ $setting->facebook1 }}" target="_blank">
+                        <svg class='h-6 w-6 text-white' fill='currentColor' viewBox='0 0 24 24' aria-hidden='true'>
+                            <path fillRule='evenodd'
+                                d='M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z'
+                                clipRule='evenodd' />
+                        </svg>
                     </a>
+                    <a href="{{ $setting->instagram1 }}" target="_blank">
 
-                    <a href="">
-                        <div class="footer-social-link twitter">
-                            <i class="fab fa-instagram footer_icon"></i>
-                        </div>
+                        <svg class='h-6 w-6 text-white' fill='currentColor' viewBox='0 0 24 24' aria-hidden='true'>
+                            <path fillRule='evenodd'
+                                d='M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z'
+                                clipRule='evenodd' />
+                        </svg>
                     </a>
+                    <a href="{{ $setting->twitter1 }}" target="_blank">
 
-                    <a href="">
-                        <div class="footer-social-link youtube">
-                            <i class="fab fa-youtube footer_icon"></i>
-                        </div>
-                    </a>
-
-                    <a href="">
-                        <div class="footer-social-link github">
-                            <i class="fab fa-whatsapp footer_icon"></i>
-
-                        </div>
+                        <svg class='h-6 w-6 text-white' fill='currentColor' viewBox='0 0 24 24' aria-hidden='true'>
+                            <path
+                                d='M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84' />
+                        </svg>
                     </a>
                 </div>
+                <p class='text-white font-light text-base md:pr-20'>
+                    {{ strip_tags(Str::limit($page, 300)) }}
+                </p>
             </div>
 
-            {{-- {/* Copyright section -------------------------------------->*/} --}}
-            <div class="footer-copyright">
-                <div class="footer-copyright-wrapper">
-                    <p class="footer_copyright_text">
-                        ©2022. | Designed And Developed By : <span class="falcon_link">
-                            Falcon Tech
-                            Nepal
-                        </span> | All rights reserved.
-                    </p>
-                </div>
+            <div class='space-y-6 md:col-span-2 lg:col-span-1'>
+                <h4 class="font-bold text-white text-xl">Quick Links</h4>
+                <ul class='text-white space-y-4'>
+                    <li><a href="{{ route('products') }}">All Product</a></li>
+                    @foreach ($categories as $category)
+                        @if ($loop->index <= 5)
+                            <li><a href="{{ route('store', ['id' => $category->id]) }}">{{ $category->category }}</a>
+                            </li>
+                        @endif
+                    @endforeach
+
+                </ul>
             </div>
-        </footer>
+
+            <div class='space-y-6 md:col-span-2 lg:col-span-1'>
+                <h4 class="font-bold text-white text-xl">Help Center</h4>
+                <ul class='text-white space-y-4'>
+                    <li><a href="{{ route('blog') }}">Blog</a></li>
+                    <li><a href="{{ route('contact.page') }}">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <div class='space-y-6 md:col-span-2 lg:col-span-1'>
+                <h4 class="font-bold text-white text-xl">Contact Us</h4>
+                <ul class='text-white space-y-4'>
+                    <li>
+                        <address class='not-italic'>
+                            {{ $setting->address1 }}
+                        </address>
+                    </li>
+                    <li>
+                        {{ $setting->email1 }}
+
+                    </li>
+                    <li>
+                        {{ $setting->phone1 }}
+
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
+</footer>

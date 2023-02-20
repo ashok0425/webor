@@ -113,28 +113,17 @@ Route::get('/product/productvariation/{id}/{table}','backend\ProductvariationCon
 
 
 // coupon
-Route::get('/coupon','backend\CouponController@index')->name('coupon');
-Route::get('/coupon/create','backend\CouponController@create')->name('coupon.create');
-Route::post('/coupon/store','backend\CouponController@store')->name('coupon.store');
-Route::get('/coupon/edit/{id}','backend\CouponController@edit')->name('coupon.edit');
-Route::post('/coupon/update','backend\CouponController@update')->name('coupon.update');
-Route::get('/coupon/show/{id}','backend\CouponController@show')->name('coupon.show');
-Route::get('/coupon/active/{id}/{table}','backend\CouponController@active')->name('coupon.active');
-Route::get('/coupon/deactive/{id}/{table}','backend\CouponController@deactive')->name('coupon.deactive');
-Route::get('/coupon/delete/{id}/{table}','backend\CouponController@destroy')->name('coupon.delete');
+Route::get('/gallery','backend\CouponController@index')->name('coupon');
+Route::get('/gallery/create','backend\CouponController@create')->name('coupon.create');
+Route::post('/gallery/store','backend\CouponController@store')->name('coupon.store');
+Route::get('/gallery/edit/{id}','backend\CouponController@edit')->name('coupon.edit');
+Route::post('/gallery/update','backend\CouponController@update')->name('coupon.update');
+Route::get('/gallery/show/{id}','backend\CouponController@show')->name('coupon.show');
+Route::get('/gallery/active/{id}/{table}','backend\CouponController@active')->name('coupon.active');
+Route::get('/gallery/deactive/{id}/{table}','backend\CouponController@deactive')->name('coupon.deactive');
+Route::get('/gallery/delete/{id}/{table}','backend\CouponController@destroy')->name('coupon.delete');
 
 
-
-// coupon
-Route::get('/review','backend\TimeController@index')->name('time');
-Route::get('/review/create','backend\TimeController@create')->name('time.create');
-Route::post('/review/store','backend\TimeController@store')->name('time.store');
-Route::get('/review/edit/{id}','backend\TimeController@edit')->name('time.edit');
-Route::post('/review/update','backend\TimeController@update')->name('time.update');
-Route::get('/review/show/{id}','backend\TimeController@show')->name('time.show');
-Route::get('/review/active/{id}/{table}','backend\TimeController@active')->name('time.active');
-Route::get('/review/deactive/{id}/{table}','backend\TimeController@deactive')->name('time.deactive');
-Route::get('/review/delete/{id}/{table}','backend\TimeController@destroy')->name('time.delete');
 
 
 
@@ -187,7 +176,7 @@ Route::get('/banner/delete/{id}/{table}','backend\SettingController@destroy')->n
 
         //    page seeting
 Route::get('/page','backend\SettingController@page')->name('page');
-Route::post ('/page/update','backend\SettingController@frontendUpdate')->name('page.update');
+Route::post ('/page/update','backend\SettingController@pageUpdate')->name('page.update');
 
      //    Frontend seeting
      Route::get('/website-setting','backend\SettingController@website')->name('website');

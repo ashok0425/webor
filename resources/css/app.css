@@ -1,3 +1,105 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@100;300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .my-container {
+    @apply max-w-screen-xl mx-auto px-4 sm:px-6 md:px-8
+  }
+
+  .btn-p {
+    @apply bg-prime font-semibold text-white px-6 py-3 transition-all ease-linear duration-100
+    hover:bg-red-600
+  }
+
+  .btn-sec {
+    @apply border border-prime font-semibold text-prime px-6 py-3 transition-all ease-linear duration-100 hover:bg-prime
+  }
+
+  .sec-h1 {
+    @apply text-4xl sm:text-4xl lg:text-5xl font-bold leading-tight
+  }
+
+  p, span {
+    @apply text-stone-700 text-lg
+  }
+
+  .ham:hover > div {
+    @apply bg-red-600
+  }
+
+  .ham {
+    @apply cursor-pointer
+  }
+
+  .ham div {
+    @apply transition duration-100
+  }
+
+  .drop-item {
+    @apply bg-slate-50 px-6 py-3 transition-colors duration-150 hover:bg-prime/25 hover:text-prime
+  }
+}
+
+html,
+body {
+  font-family: 'Sora', sans-serif !important;
+  transition: all 200ms;
+}
+
+.img {
+  transition: transform 400ms;
+  transform: scale(1.1);
+}
+
+.gallery:hover .img {
+  transform: scale(1);
+}
+
+
+
+
+
+
+span.inner {
+  transform: translateY(0);
+  transition: transform .6s;
+}
+
+span.main {
+  display: inline-flex;
+  height: 1.4em;
+  overflow: hidden;
+  flex-direction: column;
+}
+
+.btn-hov:hover span.inner {
+  transform: translateY(-100%);
+}
+
+.card {
+  cursor: pointer;
+}
+
+.title {
+  transition: color 200ms;
+}
+
+.card:hover .title {
+  color: #991b1b;
+}
+
+.card:hover .card-img {
+  transform: scale(1);
+}
+
+.card-img {
+  transition: transform 200ms;
+}
+
+/* ! nav not working */
+.hov-par:hover:has(li) :not(.nav-hov:hover) {
+  opacity: .2;
+}

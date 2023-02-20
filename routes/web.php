@@ -30,10 +30,13 @@ Route::get('/contact', function () {
 
 
 Route::post('/contact', 'Frontend\ContactController@store')->name('contact');
-Route::get('/category/{id}', 'Frontend\StoreController@index')->name('store');
-Route::get('/products', 'Frontend\ProductController@index')->name('products');
+Route::get('/product-category/{id}', 'Frontend\ProductController@index')->name('store');
+Route::get('/product', 'Frontend\ProductController@index')->name('products');
 Route::get('/product-detail/{id}', 'Frontend\ProductController@deatil')->name('product.deatil');
 Route::post('/subscribe','Frontend\NewsletterController@store')->name('subscribe');
+Route::get('/blog', 'Frontend\BlogController@index')->name('blog');
+Route::get('/blog/{id}', 'Frontend\BlogController@detail')->name('blog.detail');
+
 
 
 

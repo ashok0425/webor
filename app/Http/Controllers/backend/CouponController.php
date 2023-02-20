@@ -44,28 +44,28 @@ class CouponController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'title'=>'required|unique:coupons',
-            'description'=>'required',
-
-
-        ]);
+     
         try {
 
             $category=new Coupon;
-            $category->title=$request->title;
-            $category->description=$request->description;
+       
+            $file=$request->file('file');
+            if($file){
+                $fname=rand().'gallery.'.$file->getClientOriginalExtension();
+                $category->image='upload/gallery/'.$fname;
+                $file->move(public_path().'/upload/gallery/',$fname);
+            }
                       if($category->save()){
                 $notification=array(
                     'alert-type'=>'success',
-                    'messege'=>'Service  Added',
+                    'messege'=>'Gallery  Added',
 
                  );
                  return redirect()->back()->with($notification);
             }else{
                 $notification=array(
                     'alert-type'=>'info',
-                    'messege'=>'Coupon  not added',
+                    'messege'=>'Gallery  not added',
 
                  );
                  return redirect()->back()->with($notification);
@@ -112,16 +112,15 @@ class CouponController extends Controller
      */
     public function update(Request $request, Coupon $coupon)
     {
-        $request->validate([
-            'title'=>'required',
-            'description'=>'required',
-        ]);
+       
         try {
-            $category=Coupon::find($request->id);
-            $category->title=$request->title;
-            $category->description=$request->description;
-            
-
+            $category=Coupon::find($request->id);         
+            $file=$request->file('file');
+            if($file){
+                $fname=rand().'gallery.'.$file->getClientOriginalExtension();
+                $category->image='upload/gallery/'.$fname;
+                $file->move(public_path().'/upload/gallery/',$fname);
+            }
             if($category->save()){
                 $notification=array(
                     'alert-type'=>'success',

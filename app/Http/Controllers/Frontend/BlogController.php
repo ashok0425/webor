@@ -10,12 +10,13 @@ use Illuminate\Support\Facades\Auth;
 class BlogController extends Controller
 {
     public function index(){
-        return view('frontend.blog.index');
+        $blogs=Blog::orderBy('id','desc')->get();
+        return view('frontend.blog.index',compact('blogs'));
     }
 
-    public function single($id){
+    public function detail($id){
         $blog=Blog::find($id);
-        return view('frontend.blog.single',compact('blog'));
+        return view('frontend.blog.detail',compact('blog'));
     }
 
 

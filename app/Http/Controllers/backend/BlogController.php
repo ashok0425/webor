@@ -57,16 +57,12 @@ class BlogController extends Controller
             $file=$request->file('file');
 
             if($file){
-                // File::delete(__getAdmin()->profile_photo_path);
                 $fname=rand().'blog.'.$file->getClientOriginalExtension();
                 $category->image='upload/blog/'.$fname;
-                // $path=Image::make($file)->resize(200,300);
                 $file->move(public_path().'/upload/blog/',$fname);
             }
-            $category->category_id=$request->category;
             $category->title=$request->title;
             $category->detail=$request->detail;
-            // $category->short_desc=$request->short_desc;
 
 
             if($category->save()){
@@ -113,10 +109,9 @@ class BlogController extends Controller
      */
     public function edit(Blog $blog,$id)
     {
-        $category=Blogcategory::all();
 
         $blog=Blog::find($id);
-        return view('backend.blog.edit',compact('blog','category'));
+        return view('backend.blog.edit',compact('blog'));
     }
 
     /**
@@ -146,10 +141,8 @@ class BlogController extends Controller
                 // $path=Image::make($file)->resize(200,300);
                 $file->move(public_path().'/upload/blog/',$fname);
             }
-            $category->category_id=$request->category;
             $category->title=$request->title;
             $category->detail=$request->detail;
-            $category->short_desc=$request->short_desc;
 
             if($category->save()){
                 $notification=array(
@@ -157,7 +150,7 @@ class BlogController extends Controller
                     'messege'=>'Blog  updated',
 
                  );
-                 return redirect()->route('admin.blogcategory')->with($notification);
+                 return redirect()->route('admin.blog')->with($notification);
             }else{
                 $notification=array(
                     'alert-type'=>'info',
