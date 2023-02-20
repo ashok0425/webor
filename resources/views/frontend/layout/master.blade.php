@@ -42,7 +42,7 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
 
     <script
         src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js
-                                                                                                                                                                ">
+                                                                                                                                                                            ">
     </script>
 
     <!-- jQuery -->
@@ -87,6 +87,11 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
                     $('.navbar_menu').removeClass('navbar_scroll')
 
                 }
+            })
+
+            $('.ham').click(function() {
+
+                $('.mobile_menu').toggleClass('hidden')
             })
         })
     </script>

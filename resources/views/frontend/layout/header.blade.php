@@ -58,24 +58,24 @@
             </div>
         </div>
 
-        <div class="mt-4 shadow-lg pb-10 bg-white block md:hidden transition duration-200">
+        <div class="mt-4 shadow-lg pb-10 bg-white mobile_menu  hidden block transition duration-200">
             <ul class='my-container space-y-5'>
                 <li class="cursor-pointer hover:text-prime/75 ">
                     <a href='/'>Home</a>
                 </li>
-                <li class={`cursor-pointer relative`}>
+                <li class="cursor-pointer relative">
                     <span class="cursor-pointer hover:text-prime/75 ">
-                        <a href='/product'>Products</a>
+                        <a href='{{ route('products') }}'>Products</a>
                     </span>
                 </li>
                 <li class="cursor-pointer hover:text-prime/75 ">
-                    <a href='/about'>About</a>
+                    <a href='{{ route('about') }}'>About</a>
                 </li>
                 <li class="cursor-pointer hover:text-prime/75 ">
-                    <a href='/blog'>News</a>
+                    <a href='{{ route('blog') }}'>News</a>
                 </li>
                 <li class="cursor-pointer hover:text-prime/75 ">
-                    <a href='/contact'>Contact Us</a>
+                    <a href='{{ route('contact.page') }}'>Contact Us</a>
                 </li>
             </ul>
         </div>

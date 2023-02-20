@@ -6,6 +6,14 @@ if (s.length > 0) {
     var splide = new Splide('#covered_splide', {
         type: 'loop',
         perPage: 4,
+        breakpoints: {
+            640: {
+                perPage: 2,
+            },
+            460: {
+                perPage: 1,
+            }
+        }
     });
     splide.mount();
 
@@ -20,7 +28,15 @@ if (g.length > 0) {
         drag: 'free',
         snap: true,
         perPage: 3,
-        pagination: false
+        pagination: false,
+        breakpoints: {
+            640: {
+                perPage: 2,
+            },
+            460: {
+                perPage: 1,
+            }
+        }
     }).mount();
 }
 
