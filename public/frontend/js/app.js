@@ -7,12 +7,17 @@
   \*****************************/
 /***/ (() => {
 
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
 var s = $('#covered_splide');
 // console.log()
 
 if (s.length > 0) {
   var splide = new Splide('#covered_splide', {
     type: 'loop',
+    pagination: false,
     perPage: 4,
     arrows: false,
     breakpoints: {
@@ -30,6 +35,7 @@ var trending_splide = $('#trending_splide');
 if (trending_splide.length > 0) {
   var splide = new Splide('#trending_splide', {
     type: 'loop',
+    pagination: false,
     perPage: 4,
     breakpoints: {
       640: {
@@ -46,6 +52,7 @@ var review_splide = $('#review_splide');
 if (review_splide.length > 0) {
   var splide = new Splide('#review_splide', {
     type: 'loop',
+    pagination: false,
     perPage: 2,
     breakpoints: {
       640: {
@@ -62,33 +69,33 @@ var g = $('#gallery_splide');
 // console.log(g)
 
 if (g.length > 0) {
-  new Splide('#gallery_splide', {
+  var _Splide;
+  new Splide('#gallery_splide', (_Splide = {
     type: 'loop',
+    pagination: false,
     drag: 'free',
     snap: true,
-    perPage: 3,
-    pagination: false,
-    breakpoints: {
-      640: {
-        perPage: 2
-      },
-      460: {
-        perPage: 1
-      }
+    perPage: 3
+  }, _defineProperty(_Splide, "pagination", false), _defineProperty(_Splide, "breakpoints", {
+    640: {
+      perPage: 2
+    },
+    460: {
+      perPage: 1
     }
-  }).mount();
+  }), _Splide)).mount();
 }
 var h = $('#hero_splide');
 // console.log(h)
 if (h.length > 0) {
-  new Splide('#hero_splide', {
+  var _Splide2;
+  new Splide('#hero_splide', (_Splide2 = {
     type: 'loop',
+    pagination: false,
     drag: 'free',
     snap: true,
-    perPage: 1,
-    pagination: true,
-    arrows: false
-  }).mount();
+    perPage: 1
+  }, _defineProperty(_Splide2, "pagination", true), _defineProperty(_Splide2, "arrows", false), _Splide2)).mount();
 }
 var m = $('#main-slider');
 if (m.length > 0) {

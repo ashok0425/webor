@@ -4,7 +4,7 @@ let s = $('#covered_splide')
 if (s.length > 0) {
 
     var splide = new Splide('#covered_splide', {
-        type: 'loop',
+        type: 'loop', pagination: false,
         perPage: 4,
         arrows: false,
         breakpoints: {
@@ -25,7 +25,7 @@ let trending_splide = $('#trending_splide')
 if (trending_splide.length > 0) {
 
     var splide = new Splide('#trending_splide', {
-        type: 'loop',
+        type: 'loop', pagination: false,
         perPage: 4,
         breakpoints: {
             640: {
@@ -45,7 +45,7 @@ let review_splide = $('#review_splide')
 if (review_splide.length > 0) {
 
     var splide = new Splide('#review_splide', {
-        type: 'loop',
+        type: 'loop', pagination: false,
         perPage: 2,
         breakpoints: {
             640: {
@@ -66,7 +66,7 @@ let g = $('#gallery_splide')
 
 if (g.length > 0) {
     new Splide('#gallery_splide', {
-        type: 'loop',
+        type: 'loop', pagination: false,
         drag: 'free',
         snap: true,
         perPage: 3,
@@ -86,7 +86,7 @@ let h = $('#hero_splide')
 // console.log(h)
 if (h.length > 0) {
     new Splide('#hero_splide', {
-        type: 'loop',
+        type: 'loop', pagination: false,
         drag: 'free',
         snap: true,
         perPage: 1,
