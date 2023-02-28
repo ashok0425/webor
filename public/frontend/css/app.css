@@ -641,6 +641,12 @@ p, span{
 .top-28{
   top: 7rem;
 }
+.left-5{
+  left: 1.25rem;
+}
+.left-0{
+  left: 0px;
+}
 .-z-10{
   z-index: -10;
 }
@@ -1773,6 +1779,16 @@ span.main {
     grid-column: span 2 / span 2;
   }
 
+  .md\:mx-4{
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+
+  .md\:mx-2{
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+  }
+
   .md\:flex{
     display: flex;
   }
@@ -1787,6 +1803,10 @@ span.main {
 
   .md\:h-auto{
     height: auto;
+  }
+
+  .md\:h-\[400px\]{
+    height: 400px;
   }
 
   .md\:w-3\/4{

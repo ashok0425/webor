@@ -21,11 +21,11 @@
                     @foreach ($poducts as $product)
                         <li class=" splide__slide ">
                             <a href="{{ route('product.deatil', ['id' => $product->id]) }}">
-                                <div class='mx-4  h-96 flex items-end '>
+                                <div class='md:mx-2 mx-2 h-96 relative '>
                                     <img src="{{ asset($product->image) }}"alt=''
                                         class='object-cover rounded-xl	 -z-10 h-full w-full' />
                                     <h3
-                                        class='pl-14 pb-6 font-medium tracking-wider text-lg z-20 transition delay-100 duration-200 text-white'>
+                                        class='pl-14 pb-6 font-medium absolute bottom-0 left-0 tracking-wider text-lg z-20 transition delay-100 duration-200 text-white'>
                                         {{ $product->name }}</h3>
                                 </div>
 
