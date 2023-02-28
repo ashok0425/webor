@@ -19,14 +19,11 @@
                             </div>
                             <div class='my-container text-center space-y-4'>
                                 <h1 class='sec-h1 text-white drop-shadow-lg leading-[3.5rem]'>
-                                    <div class="md:w-[50%]  text-center mx-auto">
+                                    <div class="md:w-[50%]  text-center mx-auto font-medium">
                                         {{ $banner->title }}
                                     </div>
                                 </h1>
-                                <p class='md:w-[50ch] text-white mb-20 mx-auto'>Lorem ipsum dolor sit amet consectetur
-                                    adipisicing elit. Commodi consequuntur libero saepe distinctio nam ratione iusto
-                                    perspiciatis necessitatibus tenetur ut, at quaerat repellat ducimus modi assumenda
-                                    maiores error dolorum adipisci.</p>
+                                <p class='md:w-[50ch] text-white mb-20 mx-auto font-normal'>{{ $banner->descr }}</p>
                                 <p>
                                     <a href="{{ route('products') }}" class='btn-p btn-hov '>
                                         <span class='main'>

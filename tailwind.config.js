@@ -10,6 +10,7 @@ module.exports = {
     extend: {
       colors: {
         prime: '#ec1c24',
+        bl: '#1E1E1E'
       },
 
       aspectRatio: {

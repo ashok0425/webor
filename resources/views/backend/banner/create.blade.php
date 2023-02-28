@@ -13,7 +13,7 @@
             <form action="{{ route('admin.banner.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3">
-                    <label class="form-label">Banner Title</label>
+                    <label class="form-label">Banner Title or Link</label>
 
                     <input type="text" name="title" class="form-control" value=" {{ old('title') }}">
 

@@ -6,6 +6,7 @@ if (s.length > 0) {
     var splide = new Splide('#covered_splide', {
         type: 'loop',
         perPage: 4,
+        arrows: false,
         breakpoints: {
             640: {
                 perPage: 2,
@@ -18,6 +19,47 @@ if (s.length > 0) {
     splide.mount();
 
 }
+
+
+let trending_splide = $('#trending_splide')
+if (trending_splide.length > 0) {
+
+    var splide = new Splide('#trending_splide', {
+        type: 'loop',
+        perPage: 4,
+        breakpoints: {
+            640: {
+                perPage: 2,
+            },
+            460: {
+                perPage: 1,
+            }
+        }
+    });
+    splide.mount();
+
+}
+
+
+let review_splide = $('#review_splide')
+if (review_splide.length > 0) {
+
+    var splide = new Splide('#review_splide', {
+        type: 'loop',
+        perPage: 2,
+        breakpoints: {
+            640: {
+                perPage: 1,
+            },
+            460: {
+                perPage: 1,
+            }
+        }
+    });
+    splide.mount();
+
+}
+
 
 let g = $('#gallery_splide')
 // console.log(g)

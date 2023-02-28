@@ -21,12 +21,23 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
 " rel="stylesheet">
     {{-- toastr --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.0/css/all.min.css" />
     @stack('style')
     <style>
         .navbar_scroll {
             background: white;
             color: #000;
             box-shadow: 0 0 5px gray;
+        }
+
+        .splide__arrow {
+            background: red;
+            border-radius: 5px !important;
+            color: #fff !important;
+        }
+
+        .splide__arrow svg {
+            fill: #fff !important;
         }
     </style>
 </head>
@@ -42,7 +53,7 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
 
     <script
         src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js
-                                                                                                                                                                            ">
+                                                                                                                                                                                                                            ">
     </script>
 
     <!-- jQuery -->
@@ -85,7 +96,6 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
 
                 } else {
                     $('.navbar_menu').removeClass('navbar_scroll')
-
                 }
             })
 

@@ -14,7 +14,7 @@
                 @csrf
                 <input name="id" value="{{ $banner->id }}" type="hidden" />
                 <div class="mb-3">
-                    <label class="form-label">Title</label>
+                    <label class="form-label">Banner Title or Link</label>
                     <input type="text" name="title" class="form-control"
                         value="          {!! $banner->title !!}
                     ">

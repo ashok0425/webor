@@ -1,6 +1,6 @@
-<div class="z-50 fixed left-0 right-0 navbar_menu">
+<div class="z-50 navbar_menu">
     <nav class=" ease-in-out transition-all duration-75`">
-        <div class='flex items-center gap-8 justify-between my-container py-4'>
+        <div class='flex items-center   my-container py-4'>
             <div class='flex items-center gap-10'>
                 <div class='relative'>
                     <a href="{{ route('/') }}" rel="noopener noreferrer">
@@ -8,11 +8,21 @@
                 </div>
             </div>
 
-            <div class='flex items-center gap-12'>
-                <ul class='md:flex gap-12 font-semibold text-lg hidden'>
-                    <li class="cursor-pointer hover:text-prime/75 ">
-                        <a href='{{ route('/') }}'>Home</a>
+            <div class='ml-auto flex items-center gap-12'>
+                <ul class='md:flex gap-12 font-semibold text-lg hidden items-center'>
+                    <li class="cursor-pointer hover:text-prime/75 font-normal text-gray-400		text-base	">
+                        <a href='{{ route('/') }}' class="text-gray-400	text-gray-200	">Home</a>
                     </li>
+
+                    @foreach ($categories as $category)
+                        @if ($loop->index <= 4)
+                            <li class="cursor-pointer hover:text-prime/75 font-normal	text-gray-400	 text-base	">
+                                <a href='{{ route('/') }}'>{{ $category->category }}</a>
+                            </li>
+                        @endif
+                    @endforeach
+
+                    {{-- 
                     <li class="cursor-pointer relative group">
                         <span class="hover:text-prime/75 drop ">
                             <a href='{{ route('products') }}'>Products</a>
@@ -26,28 +36,25 @@
                             @endforeach
 
                         </ul>
+                    </li> --}}
+
+                    <li class="cursor-pointer hover:text-prime/75 font-normal	text-gray-400	 text-base	">
+                        <a href='{{ route('about') }}'>About us</a>
                     </li>
                     <li class="cursor-pointer hover:text-prime/75 ">
-                        <a href='{{ route('about') }}'>About</a>
+                        <div class="form-group">
+                            <input type="search" name="" id=""
+                                class="outline-none bg-slate-100	 rounded-2xl py-1 px-1">
+                            <button>
+                                <i class="fas fa-search text-gray-400 font-black ml-3"></i>
+
+                            </button>
+                        </div>
+
                     </li>
-                    <li class="cursor-pointer hover:text-prime/75 ">
-                        <a href='{{ route('blog') }}'>News</a>
-                    </li>
+
                 </ul>
-                <a href='{{ route('contact.page') }}' class='hidden md:block'>
-                    <button type='button' class='btn-p w-fit btn-hov'>
-                        <span class='main'>
-                            <span class='inner'>
-                                <span class='text-white content'>Contact us</span>
-                            </span>
-                            <span class='inner'>
-                                <span class='text-white content' aria-hidden='true'>
-                                    Contact us
-                                </span>
-                            </span>
-                        </span>
-                    </button>
-                </a>
+
             </div>
 
             {{-- {/* mobile */} --}}
