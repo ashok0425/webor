@@ -15,7 +15,7 @@
                     </li>
 
                     @foreach ($categories as $category)
-                        @if ($loop->index <= 4)
+                        @if ($loop->index <= 2)
                             <li class="cursor-pointer hover:text-prime/75 font-normal	text-gray-400	 text-base	">
                                 <a href='{{ route('/') }}'>{{ $category->category }}</a>
                             </li>

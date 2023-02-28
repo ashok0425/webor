@@ -6,8 +6,10 @@
         ->take(1)
         ->first();
 @endphp
-<div class=" mt-20">
-    <a class='aspect-[6/3] md:aspect-[9/3] bg-red-400' href="{{ $banner->title }}">
-        <img src="{{ asset($banner->image) }}" alt='webor banner' class='object-cover w-full h-[400px]' />
-    </a>
-</div>
+@if ($banner)
+    <div class=" mt-20">
+        <a class='aspect-[6/3] md:aspect-[9/3] bg-red-400' href="{{ $banner->title }}">
+            <img src="{{ asset($banner->image) }}" alt='webor banner' class='object-cover w-full h-[400px]' />
+        </a>
+    </div>
+@endif
