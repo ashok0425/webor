@@ -21,7 +21,7 @@
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Detail</label>
-                    <input type="text" name="descr" class="form-control" value=" {{ $banner->descr }}">
+                    <textarea name="descr" id="summernote" cols="30" rows="10"> {!! $banner->descr !!}
                     </textarea>
                 </div>
                 <div class="mb-3">

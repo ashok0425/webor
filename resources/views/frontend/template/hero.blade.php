@@ -23,7 +23,8 @@
                                         {{ $banner->title }}
                                     </div>
                                 </h1>
-                                <p class='md:w-[50ch] text-white mb-20 mx-auto font-normal'>{{ $banner->descr }}</p>
+                                <p class='md:w-[50ch] text-white mb-20 mx-auto font-normal'>
+                                    {{ strip_tags($banner->descr) }}</p>
                                 <p>
                                     <a href="{{ route('products') }}" class='btn-p btn-hov '>
                                         <span class='main'>

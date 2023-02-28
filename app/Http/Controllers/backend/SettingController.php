@@ -106,9 +106,7 @@ $web->other2=$request->other2;
 
     public function store(Request $request){
         $banner=new Banner;
-        $request->validate([
-            'file'=>'required',
-        ]);
+        
         $file=$request->file('file');
 
         if($file){

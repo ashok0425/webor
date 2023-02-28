@@ -21,7 +21,7 @@
 
                 <div class="mb-3">
                     <label class="form-label">Detail</label>
-                    <input type="text" name="descr" class="form-control" value=" {{ old('descr') }}">
+                    <textarea name="descr" id="summernote" cols="30" rows="10"> {{ old('descr') }}
                     </textarea>
                 </div>
 
@@ -41,7 +41,7 @@
                 <div class="mb-3">
                     <label class="form-label">Banner image</label>
                     <div class="file-upload-wrapper" data-text="Select your file!">
-                        <input name="file" type="file" class="file-upload-field" value="" required>
+                        <input name="file" type="file" class="file-upload-field" value="">
                     </div>
                 </div>
 

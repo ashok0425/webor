@@ -714,6 +714,14 @@ p, span{
   margin-top: 1.25rem;
   margin-bottom: 1.25rem;
 }
+.my-6{
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+.my-8{
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
 .-mt-px{
   margin-top: -1px;
 }
@@ -806,6 +814,9 @@ p, span{
 }
 .mt-6{
   margin-top: 1.5rem;
+}
+.mb-10{
+  margin-bottom: 2.5rem;
 }
 .block{
   display: block;
@@ -924,6 +935,15 @@ p, span{
 }
 .w-\[90\%\]{
   width: 90%;
+}
+.w-\[150px\]{
+  width: 150px;
+}
+.w-\[350px\]{
+  width: 350px;
+}
+.w-60{
+  width: 15rem;
 }
 .min-w-\[100\%\]{
   min-width: 100%;
@@ -1364,6 +1384,9 @@ p, span{
 .text-xs{
   font-size: 0.75rem;
   line-height: 1rem;
+}
+.text-\[1\.5rem\]{
+  font-size: 1.5rem;
 }
 .font-black{
   font-weight: 900;
@@ -1839,6 +1862,38 @@ span.main {
 
   .md\:w-\[300px\]{
     width: 300px;
+  }
+
+  .md\:w-\[550px\]{
+    width: 550px;
+  }
+
+  .md\:w-\[650px\]{
+    width: 650px;
+  }
+
+  .md\:w-40{
+    width: 10rem;
+  }
+
+  .md\:w-60{
+    width: 15rem;
+  }
+
+  .md\:w-\[40\%\]{
+    width: 40%;
+  }
+
+  .md\:w-\[60\%\]{
+    width: 60%;
+  }
+
+  .md\:w-\[35\%\]{
+    width: 35%;
+  }
+
+  .md\:w-\[65\%\]{
+    width: 65%;
   }
 
   .md\:grid-cols-2{

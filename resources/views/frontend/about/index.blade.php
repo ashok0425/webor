@@ -1,46 +1,154 @@
 @extends('frontend.layout.master')
+@php
+    $about = DB::table('pages')
+        ->where('id', 1)
+    
+        ->value('about');
+    
+    $banner = DB::table('banners')
+        ->where('type', 3)
+        ->where('status', 1)
+    
+        ->first();
+    
+    $banner1 = DB::table('banners')
+        ->where('type', 3)
+        ->where('status', 1)
+        ->skip(1)
+        ->take(1)
+        ->first();
+    
+    $banner2 = DB::table('banners')
+        ->where('type', 3)
+        ->where('status', 1)
+        ->skip(2)
+        ->take(1)
+        ->first();
+    
+    $banner3 = DB::table('banners')
+        ->where('type', 3)
+        ->where('status', 1)
+        ->skip(3)
+        ->take(1)
+        ->first();
+    
+    $banner4 = DB::table('banners')
+        ->where('type', 3)
+        ->where('status', 1)
+        ->skip(4)
+        ->take(1)
+        ->first();
+    
+    $banner5 = DB::table('banners')
+        ->where('type', 3)
+        ->where('status', 1)
+        ->skip(5)
+        ->take(1)
+        ->first();
+@endphp
 @section('content')
-    <section class="pt-28">
+    <section class="pt-12">
         <div class='space-y-32'>
             <section class='my-container'>
-
-                {{-- <div class='h-[25rem] bg-slate-400 absolute -top-8 right-20 bottom-0 w-2'></div> --}}
-                <div class='md:flex gap-16'>
-                    <div class='pt-20 pb-8 space-y-4 basis-3/5'>
-                        <h1 class='sec-h1'>Best Place for your electronic Needs</h1>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis quibusdam qui dolor expedita,
-                            repudiandae nulla odit, sequi illo adipisci maxime hic eum iusto cum mollitia?</p>
+                @if ($banner)
+                    <div class="logos text-center mb-10">
+                        <img src="{{ asset($banner->image) }}" alt="" class="w-[350px]  mx-auto">
+                        <p class="md:w-[650px] mx-auto text-sm mt-4">{{ strip_tags($banner->descr) }}</p>
                     </div>
-                    <div class='w-full'>
-                        <div class='relative w-full h-full'>
-                            <img src='https://images.unsplash.com/photo-1441095179793-e2c059a90f56?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80'
-                                alt='' fill class='object-cover rounded-lg shadow-lg' />
+                @endif
+                @if ($banner1)
+                    <div class='md:flex gap-16'>
+                        <div class=' pb-8  basis-3/5'>
+                            <h1 class='font-bold text-[2rem] text-red-500'>
+                                {{ $banner1->title }}
+
+                            </h1>
+                        </div>
+                        <div class='w-full'>
+                            <div class=''>
+                                {{ $banner1->descr }}
+
+                            </div>
                         </div>
                     </div>
-                </div>
-            </section>
+                @endif
 
-            <section class=''>
-                <div class=' '>
-                    <img src='https://images.unsplash.com/photo-1441095179793-e2c059a90f56?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80'
-                        alt='' fill class='object-cover w-full max-h-[20rem]' />
-                </div>
-                <div class='my-container mt-16'>
-                    <div class='grid grid-cols-1 md:grid-cols-2 space-y-8 md:space-y-0'>
-                        <h1 class='sec-h1'>Our Story</h1>
-                        <p class=''>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Obcaecati atque quo
-                            ullam corporis. Quisquam, voluptas soluta aliquam dolores rem ipsa quam iusto minima
-                            voluptatibus vel delectus dignissimos asperiores non eius corporis vitae aut unde amet
-                            consectetur ipsam sit a! Amet assumenda debitis enim neque quibusdam eos iure, velit esse harum
-                            dolore ducimus nobis corporis quo consequuntur minima obcaecati eaque ad tempore ex voluptatum
-                            eius voluptas?</p>
+                @if ($banner2)
+                    <div class="about_banner my-8">
+                        <img src="{{ asset($banner2->image) }}" alt="">
                     </div>
-                </div>
+                @endif
+
+
+                @if ($banner3)
+                    <div class='md:flex gap-16 mt-12'>
+                        <div class=' pb-8  md:w-[35%]'>
+                            <img src="{{ asset($banner3->image) }}" alt="" class="w-full">
+                        </div>
+                        <div class='md:w-[65%]'>
+                            <div class=''>
+                                <h1 class='font-bold text-[1.5rem] text-red-500'>
+                                    {{ $banner3->title }}
+
+                                </h1>
+                                <p class="text-md">
+                                    {{ $banner3->descr }}
+                                </p>
+
+                            </div>
+                        </div>
+                    </div>
+                @endif
+
+
+                @if ($banner4)
+                    <div class='md:flex gap-16 mt-12'>
+                        <div class=' pb-8  md:w-[65%]'>
+
+                            <h1 class='font-bold text-[1.5rem] text-red-500'>
+                                {{ $banner4->title }}
+
+                            </h1>
+                            <p class="text-sm">
+                                {!! $banner4->descr !!}
+                            </p>
+                        </div>
+                        <div class='md:w-[35%]'>
+
+                            <div class=''>
+                                <img src="{{ asset($banner4->image) }}" alt="" class="w-full">
+
+
+                            </div>
+                        </div>
+                    </div>
+                @endif
+
+
+
+
+                @if ($banner5)
+                    <div class='md:flex gap-16 mt-12'>
+                        <div class=' pb-8  md:w-[35%]'>
+                            <img src="{{ asset($banner5->image) }}" alt="" class="w-full">
+                        </div>
+                        <div class='md:w-[65%]'>
+                            <div class=''>
+                                <h1 class='font-bold text-[1.5rem] text-red-500'>
+                                    {{ $banner5->title }}
+
+                                </h1>
+                                <p class="text-md">
+                                    {!! $banner5->descr !!}
+                                </p>
+
+                            </div>
+                        </div>
+                    </div>
+                @endif
             </section>
 
-            <section class=''>
-                @include('frontend.template.gallery')
-            </section>
+
         </div>
     </section>
 @endsection
