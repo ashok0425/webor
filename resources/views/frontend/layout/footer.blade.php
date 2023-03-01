@@ -5,7 +5,7 @@
     <div class='my-container pt-12'>
         <div class='sm:grid md:grid-cols-4 gap-16 lg:gap-0 lg:grid-cols-5 space-y-12'>
             <div class='col-span-2 space-y-6'>
-                <img src="{{ asset($setting->image) }}" alt='' height={30} width={130} />
+                <img src="{{ asset($setting->image) }}" alt='' style="max-width: 200px" />
 
 
                 <p class='text-black-600  font-light text-sm text-base md:pr-20'>
