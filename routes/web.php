@@ -33,6 +33,10 @@ Route::get('/contact', function () {
     return view('frontend.contact.index');
 })->name('contact.page');
 
+Route::get('/review', function () {
+    
+    return view('frontend.review.index');
+})->name('review');
 
 Route::post('/contact', 'Frontend\ContactController@store')->name('contact');
 Route::get('/product-category/{id}', 'Frontend\ProductController@index')->name('store');
@@ -41,6 +45,7 @@ Route::get('/product-detail/{id}', 'Frontend\ProductController@deatil')->name('p
 Route::post('/subscribe','Frontend\NewsletterController@store')->name('subscribe');
 Route::get('/blog', 'Frontend\BlogController@index')->name('blog');
 Route::get('/blog/{id}', 'Frontend\BlogController@detail')->name('blog.detail');
+
 
 
 

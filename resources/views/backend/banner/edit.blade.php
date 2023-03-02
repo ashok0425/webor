@@ -30,6 +30,7 @@
                         <option value="1" @if ($banner->type == 1) selected @endif>Main banner</option>
                         <option value="2" @if ($banner->type == 2) selected @endif>Mid banner</option>
                         <option value="3" @if ($banner->type == 3) selected @endif>About banner</option>
+                        <option value="4" @if ($banner->type == 4) selected @endif>Review banner</option>
 
                     </select>
                 </div>

@@ -86,6 +86,34 @@
             </li>
 
 
+            <li class="sidebar-item <?php echo PAGE == 'review' ? 'active' : ''; ?>">
+                <a data-target="#review" data-toggle="collapse" class="sidebar-link" aria-expanded="false">
+                    <i class="fas fa-envelope"></i> <span class="align-middle">Review</span>
+                </a>
+                <ul id="review" class="sidebar-dropdown list-unstyled collapse <?php echo PAGE == 'gallery' ? 'show' : ''; ?>"
+                    data-parent="#sidebar" style="">
+
+                    <li class="sidebar-item"><a class="sidebar-link" href="{{ route('admin.review') }}">Review</a>
+                    </li>
+
+
+                </ul>
+            </li>
+
+
+            <li class="sidebar-item <?php echo PAGE == 'faq' ? 'active' : ''; ?>">
+                <a data-target="#faq" data-toggle="collapse" class="sidebar-link" aria-expanded="false">
+                    <i class="fas fa-envelope"></i> <span class="align-middle">FAQ</span>
+                </a>
+                <ul id="faq" class="sidebar-dropdown list-unstyled collapse <?php echo PAGE == 'faq' ? 'show' : ''; ?>"
+                    data-parent="#sidebar" style="">
+
+                    <li class="sidebar-item"><a class="sidebar-link" href="{{ route('admin.faq') }}">FAQ</a>
+                    </li>
+
+
+                </ul>
+            </li>
 
 
             <li class="sidebar-item <?php echo PAGE == 'setting' ? 'active' : ''; ?>">
@@ -125,11 +153,7 @@
                 General
             </li>
 
-            <li class="sidebar-item <?php echo PAGE == 'user' ? 'active' : ''; ?>">
-                <a class="sidebar-link" href="{{ route('admin.user.list') }}">
-                    <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">User List</span>
-                </a>
-            </li>
+
 
             <li class="sidebar-item <?php echo PAGE == 'subscriber' ? 'active' : ''; ?>">
                 <a class="sidebar-link" href="{{ route('admin.subscriber') }}">

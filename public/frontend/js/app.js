@@ -65,6 +65,23 @@ if (review_splide.length > 0) {
   });
   splide.mount();
 }
+var review_splide_page = $('#review_splide_page');
+if (review_splide_page.length > 0) {
+  var splide = new Splide('#review_splide_page', {
+    type: 'loop',
+    pagination: false,
+    perPage: 1,
+    breakpoints: {
+      640: {
+        perPage: 1
+      },
+      460: {
+        perPage: 1
+      }
+    }
+  });
+  splide.mount();
+}
 var g = $('#gallery_splide');
 // console.log(g)
 

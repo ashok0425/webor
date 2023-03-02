@@ -22,12 +22,8 @@ class TimeController extends Controller
     public function index(Request $request)
     {
 
-        if($request->type==2){
-        $coupon=Time::orderBy('id','desc')->where('type',2)->get();
-            return view('backend.partner.index',compact('coupon'));
-
-        }
-        $coupon=Time::orderBy('id','desc')->where('type',1)->get();
+     
+        $coupon=Time::orderBy('id','desc')->get();
 
        return view('backend.time.index',compact('coupon'));
     }
@@ -56,28 +52,19 @@ class TimeController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'file'=>'required|mimes:png,jpg,jpeg,webp',
             'name'=>'required',
             'review'=>'required',
 
 
         ]);
         try {
- $request['type']=$request->type?$request->type:1;
 
             $category=new Time;
-            $file=$request->file('file');
-            
-            if($file){
-                // File::delete(__getAdmin()->profile_photo_path);
-                $fname=rand().'outlook.'.$file->getClientOriginalExtension();
-                $category->image='upload/outlook/'.$fname;
-                // $path=Image::make($file)->resize(200,300);
-                $file->move(public_path().'/upload/outlook/',$fname);
-            }
             $category->name=$request->name;
             $category->review=$request->review;
-            $category->type=$request->type;
+            $category->star=$request->star;
+            $category->position=$request->position;
+            $category->title=$request->title;
 
         
 
@@ -125,8 +112,8 @@ class TimeController extends Controller
      */
     public function edit(Time $time,$id)
     {
-        $outlook=Time::find($id);
-        return view('backend.time.edit',compact('outlook'));
+        $review=Time::find($id);
+        return view('backend.time.edit',compact('review'));
     }
 
     /**
@@ -146,18 +133,11 @@ class TimeController extends Controller
         // try {
 
             $category=Time::find($request->id);
-            $file=$request->file('file');
-
-            if($file){
-                // File::delete(__getAdmin()->profile_photo_path);
-                $fname=rand().'outlook.'.$file->getClientOriginalExtension();
-                $category->image='upload/outlook/'.$fname;
-                // $path=Image::make($file)->resize(200,300);
-                $file->move(public_path().'/upload/outlook/',$fname);
-            }
             $category->name=$request->name;
             $category->review=$request->review;
-
+            $category->star=$request->star;
+            $category->position=$request->position;
+            $category->title=$request->title;
             if($category->save()){
                 $notification=array(
                     'alert-type'=>'success',

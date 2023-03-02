@@ -49,7 +49,12 @@
                     <br>
                     <img src="{{ asset($blog->image) }}" alt="" class="img-fluid" width="100">
                 </div>
+                <div class="mb-3">
+                    <label class="form-label"><input value="1" type="checkbox"
+                            @if ($blog->featured) checked @endif name="featured" id=""> Featured
+                        Blog</label>
 
+                </div>
                 <button type="submit" class="btn btn-primary">Update</button>
             </form>
         </div>

@@ -39,50 +39,6 @@ Route::get('/category/deactive/{id}/{table}','backend\CategoryController@deactiv
 Route::get('/category/delete/{id}/{table}','backend\CategoryController@destroy')->name('category.delete');
 
 
-// Subcategory
-
-Route::get('/subcategory','backend\SubcategoryController@index')->name('subcategory');
-Route::get('/subcategory/create','backend\SubcategoryController@create')->name('subcategory.create');
-Route::post('/subcategory/store','backend\SubcategoryController@store')->name('subcategory.store');
-Route::get('/subcategory/edit/{id}/','backend\SubcategoryController@edit')->name('subcategory.edit');
-Route::post('/subcategory/edit/','backend\SubcategoryController@update')->name('subcategory.update');
-Route::get('/subcategory/show/{id}','backend\SubcategoryController@show')->name('subcategory.show');
-Route::get('/subcategory/active/{id}/{table}','backend\SubcategoryController@active')->name('subcategory.active');
-Route::get('/subcategory/deactive/{id}/{table}','backend\SubcategoryController@deactive')->name('subcategory.deactive');
-Route::get('/subcategory/delete/{id}/{table}','backend\SubcategoryController@destroy')->name('subcategory.delete');
-
-
-
-
-// Model
-
-Route::get('/model','backend\ModalController@index')->name('model');
-Route::get('/model/create','backend\ModalController@create')->name('model.create');
-Route::post('/model/store','backend\ModalController@store')->name('model.store');
-Route::get('/model/edit/{id}/','backend\ModalController@edit')->name('model.edit');
-Route::post('/model/edit/','backend\ModalController@update')->name('model.update');
-Route::get('/model/show/{id}','backend\ModalController@show')->name('model.show');
-Route::get('/model/active/{id}/{table}','backend\ModalController@active')->name('model.active');
-Route::get('/model/deactive/{id}/{table}','backend\ModalController@deactive')->name('model.deactive');
-Route::get('/model/delete/{id}/{table}','backend\ModalController@destroy')->name('model.delete');
-
-
-
-
-// Part
-
-Route::get('/part','backend\PartController@index')->name('part');
-Route::get('/part/create','backend\PartController@create')->name('part.create');
-Route::post('/part/store','backend\PartController@store')->name('part.store');
-Route::get('/part/edit/{id}/','backend\PartController@edit')->name('part.edit');
-Route::post('/part/edit/','backend\PartController@update')->name('part.update');
-Route::get('/part/show/{id}','backend\PartController@show')->name('part.show');
-Route::get('/part/active/{id}/{table}','backend\PartController@active')->name('part.active');
-Route::get('/part/deactive/{id}/{table}','backend\PartController@deactive')->name('part.deactive');
-Route::get('/part/delete/{id}/{table}','backend\PartController@destroy')->name('part.delete');
-
-
-
 // Product
 
 Route::get('/product','backend\ProductController@index')->name('product');
@@ -190,34 +146,31 @@ Route::get('/contact/create/{id}','backend\ContactController@create')->name('con
 Route::post('/contact/sendmail','backend\ContactController@sendmail')->name('contact.sendmail');
 
 
-Route::get('/ambassador','backend\AppointmentController@index')->name('ambassador');
-Route::get('/ambassador/create','backend\AppointmentController@create')->name('ambassador.create');
-Route::post('/ambassador/store','backend\AppointmentController@store')->name('ambassador.store');
-Route::get('/ambassador/edit/{id}','backend\AppointmentController@edit')->name('ambassador.edit');
-Route::post('/ambassador/update','backend\AppointmentController@update')->name('ambassador.update');
-Route::get('/ambassador/show/{id}','backend\AppointmentController@show')->name('ambassador.show');
-Route::get('/ambassador/active/{id}/{table}','backend\AppointmentController@active')->name('ambassador.active');
-Route::get('/ambassador/deactive/{id}/{table}','backend\AppointmentController@deactive')->name('ambassador.deactive');
-Route::get('/ambassador/delete/{id}/{table}','backend\AppointmentController@destroy')->name('ambassador.delete');
 
-    //  order
-    Route::get('/order/new','backend\OrderController@newOrder')->name('order.new');
-    Route::get('/order/processing','backend\OrderController@processOrder')->name('order.processing');
-    Route::get('/order/shipping','backend\OrderController@shippingOrder')->name('order.shipping');
-    Route::get('/order/deliver','backend\OrderController@deliverOrder')->name('order.deliver');
-    Route::get('/order/cancel','backend\OrderController@cancelOrder')->name('order.cancel');
-    Route::get('/order/status/{id}/{hid}','backend\OrderController@changeOrderStatus');
-    Route::get('/order/show/{id}','backend\OrderController@show')->name('order.show');
+// review
+Route::get('/review','backend\TimeController@index')->name('review');
+Route::get('/review/create','backend\TimeController@create')->name('review.create');
+Route::post('/review/store','backend\TimeController@store')->name('review.store');
+Route::get('/review/edit/{id}','backend\TimeController@edit')->name('review.edit');
+Route::post('/review/update','backend\TimeController@update')->name('review.update');
+Route::get('/review/show/{id}','backend\TimeController@show')->name('review.show');
+Route::get('/review/active/{id}/{table}','backend\TimeController@active')->name('review.active');
+Route::get('/review/deactive/{id}/{table}','backend\TimeController@deactive')->name('review.deactive');
+Route::get('/review/delete/{id}/{table}','backend\TimeController@destroy')->name('review.delete');
 
-// user List
-    Route::get('/user/list','Admin\AuthController@UserList')->name('user.list');
-    Route::get('/chart',function(){
-        return view('backend.chart.chart');
-    });
 
+
+// faq
+Route::get('/faq','backend\BlogController@index')->name('faq');
+Route::get('/faq/create','backend\BlogController@create')->name('faq.create');
+Route::post('/faq/store','backend\BlogController@store')->name('faq.store');
+Route::get('/faq/edit/{id}','backend\BlogController@edit')->name('faq.edit');
+Route::post('/faq/update','backend\BlogController@update')->name('faq.update');
+Route::get('/faq/show/{id}','backend\BlogController@show')->name('faq.show');
+Route::get('/faq/active/{id}/{table}','backend\BlogController@active')->name('faq.active');
+Route::get('/faq/deactive/{id}/{table}','backend\BlogController@deactive')->name('faq.deactive');
+Route::get('/faq/delete/{id}/{table}','backend\BlogController@destroy')->name('faq.delete');
 
 
 });
 
-// getting subcategory,modal,part using ajax
-Route::get('loaddata/{table}/{id}/{option?}','backend\ModalController@loadData');

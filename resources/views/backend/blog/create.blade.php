@@ -5,33 +5,19 @@
     @endphp
 
     <div class="card">
-        <h3 class="card-title">Create Blog</h3>
+        <h3 class="">Create Blog</h3>
 
         <div class="card-body">
 
             <form action="{{ route('admin.blog.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
-                {{-- <input type="hidden" value="{{ $blog->id }}" name="id"> --}}
-                {{-- 
-                <div class="mb-3">
-                    <label class="form-label">Select Category</label>
-                    <select name="category" class="form-control">
-                        @foreach ($category as $item)
-                            <option value="{{ $item->id }}">{{ $item->category }}</option>
-                        @endforeach
-                    </select>
-                </div> --}}
+
                 <div class="mb-3">
                     <label class="form-label">Blog Title</label>
                     <input type="text" name="title" class="form-control"
                         placeholder="Blog title"value="{{ old('title') }}" required>
                 </div>
-                {{-- <div class="mb-3">
-                <label class="form-label">Blog Short Description</label>
-                <textarea type="text" name="short_desc"  class="form-control" placeholder="Blog Detail" required>
-                    {{old('short_desc')}}
-                </textarea>
-            </div> --}}
+
 
                 <div class="mb-3">
                     <label class="form-label">Blog Detail</label>
@@ -46,6 +32,12 @@
                         <input name="file" type="file" class="file-upload-field" value="">
                     </div>
                     <br>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label"><input value="1" type="checkbox" name="featured" id=""> Featured
+                        Blog</label>
+
                 </div>
 
                 <button type="submit" class="btn btn-primary">Add</button>

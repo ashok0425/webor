@@ -1,6 +1,8 @@
 @php
-    $galleries = DB::table('coupons')
+    $reviews = DB::table('times')
         ->where('status', 1)
+        ->limit(4)
+        ->orderBy('id', 'desc')
         ->get();
 @endphp
 <section class='my-container space-y-4 mt-20'>
@@ -12,15 +14,15 @@
         <div class="splide__track">
             <ul class="splide__list">
 
-                @foreach ($galleries as $gallery)
-                    @include('frontend.template.review_card')
+                @foreach ($reviews as $review)
+                    @include('frontend.template.review_card', ['review' => $review])
                 @endforeach
 
             </ul>
         </div>
 
         <div class="mt-8 text-center">
-            <a href="{{ route('products') }}" class='btn-p btn-hov md:px-20 sm:px-10'>
+            <a href="{{ route('review') }}" class='btn-p btn-hov md:px-20 sm:px-10'>
                 <span class='main'>
                     <span class='inner'>
                         <span class='text-white content'>View All</span>

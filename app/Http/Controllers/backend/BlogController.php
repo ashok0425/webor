@@ -19,10 +19,16 @@ class BlogController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $blog=Blog::orderBy('id','desc')->get();
-       return view('backend.blog.index',compact('blog'));
+        if(request()->routeIs('admin.faq')){
+            $faqs=Blog::orderBy('id','desc')->where('type',2)->get();
+            return view('backend.faq.index',compact('faqs'));
+        }else{
+            $blog=Blog::orderBy('id','desc')->where('type',1)->get();
+            return view('backend.blog.index',compact('blog'));
+        }
+       
     }
 
     /**
@@ -32,8 +38,13 @@ class BlogController extends Controller
      */
     public function create()
     {
-        $category=Blogcategory::all();
-       return view('backend.blog.create',compact('category'));
+        if(request()->routeIs('admin.faq*')){
+
+       return view('backend.faq.create');
+        }else{
+       return view('backend.blog.create');
+
+        }
 
     }
 
@@ -62,7 +73,10 @@ class BlogController extends Controller
                 $file->move(public_path().'/upload/blog/',$fname);
             }
             $category->title=$request->title;
+            $category->type=$request->type?2:1;
+
             $category->detail=$request->detail;
+            $category->featured=$request->featured?1:0;
 
 
             if($category->save()){
@@ -110,8 +124,17 @@ class BlogController extends Controller
     public function edit(Blog $blog,$id)
     {
 
+        if(request()->routeIs('admin.faq*')){
+            $faq=Blog::find($id);
+
+            return view('backend.faq.edit',compact('faq'));
+             }else{
         $blog=Blog::find($id);
-        return view('backend.blog.edit',compact('blog'));
+
+                return view('backend.blog.edit',compact('blog'));
+
+     
+             }
     }
 
     /**
@@ -143,6 +166,9 @@ class BlogController extends Controller
             }
             $category->title=$request->title;
             $category->detail=$request->detail;
+            $category->type=$request->type?2:1;
+
+            $category->featured=$request->featured?1:0;
 
             if($category->save()){
                 $notification=array(
@@ -150,7 +176,7 @@ class BlogController extends Controller
                     'messege'=>'Blog  updated',
 
                  );
-                 return redirect()->route('admin.blog')->with($notification);
+                 return redirect()->back()->with($notification);
             }else{
                 $notification=array(
                     'alert-type'=>'info',
