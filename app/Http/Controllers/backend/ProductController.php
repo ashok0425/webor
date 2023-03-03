@@ -5,7 +5,6 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Traits\status;
-use App\Models\Subcategory;
 use App\Models\Part;
 use App\Models\Product;
 use App\Models\Productcolor;
@@ -62,7 +61,6 @@ class ProductController extends Controller
 
         ]);
         try {
-
             $category=new Product;
 
             $file=$request->file('file');
@@ -76,7 +74,7 @@ class ProductController extends Controller
             }
 
             $category->category_id=$request->category;
-            $category->subcategory_id=$request->subcategory;
+            $category->short_desc=$request->short_desc;
             $category->price=$request->price;
             $category->name=$request->name;
             $category->long_desc=$request->descr;
@@ -134,12 +132,12 @@ class ProductController extends Controller
     {
         $product=Product::find($id);
         $category=Category::all();
-        $subcategory=Subcategory::all();
+        // $subcategory=Subcategory::all();
 
 
 
 
-        return view('backend.product.edit',compact('product','subcategory','category'));
+        return view('backend.product.edit',compact('product','category'));
     }
 
     /**
@@ -156,6 +154,7 @@ class ProductController extends Controller
             'name'=>'required',
             'price'=>'required',
         ]);
+
         try {
             $category=Product::find($request->id);
 
@@ -169,7 +168,7 @@ class ProductController extends Controller
                 $file->move(public_path().'/upload/product/',$fname);
             }
             $category->category_id=$request->category;
-            $category->subcategory_id=$request->subcategory;
+            $category->short_desc=$request->short_desc;
             $category->name=$request->name;
             $category->price=$request->price;
             $category->featured=$request->featured;
@@ -181,6 +180,7 @@ class ProductController extends Controller
 
 
             if($category->save()){
+
                 $notification=array(
                     'alert-type'=>'success',
                     'messege'=>'Product  updated',

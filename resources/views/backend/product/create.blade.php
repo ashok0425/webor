@@ -36,7 +36,7 @@
                 <div class="mb-3">
                     <label class="form-label">Price</label>
                     <input type="text" name="price" class="form-control" placeholder="Price"
-                        value="{{ old('price') }}" required>
+                        value="{{ old('price') }}">
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Thumbnail</label>
@@ -45,7 +45,10 @@
                     </div>
                 </div>
 
-
+                <div class="mb-3">
+                    <label class="form-label">Short Description</label>
+                    <input type="text" class="form-control" name="short_desc" id="" {{ old('short_desc') }}>
+                </div>
                 <div class="mb-3">
                     <label class="form-label">Description</label>
                     <textarea name="descr" id="summernote1" required>

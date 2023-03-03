@@ -42,15 +42,16 @@
                         <a href='{{ route('about') }}'>About us</a>
                     </li>
                     <li class="cursor-pointer hover:text-prime/75 ">
-                        <div class="form-group">
-                            <input type="search" name="" id=""
-                                class="outline-none bg-slate-100	 rounded-2xl py-1 px-1">
-                            <button>
-                                <i class="fas fa-search text-gray-400 font-black ml-3"></i>
+                        <form action="{{ route('products') }}">
+                            <div class="form-group">
+                                <input type="search" name="keyword" id=""
+                                    class="outline-none bg-slate-100	 rounded-2xl py-1 px-1">
+                                <button>
+                                    <i class="fas fa-search text-gray-400 font-black ml-3"></i>
 
-                            </button>
-                        </div>
-
+                                </button>
+                            </div>
+                        </form>
                     </li>
 
                 </ul>

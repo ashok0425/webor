@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Productvariation;
 use App\Models\Product;
@@ -9,15 +10,34 @@ use Illuminate\Support\Facades\DB;
 class ProductController extends Controller
 {
 
-    public function index($id=null){
+    public function index(Request $request,$id=null){
+        $categories=Category::all();
+
         if(isset($id)){
-            $products=DB::table('products')->where('category_id',$id)->orderBy('id','desc')->get();
+            $products=Product::where('category_id',$id)->orderBy('id','desc')->get();
+            $category=Category::find($id);
+       return view('frontend.product.index',compact('products','category','categories'));
+
         }else{
-            $products=DB::table('products')->orderBy('id','desc')->get();
+            $products=Product::orderBy('id','desc');
+            if(isset($request->keyword)){
+$products=$products->where('name','LIKE',"%".$request->keyword."%");
+            }
+
+            if(isset($request->category) && $request->category!=null){
+$products=$products->where('category_id',$request->category);
+                
+            }
+
+            $products=$products->get();
+            $category=Category::query()->first();
+
+
+       return view('frontend.product.index',compact('products','category','categories'));
+
         }
         
 
-       return view('frontend.product.index',compact('products'));
     }
 
    public function deatil($id){

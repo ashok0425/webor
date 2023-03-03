@@ -27,21 +27,12 @@
                     </select>
                 </div>
 
-                {{-- <div class="mb-3">
-                    <label class="form-label">Select Subcategory</label>
-                    <select name="subcategory" class="form-control subcategory data" data-text="subcategory">
-                        @if ($product->subcategory_id !== null)
-                            <option value="{{ $product->subcategory_id }}">{{ $product->subcat->subcategory }}</option>
-                        @endif
 
-
-                    </select>
-                </div> --}}
 
                 <div class="mb-3">
                     <label class="form-label">Price</label>
                     <input type="text" name="price" class="form-control" placeholder="Price"
-                        value="{{ $product->price }}" required>
+                        value="{{ $product->price }}">
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Thumbnail</label>
@@ -50,6 +41,10 @@
                     </div>
                     <br>
                     <img src="{{ asset($product->image) }}" width='100' />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Short Description</label>
+                    <input type="text" class="form-control" name="short_desc" value="{{ $product->short_desc }}">
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Description</label>

@@ -13,12 +13,13 @@
                 <input type="hidden" value="{{ $color->id }}" name="id">
                 <input type="hidden" value="{{ $color->product_id }}" name="pid">
 
-                {{-- <div class="mb-3">
-                <label class="form-label">Color</label>
-                <input type="color" name="color" class="form-control" placeholder="Product name" value="{{$color->color}}" required>
-                <br>
-               <div style="background: {{ $color->color }};width:50px;height:50px;"></div>
-            </div> --}}
+                <div class="mb-3">
+                    <label class="form-label">Color</label>
+                    <input type="color" name="color" class="form-control" placeholder="Product name"
+                        value="{{ $color->color }}" required>
+                    <br>
+                    <div style="background: {{ $color->color }};width:50px;height:50px;"></div>
+                </div>
 
                 <div class="mb-3">
                     <label class="form-label">Thumbnail</label>

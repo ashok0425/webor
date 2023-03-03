@@ -59,7 +59,8 @@
             </div>
 
             <div class='space-y-5'>
-                <h1 class='sec-h1 text-3xl'>{{ $product->name }}</h1>
+                <h1 class='sec-h1 text-3xl text-prime'>{{ $product->name }}</h1>
+                <p class="text-sm ">{{ $product->short_desc }}</p>
 
                 <div class='flex gap-2'>
                     <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'
@@ -103,13 +104,44 @@
 
                 </div>
 
-                <div class='space-y-3'>
-                    <h4 class='font-bold text-lg'>Product Details</h4>
-                    {{ $product->long_desc }}
-                </div>
+                @if (count($colors) > 0)
+                    <div class=''>
+                        <p class='font-medium mb-2 text-dark uppercase'>
+                            Color
+                        </p>
+                        <div class="flex">
+                            @foreach ($colors as $item)
+                                <p style="background: {{ $item->color }};"
+                                    class='font-normal text-stone-900 rounded-full w-10 h-10'>
+                                </p>
+                            @endforeach
+                        </div>
+                    </div>
+                @endif
+
+                @if (count($sizes) > 0)
+                    <div class=''>
+                        <p class='font-medium mb-2 text-dark uppercase'>
+                            Color
+                        </p>
+                        <div class="flex">
+                            @foreach ($sizes as $item)
+                                <p
+                                    class='font-normal text-stone-900 rounded-medium border border-gray-600 text-center pt-1 w-20 h-10'>
+                                    {{ $item->variation }}
+                                </p>
+                            @endforeach
+                        </div>
+                    </div>
+                @endif
+
             </div>
 
 
     </section>
+    <div class="description pt-28 my-container">
+        <h2 class="text-2xl font-bold text-center text-prime mb-6">Product Description</h2>
+        {{ $product->long_desc }}
+    </div>
     @include('frontend.product.similar', ['similar' => $similar])
 @endsection
