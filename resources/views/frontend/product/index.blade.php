@@ -28,9 +28,7 @@
 
         <div class='grid sm:grid-cols-2 md:grid-cols-4 gap-11 mt-16'>
             @foreach ($products as $product)
-                <a href='{{ route('product.deatil', ['id' => $product->id]) }}'>
-                    @include('frontend.product.card', ['product', $product])
-                </a>
+                @include('frontend.product.card', ['product', $product])
             @endforeach
 
         </div>
