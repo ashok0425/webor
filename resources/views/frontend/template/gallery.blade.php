@@ -14,10 +14,9 @@
 
                 @foreach ($galleries as $gallery)
                     <li class="splide__slide ">
-                        <div
-                            class='max-h-[23rem] min-h-[22rem] mx-4 cursor-pointer  main rounded-lg shadow-lg overflow-hidden  '>
+                        <div class=' mx-4 cursor-pointer  main rounded-lg shadow-lg overflow-hidden  '>
                             <img src="{{ $gallery->image }}" alt=''
-                                class='min-w-[100%] scale-110 object-fit-cover max-h-[23rem] min-h-[22rem]    hover:scale-100 transition duration-150 ease-out md:ease-in"' />
+                                class='w-[1080px] scale-110  object-cover    hover:scale-100 transition duration-150 ease-out md:ease-in h-[450px]' />
                         </div>
                     </li>
                 @endforeach

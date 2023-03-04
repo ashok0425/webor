@@ -54,12 +54,20 @@ class CategoryController extends Controller
             $file=$request->file('file');
 
             if($file){
-                // File::delete(__getAdmin()->profile_photo_path);
                 $fname=rand().'category.'.$file->getClientOriginalExtension();
                 $category->image='upload/category/'.$fname;
-                // $path=Image::make($file)->resize(200,300);
                 $file->move(public_path().'/upload/category/',$fname);
             }
+
+
+            $banner=$request->file('banner');
+
+            if($banner){
+                $fname=rand().'bannercategory.'.$banner->getClientOriginalExtension();
+                $category->banner='upload/bannercategory/'.$fname;
+                $banner->move(public_path().'/upload/bannercategory/',$fname);
+            }
+
             $category->category=$request->category;
             if($category->save()){
                 $notification=array(
@@ -121,7 +129,7 @@ class CategoryController extends Controller
         $request->validate([
             'category'=>'required|max:255',
         ]);
-        try {
+        // try {
 
             $category=Category::find($request->id);
 
@@ -134,6 +142,16 @@ class CategoryController extends Controller
                 // $path=Image::make($file)->resize(200,300);
                 $file->move(public_path().'/upload/category/',$fname);
             }
+
+            $banner=$request->file('banner');
+
+            if($banner){
+                File::delete($category->banner);
+                $fname=rand().'bannercategory.'.$banner->getClientOriginalExtension();
+                $category->banner='upload/bannercategory/'.$fname;
+                $banner->move(public_path().'/upload/bannercategory/',$fname);
+            }
+
             $category->category=$request->category;
             if($category->save()){
                 $notification=array(
@@ -152,15 +170,15 @@ class CategoryController extends Controller
             }
 
 
-        } catch (\Throwable $th) {
-            $notification=array(
-                'alert-type'=>'error',
-                'messege'=>'Something went wrong.Please try again later',
+        // } catch (\Throwable $th) {
+        //     $notification=array(
+        //         'alert-type'=>'error',
+        //         'messege'=>'Something went wrong.Please try again later',
 
-             );
-             return redirect()->back()->with($notification);
+        //      );
+        //      return redirect()->back()->with($notification);
 
-        }
+        // }
 
     }
 

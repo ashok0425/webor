@@ -39,6 +39,13 @@
                                     value="{{ $website->url }}">
                             </div>
                         </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">Header Offer Text</label>
+                                <input type="text" name="header_offer" class="form-control"
+                                    value="{{ $website->header_offer }}">
+                            </div>
+                        </div>
                         <div class="mb-3">
                             <label class="form-label">Logo</label>
                             <div class="file-upload-wrapper" data-text="Select your file!">

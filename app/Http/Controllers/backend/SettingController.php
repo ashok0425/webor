@@ -64,6 +64,8 @@ $notification=array(
 
 $web->title=$request->title;
 $web->keyword=$request->keyword;
+$web->header_offer=$request->header_offer;
+
 $web->descr=$request->descr;
 $web->email1=$request->email1;
 $web->phone1=$request->phone1;

@@ -11,11 +11,11 @@
 
                 @foreach ($banners as $banner)
                     <li class="splide__slide ">
-                        <div class='relative w-full h-screen flex items-center'>
-                            <div class="absolute inset-0 bg-black/25"></div>
+                        <div class='relative w-full h-[80vh] flex items-center'>
+                            <div class="absolute inset-0 bg-black/25 h-[80vh]"></div>
                             <div class='-z-10 absolute inset-0 '>
                                 <img src="{{ asset($banner->image) }}" alt='{{ $banner->title }}'
-                                    class='object-cover w-full h-full' />
+                                    class='object-cover w-full h-[80vh]' />
                             </div>
                             <div class='my-container text-center space-y-4'>
                                 <h1 class='sec-h1 text-white drop-shadow-lg leading-[3.5rem]'>

@@ -144,7 +144,7 @@ class TimeController extends Controller
                     'messege'=>'Review  updated',
                    
                  );
-                 return redirect()->route('admin.time')->with($notification);
+                 return redirect()->route('admin.review')->with($notification);
             }else{
                 $notification=array(
                     'alert-type'=>'info',

@@ -1,6 +1,7 @@
 @extends('frontend.layout.master')
 @section('content')
-    <section class='my-container pt-28 space-y-28'>
+    <section class='my-container pt-16 space-y-28'>
+
         <div class='grid grid-cols-1 md:grid-cols-2 gap-28'>
             <div class='md:sticky top-28 h-fit'>
                 <section class="splide mt-2" id="main-slider">
@@ -112,7 +113,7 @@
                         <div class="flex">
                             @foreach ($colors as $item)
                                 <p style="background: {{ $item->color }};"
-                                    class='font-normal text-stone-900 rounded-full w-10 h-10'>
+                                    class='font-normal text-stone-900 rounded-full w-10 h-10 mx-2'>
                                 </p>
                             @endforeach
                         </div>
@@ -127,7 +128,7 @@
                         <div class="flex">
                             @foreach ($sizes as $item)
                                 <p
-                                    class='font-normal text-stone-900 rounded-medium border border-gray-600 text-center pt-1 w-20 h-10'>
+                                    class='font-normal text-stone-900 rounded-medium border border-gray-600 text-center pt-1 w-20 h-10 mx-2'>
                                     {{ $item->variation }}
                                 </p>
                             @endforeach
@@ -141,7 +142,7 @@
     </section>
     <div class="description pt-28 my-container">
         <h2 class="text-2xl font-bold text-center text-prime mb-6">Product Description</h2>
-        {{ $product->long_desc }}
+        {!! $product->long_desc !!}
     </div>
     @include('frontend.product.similar', ['similar' => $similar])
 @endsection
