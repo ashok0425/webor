@@ -10,7 +10,7 @@
             <div class="text-center">
                 <h1 class='sec-h1'>{{ $blog->title }}</h1>
                 <div class="space-y-8 md:w-[75%] mx-auto  my-10">
-                    {{ $blog->detail }}
+                    {!! $blog->detail !!}
 
                 </div>
             </div>
@@ -18,7 +18,8 @@
                 <div class="flex justify-between">
                     <a href="{{ route('blog.detail', ['id' => $blog->id - 1]) }}"><i class="fas fa-arrow-left"></i> Previous
                         Page</a>
-                    <a href="{{ route('blog.detail', ['id' => $blog->id + 1]) }}">Next Page <i class="fas fa-arrow-right"></i>
+                    <a href="{{ route('blog.detail', ['id' => $blog->id + 1]) }}">Next Page <i
+                            class="fas fa-arrow-right"></i>
                     </a>
 
 
