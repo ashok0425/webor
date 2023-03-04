@@ -33,7 +33,8 @@
                                     class='absolute top-[62px] drop-down w-56 divide-y divide-prime/50  bg-white hidden shadow-xl  group-hover:block z-[9999999]'>
                                     @foreach ($products as $product)
                                         <li class='drop-item'><a
-                                                href="{{ route('product.deatil', ['id' => $product->id]) }}">{{ $product->name }}</a>
+                                                href="{{ route('product.deatil', ['id' => $product->id]) }}"
+                                                class="text-sm">{{ $product->name }}</a>
                                         </li>
                                     @endforeach
 
