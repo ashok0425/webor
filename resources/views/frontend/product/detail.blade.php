@@ -9,22 +9,13 @@
                         <ul class="splide__list">
 
 
-                            <li class="splide__slide ">
-                                <div class='main'>
-                                    <div class='relative h-72'>
-                                        <img src='{{ asset($product->image) }}' alt='' fill class='object-cover' />
-                                    </div>
-                                </div>
+                            <li class="splide__slide " style="min-height: 500px">
+                                <img src='{{ asset($product->image) }}' alt='' fill class='object-cover' />
                             </li>
                             @foreach ($colors as $color)
-                                <li class="splide__slide ">
+                                <li class="splide__slide " style="min-height: 500px">
 
-                                    <div class='main'>
-                                        <div class='relative h-72'>
-                                            <img src='{{ asset($color->image) }}' alt='' fill
-                                                class='object-cover' />
-                                        </div>
-                                    </div>
+                                    <img src='{{ asset($color->image) }}' alt='' fill class='object-cover' />
                                 </li>
                             @endforeach
 
@@ -123,12 +114,12 @@
                 @if (count($sizes) > 0)
                     <div class=''>
                         <p class='font-medium mb-2 text-dark uppercase'>
-                            Color
+                            Sizes
                         </p>
                         <div class="flex">
                             @foreach ($sizes as $item)
                                 <p
-                                    class='font-normal text-stone-900 rounded-medium border border-gray-600 text-center pt-1 w-20 h-10 mx-2'>
+                                    class='font-normal text-stone-900 rounded-medium border border-gray-600 text-center pt-2 w-20 h-10 mx-2 text-sm'>
                                     {{ $item->variation }}
                                 </p>
                             @endforeach

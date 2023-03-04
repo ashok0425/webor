@@ -6,9 +6,13 @@
                 alt='' fill class='object-cover h-full' />
         </div>
         <div class='pb-10 pt-20 space-y-6'>
-            <h1 class='sec-h1'>What makes us different from others</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In aliquam quos magnam sint. Facere culpa eius
-                repudiandae!</p>
+            <p>
+                Webor is a well-known brand in Nepal that is active in various industries, including electronics,
+                kitchen, and home appliances. Please consider these as the key factors that set us apart from our
+                competitors:
+
+
+            </p>
             <div class='grid sm:grid-cols-2 gap-4 group'>
                 <div class='flex items-center gap-2 text-emerald-600'>
                     <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' strokeWidth={1.5}
@@ -17,7 +21,7 @@
                             d='M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z' />
                     </svg>
 
-                    <p>Made in Nepal</p>
+                    <p>Diversified Product Portfolio</p>
                 </div>
                 <div class='flex items-center gap-2 text-emerald-600'>
                     <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' strokeWidth={1.5}
@@ -26,7 +30,7 @@
                             d='M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z' />
                     </svg>
 
-                    <p>2 yr. Warrenty</p>
+                    <p>Innovation</p>
                 </div>
                 <div class='flex items-center gap-2 text-emerald-600'>
                     <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' strokeWidth={1.5}
@@ -35,7 +39,7 @@
                             d='M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z' />
                     </svg>
 
-                    <p>Lorem, ipsum dolor.</p>
+                    <p>Quality</p>
                 </div>
                 <div class='flex items-center gap-2 text-emerald-600'>
                     <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' strokeWidth={1.5}
@@ -44,7 +48,7 @@
                             d='M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z' />
                     </svg>
 
-                    <p>Lorem ipsum dolor</p>
+                    <p>Design</p>
                 </div>
                 <div class='flex items-center gap-2 text-emerald-600'>
                     <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' strokeWidth={1.5}
@@ -53,7 +57,17 @@
                             d='M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z' />
                     </svg>
 
-                    <p>Lorem ipsum dolor</p>
+                    <p>Brand Image</p>
+                </div>
+
+                <div class='flex items-center gap-2 text-emerald-600'>
+                    <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' strokeWidth={1.5}
+                        stroke='currentColor' class='w-6 h-6'>
+                        <path strokeLinecap='round' strokeLinejoin='round'
+                            d='M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z' />
+                    </svg>
+
+                    <p>Environmental Sustainability</p>
                 </div>
             </div>
         </div>

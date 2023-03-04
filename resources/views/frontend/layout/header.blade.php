@@ -1,7 +1,7 @@
 <div class="z-50 bg-prime">
     <nav class=" ease-in-out transition-all duration-75`">
-        <div class='flex items-center   my-container py-4'>
-            <div class='flex items-center gap-10'>
+        <div class='flex items-center   my-container'>
+            <div class='flex items-center gap-10  py-4'>
                 <div class='relative'>
                     <a href="{{ route('/') }}" rel="noopener noreferrer">
                         <img alt='Logo Webor' src="{{ asset($setting->image) }}" height="70" width="120" /></a>
@@ -10,13 +10,13 @@
 
             <div class='ml-auto flex items-center gap-12'>
                 <ul class='md:flex gap-12 font-semibold text-lg hidden items-center'>
-                    <li class="cursor-pointer  font-normal text-white		text-base	">
+                    <li class="cursor-pointer  font-normal text-white		text-base	 py-4">
                         <a href='{{ route('/') }}' class="text-white font-bold	text-gray-200	">Home</a>
                     </li>
 
                     @foreach ($categories as $category)
                         @if ($loop->index <= 2)
-                            <li class="cursor-pointer relative group">
+                            <li class="cursor-pointer relative group  py-4">
                                 <span
                                     class=" drop text-white cursor-pointer  font-normal	text-white	 text-base	font-bold">
                                     <a class="font-bold"
@@ -30,7 +30,7 @@
                                         ->get();
                                 @endphp
                                 <ul
-                                    class='absolute top-[52px] drop-down w-56 divide-y divide-prime/50 py-2 bg-white hidden shadow-xl  group-hover:block z-[9999999]'>
+                                    class='absolute top-[62px] drop-down w-56 divide-y divide-prime/50  bg-white hidden shadow-xl  group-hover:block z-[9999999]'>
                                     @foreach ($products as $product)
                                         <li class='drop-item'><a
                                                 href="{{ route('product.deatil', ['id' => $product->id]) }}">{{ $product->name }}</a>
@@ -45,7 +45,7 @@
 
 
 
-                    <li class="cursor-pointer font-bold  font-normal	text-white	 text-base	">
+                    <li class="cursor-pointer font-bold  font-normal	text-white	 text-base	 py-4">
                         <a href='{{ route('about') }}' class="font-bold">About us</a>
                     </li>
                     <li class="cursor-pointer  ">

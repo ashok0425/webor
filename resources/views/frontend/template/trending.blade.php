@@ -1,6 +1,6 @@
 @php
-    $poducts = DB::table('products')
-        ->orderBy('id', 'desc')
+    use App\Models\Product;
+    $poducts = Product::orderBy('id', 'desc')
         ->where('featured', 1)
         ->where('status', 1)
         ->limit(6)
@@ -20,16 +20,8 @@
 
                     @foreach ($poducts as $product)
                         <li class=" splide__slide ">
-                            <a href="{{ route('product.deatil', ['id' => $product->id]) }}">
-                                <div class='md:mx-2 mx-2 h-96 relative '>
-                                    <img src="{{ asset($product->image) }}"alt=''
-                                        class='object-cover rounded-xl	 -z-10 h-full w-full' />
-                                    <h3
-                                        class='pl-14 pb-6 font-medium absolute bottom-0 left-0 tracking-wider text-lg z-20 transition delay-100 duration-200 text-white'>
-                                        {{ $product->name }}</h3>
-                                </div>
+                            @include('frontend.product.card', ['product' => $product])
 
-                            </a>
                         </li>
                     @endforeach
                 </ul>
