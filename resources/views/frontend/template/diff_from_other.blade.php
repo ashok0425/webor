@@ -1,9 +1,7 @@
 <section class='my-container mt-20'>
     <div class='grid md:grid-cols-2 md:gap-20 lg:gap-20'>
         <div class='relative h-80 md:h-auto rounded-3xl shadow-xl overflow-hidden'>
-            <Image
-                src='https://images.unsplash.com/photo-1600585152220-90363fe7e115?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80'
-                alt='' fill class='object-cover h-full' />
+            <Image src='{{ asset('frontend/asset/banner1.jfif') }}' alt='' fill class='object-cover h-full' />
         </div>
         <div class='pb-10 pt-20 space-y-6'>
             <p>
