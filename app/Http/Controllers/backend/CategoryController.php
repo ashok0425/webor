@@ -69,6 +69,8 @@ class CategoryController extends Controller
             }
 
             $category->category=$request->category;
+            $category->show_in_header=$request->show_in_header;
+
             if($category->save()){
                 $notification=array(
                     'alert-type'=>'success',
@@ -153,6 +155,8 @@ class CategoryController extends Controller
             }
 
             $category->category=$request->category;
+            $category->show_in_header=$request->show_in_header;
+
             if($category->save()){
                 $notification=array(
                     'alert-type'=>'success',

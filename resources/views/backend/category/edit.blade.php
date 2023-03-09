@@ -35,6 +35,13 @@
 
                 </div>
 
+                <div class="mb-3">
+                    <label class="form-label">
+                        <input name="show_in_header" type="checkbox" value="1"
+                            @if ($category->show_in_header == 1) checked @endif>
+                        Banner</label>
+                </div>
+
                 <button type="submit" class="btn btn-primary">update</button>
             </form>
         </div>

@@ -44,7 +44,7 @@ $products=$products->where('category_id',$request->category);
        $product=Product::find($id);
        $sizes=Productvariation::where('product_id',$id)->get();
        $colors=Productcolor::where('product_id',$id)->get();
-       $similar=Product::where('category_id',$id)->where('id','!=',$id)->limit(3)->get();
+       $similar=Product::where('category_id',$product->id)->where('id','!=',$id)->limit(3)->get();
 
 
 

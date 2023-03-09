@@ -14,7 +14,23 @@
                         <a href='{{ route('/') }}' class="text-white font-bold	text-gray-200	">Home</a>
                     </li>
 
-                    @foreach ($categories as $category)
+                    <li class="cursor-pointer relative group  py-4">
+                        <span class=" drop text-white cursor-pointer  font-normal	text-white	 text-base	font-bold">
+                            <a class="font-bold" href='{{ route('products') }}'>All Products</a>
+                        </span>
+
+                        <ul
+                            class='absolute top-[62px] drop-down w-56 divide-y divide-prime/50  bg-white hidden shadow-xl  group-hover:block z-[9999999]'>
+                            @foreach ($categories as $category)
+                                <li class='drop-item'><a href="{{ route('store', ['id' => $category->id]) }}"
+                                        class="text-sm">{{ $category->category }}</a>
+                                </li>
+                            @endforeach
+
+                        </ul>
+                    </li>
+
+                    @foreach ($categories->where('show_in_header', 1) as $category)
                         @if ($loop->index <= 2)
                             <li class="cursor-pointer relative group  py-4">
                                 <span
