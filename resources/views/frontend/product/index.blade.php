@@ -2,7 +2,8 @@
 @section('content')
     <div class="store_banner relative">
         <img src="{{ asset($category->banner) }}" alt="" class="w-full max-h-[300px] object-cover">
-        <h1 class="title left-[45%] top-[30%] letter tracking-[3px]	uppercase font-bold text-white text-2xl py-6 absolute">
+        <h1
+            class="title md:left-[45%] left-[20%] md:top-[30%] top-[20%] letter tracking-[3px]	uppercase font-bold text-white text-2xl py-6 absolute">
             {{ $category->category }}</h1>
         <div class="search_area bg-white shadow-lg md:left-[20%] py-6 absolute -bottom-10 md:w-[60%] w-[100%]">
             <form action="{{ route('products') }}" method="get">
